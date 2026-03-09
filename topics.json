@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Strategic Topic Intelligence",
+    "organisation": "Your Organisation",
+    "updated": "March 2026"
+  },
+  "tags": [
+    "payment",
+    "research",
+    "credit card",
+    "regulation",
+    "blockchain",
+    "infrastructure"
+  ],
+  "stakeholders": [
+    { "id": 1, "name": "Sarah Chen",   "role": "Head of Digital Assets" },
+    { "id": 2, "name": "Marcus Webb",  "role": "Risk Officer" },
+    { "id": 3, "name": "Priya Nair",   "role": "Compliance Director" },
+    { "id": 4, "name": "Thomas Kraft", "role": "Product Lead" },
+    { "id": 5, "name": "Lena Fischer", "role": "Engineering Director" }
+  ],
+  "topics": [
+    {
+      "id": 1,
+      "title": "Stablecoin Integration",
+      "score": 6,
+      "priority": "Medium-High",
+      "horizon": "12–18 months",
+      "description": "Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.",
+      "tags": ["payment", "blockchain", "research"],
+      "stakeholders": [1, 2],
+      "actions": [
+        { "description": "Commission external legal review of MiCA compliance requirements for stablecoin custody by Q2 2026.", "status": "open" },
+        { "description": "Prototype a stablecoin settlement corridor on testnet with two partner banks to validate latency and cost assumptions.", "status": "open" },
+        { "description": "Define internal risk appetite threshold for stablecoin exposure as % of treasury holdings.", "status": "open" },
+        { "description": "Engage the ECB sandbox programme to position for early regulatory approval.", "status": "open" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Buy Now, Pay Later Regulation",
+      "score": 9,
+      "priority": "Critical",
+      "horizon": "6–9 months",
+      "description": "New EU directives requiring BNPL products to undergo full creditworthiness assessments are expected to reshape the competitive landscape significantly. Our existing BNPL portfolio may require substantial product redesign.",
+      "tags": ["credit card", "regulation", "research"],
+      "stakeholders": [3, 4, 1],
+      "actions": [
+        { "description": "Map all active BNPL products against new directive requirements; identify non-compliant features.", "status": "in-progress" },
+        { "description": "Engage lobbying body to submit commentary on implementation timeline.", "status": "open" },
+        { "description": "Build credit assessment pipeline that satisfies directive without degrading approval rates by more than 8%.", "status": "open" },
+        { "description": "Run customer communication strategy to manage expectation changes.", "status": "open" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Real-Time Payment Rails",
+      "score": 8,
+      "priority": "High",
+      "horizon": "6–12 months",
+      "description": "Instant payment mandates across the EU and increasing consumer expectation for 24/7 settlement are pushing our legacy batch infrastructure to its limits. Adoption of ISO 20022 is now a hard requirement.",
+      "tags": ["payment", "infrastructure"],
+      "stakeholders": [4, 5],
+      "actions": [
+        { "description": "Complete ISO 20022 migration for domestic rails by end of Q3 2026.", "status": "in-progress" },
+        { "description": "Evaluate Vocalink vs proprietary clearing for pan-EU instant payment capability.", "status": "open" },
+        { "description": "Pilot instant settlement for merchant payouts with top-50 partners.", "status": "open" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "AI Credit Scoring Models",
+      "score": 7,
+      "priority": "Medium-High",
+      "horizon": "18–24 months",
+      "description": "Machine learning models are outperforming traditional bureau-based scores on default prediction, particularly for thin-file customers. However, explainability requirements under the EU AI Act introduce operational complexity.",
+      "tags": ["research", "credit card", "regulation"],
+      "stakeholders": [3, 2],
+      "actions": [
+        { "description": "Deploy challenger ML model in shadow mode alongside existing scorecard for 90-day comparison.", "status": "open" },
+        { "description": "Engage AI Act notified body to pre-certify model explainability documentation.", "status": "open" },
+        { "description": "Establish model governance board with quarterly review cadence.", "status": "done" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Open Banking Data Monetisation",
+      "score": 5,
+      "priority": "Medium",
+      "horizon": "18–30 months",
+      "description": "PSD3 expands the scope of data sharing mandates while introducing new revenue-sharing frameworks. There is a significant opportunity to position as a premium data aggregator for third-party fintechs and corporates.",
+      "tags": ["payment", "research"],
+      "stakeholders": [5, 4],
+      "actions": [
+        { "description": "Map consent management architecture against PSD3 requirements.", "status": "open" },
+        { "description": "Identify top-3 data product propositions with clear revenue model for enterprise clients.", "status": "open" },
+        { "description": "Build API developer portal with sandbox environment to accelerate third-party adoption.", "status": "open" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Embedded Finance Partnerships",
+      "score": 4,
+      "priority": "Low-Medium",
+      "horizon": "24–36 months",
+      "description": "The shift toward Banking-as-a-Service enables non-financial brands to embed our products at point-of-need. Early moves in this space could secure anchor distribution partnerships with e-commerce and mobility platforms.",
+      "tags": ["payment", "credit card"],
+      "stakeholders": [1, 3],
+      "actions": [
+        { "description": "Define BaaS product catalogue and tiered partnership framework.", "status": "open" },
+        { "description": "Run RFP for white-label card issuing partners in Nordics and DACH markets.", "status": "open" },
+        { "description": "Negotiate pilot embedded credit product with one tier-1 retail partner.", "status": "open" }
+      ]
+    }
+  ]
+}
