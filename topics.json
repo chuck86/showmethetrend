@@ -10,14 +10,24 @@
     "credit card",
     "regulation",
     "blockchain",
-    "infrastructure"
+    "infrastructure",
+    "digital payments",
+    "trusted services",
+    "banking regulatory",
+    "trends",
+    "IT security",
+    "market"
   ],
   "stakeholders": [
-    { "id": 1, "name": "Sarah Chen",   "role": "Head of Digital Assets" },
-    { "id": 2, "name": "Marcus Webb",  "role": "Risk Officer" },
-    { "id": 3, "name": "Priya Nair",   "role": "Compliance Director" },
-    { "id": 4, "name": "Thomas Kraft", "role": "Product Lead" },
-    { "id": 5, "name": "Lena Fischer", "role": "Engineering Director" }
+    { "id": 1, "name": "Sarah Chen",      "role": "Head of Digital Assets" },
+    { "id": 2, "name": "Marcus Webb",     "role": "Risk Officer" },
+    { "id": 3, "name": "Priya Nair",      "role": "Compliance Director" },
+    { "id": 4, "name": "Thomas Kraft",    "role": "Product Lead" },
+    { "id": 5, "name": "Lena Fischer",    "role": "Engineering Director" },
+    { "id": 6, "name": "Klaus Berger",    "role": "Head of Payments" },
+    { "id": 7, "name": "Anna Hoffmann",   "role": "Regulatory Affairs Lead" },
+    { "id": 8, "name": "Stefan Müller",   "role": "Chief Information Security Officer" },
+    { "id": 9, "name": "Jana Becker",     "role": "Head of Strategy & Market Intelligence" }
   ],
   "topics": [
     {
@@ -110,6 +120,184 @@
         { "description": "Define BaaS product catalogue and tiered partnership framework.", "status": "open" },
         { "description": "Run RFP for white-label card issuing partners in Nordics and DACH markets.", "status": "open" },
         { "description": "Negotiate pilot embedded credit product with one tier-1 retail partner.", "status": "open" }
+      ]
+    },
+
+    {
+      "id": 7,
+      "title": "girocard 4.0",
+      "score": 8,
+      "priority": "High",
+      "horizon": "12–24 months",
+      "description": "The girocard scheme is undergoing a fundamental modernisation to support contactless mobile payments, NFC-based wallets, and online e-commerce use cases. girocard 4.0 introduces a new technical architecture enabling tokenisation and digital wallet integration, directly challenging the dominance of international card schemes in the German market. Banks must adapt issuing, acquiring, and processing infrastructure to retain debit market share.",
+      "tags": ["digital payments", "infrastructure", "market"],
+      "stakeholders": [6, 4, 5],
+      "actions": [
+        { "description": "Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.", "status": "in-progress" },
+        { "description": "Coordinate with Deutsche Kreditwirtschaft (DK) working groups to influence scheme rule development.", "status": "open" },
+        { "description": "Define roadmap for mobile wallet integration (Apple Pay, Google Pay) under girocard 4.0 tokenisation framework.", "status": "open" },
+        { "description": "Communicate girocard 4.0 migration timeline to merchant acquiring partners.", "status": "open" }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Digitaler Euro",
+      "score": 7,
+      "priority": "Medium-High",
+      "horizon": "24–48 months",
+      "description": "The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks in payment flows, customer relationships, and deposit funding. The design choices around holding limits, intermediation model, and offline functionality will determine the degree of disintermediation risk for banks. Active engagement with the ECB design process is essential.",
+      "tags": ["digital payments", "regulation", "research"],
+      "stakeholders": [1, 6, 7],
+      "actions": [
+        { "description": "Monitor ECB preparation phase milestones and publish quarterly internal briefings for senior leadership.", "status": "in-progress" },
+        { "description": "Model disintermediation scenarios under different holding limit assumptions (€500, €1,000, €3,000) and estimate deposit outflow impact.", "status": "open" },
+        { "description": "Engage via banking association working groups to provide input on intermediary model design.", "status": "open" },
+        { "description": "Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.", "status": "open" }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Instant Payments (EU-Verordnung)",
+      "score": 9,
+      "priority": "Critical",
+      "horizon": "0–12 months",
+      "description": "The EU Instant Payments Regulation mandates that all PSPs within the eurozone offer SEPA Instant Credit Transfer (SCT Inst) by October 2025 for euro accounts, with non-euro EU accounts following in 2027. Pricing must not exceed standard SEPA transfers. This is a hard compliance deadline with significant infrastructure and pricing implications, as well as a commercial opportunity to lead on value-added instant payment products.",
+      "tags": ["digital payments", "regulation", "payment"],
+      "stakeholders": [6, 5, 3],
+      "actions": [
+        { "description": "Confirm full SCT Inst coverage across all euro payment accounts before the October 2025 regulatory deadline.", "status": "done" },
+        { "description": "Align SEPA Instant pricing to comply with the mandatory fee parity requirement and revise tariff sheets accordingly.", "status": "in-progress" },
+        { "description": "Develop value-added overlay services (e.g. Request-to-Pay, Confirmation of Payee) to monetise instant infrastructure.", "status": "open" },
+        { "description": "Run fraud model validation specifically calibrated for sub-10-second transaction windows.", "status": "open" }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "eIDAS 2.0",
+      "score": 7,
+      "priority": "Medium-High",
+      "horizon": "12–24 months",
+      "description": "The revised eIDAS regulation (eIDAS 2.0) establishes a mandatory framework for cross-border digital identity recognition across all EU member states, including strong requirements for qualified electronic signatures and seals. For banks, it creates both compliance obligations and a strategic opportunity to act as identity service providers. The regulation defines trust levels and interoperability standards that will underpin onboarding, KYC, and authentication processes across the EU.",
+      "tags": ["trusted services", "regulation", "infrastructure"],
+      "stakeholders": [7, 3, 5],
+      "actions": [
+        { "description": "Map current digital onboarding and e-signature workflows against eIDAS 2.0 trust level requirements.", "status": "open" },
+        { "description": "Evaluate qualifying as a Trust Service Provider (TSP) under the updated framework and assess commercial viability.", "status": "open" },
+        { "description": "Integrate eIDAS 2.0-compliant identity verification into the customer portal authentication layer.", "status": "open" },
+        { "description": "Engage national supervisory body (BSI / BNetzA) on implementation timelines and technical standards.", "status": "open" }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "EUDI Wallet",
+      "score": 6,
+      "priority": "Medium",
+      "horizon": "18–36 months",
+      "description": "The European Digital Identity Wallet (EUDI Wallet) will provide EU citizens with a standardised digital wallet for identity credentials, payment initiation, and document storage. Member states must offer a wallet by 2026. Banks are expected to issue PID (Person Identification Data) attributes and may integrate wallet-based authentication into account access flows. The wallet ecosystem could disrupt existing app-based onboarding and authentication models.",
+      "tags": ["trusted services", "digital payments", "regulation"],
+      "stakeholders": [7, 4, 1],
+      "actions": [
+        { "description": "Monitor ARF (Architecture and Reference Framework) releases and assess impact on bank identity services.", "status": "in-progress" },
+        { "description": "Evaluate role as EUDI Wallet-compatible relying party for KYC and account access, and define integration scope.", "status": "open" },
+        { "description": "Participate in large-scale pilot (LSP) consortium relevant to the banking sector (e.g. POTENTIAL or DC4EU).", "status": "open" },
+        { "description": "Define internal policy on acceptance of EUDI Wallet credentials as a valid onboarding channel.", "status": "open" }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Open Banking APIs vs. FIDA",
+      "score": 8,
+      "priority": "High",
+      "horizon": "12–30 months",
+      "description": "The Financial Data Access (FIDA) regulation proposed by the European Commission goes significantly beyond PSD2's open banking scope, mandating data sharing across savings, investments, insurance, and pension products. While open banking APIs under PSD2 have matured, FIDA introduces a new permission framework and financial data sharing schemes. Banks face both defensive obligations (data holder duties) and offensive opportunities (data user capabilities). The interplay between FIDA and existing PSD2 infrastructure requires careful architectural planning.",
+      "tags": ["banking regulatory", "trends", "regulation"],
+      "stakeholders": [7, 3, 4],
+      "actions": [
+        { "description": "Conduct a FIDA scope analysis to identify which product categories and data types fall under new sharing obligations.", "status": "open" },
+        { "description": "Assess current API infrastructure and consent management platform for FIDA compliance gaps.", "status": "open" },
+        { "description": "Define a commercial strategy for acting as a Financial Data Access provider (data user) for cross-sell and advisory use cases.", "status": "open" },
+        { "description": "Submit response to EBA/EC consultation on FIDA technical standards to shape favourable implementation details.", "status": "open" }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "PSD2/PSDR und Request to Pay (R2P)",
+      "score": 8,
+      "priority": "High",
+      "horizon": "6–18 months",
+      "description": "The Payment Services Directive Review (PSDR) will replace PSD2 with updated SCA rules, revised liability frameworks, and new requirements around open banking performance. Simultaneously, the EPC's SEPA Request-to-Pay (R2P) scheme is gaining adoption as a structured messaging layer on top of SCT Inst, enabling invoice-triggered payment flows. Both developments require product and compliance investment, and R2P in particular offers a strategic overlay product opportunity for corporate and SME banking.",
+      "tags": ["banking regulatory", "digital payments", "trends"],
+      "stakeholders": [6, 7, 3],
+      "actions": [
+        { "description": "Track PSDR legislative process and update internal SCA and liability policy documentation for anticipated changes.", "status": "in-progress" },
+        { "description": "Build SEPA R2P creditor-side implementation for corporate clients, starting with recurring billing use cases.", "status": "open" },
+        { "description": "Evaluate R2P for retail use cases (e.g. e-commerce checkout, utility billing) and prepare pilot proposal.", "status": "open" },
+        { "description": "Ensure TPP access infrastructure meets updated PSDR performance and availability benchmarks.", "status": "open" }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "KRITIS-Dachgesetz",
+      "score": 8,
+      "priority": "High",
+      "horizon": "6–18 months",
+      "description": "Germany's new KRITIS umbrella law (KRITIS-Dachgesetz) expands critical infrastructure protection obligations beyond IT systems to physical resilience, business continuity, and cross-sector dependencies. Financial institutions above defined thresholds will face enhanced reporting, risk assessment, and resilience testing requirements overseen by the BBK and BSI. Combined with the EU CER Directive, the law requires a comprehensive review of physical and logical security governance across all critical operational sites and systems.",
+      "tags": ["IT security", "regulation", "infrastructure"],
+      "stakeholders": [8, 3, 5],
+      "actions": [
+        { "description": "Determine if the institution meets KRITIS-Dachgesetz threshold criteria and formally register with BBK if required.", "status": "in-progress" },
+        { "description": "Conduct a resilience gap analysis covering physical infrastructure, supply chain dependencies, and cross-sector interfaces.", "status": "open" },
+        { "description": "Update the Business Continuity Management (BCM) framework to align with new law requirements and CER Directive.", "status": "open" },
+        { "description": "Establish cross-functional crisis response team with defined escalation paths as required by the regulation.", "status": "open" }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "DORA (Digital Operational Resilience Act)",
+      "score": 9,
+      "priority": "Critical",
+      "horizon": "0–6 months",
+      "description": "The Digital Operational Resilience Act (DORA) entered application in January 2025, introducing binding requirements on ICT risk management, incident classification and reporting, digital operational resilience testing (TLPT), and third-party ICT provider oversight across all EU financial entities. Non-compliance carries significant supervisory and reputational risk. Particular attention is required around the ICT third-party register, contractual obligations with critical ICT providers, and the threat-led penetration testing (TLPT) programme.",
+      "tags": ["IT security", "regulation", "infrastructure"],
+      "stakeholders": [8, 5, 3],
+      "actions": [
+        { "description": "Complete the ICT third-party provider register and classify all providers against DORA's criticality criteria.", "status": "in-progress" },
+        { "description": "Update contracts with critical ICT providers to include mandatory DORA clauses (audit rights, exit strategies, SLAs).", "status": "in-progress" },
+        { "description": "Design and schedule the Threat-Led Penetration Testing (TLPT) programme in coordination with the lead supervisor.", "status": "open" },
+        { "description": "Establish major ICT incident classification criteria and test the end-to-end supervisory reporting workflow.", "status": "open" },
+        { "description": "Train first and second line of defence teams on updated ICT risk management framework under DORA.", "status": "open" }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Atruvia Kernbank-Software",
+      "score": 6,
+      "priority": "Medium",
+      "horizon": "24–60 months",
+      "description": "Atruvia (formerly Fiducia & GAD) is rolling out its next-generation core banking platform (agree21 and the broader Fusion Banking roadmap) across cooperative banking clients. The transition involves significant migration complexity, changed integration patterns, and new feature delivery timelines. For institutions dependent on Atruvia, the platform roadmap directly shapes digital product capabilities, API availability, and the feasibility of independent innovation. Strategic alignment with — or divergence from — the Atruvia roadmap is a key architecture decision.",
+      "tags": ["market", "infrastructure", "trends"],
+      "stakeholders": [5, 4, 9],
+      "actions": [
+        { "description": "Map current core banking integration points and identify which capabilities are affected by the agree21 migration roadmap.", "status": "in-progress" },
+        { "description": "Establish a dedicated Atruvia liaison role to maintain visibility of platform roadmap changes and early-access features.", "status": "open" },
+        { "description": "Evaluate build-vs-integrate decision for top-3 product features where Atruvia roadmap timeline is insufficient.", "status": "open" },
+        { "description": "Review vendor risk concentration and assess contingency options in the event of major platform delays.", "status": "open" }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Rückzug Auslandsbanken",
+      "score": 5,
+      "priority": "Medium",
+      "horizon": "6–24 months",
+      "description": "Several international retail and corporate banks have reduced or fully exited the German market in recent years, citing structural cost pressures, low-margin deposit business, and regulatory complexity. This withdrawal creates selective opportunities for domestic institutions to acquire customer portfolios, talent, and market share — particularly in SME lending, private banking, and transaction banking. However, it also signals deeper structural questions about the profitability of certain German banking segments.",
+      "tags": ["market", "trends", "research"],
+      "stakeholders": [9, 2, 4],
+      "actions": [
+        { "description": "Maintain a market intelligence tracker of announced and rumoured foreign bank exits, including portfolio sizes and affected segments.", "status": "in-progress" },
+        { "description": "Define acquisition criteria for opportunistic portfolio purchases (SME loan books, custody assets, corporate client mandates).", "status": "open" },
+        { "description": "Develop a targeted recruitment strategy to capture senior relationship managers released from exiting institutions.", "status": "open" },
+        { "description": "Assess whether competitor exit in specific regions creates a case for accelerated branch or digital expansion.", "status": "open" }
       ]
     }
   ]
