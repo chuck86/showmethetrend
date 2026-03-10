@@ -7,6 +7,254 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: #0f0f13;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Courier New', monospace;
+      color: #e0e0e0;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    h1 { font-size: 1.4rem; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; }
+    canvas { background: #1a1a22; border-radius: 50%; }
+    .controls { display: flex; gap: 3rem; align-items: center; }
+    label { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .label-text { font-size: 0.75rem; letter-spacing: 0.15em; color: #888; }
+    input[type=range] { width: 120px; }
+    #n-val   { font-size: 1.5rem; font-weight: bold; color: #e63946; }
+    #gap-val { font-size: 1.5rem; font-weight: bold; color: #2a9d8f; }
+    #n-slider   { accent-color: #e63946; }
+    #gap-slider { accent-color: #2a9d8f; }
+  </style>
+</head>
+<body>
+  <h1>Circle Slice Plot</h1>
+  <canvas id="c" width="400" height="400"></canvas>
+  <div class="controls">
+    <label>
+      <span class="label-text">SLICES (n)</span>
+      <input id="n-slider" type="range" min="2" max="24" value="8" />
+      <span id="n-val">8</span>
+    </label>
+    <label>
+      <span class="label-text">GAP (px)</span>
+      <input id="gap-slider" type="range" min="0" max="20" value="6" />
+      <span id="gap-val">6</span>
+    </label>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+    const nSlider = document.getElementById('n-slider');
+    const gapSlider = document.getElementById('gap-slider');
+    const nVal = document.getElementById('n-val');
+    const gapVal = document.getElementById('gap-val');
+
+    const colors = [
+      "#e63946","#f4a261","#2a9d8f","#457b9d",
+      "#e9c46a","#a8dadc","#f77f00","#6a4c93",
+      "#43aa8b","#277da1","#f94144","#90be6d",
+    ];
+
+    function draw() {
+      const n   = parseInt(nSlider.value);
+      const gap = parseInt(gapSlider.value);
+      nVal.textContent   = n;
+      gapVal.textContent = gap;
+
+      const W = canvas.width, H = canvas.height;
+      const cx = W / 2, cy = H / 2;
+      const R  = Math.min(W, H) / 2 - 20;
+
+      ctx.clearRect(0, 0, W, H);
+
+      const sliceAngle = (2 * Math.PI) / n;
+      // half the gap distance — each slice edge is offset this far from the boundary line
+      const half = gap / 2;
+
+      for (let i = 0; i < n; i++) {
+        // The angle of this slice's two boundary radii
+        const a1 = i * sliceAngle;       // left boundary angle
+        const a2 = (i + 1) * sliceAngle; // right boundary angle
+
+        // Inward-perpendicular directions for each boundary
+        // For boundary at angle a, the slice interior is at a + sliceAngle/2.
+        // The perpendicular pointing INTO the slice is (a + 90°) for left edge,
+        // and (a - 90°) for right edge.
+        // Left edge: shift in direction (a1 + π/2) by half
+        const lx = Math.cos(a1 + Math.PI / 2) * half;
+        const ly = Math.sin(a1 + Math.PI / 2) * half;
+        // Right edge: shift in direction (a2 - π/2) by half
+        const rx = Math.cos(a2 - Math.PI / 2) * half;
+        const ry = Math.sin(a2 - Math.PI / 2) * half;
+
+        // Build the clipped slice as an intersection of:
+        //   - the circle
+        //   - half-plane to the right of the left edge  (shifted inward by half)
+        //   - half-plane to the left of the right edge  (shifted inward by half)
+        //
+        // Strategy: draw the full arc sector, then use clip to carve off the gap strips.
+        ctx.save();
+
+        // Clip region: intersection of two half-planes
+        ctx.beginPath();
+        // Left half-plane: line through (cx+lx, cy+ly) in direction of a1
+        // Points on the correct side satisfy the signed-distance test.
+        // We build a large rectangle on the correct side.
+        const BIG = R * 3;
+        const cos1 = Math.cos(a1), sin1 = Math.sin(a1);
+        const cos2 = Math.cos(a2), sin2 = Math.sin(a2);
+
+        // Left clip: keep points where dot((p - pivot1), perp_left) >= 0
+        // perp_left points into the slice: (cos(a1+π/2), sin(a1+π/2)) = (-sin1, cos1)
+        // pivot1 = (cx + lx, cy + ly)
+        // We draw the half-plane as a big quad on the allowed side.
+        const p1x = cx + lx, p1y = cy + ly;
+        ctx.moveTo(p1x + cos1 * BIG,  p1y + sin1 * BIG);
+        ctx.lineTo(p1x - cos1 * BIG,  p1y - sin1 * BIG);
+        ctx.lineTo(p1x - cos1 * BIG - sin1 * BIG * (-1),  p1y - sin1 * BIG + cos1 * BIG);
+        // build as large polygon covering the right half of the boundary
+        ctx.rect(-BIG + p1x - sin1*BIG, -BIG + p1y + cos1*BIG, BIG*4, BIG*4);
+        ctx.closePath();
+
+        // Instead of the half-plane approach (complex winding), use a simpler method:
+        // translate & rotate so this slice is centred on the x-axis, then clip with two angled lines.
+        ctx.restore();
+
+        // ---- Cleaner approach: rotate canvas so slice is symmetric about x-axis ----
+        ctx.save();
+        ctx.translate(cx, cy);
+
+        const midAngle = a1 + sliceAngle / 2;
+        ctx.rotate(midAngle);
+        // Now this slice spans from -sliceAngle/2 to +sliceAngle/2 around the x-axis.
+        const halfSlice = sliceAngle / 2;
+
+        // Clip path: two half-planes
+        // Left edge boundary is at angle -halfSlice from x-axis.
+        // Its inward normal points toward +y. Offset = half upward (+y direction when at that angle).
+        // After rotation, left boundary angle = -halfSlice, right boundary angle = +halfSlice.
+        // Left edge: line through (0,0) rotated -halfSlice, shifted by +half in normal direction (toward +y in slice frame).
+        //   In slice frame: left boundary line passes through (0, half) with direction (cos(-halfSlice), sin(-halfSlice)).
+        //   We keep points ABOVE this line.
+        // Right edge: line passes through (0, -half) with direction (cos(halfSlice), sin(halfSlice)).
+        //   We keep points BELOW this line.
+
+        ctx.beginPath();
+        // Left edge clip — half-plane: points where y >= half - x*tan(-halfSlice)
+        //   i.e. y + x*tan(halfSlice) >= half
+        // Right edge clip — half-plane: points where y <= -half + x*tan(halfSlice)
+        //   i.e. y - x*tan(halfSlice) <= -half
+
+        // Build clip as intersection using canvas clip with even-odd or nonzero winding.
+        // Easiest: draw the two clip half-planes as big polygons and intersect by redrawing.
+        // Canvas only supports union for clip paths unless using compositing.
+        // Best approach: just draw a filled polygon for the slice directly.
+
+        ctx.restore();
+
+        // ---- Final clean approach: construct slice polygon explicitly ----
+        // Each slice edge is a line segment from center offset by half in the inward normal direction.
+        // The slice boundary consists of:
+        //   - Left edge: from inner point to outer point (shifted right of the left boundary by 'half')
+        //   - Arc from left outer to right outer
+        //   - Right edge: from outer point back to inner point
+
+        // For the left boundary at angle a1:
+        //   inward normal = direction a1 + π/2  → (-sin(a1), cos(a1))
+        //   The edge runs parallel to direction a1 (cos(a1), sin(a1))
+        //   shifted by 'half' in the inward normal direction
+        //   pivot = (cx, cy) + half * inward_normal
+        const ln1x = -Math.sin(a1), ln1y = Math.cos(a1); // inward normal for left edge
+        const pivotL = { x: cx + half * ln1x, y: cy + half * ln1y };
+        // The edge segment goes from pivotL out to radius R along direction a1:
+        //   intersect with circle of radius R centered at (cx,cy)
+        //   parametric: p = pivotL + t*(cos(a1), sin(a1))
+        //   |p - (cx,cy)|² = R²
+        const dLx = Math.cos(a1), dLy = Math.sin(a1);
+        const fLx = pivotL.x - cx, fLy = pivotL.y - cy;
+        const tL = solveLineCircle(fLx, fLy, dLx, dLy, R);
+        // inner intersection (near center)
+        const iLx = pivotL.x + tL.t1 * dLx, iLy = pivotL.y + tL.t1 * dLy;
+        // outer intersection (far from center)
+        const oLx = pivotL.x + tL.t2 * dLx, oLy = pivotL.y + tL.t2 * dLy;
+
+        // For the right boundary at angle a2:
+        //   inward normal = direction a2 - π/2  → (sin(a2), -cos(a2))
+        const ln2x = Math.sin(a2), ln2y = -Math.cos(a2);
+        const pivotR = { x: cx + half * ln2x, y: cy + half * ln2y };
+        const dRx = Math.cos(a2), dRy = Math.sin(a2);
+        const fRx = pivotR.x - cx, fRy = pivotR.y - cy;
+        const tR = solveLineCircle(fRx, fRy, dRx, dRy, R);
+        const iRx = pivotR.x + tR.t1 * dRx, iRy = pivotR.y + tR.t1 * dRy;
+        const oRx = pivotR.x + tR.t2 * dRx, oRy = pivotR.y + tR.t2 * dRy;
+
+        // Arc start/end angles: the outer points on the circle
+        const arcStart = Math.atan2(oLy - cy, oLx - cx);
+        const arcEnd   = Math.atan2(oRy - cy, oRx - cx);
+
+        // Find the intersection of the two edge lines (the "inner tip" of the slice)
+        // Left line:  pivotL + s * (cos(a1), sin(a1))
+        // Right line: pivotR + u * (cos(a2), sin(a2))
+        const tip = lineIntersect(pivotL.x, pivotL.y, dLx, dLy, pivotR.x, pivotR.y, dRx, dRy);
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.beginPath();
+
+        if (tip && tip.s >= 0 && tip.u >= 0) {
+          // Normal case: edges meet at a tip inside/near center
+          const tipX = tip.x - cx, tipY = tip.y - cy;
+          ctx.moveTo(tipX, tipY);
+          ctx.lineTo(oLx - cx, oLy - cy);
+          ctx.arc(0, 0, R, arcStart, arcEnd);
+          ctx.lineTo(tipX, tipY);
+        } else {
+          // Edges don't converge (very wide slices or large gap): just go inner→outer on each side
+          ctx.moveTo(iLx - cx, iLy - cy);
+          ctx.lineTo(oLx - cx, oLy - cy);
+          ctx.arc(0, 0, R, arcStart, arcEnd);
+          ctx.lineTo(iRx - cx, iRy - cy);
+          ctx.closePath();
+        }
+
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Solve |f + t*d|² = R² → t² + 2(f·d)t + (|f|²-R²) = 0
+    // Returns the two t values (t1 <= t2)
+    function solveLineCircle(fx, fy, dx, dy, R) {
+      const a = dx*dx + dy*dy;
+      const b = 2 * (fx*dx + fy*dy);
+      const c = fx*fx + fy*fy - R*R;
+      const disc = Math.sqrt(b*b - 4*a*c);
+      return { t1: (-b - disc) / (2*a), t2: (-b + disc) / (2*a) };
+    }
+
+    // Intersect two parametric lines: p1 + s*d1 = p2 + u*d2
+    function lineIntersect(p1x, p1y, d1x, d1y, p2x, p2y, d2x, d2y) {
+      const denom = d1x * d2y - d1y * d2x;
+      if (Math.abs(denom) < 1e-10) return null;
+      const dx = p2x - p1x, dy = p2y - p1y;
+      const s = (dx * d2y - dy * d2x) / denom;
+      const u = (dx * d1y - dy * d1x) / denom;
+      return { x: p1x + s * d1x, y: p1y + s * d1y, s, u };
+    }
+
+    nSlider.addEventListener('input', draw);
+    gapSlider.addEventListener('input', draw);
+    draw();
+  </script>
+  <style>
   :root {
     --ink: #0a0f1e;
     --ink-light: #1c2340;
