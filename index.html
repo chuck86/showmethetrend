@@ -373,6 +373,335 @@
 
 </header>
 
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  TOPIC WHEEL CHART — self-contained snippet                         ║
+  ║  Paste anywhere inside <body> of index.html.                        ║
+  ║  Reads from the `db` variable already loaded by index.html.         ║
+  ║  If `db` is not yet loaded it waits automatically.                  ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+
+<!-- ── WHEEL STYLES ─────────────────────────────────────────────────────── -->
+<style>
+  #tw-wrap {
+    background: #fff;
+    border: 1px solid rgba(4,0,102,.1);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    max-width: 820px;
+    margin: 2rem auto;
+    font-family: 'Syne', system-ui, sans-serif;
+  }
+  #tw-wrap h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #040066;
+    margin: 0 0 .25rem;
+    letter-spacing: -.015em;
+  }
+  #tw-wrap .tw-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    color: #6b6b8a;
+    letter-spacing: .06em;
+    margin-bottom: 1.5rem;
+  }
+  #tw-inner {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  #tw-svg-box {
+    flex: 1;
+    min-width: 280px;
+  }
+  #tw-svg-box svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #tw-legend {
+    flex: 0 0 180px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding-top: .5rem;
+  }
+  .tw-li {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    font-size: .78rem;
+    color: #1a1a3a;
+    line-height: 1.3;
+  }
+  .tw-li-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+  }
+  .tw-li-n {
+    font-family: 'DM Mono', monospace;
+    font-size: .62rem;
+    color: #6b6b8a;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  #tw-hint {
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: .6rem;
+    color: #9b9bb8;
+    line-height: 1.9;
+  }
+  /* Tooltip */
+  #tw-tooltip {
+    position: fixed;
+    display: none;
+    z-index: 9999;
+    pointer-events: none;
+    background: #040066;
+    color: #fff;
+    padding: .55rem .95rem;
+    border-radius: 3px;
+    max-width: 220px;
+    box-shadow: 0 6px 22px rgba(4,0,102,.35);
+  }
+  #tw-tooltip strong {
+    display: block;
+    font-size: .82rem;
+    line-height: 1.3;
+    margin-bottom: .25rem;
+  }
+  #tw-tooltip span {
+    font-family: 'DM Mono', monospace;
+    font-size: .58rem;
+    color: #00d4ff;
+    letter-spacing: .04em;
+  }
+  /* Dot hover */
+  .tw-dot {
+    cursor: pointer;
+    transition: r .12s;
+  }
+</style>
+
+<!-- ── WHEEL HTML ────────────────────────────────────────────────────────── -->
+<div id="tw-wrap">
+  <h3>Topic Landscape</h3>
+  <p class="tw-sub">SCORE DRIVES POSITION — INNER = HIGHER · OUTER = LOWER</p>
+  <div id="tw-inner">
+    <div id="tw-svg-box">
+      <svg id="tw-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div id="tw-legend">
+      <div id="tw-legend-list"></div>
+      <div id="tw-hint">
+        ● Inner ring = score 10<br>
+        ● Outer edge = score 1<br>
+        ● Click dot = open topic<br>
+        ● Topics may appear<br>
+        &nbsp;&nbsp;in multiple slices
+      </div>
+    </div>
+  </div>
+</div>
+<div id="tw-tooltip"></div>
+
+<!-- ── WHEEL SCRIPT ──────────────────────────────────────────────────────── -->
+<script>
+(function () {
+
+  /* ── 1. Slice definitions ──────────────────────────────────────────────── */
+  const SLICES = [
+    { lines: ['TRUSTED', 'SERVICES'],   tag: 'trusted services',   fill: '#d3beec', stroke: '#4a2d7a' },
+    { lines: ['OPEN', 'FINANCE'],       tag: 'open finance',        fill: '#ffeda3', stroke: '#5a4a00' },
+    { lines: ['REGULATORY'],            tag: 'regulation',          fill: '#ffc390', stroke: '#7a3500' },
+    { lines: ['IT', 'SECURITY'],        tag: 'IT security',         fill: '#ffa6b4', stroke: '#7a1525' },
+    { lines: ['DIGITAL', 'PAYMENTS'],   tag: 'digital payments',    fill: '#00d4ff', stroke: '#004f66' },
+    { lines: ['BANKING', 'REGULATORY'], tag: 'banking regulatory',  fill: '#c4ebc3', stroke: '#1a5219' },
+  ];
+
+  /* ── 2. SVG math helpers ───────────────────────────────────────────────── */
+  function polar(cx, cy, r, deg) {
+    const rad = (deg - 90) * Math.PI / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  }
+
+  function sectorPath(cx, cy, r1, r2, a1, a2) {
+    const f = n => n.toFixed(3);
+    const p1 = polar(cx, cy, r2, a1), p2 = polar(cx, cy, r2, a2);
+    const p3 = polar(cx, cy, r1, a2), p4 = polar(cx, cy, r1, a1);
+    const big = (a2 - a1) > 180 ? 1 : 0;
+    return `M${f(p1.x)},${f(p1.y)}` +
+           ` A${r2},${r2},0,${big},1,${f(p2.x)},${f(p2.y)}` +
+           ` L${f(p3.x)},${f(p3.y)}` +
+           ` A${r1},${r1},0,${big},0,${f(p4.x)},${f(p4.y)} Z`;
+  }
+
+  /* ── 3. Render function ────────────────────────────────────────────────── */
+  function render(topics) {
+    const CX = 300, CY = 300;
+    const OUTER_R = 190;   // outer edge of slices
+    const INNER_R = 42;    // centre hole radius
+    const GAP_DEG = 2.5;   // gap between slices (degrees each side)
+    const LABEL_R = OUTER_R + 34; // label ring radius
+    const N = SLICES.length;
+    const SLICE_DEG = 360 / N; // 60°
+
+    let svg = '';
+
+    /* Score reference rings (faint) */
+    [2, 4, 6, 8, 10].forEach(sc => {
+      const r = INNER_R + ((10 - sc) / 9) * (OUTER_R - INNER_R);
+      const dash = sc < 10 ? `stroke-dasharray="3,5"` : '';
+      svg += `<circle cx="${CX}" cy="${CY}" r="${r.toFixed(1)}"
+                fill="none" stroke="rgba(4,0,102,.07)" stroke-width=".8" ${dash}/>`;
+    });
+
+    /* Score tick labels along one guide line (at 28°) */
+    [2, 4, 6, 8].forEach(sc => {
+      const r = INNER_R + ((10 - sc) / 9) * (OUTER_R - INNER_R);
+      const p = polar(CX, CY, r - 4, 28);
+      svg += `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}"
+                font-size="7" fill="rgba(107,107,138,.5)"
+                font-family="DM Mono" text-anchor="middle"
+                dominant-baseline="middle">${sc}</text>`;
+    });
+
+    /* Slices and topic dots */
+    SLICES.forEach((sl, i) => {
+      const a1 = i * SLICE_DEG + GAP_DEG;
+      const a2 = (i + 1) * SLICE_DEG - GAP_DEG;
+      const mid = (a1 + a2) / 2;
+
+      /* Sector fill */
+      svg += `<path d="${sectorPath(CX, CY, INNER_R, OUTER_R, a1, a2)}"
+                fill="${sl.fill}" fill-opacity=".2"
+                stroke="${sl.fill}" stroke-width=".8" stroke-opacity=".6"/>`;
+
+      /* Spoke line */
+      const sp = polar(CX, CY, OUTER_R + 6, i * SLICE_DEG);
+      svg += `<line x1="${CX}" y1="${CY}" x2="${sp.x.toFixed(1)}" y2="${sp.y.toFixed(1)}"
+                stroke="rgba(4,0,102,.13)" stroke-width="1"/>`;
+
+      /* Slice label */
+      const lp = polar(CX, CY, LABEL_R, mid);
+      sl.lines.forEach((ln, li) => {
+        const offset = sl.lines.length > 1 ? (li - 0.5) * 11 : 0;
+        svg += `<text x="${lp.x.toFixed(1)}" y="${(lp.y + offset).toFixed(1)}"
+                  text-anchor="middle" dominant-baseline="middle"
+                  font-size="8" font-weight="700" fill="${sl.stroke}"
+                  font-family="Syne,system-ui" letter-spacing=".07em">${ln}</text>`;
+      });
+
+      /* Topic dots for this slice */
+      const sliceTopics = topics.filter(t => (t.tags || []).includes(sl.tag));
+      const total = sliceTopics.length;
+      const usable = SLICE_DEG - 2 * GAP_DEG - 6; // angular spread within slice
+
+      sliceTopics.forEach((tp, j) => {
+        /* Angular position: spread evenly across the slice */
+        const angle = total === 1
+          ? mid
+          : a1 + 3 + (j / (total - 1)) * usable;
+
+        /* Radial position: score 10 → inner, score 1 → outer */
+        const r = INNER_R + ((10 - tp.score) / 9) * (OUTER_R - INNER_R);
+        const dp = polar(CX, CY, r, angle);
+
+        svg += `<circle
+                  class="tw-dot"
+                  cx="${dp.x.toFixed(2)}" cy="${dp.y.toFixed(2)}"
+                  r="11"
+                  fill="${sl.fill}" fill-opacity=".95"
+                  stroke="${sl.stroke}" stroke-width="2"
+                  data-id="${tp.id}"
+                  data-title="${tp.title.replace(/"/g,'&quot;')}"
+                  data-score="${tp.score}"
+                  data-tags="${(tp.tags||[]).join(', ')}"/>`;
+
+        svg += `<text
+                  x="${dp.x.toFixed(2)}" y="${dp.y.toFixed(2)}"
+                  text-anchor="middle" dominant-baseline="middle"
+                  font-size="7.5" font-weight="700" fill="${sl.stroke}"
+                  font-family="DM Mono"
+                  style="pointer-events:none">${tp.score}</text>`;
+      });
+    });
+
+    /* Centre circle */
+    svg += `<circle cx="${CX}" cy="${CY}" r="${INNER_R}"
+              fill="rgba(4,0,102,.05)" stroke="rgba(4,0,102,.18)" stroke-width="1.2"/>`;
+    svg += `<text x="${CX}" y="${CY - 7}" text-anchor="middle" dominant-baseline="middle"
+              font-size="7" fill="rgba(4,0,102,.4)" font-family="DM Mono">HIGH</text>`;
+    svg += `<text x="${CX}" y="${CY + 7}" text-anchor="middle" dominant-baseline="middle"
+              font-size="7" fill="rgba(4,0,102,.4)" font-family="DM Mono">SCORE</text>`;
+
+    document.getElementById('tw-svg').innerHTML = svg;
+
+    /* Legend */
+    document.getElementById('tw-legend-list').innerHTML = SLICES.map(sl => {
+      const n = topics.filter(t => (t.tags||[]).includes(sl.tag)).length;
+      return `<div class="tw-li">
+        <div class="tw-li-dot" style="background:${sl.fill};border-color:${sl.stroke}"></div>
+        <span>${sl.lines.join(' ')}</span>
+        <span class="tw-li-n">${n} topic${n===1?'':'s'}</span>
+      </div>`;
+    }).join('');
+
+    /* Tooltip & click */
+    const tt = document.getElementById('tw-tooltip');
+    document.querySelectorAll('.tw-dot').forEach(dot => {
+      dot.addEventListener('mouseenter', e => {
+        dot.setAttribute('r', '14');
+        tt.innerHTML = `<strong>${dot.dataset.title}</strong>
+                        <span>Score ${dot.dataset.score}/10 · ${dot.dataset.tags}</span>`;
+        tt.style.cssText = `display:block;left:${e.clientX+14}px;top:${e.clientY-12}px`;
+      });
+      dot.addEventListener('mousemove', e => {
+        tt.style.left = (e.clientX + 14) + 'px';
+        tt.style.top  = (e.clientY - 12) + 'px';
+      });
+      dot.addEventListener('mouseleave', () => {
+        dot.setAttribute('r', '11');
+        tt.style.display = 'none';
+      });
+      dot.addEventListener('click', () => {
+        tt.style.display = 'none';
+        /* Calls showDetail() from the parent index.html */
+        if (typeof showDetail === 'function') {
+          showDetail(parseInt(dot.dataset.id));
+        }
+      });
+    });
+  }
+
+  /* ── 4. Wait for `db` from parent page, then render ───────────────────── */
+  function init() {
+    if (typeof db !== 'undefined' && db && db.topics) {
+      render(db.topics);
+    } else {
+      /* Poll until topics.json has been loaded by the parent page */
+      setTimeout(init, 150);
+    }
+  }
+
+  /* Start after DOM is ready */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+  <!-- END OF CHART -->
+  
 <!-- ══ INDEX VIEW ══════════════════════════════════════════════════════════ -->
 <div id="view-index">
   <div class="index-hero">
