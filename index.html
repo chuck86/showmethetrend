@@ -509,7 +509,7 @@
     transition: r .12s;
   }
 </style>
-
+<div class="box"> THIS IS BOX A </div>
 <!-- ── WHEEL HTML ────────────────────────────────────────────────────────── -->
 <!--
   <div id="tw-wrap">
@@ -723,6 +723,8 @@
 
 })();
 </script>
+    <div class="box"> THIS IS BOX B </div>
+
   <!-- END OF CHART -->
   </div>
     <div class="search-wrap">
@@ -893,6 +895,8 @@ function filteredTopics() {
       (t.description||'').toLowerCase().includes(searchQuery) ||
       t.tags.some(tag => tag.includes(searchQuery)));
 }
+  <div class="box"> THIS IS BOX C </div>
+
 
 // ── Render index ─────────────────────────────────────────────────────────────
 function renderIndex() {
