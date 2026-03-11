@@ -71,6 +71,8 @@
     min-width: 220px;
   }
 
+
+
   .logo-text { display: flex; flex-direction: column; gap: 1px; }
   .logo-name { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.02em; color: var(--white); line-height: 1.1; }
   .logo-tagline { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; opacity: 0.8; }
@@ -109,6 +111,8 @@
   .git-link { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.15); padding: 0.35rem 0.8rem; border-radius: 3px; transition: all 0.18s; white-space: nowrap; }
   .git-link:hover { color: var(--cyan); border-color: rgba(0,212,255,0.4); }
   .git-link svg { width: 12px; height: 12px; }
+
+
 
   /* ── LOADING ─────────────────────────────────────────────────────────────── */
   .state-msg { display: flex; align-items: center; justify-content: center; min-height: 40vh; flex-direction: column; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
@@ -519,6 +523,29 @@
     </div>
   </div>
 
+  <!-- ── PLACEHOLDER BOX ─────────────────────────────────────────────────── -->
+  <div style="
+    max-width: 1280px; margin: 0 auto; padding: 0 3rem;
+    margin-bottom: 0;
+  ">
+    <div style="
+      background: #040066;
+      border: 2px dashed #00d4ff;
+      border-radius: 4px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00d4ff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin: 1.5rem 0;
+    ">Placeholder — replace with content</div>
+  </div>
+
   <div class="filter-section">
     <div class="filter-label">Filter by tag</div>
     <div class="filter-bar" id="filter-bar"></div>
@@ -790,7 +817,7 @@ async function loadData() {
 
 function boot() {
   const meta = db.meta || {};
-  document.title = meta.title || 'CPO Strategic Intelligence';
+  document.title = meta.title || 'Strategic Intelligence';
   document.getElementById('site-title').textContent = meta.organisation || 'Company Name';
 
   const gh = document.getElementById('github-link');
