@@ -928,7 +928,7 @@ function renderIndexWheel() {
       const yo=sl.label.length>1?(li-0.5)*12:0;
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
-    const topics=(db.topics||[]).filter(t=>(t.tags||[]).includes(sl.tag));
+    const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
     const N=topics.length,aw=60-2*GAP-6;
     topics.forEach((tp,j)=>{
       const tA=N===1?mid:a1+3+(j/Math.max(N-1,1))*aw;
@@ -947,7 +947,7 @@ function renderIndexWheel() {
   svg.innerHTML = h;
 
   document.getElementById('index-wheel-legend').innerHTML = WHEEL_SLICES.map(sl=>{
-    const n=(db.topics||[]).filter(t=>(t.tags||[]).includes(sl.tag)).length;
+    const n=(db.topics||[]).filter(t=>t.category===sl.cat).length;
     return `<div style="display:flex;align-items:center;gap:.55rem;font-size:.78rem;color:var(--text);">
       <div style="width:10px;height:10px;border-radius:50%;background:${sl.bg};border:2px solid ${sl.fg};flex-shrink:0;"></div>
       <span>${sl.label.join(' ')}</span>
@@ -1161,12 +1161,12 @@ function showIndex() {
 
 // ── Dashboard / Wheel ─────────────────────────────────────────────────────────
 const WHEEL_SLICES = [
-  { label:['TRUSTED','SERVICES'],   tag:'trusted services',   bg:'#d3beec', fg:'#4a2d7a' },
-  { label:['OPEN','FINANCE'],       tag:'open finance',        bg:'#ffeda3', fg:'#5a4a00' },
-  { label:['REGULATORY'],           tag:'regulation',          bg:'#ffc390', fg:'#7a3500' },
-  { label:['IT','SECURITY'],        tag:'IT security',         bg:'#ffa6b4', fg:'#7a1525' },
-  { label:['DIGITAL','PAYMENTS'],   tag:'digital payments',    bg:'#00d4ff', fg:'#004f66' },
-  { label:['BANKING','REGULATORY'], tag:'banking regulatory',  bg:'#c4ebc3', fg:'#1a5219' },
+  { label:['TRUSTED','SERVICES'],   cat:'Trusted Services',   bg:'#d3beec', fg:'#4a2d7a' },
+  { label:['CARD'],                 cat:'Card',                bg:'#00d4ff', fg:'#004f66' },
+  { label:['REGULATORY'],           cat:'Regulatory',          bg:'#ffc390', fg:'#7a3500' },
+  { label:['IT','SECURITY'],        cat:'IT Security',         bg:'#ffa6b4', fg:'#7a1525' },
+  { label:['BANKING','REGULATORY'], cat:'Banking Regulatory',  bg:'#c4ebc3', fg:'#1a5219' },
+  { label:['MISCELLANEOUS'],        cat:'Miscellaneous',       bg:'#ffeda3', fg:'#5a4a00' },
 ];
 
 function pToC(cx,cy,r,deg){ const rad=(deg-90)*Math.PI/180; return {x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)}; }
@@ -1208,7 +1208,7 @@ function renderWheel() {
       const yo=sl.label.length>1?(li-0.5)*12:0;
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
-    const topics=(db.topics||[]).filter(t=>(t.tags||[]).includes(sl.tag));
+    const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
     const N=topics.length,aw=60-2*GAP-6;
     topics.forEach((tp,j)=>{
       const tA=N===1?mid:a1+3+(j/Math.max(N-1,1))*aw;
@@ -1223,7 +1223,7 @@ function renderWheel() {
   h+=`<text x="${cx}" y="${cy+7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">SCORE</text>`;
   document.getElementById('wheel-svg').innerHTML = h;
   document.getElementById('wheel-legend-items').innerHTML = WHEEL_SLICES.map(sl=>{
-    const n=(db.topics||[]).filter(t=>(t.tags||[]).includes(sl.tag)).length;
+    const n=(db.topics||[]).filter(t=>t.category===sl.cat).length;
     return `<div class="legend-item"><div class="legend-dot" style="background:${sl.bg};border:2px solid ${sl.fg}"></div><span>${sl.label.join(' ')}</span><span class="legend-count">${n}</span></div>`;
   }).join('');
   const tt=document.getElementById('wheel-tt');
