@@ -179,6 +179,18 @@
   .tag-market     { background: rgba(196,235,195,0.4);  color: #174a16; border-color: rgba(196,235,195,0.85); }
   .tag-default    { background: rgba(4,0,102,0.06);     color: var(--navy); border-color: rgba(4,0,102,0.2); }
 
+  /* Category badges */
+  .cat-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.18rem 0.6rem; border-radius: 2px; font-weight: 600; border: 1px solid transparent; white-space: nowrap; }
+  .cat-trusted-services  { background: rgba(211,190,236,0.35); color: #4a2d7a; border-color: rgba(211,190,236,0.75); }
+  .cat-card              { background: rgba(0,212,255,0.12);    color: #005070; border-color: rgba(0,212,255,0.35); }
+  .cat-regulatory        { background: rgba(255,195,144,0.35);  color: #7a3500; border-color: rgba(255,195,144,0.75); }
+  .cat-banking-regulatory{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
+  .cat-it-security       { background: rgba(255,166,180,0.28);  color: #6a1020; border-color: rgba(255,166,180,0.65); }
+  .cat-miscellaneous     { background: rgba(4,0,102,0.06);      color: var(--navy); border-color: rgba(4,0,102,0.18); }
+
+  /* Category filter row */
+  .cat-filter-section { max-width: 1280px; margin: 0 auto; padding: 0.75rem 3rem 0; }
+
   .card-stakeholders { display: flex; align-items: center; gap: 0.5rem; font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
   .avatar { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 0.52rem; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans Mono', monospace; border: 2px solid var(--surface); font-weight: 600; }
   .avatar-stack { display: flex; }
@@ -583,6 +595,11 @@
   </div>
 <div id="index-wheel-tt" style="position:fixed;z-index:9999;display:none;pointer-events:none;background:#040066;color:#fff;padding:.55rem .95rem;border-radius:3px;max-width:220px;box-shadow:0 6px 22px rgba(4,0,102,.35);font-size:.82rem;"></div>
 
+  <div class="cat-filter-section">
+    <div class="filter-label">Filter by category</div>
+    <div class="filter-bar" id="cat-filter-bar"></div>
+  </div>
+
   <div class="filter-section">
     <div class="filter-label">Filter by tag</div>
     <div class="filter-bar" id="filter-bar"></div>
@@ -665,7 +682,7 @@
           <input class="ed-input" id="ed-title" type="text" placeholder="e.g. Open Finance API Standardisation" oninput="edCheckDuplicate()">
         </div>
       </div>
-      <div class="ed-row triple">
+      <div class="ed-row" style="grid-template-columns:1fr 1fr 1fr 1fr;">
         <div class="ed-field">
           <label class="ed-label">Importance Score <span class="req">*</span></label>
           <div class="score-slider-wrap">
@@ -676,6 +693,14 @@
               <div class="score-denom-ed">/ 10</div>
             </div>
           </div>
+        </div>
+        <div class="ed-field">
+          <label class="ed-label" for="ed-category">Category <span class="req">*</span></label>
+          <select class="ed-select" id="ed-category">
+            <option value="">— select —</option>
+            <option>Trusted Services</option><option>Card</option><option>Regulatory</option>
+            <option>Banking Regulatory</option><option>IT Security</option><option>Miscellaneous</option>
+          </select>
         </div>
         <div class="ed-field">
           <label class="ed-label" for="ed-priority">Priority <span class="req">*</span></label>
@@ -793,9 +818,13 @@ const DATA_URL    = './topics.json';
 const GITHUB_REPO = ''; // e.g. 'https://github.com/yourorg/your-repo'
 
 // ── State ───────────────────────────────────────────────────────────────────
-let db = null, activeTag = null, searchQuery = '';
+let db = null, activeTag = null, activeCat = null, searchQuery = '';
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
+function catClass(c) {
+  if (!c) return 'cat-miscellaneous';
+  return 'cat-' + c.toLowerCase().replace(/\s+/g, '-');
+}
 function tagClass(t) {
   const map = {
     'payment':          'tag-payment',
@@ -864,6 +893,11 @@ function boot() {
   document.getElementById('filter-bar').innerHTML =
     `<button class="filter-btn active" onclick="setTag(null,this)">All</button>` +
     tags.map(t => `<button class="filter-btn" onclick="setTag('${t}',this)">${t}</button>`).join('');
+
+  const cats = db.categories || [...new Set(db.topics.map(t => t.category).filter(Boolean))];
+  document.getElementById('cat-filter-bar').innerHTML =
+    `<button class="filter-btn active" onclick="setCat(null,this)">All</button>` +
+    cats.map(c => `<button class="filter-btn" onclick="setCat('${c}',this)"><span class="cat-badge ${catClass(c)}">${c}</span></button>`).join('');
 
   renderIndex();
   renderIndexWheel();
@@ -935,7 +969,14 @@ function renderIndexWheel() {
 // ── Filtering ────────────────────────────────────────────────────────────────
 function setTag(tag, btn) {
   activeTag = tag;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderIndex();
+}
+
+function setCat(cat, btn) {
+  activeCat = cat;
+  document.querySelectorAll('#cat-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderIndex();
 }
@@ -948,6 +989,7 @@ function applyFilters() {
 function filteredTopics() {
   return (db.topics || [])
     .filter(t => !activeTag || t.tags.includes(activeTag))
+    .filter(t => !activeCat || t.category === activeCat)
     .filter(t => !searchQuery ||
       t.title.toLowerCase().includes(searchQuery) ||
       (t.description||'').toLowerCase().includes(searchQuery) ||
@@ -978,6 +1020,7 @@ function renderIndex() {
         </div>
       </div>
       <p class="card-desc">${t.description||''}</p>
+      ${t.category ? `<div style="margin-bottom:0.5rem;"><span class="cat-badge ${catClass(t.category)}">${t.category}</span></div>` : ''}
       <div class="card-tags">${t.tags.map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
       <div class="card-stakeholders">
         <div class="avatar-stack">${s.map(p=>`<div class="avatar" title="${p.name}">${initials(p.name)}</div>`).join('')}</div>
@@ -1097,6 +1140,7 @@ function showDetail(id) {
     </div>
     <div class="sidebar-card fade-up" style="animation-delay:0.22s">
       <h3>Metadata</h3>
+      <div class="meta-row"><span class="meta-key">Category</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
       <div class="meta-row"><span class="meta-key">Priority</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
@@ -1295,6 +1339,7 @@ function edCollect() {
   const score   = parseInt(document.getElementById('ed-score').value);
   const priority= document.getElementById('ed-priority').value;
   const horizon = document.getElementById('ed-horizon').value;
+  const category= document.getElementById('ed-category').value;
   const mgmt    = document.getElementById('ed-mgmt').value.trim();
   const desc    = document.getElementById('ed-desc').value.trim();
   const extdesc = document.getElementById('ed-extdesc').value.trim();
@@ -1315,12 +1360,12 @@ function edCollect() {
     return { label: ins[0].value.trim(), url: ins[1].value.trim() };
   }).filter(s => s.label || s.url);
 
-  return { title, score, priority, horizon, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
+  return { title, score, priority, horizon, category, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
 }
 
 function edValidate(f) {
   let ok = true;
-  [['ed-title', !f.title], ['ed-priority', !f.priority], ['ed-desc', !f.desc]].forEach(([id, bad]) => {
+  [['ed-title', !f.title], ['ed-category', !f.category], ['ed-priority', !f.priority], ['ed-desc', !f.desc]].forEach(([id, bad]) => {
     document.getElementById(id).classList.toggle('error', bad);
     if (bad) ok = false;
   });
@@ -1341,6 +1386,7 @@ function edSave() {
     title: f.title,
     score: f.score,
     priority: f.priority || undefined,
+    category: f.category || undefined,
     horizon: f.horizon || undefined,
     description: f.desc,
     ...(f.mgmt    && { management_summary: f.mgmt }),
@@ -1374,6 +1420,7 @@ function edReset() {
   document.getElementById('ed-score-display').textContent = '5';
   document.getElementById('ed-priority').value = '';
   document.getElementById('ed-horizon').value = '';
+  document.getElementById('ed-category').value = '';
   document.getElementById('ed-mgmt').value = '';
   document.getElementById('ed-desc').value = '';
   document.getElementById('ed-extdesc').value = '';
