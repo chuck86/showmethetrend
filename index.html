@@ -906,7 +906,7 @@ function boot() {
 // ── Index wheel (embedded on main page) ──────────────────────────────────────
 function renderIndexWheel() {
   if (!db) return;
-  const cx=350,cy=350,oR=228,iR=50,GAP=2.2;
+  const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
   const f=n=>n.toFixed(2);
   let h='';
   [2,4,6,8,10].forEach(sc=>{
@@ -919,17 +919,15 @@ function renderIndexWheel() {
     h+=`<text x="${f(lp.x+3)}" y="${f(lp.y)}" font-size="7" fill="rgba(107,107,138,.55)" font-family="Noto Sans Mono" dominant-baseline="middle">${sc}</text>`;
   });
   WHEEL_SLICES.forEach((sl,i)=>{
-    const a1=i*60+GAP,a2=(i+1)*60-GAP,mid=(a1+a2)/2;
-    h+=`<path d="${annularSector(cx,cy,iR,oR,a1,a2)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
-    const sp=pToC(cx,cy,oR+8,i*60);
-    h+=`<line x1="${cx}" y1="${cy}" x2="${f(sp.x)}" y2="${f(sp.y)}" stroke="rgba(4,0,102,.14)" stroke-width="1"/>`;
+    const a1=i*60,a2=(i+1)*60,mid=(a1+a2)/2;
+    h+=`<path d="${parallelSector(cx,cy,iR,oR,a1,a2,GAP_PX)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
     const lR=oR+36,lp=pToC(cx,cy,lR,mid);
     sl.label.forEach((ln,li)=>{
       const yo=sl.label.length>1?(li-0.5)*12:0;
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
-    const EDGE=10; const N=topics.length,aw=60-2*GAP-2*EDGE;
+    const EDGE=8; const N=topics.length,aw=60-2*EDGE;
     topics.forEach((tp,j)=>{
       const tA=N===1?mid:a1+EDGE+(j/Math.max(N-1,1))*aw;
       const r=iR+(10-tp.score)/9*(oR-iR);
@@ -1170,9 +1168,24 @@ const WHEEL_SLICES = [
 ];
 
 function pToC(cx,cy,r,deg){ const rad=(deg-90)*Math.PI/180; return {x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)}; }
-function annularSector(cx,cy,r1,r2,a1,a2){
-  const f=n=>n.toFixed(2),p1=pToC(cx,cy,r2,a1),p2=pToC(cx,cy,r2,a2),p3=pToC(cx,cy,r1,a2),p4=pToC(cx,cy,r1,a1),lg=(a2-a1>180)?1:0;
-  return `M${f(p1.x)},${f(p1.y)} A${r2},${r2},0,${lg},1,${f(p2.x)},${f(p2.y)} L${f(p3.x)},${f(p3.y)} A${r1},${r1},0,${lg},0,${f(p4.x)},${f(p4.y)} Z`;
+
+// Returns a sector path whose two straight edges are parallel lines (constant gap width at all radii)
+// gap = perpendicular pixel distance from each boundary radial to the slice edge (total gap = 2*gap)
+function parallelSector(cx, cy, iR, oR, b1deg, b2deg, gap) {
+  const f = n => n.toFixed(3);
+  // For boundary at angle bDeg, offset by +d pixels CCW (towards slice interior):
+  // Point on circle R is at SVG-angle = (bDeg-90)*π/180 + arcsin(d/R)
+  const pt = (R, bDeg, d) => {
+    const base = (bDeg - 90) * Math.PI / 180;
+    const phi  = base + Math.asin(d / R);
+    return { x: cx + R * Math.cos(phi), y: cy + R * Math.sin(phi) };
+  };
+  const il = pt(iR, b1deg,  gap);   // inner-left  (b1 + gap)
+  const ol = pt(oR, b1deg,  gap);   // outer-left
+  const ir = pt(iR, b2deg, -gap);   // inner-right (b2 - gap)
+  const or_= pt(oR, b2deg, -gap);   // outer-right
+  const lg = (b2deg - b1deg) > 180 ? 1 : 0;
+  return `M${f(il.x)},${f(il.y)} L${f(ol.x)},${f(ol.y)} A${oR},${oR},0,${lg},1,${f(or_.x)},${f(or_.y)} L${f(ir.x)},${f(ir.y)} A${iR},${iR},0,${lg},0,${f(il.x)},${f(il.y)} Z`;
 }
 
 function showDashboard() {
@@ -1186,7 +1199,7 @@ function showDashboard() {
 
 function renderWheel() {
   if (!db) return;
-  const cx=350,cy=350,oR=228,iR=50,GAP=2.2;
+  const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
   const f=n=>n.toFixed(2);
   let h='';
   [2,4,6,8,10].forEach(sc=>{
@@ -1199,17 +1212,15 @@ function renderWheel() {
     h+=`<text x="${f(lp.x+3)}" y="${f(lp.y)}" font-size="7" fill="rgba(107,107,138,.55)" font-family="Noto Sans Mono" dominant-baseline="middle">${sc}</text>`;
   });
   WHEEL_SLICES.forEach((sl,i)=>{
-    const a1=i*60+GAP,a2=(i+1)*60-GAP,mid=(a1+a2)/2;
-    h+=`<path d="${annularSector(cx,cy,iR,oR,a1,a2)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
-    const sp=pToC(cx,cy,oR+8,i*60);
-    h+=`<line x1="${cx}" y1="${cy}" x2="${f(sp.x)}" y2="${f(sp.y)}" stroke="rgba(4,0,102,.14)" stroke-width="1"/>`;
+    const a1=i*60,a2=(i+1)*60,mid=(a1+a2)/2;
+    h+=`<path d="${parallelSector(cx,cy,iR,oR,a1,a2,GAP_PX)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
     const lR=oR+36,lp=pToC(cx,cy,lR,mid);
     sl.label.forEach((ln,li)=>{
       const yo=sl.label.length>1?(li-0.5)*12:0;
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
-    const EDGE=10; const N=topics.length,aw=60-2*GAP-2*EDGE;
+    const EDGE=8; const N=topics.length,aw=60-2*EDGE;
     topics.forEach((tp,j)=>{
       const tA=N===1?mid:a1+EDGE+(j/Math.max(N-1,1))*aw;
       const r=iR+(10-tp.score)/9*(oR-iR);
