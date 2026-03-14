@@ -927,10 +927,13 @@ function renderIndexWheel() {
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
-    const EDGE=8; const N=topics.length,aw=60-2*EDGE;
+    const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
+    const N=topics.length;
     topics.forEach((tp,j)=>{
-      const tA=N===1?mid:a1+EDGE+(j/Math.max(N-1,1))*aw;
       const r=iR+(10-tp.score)/9*(oR-iR);
+      const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
+      const lo=a1+minOff, hi=a2-minOff;
+      const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="iwdot" data-id="${tp.id}" style="cursor:pointer"/>`;
       h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
@@ -1220,10 +1223,13 @@ function renderWheel() {
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
-    const EDGE=8; const N=topics.length,aw=60-2*EDGE;
+    const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
+    const N=topics.length;
     topics.forEach((tp,j)=>{
-      const tA=N===1?mid:a1+EDGE+(j/Math.max(N-1,1))*aw;
       const r=iR+(10-tp.score)/9*(oR-iR);
+      const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
+      const lo=a1+minOff, hi=a2-minOff;
+      const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="wdot" data-id="${tp.id}" style="cursor:pointer"/>`;
       h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
