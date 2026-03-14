@@ -575,22 +575,7 @@
       border-radius: 4px;
       padding: 1.5rem 2rem;
     ">
-      <div style="display:flex; align-items:flex-start; gap: 2.5rem; flex-wrap: wrap;">
-        <div style="flex:1; min-width:260px; max-width:520px;">
-          <svg id="index-wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;"></svg>
-        </div>
-        <div style="flex:0 0 180px; display:flex; flex-direction:column; gap:1rem; padding-top:0.5rem;">
-          <div>
-            <div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Topic Landscape</div>
-            <div id="index-wheel-legend" style="display:flex;flex-direction:column;gap:0.45rem;"></div>
-          </div>
-          <div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;color:var(--muted);line-height:1.9;margin-top:0.5rem;">
-            ● Inner = score 10<br>
-            ● Outer = score 1<br>
-            ● Click dot → topic
-          </div>
-        </div>
-      </div>
+      <svg id="index-wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;height:auto;display:block;margin:0 auto;"></svg>
     </div>
   </div>
 <div id="index-wheel-tt" style="position:fixed;z-index:9999;display:none;pointer-events:none;background:#040066;color:#fff;padding:.55rem .95rem;border-radius:3px;max-width:220px;box-shadow:0 6px 22px rgba(4,0,102,.35);font-size:.82rem;"></div>
@@ -946,15 +931,6 @@ function renderIndexWheel() {
   const svg = document.getElementById('index-wheel-svg');
   if (!svg) return;
   svg.innerHTML = h;
-
-  document.getElementById('index-wheel-legend').innerHTML = WHEEL_SLICES.map(sl=>{
-    const n=(db.topics||[]).filter(t=>t.category===sl.cat).length;
-    return `<div style="display:flex;align-items:center;gap:.55rem;font-size:.78rem;color:var(--text);">
-      <div style="width:10px;height:10px;border-radius:50%;background:${sl.bg};border:2px solid ${sl.fg};flex-shrink:0;"></div>
-      <span>${sl.label.join(' ')}</span>
-      <span style="font-family:'Noto Sans Mono',monospace;font-size:.62rem;color:var(--muted);margin-left:auto;">${n}</span>
-    </div>`;
-  }).join('');
 
   const tt = document.getElementById('index-wheel-tt');
   document.querySelectorAll('.iwdot').forEach(dot=>{
