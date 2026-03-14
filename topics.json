@@ -5,20 +5,65 @@
     "updated": "March 2026"
   },
   "tags": [
-    "payment", "research", "credit card", "regulation", "blockchain",
-    "infrastructure", "digital payments", "trusted services",
-    "banking regulatory", "trends", "IT security", "market"
+    "payment",
+    "research",
+    "credit card",
+    "regulation",
+    "blockchain",
+    "infrastructure",
+    "digital payments",
+    "trusted services",
+    "banking regulatory",
+    "trends",
+    "IT security",
+    "market"
   ],
   "stakeholders": [
-    { "id": 1, "name": "Sarah Chen",    "role": "Head of Digital Assets" },
-    { "id": 2, "name": "Marcus Webb",   "role": "Risk Officer" },
-    { "id": 3, "name": "Priya Nair",    "role": "Compliance Director" },
-    { "id": 4, "name": "Thomas Kraft",  "role": "Product Lead" },
-    { "id": 5, "name": "Lena Fischer",  "role": "Engineering Director" },
-    { "id": 6, "name": "Klaus Berger",  "role": "Head of Payments" },
-    { "id": 7, "name": "Anna Hoffmann", "role": "Regulatory Affairs Lead" },
-    { "id": 8, "name": "Stefan Müller", "role": "Chief Information Security Officer" },
-    { "id": 9, "name": "Jana Becker",   "role": "Head of Strategy & Market Intelligence" }
+    {
+      "id": 1,
+      "name": "Sarah Chen",
+      "role": "Head of Digital Assets"
+    },
+    {
+      "id": 2,
+      "name": "Marcus Webb",
+      "role": "Risk Officer"
+    },
+    {
+      "id": 3,
+      "name": "Priya Nair",
+      "role": "Compliance Director"
+    },
+    {
+      "id": 4,
+      "name": "Thomas Kraft",
+      "role": "Product Lead"
+    },
+    {
+      "id": 5,
+      "name": "Lena Fischer",
+      "role": "Engineering Director"
+    },
+    {
+      "id": 6,
+      "name": "Klaus Berger",
+      "role": "Head of Payments"
+    },
+    {
+      "id": 7,
+      "name": "Anna Hoffmann",
+      "role": "Regulatory Affairs Lead"
+    },
+    {
+      "id": 8,
+      "name": "Stefan Müller",
+      "role": "Chief Information Security Officer"
+    },
+    {
+      "id": 9,
+      "name": "Jana Becker",
+      "role": "Head of Strategy & Market Intelligence"
+    }
   ],
   "topics": [
     {
@@ -43,18 +88,47 @@
         "Positions the institution for a Digital Euro intermediary role given overlapping technical architecture."
       ],
       "sources": [
-        { "label": "MiCA Regulation — EU Official Journal", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114" },
-        { "label": "ECB: Progress on Digital Euro Project", "url": "https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html" },
-        { "label": "BIS Working Paper: Stablecoins as Settlement Assets", "url": "https://www.bis.org/publ/work1180.htm" }
+        {
+          "label": "MiCA Regulation — EU Official Journal",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114"
+        },
+        {
+          "label": "ECB: Progress on Digital Euro Project",
+          "url": "https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html"
+        },
+        {
+          "label": "BIS Working Paper: Stablecoins as Settlement Assets",
+          "url": "https://www.bis.org/publ/work1180.htm"
+        }
       ],
-      "tags": ["payment", "blockchain", "research"],
-      "stakeholders": [1, 2],
+      "tags": [
+        "payment",
+        "blockchain",
+        "research"
+      ],
+      "stakeholders": [
+        1,
+        2
+      ],
       "actions": [
-        { "description": "Commission external legal review of MiCA compliance requirements for stablecoin custody by Q2 2026.", "status": "open" },
-        { "description": "Prototype a stablecoin settlement corridor on testnet with two partner banks to validate latency and cost assumptions.", "status": "open" },
-        { "description": "Define internal risk appetite threshold for stablecoin exposure as % of treasury holdings.", "status": "open" },
-        { "description": "Engage the ECB sandbox programme to position for early regulatory approval.", "status": "open" }
-      ]
+        {
+          "description": "Commission external legal review of MiCA compliance requirements for stablecoin custody by Q2 2026.",
+          "status": "open"
+        },
+        {
+          "description": "Prototype a stablecoin settlement corridor on testnet with two partner banks to validate latency and cost assumptions.",
+          "status": "open"
+        },
+        {
+          "description": "Define internal risk appetite threshold for stablecoin exposure as % of treasury holdings.",
+          "status": "open"
+        },
+        {
+          "description": "Engage the ECB sandbox programme to position for early regulatory approval.",
+          "status": "open"
+        }
+      ],
+      "category": "Miscellaneous"
     },
     {
       "id": 2,
@@ -78,18 +152,48 @@
         "Stricter regulation reduces the pool of BNPL providers, potentially increasing our market share."
       ],
       "sources": [
-        { "label": "EU Consumer Credit Directive 2 — Full Text", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2225" },
-        { "label": "EBA Opinion on BNPL and CCD2 Scope", "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-opinion-application-ccd2" },
-        { "label": "KPMG: BNPL Regulation Impact Assessment", "url": "https://kpmg.com/xx/en/home/insights/2023/06/bnpl-regulation-impact.html" }
+        {
+          "label": "EU Consumer Credit Directive 2 — Full Text",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2225"
+        },
+        {
+          "label": "EBA Opinion on BNPL and CCD2 Scope",
+          "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-opinion-application-ccd2"
+        },
+        {
+          "label": "KPMG: BNPL Regulation Impact Assessment",
+          "url": "https://kpmg.com/xx/en/home/insights/2023/06/bnpl-regulation-impact.html"
+        }
       ],
-      "tags": ["credit card", "regulation", "research"],
-      "stakeholders": [3, 4, 1],
+      "tags": [
+        "credit card",
+        "regulation",
+        "research"
+      ],
+      "stakeholders": [
+        3,
+        4,
+        1
+      ],
       "actions": [
-        { "description": "Map all active BNPL products against new directive requirements; identify non-compliant features.", "status": "in-progress" },
-        { "description": "Engage lobbying body to submit commentary on implementation timeline.", "status": "open" },
-        { "description": "Build credit assessment pipeline that satisfies directive without degrading approval rates by more than 8%.", "status": "open" },
-        { "description": "Run customer communication strategy to manage expectation changes.", "status": "open" }
-      ]
+        {
+          "description": "Map all active BNPL products against new directive requirements; identify non-compliant features.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Engage lobbying body to submit commentary on implementation timeline.",
+          "status": "open"
+        },
+        {
+          "description": "Build credit assessment pipeline that satisfies directive without degrading approval rates by more than 8%.",
+          "status": "open"
+        },
+        {
+          "description": "Run customer communication strategy to manage expectation changes.",
+          "status": "open"
+        }
+      ],
+      "category": "Card"
     },
     {
       "id": 3,
@@ -113,17 +217,42 @@
         "ISO 20022 richer data enables improved reconciliation services for corporate clients — a premium product opportunity."
       ],
       "sources": [
-        { "label": "EU Instant Payments Regulation — Official Text", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886" },
-        { "label": "ECB: TIPS Platform Overview", "url": "https://www.ecb.europa.eu/paym/target/tips/html/index.en.html" },
-        { "label": "EPC SEPA Instant Credit Transfer Rulebook", "url": "https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-instant-credit-transfer-rulebook" }
+        {
+          "label": "EU Instant Payments Regulation — Official Text",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886"
+        },
+        {
+          "label": "ECB: TIPS Platform Overview",
+          "url": "https://www.ecb.europa.eu/paym/target/tips/html/index.en.html"
+        },
+        {
+          "label": "EPC SEPA Instant Credit Transfer Rulebook",
+          "url": "https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-instant-credit-transfer-rulebook"
+        }
       ],
-      "tags": ["payment", "infrastructure"],
-      "stakeholders": [4, 5],
+      "tags": [
+        "payment",
+        "infrastructure"
+      ],
+      "stakeholders": [
+        4,
+        5
+      ],
       "actions": [
-        { "description": "Complete ISO 20022 migration for domestic rails by end of Q3 2026.", "status": "in-progress" },
-        { "description": "Evaluate Vocalink vs proprietary clearing for pan-EU instant payment capability.", "status": "open" },
-        { "description": "Pilot instant settlement for merchant payouts with top-50 partners.", "status": "open" }
-      ]
+        {
+          "description": "Complete ISO 20022 migration for domestic rails by end of Q3 2026.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Evaluate Vocalink vs proprietary clearing for pan-EU instant payment capability.",
+          "status": "open"
+        },
+        {
+          "description": "Pilot instant settlement for merchant payouts with top-50 partners.",
+          "status": "open"
+        }
+      ],
+      "category": "Miscellaneous"
     },
     {
       "id": 4,
@@ -147,17 +276,43 @@
         "Proprietary scoring model as a competitive differentiator and potential licensing revenue to peer institutions."
       ],
       "sources": [
-        { "label": "EU AI Act — High-Risk AI Systems (Annex III)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689" },
-        { "label": "EBA Guidelines on Internal Governance — AI in Credit", "url": "https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-internal-governance" },
-        { "label": "ECB: Machine Learning in Credit Risk", "url": "https://www.ecb.europa.eu/pub/research/working-papers/html/index.en.html" }
+        {
+          "label": "EU AI Act — High-Risk AI Systems (Annex III)",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689"
+        },
+        {
+          "label": "EBA Guidelines on Internal Governance — AI in Credit",
+          "url": "https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-internal-governance"
+        },
+        {
+          "label": "ECB: Machine Learning in Credit Risk",
+          "url": "https://www.ecb.europa.eu/pub/research/working-papers/html/index.en.html"
+        }
       ],
-      "tags": ["research", "credit card", "regulation"],
-      "stakeholders": [3, 2],
+      "tags": [
+        "research",
+        "credit card",
+        "regulation"
+      ],
+      "stakeholders": [
+        3,
+        2
+      ],
       "actions": [
-        { "description": "Deploy challenger ML model in shadow mode alongside existing scorecard for 90-day comparison.", "status": "open" },
-        { "description": "Engage AI Act notified body to pre-certify model explainability documentation.", "status": "open" },
-        { "description": "Establish model governance board with quarterly review cadence.", "status": "done" }
-      ]
+        {
+          "description": "Deploy challenger ML model in shadow mode alongside existing scorecard for 90-day comparison.",
+          "status": "open"
+        },
+        {
+          "description": "Engage AI Act notified body to pre-certify model explainability documentation.",
+          "status": "open"
+        },
+        {
+          "description": "Establish model governance board with quarterly review cadence.",
+          "status": "done"
+        }
+      ],
+      "category": "Card"
     },
     {
       "id": 5,
@@ -181,17 +336,42 @@
         "Developer ecosystem around our API portal can accelerate fintech partnership pipeline at low acquisition cost."
       ],
       "sources": [
-        { "label": "European Commission: FIDA Proposal", "url": "https://finance.ec.europa.eu/publications/financial-data-access-fida_en" },
-        { "label": "EPC: PSD3 and Open Banking Overview", "url": "https://www.europeanpaymentscouncil.eu/news-insights/insight/psd3-and-psr-what-changes-are-coming-open-banking" },
-        { "label": "Open Banking Excellence: Market Report 2025", "url": "https://www.openbanking.org.uk/insights/" }
+        {
+          "label": "European Commission: FIDA Proposal",
+          "url": "https://finance.ec.europa.eu/publications/financial-data-access-fida_en"
+        },
+        {
+          "label": "EPC: PSD3 and Open Banking Overview",
+          "url": "https://www.europeanpaymentscouncil.eu/news-insights/insight/psd3-and-psr-what-changes-are-coming-open-banking"
+        },
+        {
+          "label": "Open Banking Excellence: Market Report 2025",
+          "url": "https://www.openbanking.org.uk/insights/"
+        }
       ],
-      "tags": ["payment", "research"],
-      "stakeholders": [5, 4],
+      "tags": [
+        "payment",
+        "research"
+      ],
+      "stakeholders": [
+        5,
+        4
+      ],
       "actions": [
-        { "description": "Map consent management architecture against PSD3 requirements.", "status": "open" },
-        { "description": "Identify top-3 data product propositions with clear revenue model for enterprise clients.", "status": "open" },
-        { "description": "Build API developer portal with sandbox environment to accelerate third-party adoption.", "status": "open" }
-      ]
+        {
+          "description": "Map consent management architecture against PSD3 requirements.",
+          "status": "open"
+        },
+        {
+          "description": "Identify top-3 data product propositions with clear revenue model for enterprise clients.",
+          "status": "open"
+        },
+        {
+          "description": "Build API developer portal with sandbox environment to accelerate third-party adoption.",
+          "status": "open"
+        }
+      ],
+      "category": "Banking Regulatory"
     },
     {
       "id": 6,
@@ -215,17 +395,42 @@
         "Partnership data from embedded contexts enriches credit and behavioural models significantly."
       ],
       "sources": [
-        { "label": "Bundesbank: BaaS and Embedded Finance in Germany", "url": "https://www.bundesbank.de/en/publications/research/research-brief" },
-        { "label": "McKinsey: Embedded Finance Market Sizing", "url": "https://www.mckinsey.com/industries/financial-services/our-insights/embedded-finance" },
-        { "label": "BaFin: Outsourcing and White-Label Banking Guidance", "url": "https://www.bafin.de/EN/Aufsicht/BankenFinanzdienstleister/Outsourcing/outsourcing_artikel.html" }
+        {
+          "label": "Bundesbank: BaaS and Embedded Finance in Germany",
+          "url": "https://www.bundesbank.de/en/publications/research/research-brief"
+        },
+        {
+          "label": "McKinsey: Embedded Finance Market Sizing",
+          "url": "https://www.mckinsey.com/industries/financial-services/our-insights/embedded-finance"
+        },
+        {
+          "label": "BaFin: Outsourcing and White-Label Banking Guidance",
+          "url": "https://www.bafin.de/EN/Aufsicht/BankenFinanzdienstleister/Outsourcing/outsourcing_artikel.html"
+        }
       ],
-      "tags": ["payment", "credit card"],
-      "stakeholders": [1, 3],
+      "tags": [
+        "payment",
+        "credit card"
+      ],
+      "stakeholders": [
+        1,
+        3
+      ],
       "actions": [
-        { "description": "Define BaaS product catalogue and tiered partnership framework.", "status": "open" },
-        { "description": "Run RFP for white-label card issuing partners in Nordics and DACH markets.", "status": "open" },
-        { "description": "Negotiate pilot embedded credit product with one tier-1 retail partner.", "status": "open" }
-      ]
+        {
+          "description": "Define BaaS product catalogue and tiered partnership framework.",
+          "status": "open"
+        },
+        {
+          "description": "Run RFP for white-label card issuing partners in Nordics and DACH markets.",
+          "status": "open"
+        },
+        {
+          "description": "Negotiate pilot embedded credit product with one tier-1 retail partner.",
+          "status": "open"
+        }
+      ],
+      "category": "Card"
     },
     {
       "id": 7,
@@ -249,18 +454,48 @@
         "Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem."
       ],
       "sources": [
-        { "label": "Deutsche Kreditwirtschaft: girocard 4.0 Programme", "url": "https://die-dk.de/zahlungsverkehr/girocard/" },
-        { "label": "Bundesbank: Retail Payments Strategy Germany", "url": "https://www.bundesbank.de/en/tasks/payment-systems/retail-payments" },
-        { "label": "Atruvia: girocard Migration Documentation (internal)", "url": "#" }
+        {
+          "label": "Deutsche Kreditwirtschaft: girocard 4.0 Programme",
+          "url": "https://die-dk.de/zahlungsverkehr/girocard/"
+        },
+        {
+          "label": "Bundesbank: Retail Payments Strategy Germany",
+          "url": "https://www.bundesbank.de/en/tasks/payment-systems/retail-payments"
+        },
+        {
+          "label": "Atruvia: girocard Migration Documentation (internal)",
+          "url": "#"
+        }
       ],
-      "tags": ["digital payments", "infrastructure", "market"],
-      "stakeholders": [6, 4, 5],
+      "tags": [
+        "digital payments",
+        "infrastructure",
+        "market"
+      ],
+      "stakeholders": [
+        6,
+        4,
+        5
+      ],
       "actions": [
-        { "description": "Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.", "status": "in-progress" },
-        { "description": "Coordinate with Deutsche Kreditwirtschaft (DK) working groups to influence scheme rule development.", "status": "open" },
-        { "description": "Define roadmap for mobile wallet integration (Apple Pay, Google Pay) under girocard 4.0 tokenisation framework.", "status": "open" },
-        { "description": "Communicate girocard 4.0 migration timeline to merchant acquiring partners.", "status": "open" }
-      ]
+        {
+          "description": "Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Coordinate with Deutsche Kreditwirtschaft (DK) working groups to influence scheme rule development.",
+          "status": "open"
+        },
+        {
+          "description": "Define roadmap for mobile wallet integration (Apple Pay, Google Pay) under girocard 4.0 tokenisation framework.",
+          "status": "open"
+        },
+        {
+          "description": "Communicate girocard 4.0 migration timeline to merchant acquiring partners.",
+          "status": "open"
+        }
+      ],
+      "category": "Card"
     },
     {
       "id": 8,
@@ -284,18 +519,48 @@
         "Digital Euro wallet integration is a customer engagement opportunity that can be bundled with premium banking services."
       ],
       "sources": [
-        { "label": "ECB: Digital Euro Preparation Phase", "url": "https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html" },
-        { "label": "European Parliament: Digital Euro Legislative Proposal", "url": "https://www.europarl.europa.eu/legislative-train/theme-a-europe-fit-for-the-digital-age/file-digital-euro" },
-        { "label": "BIS: Retail CBDC Design Principles", "url": "https://www.bis.org/cpmi/publ/d174.htm" }
+        {
+          "label": "ECB: Digital Euro Preparation Phase",
+          "url": "https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html"
+        },
+        {
+          "label": "European Parliament: Digital Euro Legislative Proposal",
+          "url": "https://www.europarl.europa.eu/legislative-train/theme-a-europe-fit-for-the-digital-age/file-digital-euro"
+        },
+        {
+          "label": "BIS: Retail CBDC Design Principles",
+          "url": "https://www.bis.org/cpmi/publ/d174.htm"
+        }
       ],
-      "tags": ["digital payments", "regulation", "research"],
-      "stakeholders": [1, 6, 7],
+      "tags": [
+        "digital payments",
+        "regulation",
+        "research"
+      ],
+      "stakeholders": [
+        1,
+        6,
+        7
+      ],
       "actions": [
-        { "description": "Monitor ECB preparation phase milestones and publish quarterly internal briefings for senior leadership.", "status": "in-progress" },
-        { "description": "Model disintermediation scenarios under different holding limit assumptions (€500, €1,000, €3,000) and estimate deposit outflow impact.", "status": "open" },
-        { "description": "Engage via banking association working groups to provide input on intermediary model design.", "status": "open" },
-        { "description": "Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.", "status": "open" }
-      ]
+        {
+          "description": "Monitor ECB preparation phase milestones and publish quarterly internal briefings for senior leadership.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Model disintermediation scenarios under different holding limit assumptions (€500, €1,000, €3,000) and estimate deposit outflow impact.",
+          "status": "open"
+        },
+        {
+          "description": "Engage via banking association working groups to provide input on intermediary model design.",
+          "status": "open"
+        },
+        {
+          "description": "Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.",
+          "status": "open"
+        }
+      ],
+      "category": "Regulatory"
     },
     {
       "id": 9,
@@ -319,18 +584,48 @@
         "VoP infrastructure can be monetised as a standalone fraud prevention service for smaller PSPs."
       ],
       "sources": [
-        { "label": "EU Instant Payments Regulation (EU) 2024/886", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886" },
-        { "label": "EPC: SEPA Request-to-Pay Scheme", "url": "https://www.europeanpaymentscouncil.eu/what-we-do/other-sepa-payments/sepa-request-pay" },
-        { "label": "EBA: Guidelines on Instant Payments Fraud Prevention", "url": "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money" }
+        {
+          "label": "EU Instant Payments Regulation (EU) 2024/886",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886"
+        },
+        {
+          "label": "EPC: SEPA Request-to-Pay Scheme",
+          "url": "https://www.europeanpaymentscouncil.eu/what-we-do/other-sepa-payments/sepa-request-pay"
+        },
+        {
+          "label": "EBA: Guidelines on Instant Payments Fraud Prevention",
+          "url": "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money"
+        }
       ],
-      "tags": ["digital payments", "regulation", "payment"],
-      "stakeholders": [6, 5, 3],
+      "tags": [
+        "digital payments",
+        "regulation",
+        "payment"
+      ],
+      "stakeholders": [
+        6,
+        5,
+        3
+      ],
       "actions": [
-        { "description": "Confirm full SCT Inst coverage across all euro payment accounts before the October 2025 regulatory deadline.", "status": "done" },
-        { "description": "Align SEPA Instant pricing to comply with the mandatory fee parity requirement and revise tariff sheets accordingly.", "status": "in-progress" },
-        { "description": "Develop value-added overlay services (e.g. Request-to-Pay, Confirmation of Payee) to monetise instant infrastructure.", "status": "open" },
-        { "description": "Run fraud model validation specifically calibrated for sub-10-second transaction windows.", "status": "open" }
-      ]
+        {
+          "description": "Confirm full SCT Inst coverage across all euro payment accounts before the October 2025 regulatory deadline.",
+          "status": "done"
+        },
+        {
+          "description": "Align SEPA Instant pricing to comply with the mandatory fee parity requirement and revise tariff sheets accordingly.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Develop value-added overlay services (e.g. Request-to-Pay, Confirmation of Payee) to monetise instant infrastructure.",
+          "status": "open"
+        },
+        {
+          "description": "Run fraud model validation specifically calibrated for sub-10-second transaction windows.",
+          "status": "open"
+        }
+      ],
+      "category": "Regulatory"
     },
     {
       "id": 10,
@@ -354,18 +649,48 @@
         "eIDAS 2.0 compliance overlaps significantly with EUDI Wallet relying party requirements, reducing total integration cost."
       ],
       "sources": [
-        { "label": "eIDAS 2.0 — EU Regulation 2024/1183", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1183" },
-        { "label": "ENISA: eIDAS 2.0 Technical Guidelines", "url": "https://www.enisa.europa.eu/topics/eid" },
-        { "label": "BSI: Digital Identity Standards Germany", "url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/standards-und-zertifizierung_node.html" }
+        {
+          "label": "eIDAS 2.0 — EU Regulation 2024/1183",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1183"
+        },
+        {
+          "label": "ENISA: eIDAS 2.0 Technical Guidelines",
+          "url": "https://www.enisa.europa.eu/topics/eid"
+        },
+        {
+          "label": "BSI: Digital Identity Standards Germany",
+          "url": "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/standards-und-zertifizierung_node.html"
+        }
       ],
-      "tags": ["trusted services", "regulation", "infrastructure"],
-      "stakeholders": [7, 3, 5],
+      "tags": [
+        "trusted services",
+        "regulation",
+        "infrastructure"
+      ],
+      "stakeholders": [
+        7,
+        3,
+        5
+      ],
       "actions": [
-        { "description": "Map current digital onboarding and e-signature workflows against eIDAS 2.0 trust level requirements.", "status": "open" },
-        { "description": "Evaluate qualifying as a Trust Service Provider (TSP) under the updated framework and assess commercial viability.", "status": "open" },
-        { "description": "Integrate eIDAS 2.0-compliant identity verification into the customer portal authentication layer.", "status": "open" },
-        { "description": "Engage national supervisory body (BSI / BNetzA) on implementation timelines and technical standards.", "status": "open" }
-      ]
+        {
+          "description": "Map current digital onboarding and e-signature workflows against eIDAS 2.0 trust level requirements.",
+          "status": "open"
+        },
+        {
+          "description": "Evaluate qualifying as a Trust Service Provider (TSP) under the updated framework and assess commercial viability.",
+          "status": "open"
+        },
+        {
+          "description": "Integrate eIDAS 2.0-compliant identity verification into the customer portal authentication layer.",
+          "status": "open"
+        },
+        {
+          "description": "Engage national supervisory body (BSI / BNetzA) on implementation timelines and technical standards.",
+          "status": "open"
+        }
+      ],
+      "category": "Trusted Services"
     },
     {
       "id": 11,
@@ -389,24 +714,54 @@
         "Early relying party adoption creates a seamless onboarding experience that is a strong competitive differentiator."
       ],
       "sources": [
-        { "label": "EUDI Wallet Architecture & Reference Framework", "url": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework" },
-        { "label": "European Commission: EUDI Wallet Large Scale Pilots", "url": "https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation" },
-        { "label": "EWC Pilot: Financial Services Use Case", "url": "https://eudiwalletconsortium.org/" }
+        {
+          "label": "EUDI Wallet Architecture & Reference Framework",
+          "url": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
+        },
+        {
+          "label": "European Commission: EUDI Wallet Large Scale Pilots",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation"
+        },
+        {
+          "label": "EWC Pilot: Financial Services Use Case",
+          "url": "https://eudiwalletconsortium.org/"
+        }
       ],
-      "tags": ["trusted services", "digital payments", "regulation"],
-      "stakeholders": [7, 4, 1],
+      "tags": [
+        "trusted services",
+        "digital payments",
+        "regulation"
+      ],
+      "stakeholders": [
+        7,
+        4,
+        1
+      ],
       "actions": [
-        { "description": "Monitor ARF (Architecture and Reference Framework) releases and assess impact on bank identity services.", "status": "in-progress" },
-        { "description": "Evaluate role as EUDI Wallet-compatible relying party for KYC and account access, and define integration scope.", "status": "open" },
-        { "description": "Participate in large-scale pilot (LSP) consortium relevant to the banking sector (e.g. POTENTIAL or DC4EU).", "status": "open" },
-        { "description": "Define internal policy on acceptance of EUDI Wallet credentials as a valid onboarding channel.", "status": "open" }
-      ]
+        {
+          "description": "Monitor ARF (Architecture and Reference Framework) releases and assess impact on bank identity services.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Evaluate role as EUDI Wallet-compatible relying party for KYC and account access, and define integration scope.",
+          "status": "open"
+        },
+        {
+          "description": "Participate in large-scale pilot (LSP) consortium relevant to the banking sector (e.g. POTENTIAL or DC4EU).",
+          "status": "open"
+        },
+        {
+          "description": "Define internal policy on acceptance of EUDI Wallet credentials as a valid onboarding channel.",
+          "status": "open"
+        }
+      ],
+      "category": "Trusted Services"
     },
     {
       "id": 12,
       "title": "Open Banking APIs vs. FIDA",
-      "score": 8,
-      "priority": "High",
+      "score": 4,
+      "priority": "Low-Medium",
       "horizon": "12–30 months",
       "description": "The Financial Data Access (FIDA) regulation goes significantly beyond PSD2, mandating data sharing across savings, investments, insurance, and pension products. Banks face both defensive obligations and offensive data product opportunities.",
       "management_summary": "FIDA represents the largest expansion of open banking obligations since PSD2. The compliance burden is real but manageable if we treat it as an architecture investment rather than a point solution. The commercial upside — acting as a data hub for the full customer financial profile — is substantial and should drive the product roadmap.",
@@ -424,18 +779,48 @@
         "Consent dashboard requirement, if implemented well, becomes a customer engagement and upsell touchpoint."
       ],
       "sources": [
-        { "label": "European Commission: FIDA Proposal — Full Text", "url": "https://finance.ec.europa.eu/publications/financial-data-access-fida_en" },
-        { "label": "EBA: Open Banking and FIDA Implications", "url": "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money" },
-        { "label": "Deloitte: FIDA Impact Assessment for Banks", "url": "https://www2.deloitte.com/de/de/pages/financial-services/articles/fida.html" }
+        {
+          "label": "European Commission: FIDA Proposal — Full Text",
+          "url": "https://finance.ec.europa.eu/publications/financial-data-access-fida_en"
+        },
+        {
+          "label": "EBA: Open Banking and FIDA Implications",
+          "url": "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money"
+        },
+        {
+          "label": "Deloitte: FIDA Impact Assessment for Banks",
+          "url": "https://www2.deloitte.com/de/de/pages/financial-services/articles/fida.html"
+        }
       ],
-      "tags": ["banking regulatory", "trends", "regulation"],
-      "stakeholders": [7, 3, 4],
+      "tags": [
+        "banking regulatory",
+        "trends",
+        "regulation"
+      ],
+      "stakeholders": [
+        7,
+        3,
+        4
+      ],
       "actions": [
-        { "description": "Conduct a FIDA scope analysis to identify which product categories and data types fall under new sharing obligations.", "status": "open" },
-        { "description": "Assess current API infrastructure and consent management platform for FIDA compliance gaps.", "status": "open" },
-        { "description": "Define a commercial strategy for acting as a Financial Data Access provider for cross-sell and advisory use cases.", "status": "open" },
-        { "description": "Submit response to EBA/EC consultation on FIDA technical standards.", "status": "open" }
-      ]
+        {
+          "description": "Conduct a FIDA scope analysis to identify which product categories and data types fall under new sharing obligations.",
+          "status": "open"
+        },
+        {
+          "description": "Assess current API infrastructure and consent management platform for FIDA compliance gaps.",
+          "status": "open"
+        },
+        {
+          "description": "Define a commercial strategy for acting as a Financial Data Access provider for cross-sell and advisory use cases.",
+          "status": "open"
+        },
+        {
+          "description": "Submit response to EBA/EC consultation on FIDA technical standards.",
+          "status": "open"
+        }
+      ],
+      "category": "Banking Regulatory"
     },
     {
       "id": 13,
@@ -459,18 +844,48 @@
         "Early R2P creditor-side implementation positions us as the leading B2B payment bank in the region."
       ],
       "sources": [
-        { "label": "EPC: SEPA Request-to-Pay Rulebook v2.0", "url": "https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-request-pay-srtp-scheme-rulebook" },
-        { "label": "European Commission: PSD3/PSR Proposal", "url": "https://finance.ec.europa.eu/publications/proposal-payment-services-regulation_en" },
-        { "label": "Deutsche Bundesbank: Zahlungsverkehrsbericht 2024", "url": "https://www.bundesbank.de/de/aufgaben/unbarer-zahlungsverkehr/zahlungsverkehr-und-abwicklungssysteme" }
+        {
+          "label": "EPC: SEPA Request-to-Pay Rulebook v2.0",
+          "url": "https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-request-pay-srtp-scheme-rulebook"
+        },
+        {
+          "label": "European Commission: PSD3/PSR Proposal",
+          "url": "https://finance.ec.europa.eu/publications/proposal-payment-services-regulation_en"
+        },
+        {
+          "label": "Deutsche Bundesbank: Zahlungsverkehrsbericht 2024",
+          "url": "https://www.bundesbank.de/de/aufgaben/unbarer-zahlungsverkehr/zahlungsverkehr-und-abwicklungssysteme"
+        }
       ],
-      "tags": ["banking regulatory", "digital payments", "trends"],
-      "stakeholders": [6, 7, 3],
+      "tags": [
+        "banking regulatory",
+        "digital payments",
+        "trends"
+      ],
+      "stakeholders": [
+        6,
+        7,
+        3
+      ],
       "actions": [
-        { "description": "Track PSDR legislative process and update internal SCA and liability policy documentation.", "status": "in-progress" },
-        { "description": "Build SEPA R2P creditor-side implementation for corporate clients, starting with recurring billing use cases.", "status": "open" },
-        { "description": "Evaluate R2P for retail use cases (e.g. e-commerce checkout, utility billing) and prepare pilot proposal.", "status": "open" },
-        { "description": "Ensure TPP access infrastructure meets updated PSDR performance and availability benchmarks.", "status": "open" }
-      ]
+        {
+          "description": "Track PSDR legislative process and update internal SCA and liability policy documentation.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Build SEPA R2P creditor-side implementation for corporate clients, starting with recurring billing use cases.",
+          "status": "open"
+        },
+        {
+          "description": "Evaluate R2P for retail use cases (e.g. e-commerce checkout, utility billing) and prepare pilot proposal.",
+          "status": "open"
+        },
+        {
+          "description": "Ensure TPP access infrastructure meets updated PSDR performance and availability benchmarks.",
+          "status": "open"
+        }
+      ],
+      "category": "Banking Regulatory"
     },
     {
       "id": 14,
@@ -494,18 +909,48 @@
         "Cross-sector resilience intelligence sharing (information sharing as required by the law) creates early warning capability for systemic threats."
       ],
       "sources": [
-        { "label": "KRITIS-Dachgesetz — Bundesgesetzblatt", "url": "https://www.bgbl.de" },
-        { "label": "BBK: Umsetzungsleitfaden KRITIS-DachG", "url": "https://www.bbk.bund.de/DE/Themen/Kritische-Infrastrukturen/KRITIS-Dachgesetz/kritis-dachgesetz_node.html" },
-        { "label": "BSI: KRITIS-Sektor Finanzwesen", "url": "https://www.bsi.bund.de/DE/Themen/KRITIS-und-regulierte-Unternehmen/Kritische-Infrastrukturen/kritis_node.html" }
+        {
+          "label": "KRITIS-Dachgesetz — Bundesgesetzblatt",
+          "url": "https://www.bgbl.de"
+        },
+        {
+          "label": "BBK: Umsetzungsleitfaden KRITIS-DachG",
+          "url": "https://www.bbk.bund.de/DE/Themen/Kritische-Infrastrukturen/KRITIS-Dachgesetz/kritis-dachgesetz_node.html"
+        },
+        {
+          "label": "BSI: KRITIS-Sektor Finanzwesen",
+          "url": "https://www.bsi.bund.de/DE/Themen/KRITIS-und-regulierte-Unternehmen/Kritische-Infrastrukturen/kritis_node.html"
+        }
       ],
-      "tags": ["IT security", "regulation", "infrastructure"],
-      "stakeholders": [8, 3, 5],
+      "tags": [
+        "IT security",
+        "regulation",
+        "infrastructure"
+      ],
+      "stakeholders": [
+        8,
+        3,
+        5
+      ],
       "actions": [
-        { "description": "Determine if the institution meets KRITIS-Dachgesetz threshold criteria and formally register with BBK if required.", "status": "in-progress" },
-        { "description": "Conduct a resilience gap analysis covering physical infrastructure, supply chain dependencies, and cross-sector interfaces.", "status": "open" },
-        { "description": "Update the Business Continuity Management (BCM) framework to align with the new law and CER Directive.", "status": "open" },
-        { "description": "Establish cross-functional crisis response team with defined escalation paths as required by the regulation.", "status": "open" }
-      ]
+        {
+          "description": "Determine if the institution meets KRITIS-Dachgesetz threshold criteria and formally register with BBK if required.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Conduct a resilience gap analysis covering physical infrastructure, supply chain dependencies, and cross-sector interfaces.",
+          "status": "open"
+        },
+        {
+          "description": "Update the Business Continuity Management (BCM) framework to align with the new law and CER Directive.",
+          "status": "open"
+        },
+        {
+          "description": "Establish cross-functional crisis response team with defined escalation paths as required by the regulation.",
+          "status": "open"
+        }
+      ],
+      "category": "IT Security"
     },
     {
       "id": 15,
@@ -529,19 +974,52 @@
         "Information sharing under DORA's framework (ISAC participation) improves threat intelligence capability at industry level."
       ],
       "sources": [
-        { "label": "DORA — EU Regulation 2022/2554 (Full Text)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022R2554" },
-        { "label": "EBA: DORA Technical Standards and Guidelines", "url": "https://www.eba.europa.eu/regulation-and-policy/operational-resilience/digital-operational-resilience-act-dora" },
-        { "label": "BaFin: DORA-Umsetzungshinweise für Banken", "url": "https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/IT-Aufsicht/DORA/dora_node.html" }
+        {
+          "label": "DORA — EU Regulation 2022/2554 (Full Text)",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022R2554"
+        },
+        {
+          "label": "EBA: DORA Technical Standards and Guidelines",
+          "url": "https://www.eba.europa.eu/regulation-and-policy/operational-resilience/digital-operational-resilience-act-dora"
+        },
+        {
+          "label": "BaFin: DORA-Umsetzungshinweise für Banken",
+          "url": "https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/IT-Aufsicht/DORA/dora_node.html"
+        }
       ],
-      "tags": ["IT security", "regulation", "infrastructure"],
-      "stakeholders": [8, 5, 3],
+      "tags": [
+        "IT security",
+        "regulation",
+        "infrastructure"
+      ],
+      "stakeholders": [
+        8,
+        5,
+        3
+      ],
       "actions": [
-        { "description": "Complete the ICT third-party provider register and classify all providers against DORA's criticality criteria.", "status": "in-progress" },
-        { "description": "Update contracts with critical ICT providers to include mandatory DORA clauses (audit rights, exit strategies, SLAs).", "status": "in-progress" },
-        { "description": "Design and schedule the Threat-Led Penetration Testing (TLPT) programme in coordination with the lead supervisor.", "status": "open" },
-        { "description": "Establish major ICT incident classification criteria and test the end-to-end supervisory reporting workflow.", "status": "open" },
-        { "description": "Train first and second line of defence teams on updated ICT risk management framework under DORA.", "status": "open" }
-      ]
+        {
+          "description": "Complete the ICT third-party provider register and classify all providers against DORA's criticality criteria.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Update contracts with critical ICT providers to include mandatory DORA clauses (audit rights, exit strategies, SLAs).",
+          "status": "in-progress"
+        },
+        {
+          "description": "Design and schedule the Threat-Led Penetration Testing (TLPT) programme in coordination with the lead supervisor.",
+          "status": "open"
+        },
+        {
+          "description": "Establish major ICT incident classification criteria and test the end-to-end supervisory reporting workflow.",
+          "status": "open"
+        },
+        {
+          "description": "Train first and second line of defence teams on updated ICT risk management framework under DORA.",
+          "status": "open"
+        }
+      ],
+      "category": "IT Security"
     },
     {
       "id": 16,
@@ -565,18 +1043,48 @@
         "Migration creates a forcing function to rationalise legacy integrations, reducing ongoing IT complexity and maintenance cost."
       ],
       "sources": [
-        { "label": "Atruvia: agree21 Migration Programme", "url": "https://www.atruvia.de/loesungen/banksteuerung/agree21/" },
-        { "label": "Atruvia: openAPI Platform Documentation", "url": "https://developer.atruvia.de" },
-        { "label": "BVR: Digitalisierungsstrategie der Genossenschaftsbanken", "url": "https://www.bvr.de/Themen/Digitalisierung" }
+        {
+          "label": "Atruvia: agree21 Migration Programme",
+          "url": "https://www.atruvia.de/loesungen/banksteuerung/agree21/"
+        },
+        {
+          "label": "Atruvia: openAPI Platform Documentation",
+          "url": "https://developer.atruvia.de"
+        },
+        {
+          "label": "BVR: Digitalisierungsstrategie der Genossenschaftsbanken",
+          "url": "https://www.bvr.de/Themen/Digitalisierung"
+        }
       ],
-      "tags": ["market", "infrastructure", "trends"],
-      "stakeholders": [5, 4, 9],
+      "tags": [
+        "market",
+        "infrastructure",
+        "trends"
+      ],
+      "stakeholders": [
+        5,
+        4,
+        9
+      ],
       "actions": [
-        { "description": "Map current core banking integration points and identify which capabilities are affected by the agree21 migration roadmap.", "status": "in-progress" },
-        { "description": "Establish a dedicated Atruvia liaison role to maintain visibility of platform roadmap changes and early-access features.", "status": "open" },
-        { "description": "Evaluate build-vs-integrate decision for top-3 product features where Atruvia roadmap timeline is insufficient.", "status": "open" },
-        { "description": "Review vendor risk concentration and assess contingency options in the event of major platform delays.", "status": "open" }
-      ]
+        {
+          "description": "Map current core banking integration points and identify which capabilities are affected by the agree21 migration roadmap.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Establish a dedicated Atruvia liaison role to maintain visibility of platform roadmap changes and early-access features.",
+          "status": "open"
+        },
+        {
+          "description": "Evaluate build-vs-integrate decision for top-3 product features where Atruvia roadmap timeline is insufficient.",
+          "status": "open"
+        },
+        {
+          "description": "Review vendor risk concentration and assess contingency options in the event of major platform delays.",
+          "status": "open"
+        }
+      ],
+      "category": "Miscellaneous"
     },
     {
       "id": 17,
@@ -600,18 +1108,56 @@
         "Regional branch or office acquisitions from exiting banks provide physical distribution at below-greenfield cost."
       ],
       "sources": [
-        { "label": "Bundesbank: Struktur des deutschen Bankensektors", "url": "https://www.bundesbank.de/de/statistiken/banken-und-andere-finanzielle-institute/banken" },
-        { "label": "BaFin: Erlaubnisverfahren und Portfoliotransfers", "url": "https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/Erlaubnisverfahren/erlaubnisverfahren_node.html" },
-        { "label": "Handelsblatt: Auslandsbanken in Deutschland — Marktübersicht", "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen" }
+        {
+          "label": "Bundesbank: Struktur des deutschen Bankensektors",
+          "url": "https://www.bundesbank.de/de/statistiken/banken-und-andere-finanzielle-institute/banken"
+        },
+        {
+          "label": "BaFin: Erlaubnisverfahren und Portfoliotransfers",
+          "url": "https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/Erlaubnisverfahren/erlaubnisverfahren_node.html"
+        },
+        {
+          "label": "Handelsblatt: Auslandsbanken in Deutschland — Marktübersicht",
+          "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen"
+        }
       ],
-      "tags": ["market", "trends", "research"],
-      "stakeholders": [9, 2, 4],
+      "tags": [
+        "market",
+        "trends",
+        "research"
+      ],
+      "stakeholders": [
+        9,
+        2,
+        4
+      ],
       "actions": [
-        { "description": "Maintain a market intelligence tracker of announced and rumoured foreign bank exits, including portfolio sizes and affected segments.", "status": "in-progress" },
-        { "description": "Define acquisition criteria for opportunistic portfolio purchases (SME loan books, custody assets, corporate client mandates).", "status": "open" },
-        { "description": "Develop a targeted recruitment strategy to capture senior relationship managers released from exiting institutions.", "status": "open" },
-        { "description": "Assess whether competitor exit in specific regions creates a case for accelerated branch or digital expansion.", "status": "open" }
-      ]
+        {
+          "description": "Maintain a market intelligence tracker of announced and rumoured foreign bank exits, including portfolio sizes and affected segments.",
+          "status": "in-progress"
+        },
+        {
+          "description": "Define acquisition criteria for opportunistic portfolio purchases (SME loan books, custody assets, corporate client mandates).",
+          "status": "open"
+        },
+        {
+          "description": "Develop a targeted recruitment strategy to capture senior relationship managers released from exiting institutions.",
+          "status": "open"
+        },
+        {
+          "description": "Assess whether competitor exit in specific regions creates a case for accelerated branch or digital expansion.",
+          "status": "open"
+        }
+      ],
+      "category": "Miscellaneous"
     }
+  ],
+  "categories": [
+    "Trusted Services",
+    "Card",
+    "Regulatory",
+    "Banking Regulatory",
+    "IT Security",
+    "Miscellaneous"
   ]
 }
