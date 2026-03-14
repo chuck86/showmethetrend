@@ -8,14 +8,10 @@
     "payment",
     "research",
     "credit card",
-    "regulation",
     "blockchain",
     "infrastructure",
     "digital payments",
-    "trusted services",
-    "banking regulatory",
     "trends",
-    "IT security",
     "market"
   ],
   "stakeholders": [
@@ -167,7 +163,6 @@
       ],
       "tags": [
         "credit card",
-        "regulation",
         "research"
       ],
       "stakeholders": [
@@ -291,8 +286,7 @@
       ],
       "tags": [
         "research",
-        "credit card",
-        "regulation"
+        "credit card"
       ],
       "stakeholders": [
         3,
@@ -534,7 +528,6 @@
       ],
       "tags": [
         "digital payments",
-        "regulation",
         "research"
       ],
       "stakeholders": [
@@ -599,7 +592,6 @@
       ],
       "tags": [
         "digital payments",
-        "regulation",
         "payment"
       ],
       "stakeholders": [
@@ -663,8 +655,6 @@
         }
       ],
       "tags": [
-        "trusted services",
-        "regulation",
         "infrastructure"
       ],
       "stakeholders": [
@@ -728,9 +718,7 @@
         }
       ],
       "tags": [
-        "trusted services",
-        "digital payments",
-        "regulation"
+        "digital payments"
       ],
       "stakeholders": [
         7,
@@ -793,9 +781,7 @@
         }
       ],
       "tags": [
-        "banking regulatory",
-        "trends",
-        "regulation"
+        "trends"
       ],
       "stakeholders": [
         7,
@@ -858,7 +844,6 @@
         }
       ],
       "tags": [
-        "banking regulatory",
         "digital payments",
         "trends"
       ],
@@ -923,8 +908,6 @@
         }
       ],
       "tags": [
-        "IT security",
-        "regulation",
         "infrastructure"
       ],
       "stakeholders": [
@@ -988,8 +971,6 @@
         }
       ],
       "tags": [
-        "IT security",
-        "regulation",
         "infrastructure"
       ],
       "stakeholders": [
