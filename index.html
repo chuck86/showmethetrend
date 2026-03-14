@@ -929,9 +929,9 @@ function renderIndexWheel() {
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
-    const N=topics.length,aw=60-2*GAP-6;
+    const EDGE=10; const N=topics.length,aw=60-2*GAP-2*EDGE;
     topics.forEach((tp,j)=>{
-      const tA=N===1?mid:a1+3+(j/Math.max(N-1,1))*aw;
+      const tA=N===1?mid:a1+EDGE+(j/Math.max(N-1,1))*aw;
       const r=iR+(10-tp.score)/9*(oR-iR);
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="iwdot" data-id="${tp.id}" style="cursor:pointer"/>`;
@@ -1209,9 +1209,9 @@ function renderWheel() {
       h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
     });
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
-    const N=topics.length,aw=60-2*GAP-6;
+    const EDGE=10; const N=topics.length,aw=60-2*GAP-2*EDGE;
     topics.forEach((tp,j)=>{
-      const tA=N===1?mid:a1+3+(j/Math.max(N-1,1))*aw;
+      const tA=N===1?mid:a1+EDGE+(j/Math.max(N-1,1))*aw;
       const r=iR+(10-tp.score)/9*(oR-iR);
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="wdot" data-id="${tp.id}" style="cursor:pointer"/>`;
