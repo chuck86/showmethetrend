@@ -64,12 +64,12 @@
   "topics": [
     {
       "id": 1,
-      "title": "Stablecoin Integration",
+      "title": "Stablecoins",
       "score": 6,
       "priority": "Medium-High",
       "horizon": "12–18 months",
       "description": "Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.",
-      "management_summary": "Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. We recommend a contained pilot programme while monitoring ECB policy closely.",
+      "management_summary": "Stablecoins are currently gaining more public interes. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. Chance: Supporting Banks in their stablecoin integration if we position ourselfes early on. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. We recommend a contained pilot programme while monitoring ECB policy closely.",
       "extended_description": "Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for on-chain transactions. The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being interpreted. Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.",
       "risks": [
         "Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.",
