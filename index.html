@@ -1123,6 +1123,31 @@ function showDetail(id) {
       </div>
     </div>
 
+    ${t.position ? `
+    <div class="fade-up" style="animation-delay:0.28s">
+      <div class="section-label">Position</div>
+      <p style="font-size:0.88rem;line-height:1.7;color:var(--text);margin:0;">${t.position}</p>
+    </div>` : ''}
+
+    ${(t.associated_working_groups||[]).length ? `
+    <div class="fade-up" style="animation-delay:0.29s">
+      <div class="section-label">Associated Working Groups</div>
+      <div class="sources-list">
+        ${(t.associated_working_groups||[]).map(wg => {
+          const name  = typeof wg === 'string' ? wg : (wg.name || wg.label || '');
+          const url   = typeof wg === 'object' ? (wg.url||null) : null;
+          const href  = url && url !== '#' ? url : null;
+          const tag   = href ? 'a' : 'div';
+          const attrs = href ? `href="${url}" target="_blank" rel="noopener"` : '';
+          return `<${tag} class="source-item" ${attrs}>
+            <div class="source-icon">${linkIcon}</div>
+            <span class="source-label">${name}</span>
+            ${href ? `<span class="source-arrow">${arrowIcon}</span>` : ''}
+          </${tag}>`;
+        }).join('')}
+      </div>
+    </div>` : ''}
+
     ${t.sources&&t.sources.length ? `
     <div class="fade-up" style="animation-delay:0.3s">
       <div class="section-label">Sources &amp; References</div>
@@ -1156,7 +1181,6 @@ function showDetail(id) {
       <div class="meta-row"><span class="meta-key">Category</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
       <div class="meta-row"><span class="meta-key">Priority</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon||'—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Position</span><span class="meta-val">${t.position||'—'}</span></div>
       ${(t.impacts||[]).length ? `
       <div class="meta-row-block">
         <span class="meta-key">Impacts</span>
@@ -1167,11 +1191,6 @@ function showDetail(id) {
         <span class="meta-key">Driven By</span>
         <div class="meta-pills">${(t.driven_by||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
       </div>` : `<div class="meta-row"><span class="meta-key">Driven By</span><span class="meta-val">—</span></div>`}
-      ${(t.associated_working_groups||[]).length ? `
-      <div class="meta-row-block">
-        <span class="meta-key">Working Groups</span>
-        <div class="meta-pills">${(t.associated_working_groups||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
-      </div>` : `<div class="meta-row"><span class="meta-key">Working Groups</span><span class="meta-val">—</span></div>`}
       <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Actions</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
       <div class="meta-row"><span class="meta-key">Sources</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
@@ -1378,9 +1397,16 @@ function edAddRow(type) {
       drivenby: 'e.g. EU regulation, market demand…',
       wg:       'Working group name…',
     };
-    row.innerHTML = `
+    if (type === 'wg') {
+      row.innerHTML = `
+        <input class="ed-input src-label" type="text" placeholder="Working group name…">
+        <input class="ed-input src-url"   type="url"  placeholder="https://… (optional)">
+        <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+    } else {
+      row.innerHTML = `
       <input class="ed-input" type="text" placeholder="${placeholders[type]||''}">
       <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+    }
   }
   list.appendChild(row);
   row.querySelector('input').focus();
@@ -1396,7 +1422,10 @@ function edCollect() {
 
   const impacts  = [...document.querySelectorAll('#ed-impacts-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
   const drivenBy = [...document.querySelectorAll('#ed-drivenby-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
-  const wgs      = [...document.querySelectorAll('#ed-wg-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const wgs = [...document.querySelectorAll('#ed-wg-list .ed-dyn-row')].map(row => {
+    const ins = row.querySelectorAll('input');
+    return { name: ins[0].value.trim(), url: ins[1].value.trim() };
+  }).filter(w => w.name);
   const mgmt    = document.getElementById('ed-mgmt').value.trim();
   const desc    = document.getElementById('ed-desc').value.trim();
   const extdesc = document.getElementById('ed-extdesc').value.trim();
