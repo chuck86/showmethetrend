@@ -133,8 +133,12 @@
         "title": "Stablecoins",
       "impacts": [],
       "driven_by": [],
-      "position": "",
-      "associated_working_groups": []
+      "position": "TBD",
+      "associated_working_groups": [
+        {
+          "label": "Working group A",  "url": "https://www.google.com"
+        }
+      ]
     },
     {
       "id": 2,
