@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">^
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Strategic Topic Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -247,6 +247,10 @@
   .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
   .meta-key { color: var(--muted); font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
   .meta-val { font-weight: 600; font-size: 0.82rem; color: var(--navy); }
+  .meta-row-block { padding: 0.6rem 0; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.45rem; }
+  .meta-row-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .meta-pill { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 2px; background: rgba(4,0,102,0.06); border: 1px solid rgba(4,0,102,0.15); color: var(--navy); font-weight: 500; }
 
   .priority-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; }
   .priority-critical    { background: rgba(255,166,180,0.35); color: #7a1525; }
@@ -562,14 +566,6 @@
         <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
           <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
           Assign missing stakeholders to open topics
-        </li> 
-        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
-          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
-          Update topics, stakeholders, categories, tags
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
-          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
-          Add to json-file: Treiber, Position, Arbeitskreise, Auswirkungen, Basis(?)
         </li>
       </ul>
     </div>
@@ -767,11 +763,36 @@
       </div>
     </div>
 
-    <!-- CHANCES -->
+    <!-- POSITION -->
     <div class="ed-section">
-      <div class="ed-section-title">Chances</div>
-      <div class="ed-dyn-list" id="ed-chances-list"></div>
-      <button class="ed-add-btn" onclick="edAddRow('chances')">+ Add Chance</button>
+      <div class="ed-section-title">Position</div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-position">Our Position</label>
+          <input class="ed-input" id="ed-position" type="text" placeholder="e.g. Monitor, Engage, Lead, Oppose…">
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACTS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Impacts</div>
+      <div class="ed-dyn-list" id="ed-impacts-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('impacts')">+ Add Impact</button>
+    </div>
+
+    <!-- DRIVEN BY -->
+    <div class="ed-section">
+      <div class="ed-section-title">Driven By</div>
+      <div class="ed-dyn-list" id="ed-drivenby-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('drivenby')">+ Add Driver</button>
+    </div>
+
+    <!-- WORKING GROUPS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Associated Working Groups</div>
+      <div class="ed-dyn-list" id="ed-wg-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('wg')">+ Add Working Group</button>
     </div>
 
     <!-- RISKS -->
@@ -779,6 +800,13 @@
       <div class="ed-section-title">Risks</div>
       <div class="ed-dyn-list" id="ed-risks-list"></div>
       <button class="ed-add-btn" onclick="edAddRow('risks')">+ Add Risk</button>
+    </div>
+
+    <!-- CHANCES -->
+    <div class="ed-section">
+      <div class="ed-section-title">Chances</div>
+      <div class="ed-dyn-list" id="ed-chances-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('chances')">+ Add Chance</button>
     </div>
 
     <!-- ACTIONS -->
@@ -1128,6 +1156,22 @@ function showDetail(id) {
       <div class="meta-row"><span class="meta-key">Category</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
       <div class="meta-row"><span class="meta-key">Priority</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">Position</span><span class="meta-val">${t.position||'—'}</span></div>
+      ${(t.impacts||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">Impacts</span>
+        <div class="meta-pills">${(t.impacts||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
+      </div>` : `<div class="meta-row"><span class="meta-key">Impacts</span><span class="meta-val">—</span></div>`}
+      ${(t.driven_by||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">Driven By</span>
+        <div class="meta-pills">${(t.driven_by||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
+      </div>` : `<div class="meta-row"><span class="meta-key">Driven By</span><span class="meta-val">—</span></div>`}
+      ${(t.associated_working_groups||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">Working Groups</span>
+        <div class="meta-pills">${(t.associated_working_groups||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
+      </div>` : `<div class="meta-row"><span class="meta-key">Working Groups</span><span class="meta-val">—</span></div>`}
       <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Actions</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
       <div class="meta-row"><span class="meta-key">Sources</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
@@ -1327,8 +1371,15 @@ function edAddRow(type) {
       <input class="ed-input src-url"   type="url"  placeholder="https://…">
       <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
   } else {
+    const placeholders = {
+      risks:    'Describe a risk…',
+      chances:  'Describe a chance…',
+      impacts:  'Describe an impact…',
+      drivenby: 'e.g. EU regulation, market demand…',
+      wg:       'Working group name…',
+    };
     row.innerHTML = `
-      <input class="ed-input" type="text" placeholder="${type === 'risks' ? 'Describe a risk…' : 'Describe a chance…'}">
+      <input class="ed-input" type="text" placeholder="${placeholders[type]||''}">
       <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
   }
   list.appendChild(row);
@@ -1341,6 +1392,11 @@ function edCollect() {
   const priority= document.getElementById('ed-priority').value;
   const horizon = document.getElementById('ed-horizon').value;
   const category= document.getElementById('ed-category').value;
+  const position= document.getElementById('ed-position').value.trim();
+
+  const impacts  = [...document.querySelectorAll('#ed-impacts-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const drivenBy = [...document.querySelectorAll('#ed-drivenby-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const wgs      = [...document.querySelectorAll('#ed-wg-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
   const mgmt    = document.getElementById('ed-mgmt').value.trim();
   const desc    = document.getElementById('ed-desc').value.trim();
   const extdesc = document.getElementById('ed-extdesc').value.trim();
@@ -1361,7 +1417,7 @@ function edCollect() {
     return { label: ins[0].value.trim(), url: ins[1].value.trim() };
   }).filter(s => s.label || s.url);
 
-  return { title, score, priority, horizon, category, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
+  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
 }
 
 function edValidate(f) {
@@ -1394,6 +1450,10 @@ function edSave() {
     ...(f.extdesc && { extended_description: f.extdesc }),
     ...(f.risks.length   && { risks: f.risks }),
     ...(f.chances.length && { chances: f.chances }),
+    ...(f.position       && { position: f.position }),
+    ...(f.impacts.length && { impacts: f.impacts }),
+    ...(f.drivenBy.length&& { driven_by: f.drivenBy }),
+    ...(f.wgs.length     && { associated_working_groups: f.wgs }),
     tags: f.tags,
     stakeholders: f.shIds,
     actions: f.actions,
@@ -1429,7 +1489,8 @@ function edReset() {
   document.getElementById('ed-sh-pills').innerHTML = '';
   document.getElementById('ed-tags-select').value = '';
   document.getElementById('ed-sh-select').value = '';
-  ['risks','chances','actions','sources'].forEach(t => document.getElementById(`ed-${t}-list`).innerHTML = '');
+  ['risks','chances','actions','sources','impacts','drivenby','wg'].forEach(t => document.getElementById(`ed-${t}-list`).innerHTML = '');
+  document.getElementById('ed-position').value = '';
   document.getElementById('ed-dup-warning').style.display = 'none';
   document.getElementById('ed-save-btn').disabled = false;
   document.querySelectorAll('.ed-input.error, .ed-select.error, .ed-textarea.error').forEach(el => el.classList.remove('error'));
