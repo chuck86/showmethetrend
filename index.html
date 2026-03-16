@@ -182,7 +182,7 @@
   /* Category badges */
   .cat-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.18rem 0.6rem; border-radius: 2px; font-weight: 600; border: 1px solid transparent; white-space: nowrap; }
   .cat-trusted-services  { background: rgba(211,190,236,0.35); color: #4a2d7a; border-color: rgba(211,190,236,0.75); }
-  .cat-card              { background: rgba(0,212,255,0.12);    color: #005070; border-color: rgba(0,212,255,0.35); }
+  .cat-digital-payments  { background: rgba(0,212,255,0.12);    color: #005070; border-color: rgba(0,212,255,0.35); }
   .cat-regulatory        { background: rgba(255,195,144,0.35);  color: #7a3500; border-color: rgba(255,195,144,0.75); }
   .cat-banking-regulatory{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
   .cat-it-security       { background: rgba(255,166,180,0.28);  color: #6a1020; border-color: rgba(255,166,180,0.65); }
@@ -687,7 +687,7 @@
           <label class="ed-label" for="ed-category">Category <span class="req">*</span></label>
           <select class="ed-select" id="ed-category">
             <option value="">— select —</option>
-            <option>Trusted Services</option><option>Card</option><option>Regulatory</option>
+            <option>Trusted Services</option><option>Digital Payments</option><option>Regulatory</option>
             <option>Banking Regulatory & Trends</option><option>IT Security</option><option>Miscellaneous</option>
           </select>
         </div>
@@ -1210,9 +1210,9 @@ function showIndex() {
 // ── Dashboard / Wheel ─────────────────────────────────────────────────────────
 const WHEEL_SLICES = [
   { label:['TRUSTED','SERVICES'],   cat:'Trusted Services',   bg:'#d3beec', fg:'#4a2d7a' },
-  { label:['CARD'],                 cat:'Card',                bg:'#00d4ff', fg:'#004f66' },
-  { label:['REGULATORY'],           cat:'Regulatory',          bg:'#ffc390', fg:'#7a3500' },
-  { label:['IT','SECURITY'],        cat:'IT Security',         bg:'#ffa6b4', fg:'#7a1525' },
+  { label:['DIGITAL PAYMENTS'],     cat:'Digital Payments',   bg:'#00d4ff', fg:'#004f66' },
+  { label:['REGULATORY'],           cat:'Regulatory',         bg:'#ffc390', fg:'#7a3500' },
+  { label:['IT','SECURITY'],        cat:'IT Security',        bg:'#ffa6b4', fg:'#7a1525' },
   { label:['BANKING','REGULATORY','&','TRENDS'], cat:'Banking Regulatory & Trends',  bg:'#c4ebc3', fg:'#1a5219' },
   { label:['MISCELLANEOUS'],        cat:'Miscellaneous',       bg:'#ffeda3', fg:'#5a4a00' },
 ];
