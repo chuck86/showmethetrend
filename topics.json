@@ -1,17 +1,21 @@
 {
   "meta": {
-    "title": "CPO Strategic Intelligence",
-    "organisation": "Payment Enablement",
+    "title": "Strategic Topic Intelligence",
+    "organisation": "Your Organisation",
     "updated": "March 2026"
   },
   "tags": [
     "payment",
     "research",
     "credit card",
+    "regulation",
     "blockchain",
     "infrastructure",
     "digital payments",
+    "trusted services",
+    "banking regulatory",
     "trends",
+    "IT security",
     "market"
   ],
   "stakeholders": [
@@ -63,68 +67,74 @@
   ],
   "topics": [
     {
-      "id": 1,
-      "title": "Stablecoins",
-      "score": 6,
-      "priority": "Medium-High",
-      "horizon": "12–18 months",
-      "description": "Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.",
-      "management_summary": "Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, supporting Banks in their stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely.",
-      "extended_description": "Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for on-chain transactions. The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being interpreted. Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.",
-      "risks": [
-        "Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.",
-        "Liquidity and de-peg risk if the underlying stablecoin reserve management fails.",
-        "AML/CFT complexity: on-chain transactions require new screening tooling and staff training.",
-        "Reputational risk if a partner bank or stablecoin issuer experiences a public failure during pilot."
-      ],
-      "chances": [
-        "First-mover advantage in corporate cross-border settlement within the German cooperative banking sector.",
-        "30–60% cost reduction on international payment corridors compared to SWIFT/correspondent model.",
-        "New revenue stream: white-label stablecoin settlement infrastructure sold to smaller regional banks.",
-        "Positions the institution for a Digital Euro intermediary role given overlapping technical architecture."
-      ],
-      "sources": [
-        {
-          "label": "MiCA Regulation — EU Official Journal",
-          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114"
-        },
-        {
-          "label": "ECB: Progress on Digital Euro Project",
-          "url": "https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html"
-        },
-        {
-          "label": "BIS Working Paper: Stablecoins as Settlement Assets",
-          "url": "https://www.bis.org/publ/work1180.htm"
-        }
-      ],
-      "tags": [
-        "payment",
-        "blockchain",
-        "research"
-      ],
-      "stakeholders": [
-        1,
-        2
-      ],
-      "actions": [
-        {
-          "description": "Commission external legal review of MiCA compliance requirements for stablecoin custody by Q2 2026.",
-          "status": "open"
-        },
-        {
-          "description": "Prototype a stablecoin settlement corridor on testnet with two partner banks to validate latency and cost assumptions.",
-          "status": "open"
-        },
-        {
-          "description": "Define internal risk appetite threshold for stablecoin exposure as % of treasury holdings.",
-          "status": "open"
-        },
-        {
-          "description": "Engage the ECB sandbox programme to position for early regulatory approval.",
-          "status": "open"
-        }
-      ],
-      "category": "Miscellaneous"
+        "actions": [
+          {
+            "description": "Commission external legal review of MiCA compliance requirements for stablecoin custody by Q2 2026.",
+            "status": "open"
+          },
+          {
+            "description": "Prototype a stablecoin settlement corridor on testnet with two partner banks to validate latency and cost assumptions.",
+            "status": "open"
+          },
+          {
+            "description": "Define internal risk appetite threshold for stablecoin exposure as % of treasury holdings.",
+            "status": "open"
+          },
+          {
+            "description": "Engage the ECB sandbox programme to position for early regulatory approval.",
+            "status": "open"
+          }
+        ],
+        "category": "Miscellaneous",
+        "chances": [
+          "First-mover advantage in corporate cross-border settlement within the German cooperative banking sector.",
+          "30–60% cost reduction on international payment corridors compared to SWIFT/correspondent model.",
+          "New revenue stream: NCS as central service provider offering white-label stablecoin settlement infrastructure and apps sold to smaller regional banks.",
+          "Positions the institution for a Digital Euro intermediary role given overlapping technical architecture.",
+          "Usage of already existing NCS tokenization know how"
+        ],
+        "description": "Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.",
+        "extended_description": "Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for on-chain transactions. The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being interpreted. Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.",
+        "horizon": "12–18 months",
+        "id": 1,
+        "management_summary": "Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, supporting Banks in their stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely.",
+        "priority": "Medium-High",
+        "risks": [
+          "Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.",
+          "Liquidity and de-peg risk if the underlying stablecoin reserve management fails.",
+          "AML/CFT complexity: on-chain transactions require new screening tooling and staff training.",
+          "Reputational risk if a partner bank or stablecoin issuer experiences a public failure during pilot.",
+          "possible high investment necessary"
+        ],
+        "score": 6,
+        "sources": [
+          {
+            "label": "MiCA Regulation — EU Official Journal",
+            "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114"
+          },
+          {
+            "label": "ECB: Progress on Digital Euro Project",
+            "url": "https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html"
+          },
+          {
+            "label": "BIS Working Paper: Stablecoins as Settlement Assets",
+            "url": "https://www.bis.org/publ/work1180.htm"
+          }
+        ],
+        "stakeholders": [
+          1,
+          2
+        ],
+        "tags": [
+          "payment",
+          "blockchain",
+          "research"
+        ],
+        "title": "Stablecoins",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 2,
@@ -163,6 +173,7 @@
       ],
       "tags": [
         "credit card",
+        "regulation",
         "research"
       ],
       "stakeholders": [
@@ -188,7 +199,11 @@
           "status": "open"
         }
       ],
-      "category": "Card"
+      "category": "Card",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 3,
@@ -247,7 +262,11 @@
           "status": "open"
         }
       ],
-      "category": "Miscellaneous"
+      "category": "Miscellaneous",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 4,
@@ -286,7 +305,8 @@
       ],
       "tags": [
         "research",
-        "credit card"
+        "credit card",
+        "regulation"
       ],
       "stakeholders": [
         3,
@@ -306,7 +326,11 @@
           "status": "done"
         }
       ],
-      "category": "Card"
+      "category": "Card",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 5,
@@ -365,7 +389,11 @@
           "status": "open"
         }
       ],
-      "category": "Banking Regulatory"
+      "category": "Banking Regulatory",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 6,
@@ -424,7 +452,11 @@
           "status": "open"
         }
       ],
-      "category": "Card"
+      "category": "Card",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 7,
@@ -489,7 +521,11 @@
           "status": "open"
         }
       ],
-      "category": "Card"
+      "category": "Card",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 8,
@@ -528,6 +564,7 @@
       ],
       "tags": [
         "digital payments",
+        "regulation",
         "research"
       ],
       "stakeholders": [
@@ -553,7 +590,11 @@
           "status": "open"
         }
       ],
-      "category": "Regulatory"
+      "category": "Regulatory",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 9,
@@ -592,6 +633,7 @@
       ],
       "tags": [
         "digital payments",
+        "regulation",
         "payment"
       ],
       "stakeholders": [
@@ -617,7 +659,11 @@
           "status": "open"
         }
       ],
-      "category": "Regulatory"
+      "category": "Regulatory",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 10,
@@ -655,6 +701,8 @@
         }
       ],
       "tags": [
+        "trusted services",
+        "regulation",
         "infrastructure"
       ],
       "stakeholders": [
@@ -680,7 +728,11 @@
           "status": "open"
         }
       ],
-      "category": "Trusted Services"
+      "category": "Trusted Services",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 11,
@@ -718,7 +770,9 @@
         }
       ],
       "tags": [
-        "digital payments"
+        "trusted services",
+        "digital payments",
+        "regulation"
       ],
       "stakeholders": [
         7,
@@ -743,7 +797,11 @@
           "status": "open"
         }
       ],
-      "category": "Trusted Services"
+      "category": "Trusted Services",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 12,
@@ -781,7 +839,9 @@
         }
       ],
       "tags": [
-        "trends"
+        "banking regulatory",
+        "trends",
+        "regulation"
       ],
       "stakeholders": [
         7,
@@ -806,7 +866,11 @@
           "status": "open"
         }
       ],
-      "category": "Banking Regulatory"
+      "category": "Banking Regulatory",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 13,
@@ -844,6 +908,7 @@
         }
       ],
       "tags": [
+        "banking regulatory",
         "digital payments",
         "trends"
       ],
@@ -870,7 +935,11 @@
           "status": "open"
         }
       ],
-      "category": "Banking Regulatory"
+      "category": "Banking Regulatory",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 14,
@@ -908,6 +977,8 @@
         }
       ],
       "tags": [
+        "IT security",
+        "regulation",
         "infrastructure"
       ],
       "stakeholders": [
@@ -933,7 +1004,11 @@
           "status": "open"
         }
       ],
-      "category": "IT Security"
+      "category": "IT Security",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 15,
@@ -971,6 +1046,8 @@
         }
       ],
       "tags": [
+        "IT security",
+        "regulation",
         "infrastructure"
       ],
       "stakeholders": [
@@ -1000,7 +1077,11 @@
           "status": "open"
         }
       ],
-      "category": "IT Security"
+      "category": "IT Security",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 16,
@@ -1065,7 +1146,11 @@
           "status": "open"
         }
       ],
-      "category": "Miscellaneous"
+      "category": "Miscellaneous",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     },
     {
       "id": 17,
@@ -1130,7 +1215,11 @@
           "status": "open"
         }
       ],
-      "category": "Miscellaneous"
+      "category": "Miscellaneous",
+      "impacts": [],
+      "driven_by": [],
+      "position": "",
+      "associated_working_groups": []
     }
   ],
   "categories": [
