@@ -93,8 +93,8 @@
           "Positions the institution for a Digital Euro intermediary role given overlapping technical architecture.",
           "Usage of already existing NCS tokenization know how"
         ],
-        "description": "Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.",
-        "extended_description": "Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for on-chain transactions. The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being interpreted. Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.",
+        "description": "Stablecoins are - in contrast to crypto currencies - pegged to (relatively) stable assets or currencies (EUR, USD). Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.",
+        "extended_description": "Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. Unlike crypto currencies they are pegged to stable assets or currencies (EUR, USD). The primary use case is cross-border B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for on-chain transactions. Another usecase is  the embedding of payments within smart contracts in highly automated processes (IoT). The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being interpreted. Currently the market for stablecoins is dominated by USD-based stablecoins (approx. 99% of the market). Approx. 90% of the market are covered by Coins Tether (SDT) and USD Coin (USDC). Their traction is growing (market value of stablecoins in circulation has doubled to 225 billion USD within 2 years according to BIZ-study). The United States want to strengthen their position with the Genius Act by demanding that stable coins must be backed by liquid assets (USD, short term US gov. bonds). [TBD] Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.",
         "horizon": "12–18 months",
         "id": 1,
         "management_summary": "Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, supporting Banks in their stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely.",
@@ -393,7 +393,7 @@
           "status": "open"
         }
       ],
-      "category": "Banking Regulatory",
+      "category": "    "Banking Regulatory & Trends",
       "impacts": [],
       "driven_by": [],
       "position": "",
@@ -870,7 +870,7 @@
           "status": "open"
         }
       ],
-      "category": "Banking Regulatory",
+      "category": "Banking Regulatory & Trends",
       "impacts": [],
       "driven_by": [],
       "position": "",
@@ -1228,9 +1228,9 @@
   ],
   "categories": [
     "Trusted Services",
-    "Card",
+    "Digital Payments",
     "Regulatory",
-    "Banking Regulatory",
+    "Banking Regulatory & Trends",
     "IT Security",
     "Miscellaneous"
   ]
