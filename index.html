@@ -1092,16 +1092,16 @@ function showDetail(id) {
     <div class="fade-up" style="animation-delay:0.2s">
       <div class="section-label">Risks &amp; Chances</div>
       <div class="risks-chances-grid">
-        <div class="rc-card risks">
-          <div class="rc-header"><span class="rc-dot"></span>Risks</div>
-          <div class="rc-list">
-            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
-          </div>
-        </div>
         <div class="rc-card chances">
           <div class="rc-header"><span class="rc-dot"></span>Chances</div>
           <div class="rc-list">
             ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+          </div>
+        </div>
+        <div class="rc-card risks">
+          <div class="rc-header"><span class="rc-dot"></span>Risks</div>
+          <div class="rc-list">
+            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
           </div>
         </div>
       </div>
