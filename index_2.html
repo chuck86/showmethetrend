@@ -5,276 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Strategic Topic Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      min-height: 100vh;
-      background: #0f0f13;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Courier New', monospace;
-      color: #e0e0e0;
-      padding: 2rem;
-      gap: 2rem;
-    }
-    h1 { font-size: 1.4rem; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; }
-    canvas { background: #1a1a22; border-radius: 50%; }
-    .controls { display: flex; gap: 3rem; align-items: center; }
-    label { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-    .label-text { font-size: 0.75rem; letter-spacing: 0.15em; color: #888; }
-    input[type=range] { width: 120px; }
-    #n-val   { font-size: 1.5rem; font-weight: bold; color: #e63946; }
-    #gap-val { font-size: 1.5rem; font-weight: bold; color: #2a9d8f; }
-    #n-slider   { accent-color: #e63946; }
-    #gap-slider { accent-color: #2a9d8f; }
-  </style>
-</head>
-<body>
-  <h1>Circle Slice Plot</h1>
-  <canvas id="c" width="400" height="400"></canvas>
-  <div class="controls">
-    <label>
-      <span class="label-text">SLICES (n)</span>
-      <input id="n-slider" type="range" min="2" max="24" value="8" />
-      <span id="n-val">8</span>
-    </label>
-    <label>
-      <span class="label-text">GAP (px)</span>
-      <input id="gap-slider" type="range" min="0" max="20" value="6" />
-      <span id="gap-val">6</span>
-    </label>
-  </div>
-
-  <script>
-    const canvas = document.getElementById('c');
-    const ctx = canvas.getContext('2d');
-    const nSlider = document.getElementById('n-slider');
-    const gapSlider = document.getElementById('gap-slider');
-    const nVal = document.getElementById('n-val');
-    const gapVal = document.getElementById('gap-val');
-
-    const colors = [
-      "#e63946","#f4a261","#2a9d8f","#457b9d",
-      "#e9c46a","#a8dadc","#f77f00","#6a4c93",
-      "#43aa8b","#277da1","#f94144","#90be6d",
-    ];
-
-    function draw() {
-      const n   = parseInt(nSlider.value);
-      const gap = parseInt(gapSlider.value);
-      nVal.textContent   = n;
-      gapVal.textContent = gap;
-
-      const W = canvas.width, H = canvas.height;
-      const cx = W / 2, cy = H / 2;
-      const R  = Math.min(W, H) / 2 - 20;
-
-      ctx.clearRect(0, 0, W, H);
-
-      const sliceAngle = (2 * Math.PI) / n;
-      // half the gap distance — each slice edge is offset this far from the boundary line
-      const half = gap / 2;
-
-      for (let i = 0; i < n; i++) {
-        // The angle of this slice's two boundary radii
-        const a1 = i * sliceAngle;       // left boundary angle
-        const a2 = (i + 1) * sliceAngle; // right boundary angle
-
-        // Inward-perpendicular directions for each boundary
-        // For boundary at angle a, the slice interior is at a + sliceAngle/2.
-        // The perpendicular pointing INTO the slice is (a + 90°) for left edge,
-        // and (a - 90°) for right edge.
-        // Left edge: shift in direction (a1 + π/2) by half
-        const lx = Math.cos(a1 + Math.PI / 2) * half;
-        const ly = Math.sin(a1 + Math.PI / 2) * half;
-        // Right edge: shift in direction (a2 - π/2) by half
-        const rx = Math.cos(a2 - Math.PI / 2) * half;
-        const ry = Math.sin(a2 - Math.PI / 2) * half;
-
-        // Build the clipped slice as an intersection of:
-        //   - the circle
-        //   - half-plane to the right of the left edge  (shifted inward by half)
-        //   - half-plane to the left of the right edge  (shifted inward by half)
-        //
-        // Strategy: draw the full arc sector, then use clip to carve off the gap strips.
-        ctx.save();
-
-        // Clip region: intersection of two half-planes
-        ctx.beginPath();
-        // Left half-plane: line through (cx+lx, cy+ly) in direction of a1
-        // Points on the correct side satisfy the signed-distance test.
-        // We build a large rectangle on the correct side.
-        const BIG = R * 3;
-        const cos1 = Math.cos(a1), sin1 = Math.sin(a1);
-        const cos2 = Math.cos(a2), sin2 = Math.sin(a2);
-
-        // Left clip: keep points where dot((p - pivot1), perp_left) >= 0
-        // perp_left points into the slice: (cos(a1+π/2), sin(a1+π/2)) = (-sin1, cos1)
-        // pivot1 = (cx + lx, cy + ly)
-        // We draw the half-plane as a big quad on the allowed side.
-        const p1x = cx + lx, p1y = cy + ly;
-        ctx.moveTo(p1x + cos1 * BIG,  p1y + sin1 * BIG);
-        ctx.lineTo(p1x - cos1 * BIG,  p1y - sin1 * BIG);
-        ctx.lineTo(p1x - cos1 * BIG - sin1 * BIG * (-1),  p1y - sin1 * BIG + cos1 * BIG);
-        // build as large polygon covering the right half of the boundary
-        ctx.rect(-BIG + p1x - sin1*BIG, -BIG + p1y + cos1*BIG, BIG*4, BIG*4);
-        ctx.closePath();
-
-        // Instead of the half-plane approach (complex winding), use a simpler method:
-        // translate & rotate so this slice is centred on the x-axis, then clip with two angled lines.
-        ctx.restore();
-
-        // ---- Cleaner approach: rotate canvas so slice is symmetric about x-axis ----
-        ctx.save();
-        ctx.translate(cx, cy);
-
-        const midAngle = a1 + sliceAngle / 2;
-        ctx.rotate(midAngle);
-        // Now this slice spans from -sliceAngle/2 to +sliceAngle/2 around the x-axis.
-        const halfSlice = sliceAngle / 2;
-
-        // Clip path: two half-planes
-        // Left edge boundary is at angle -halfSlice from x-axis.
-        // Its inward normal points toward +y. Offset = half upward (+y direction when at that angle).
-        // After rotation, left boundary angle = -halfSlice, right boundary angle = +halfSlice.
-        // Left edge: line through (0,0) rotated -halfSlice, shifted by +half in normal direction (toward +y in slice frame).
-        //   In slice frame: left boundary line passes through (0, half) with direction (cos(-halfSlice), sin(-halfSlice)).
-        //   We keep points ABOVE this line.
-        // Right edge: line passes through (0, -half) with direction (cos(halfSlice), sin(halfSlice)).
-        //   We keep points BELOW this line.
-
-        ctx.beginPath();
-        // Left edge clip — half-plane: points where y >= half - x*tan(-halfSlice)
-        //   i.e. y + x*tan(halfSlice) >= half
-        // Right edge clip — half-plane: points where y <= -half + x*tan(halfSlice)
-        //   i.e. y - x*tan(halfSlice) <= -half
-
-        // Build clip as intersection using canvas clip with even-odd or nonzero winding.
-        // Easiest: draw the two clip half-planes as big polygons and intersect by redrawing.
-        // Canvas only supports union for clip paths unless using compositing.
-        // Best approach: just draw a filled polygon for the slice directly.
-
-        ctx.restore();
-
-        // ---- Final clean approach: construct slice polygon explicitly ----
-        // Each slice edge is a line segment from center offset by half in the inward normal direction.
-        // The slice boundary consists of:
-        //   - Left edge: from inner point to outer point (shifted right of the left boundary by 'half')
-        //   - Arc from left outer to right outer
-        //   - Right edge: from outer point back to inner point
-
-        // For the left boundary at angle a1:
-        //   inward normal = direction a1 + π/2  → (-sin(a1), cos(a1))
-        //   The edge runs parallel to direction a1 (cos(a1), sin(a1))
-        //   shifted by 'half' in the inward normal direction
-        //   pivot = (cx, cy) + half * inward_normal
-        const ln1x = -Math.sin(a1), ln1y = Math.cos(a1); // inward normal for left edge
-        const pivotL = { x: cx + half * ln1x, y: cy + half * ln1y };
-        // The edge segment goes from pivotL out to radius R along direction a1:
-        //   intersect with circle of radius R centered at (cx,cy)
-        //   parametric: p = pivotL + t*(cos(a1), sin(a1))
-        //   |p - (cx,cy)|² = R²
-        const dLx = Math.cos(a1), dLy = Math.sin(a1);
-        const fLx = pivotL.x - cx, fLy = pivotL.y - cy;
-        const tL = solveLineCircle(fLx, fLy, dLx, dLy, R);
-        // inner intersection (near center)
-        const iLx = pivotL.x + tL.t1 * dLx, iLy = pivotL.y + tL.t1 * dLy;
-        // outer intersection (far from center)
-        const oLx = pivotL.x + tL.t2 * dLx, oLy = pivotL.y + tL.t2 * dLy;
-
-        // For the right boundary at angle a2:
-        //   inward normal = direction a2 - π/2  → (sin(a2), -cos(a2))
-        const ln2x = Math.sin(a2), ln2y = -Math.cos(a2);
-        const pivotR = { x: cx + half * ln2x, y: cy + half * ln2y };
-        const dRx = Math.cos(a2), dRy = Math.sin(a2);
-        const fRx = pivotR.x - cx, fRy = pivotR.y - cy;
-        const tR = solveLineCircle(fRx, fRy, dRx, dRy, R);
-        const iRx = pivotR.x + tR.t1 * dRx, iRy = pivotR.y + tR.t1 * dRy;
-        const oRx = pivotR.x + tR.t2 * dRx, oRy = pivotR.y + tR.t2 * dRy;
-
-        // Arc start/end angles: the outer points on the circle
-        const arcStart = Math.atan2(oLy - cy, oLx - cx);
-        const arcEnd   = Math.atan2(oRy - cy, oRx - cx);
-
-        // Find the intersection of the two edge lines (the "inner tip" of the slice)
-        // Left line:  pivotL + s * (cos(a1), sin(a1))
-        // Right line: pivotR + u * (cos(a2), sin(a2))
-        const tip = lineIntersect(pivotL.x, pivotL.y, dLx, dLy, pivotR.x, pivotR.y, dRx, dRy);
-
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.beginPath();
-
-        if (tip && tip.s >= 0 && tip.u >= 0) {
-          // Normal case: edges meet at a tip inside/near center
-          const tipX = tip.x - cx, tipY = tip.y - cy;
-          ctx.moveTo(tipX, tipY);
-          ctx.lineTo(oLx - cx, oLy - cy);
-          ctx.arc(0, 0, R, arcStart, arcEnd);
-          ctx.lineTo(tipX, tipY);
-        } else {
-          // Edges don't converge (very wide slices or large gap): just go inner→outer on each side
-          ctx.moveTo(iLx - cx, iLy - cy);
-          ctx.lineTo(oLx - cx, oLy - cy);
-          ctx.arc(0, 0, R, arcStart, arcEnd);
-          ctx.lineTo(iRx - cx, iRy - cy);
-          ctx.closePath();
-        }
-
-        ctx.fillStyle = colors[i % colors.length];
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    // Solve |f + t*d|² = R² → t² + 2(f·d)t + (|f|²-R²) = 0
-    // Returns the two t values (t1 <= t2)
-    function solveLineCircle(fx, fy, dx, dy, R) {
-      const a = dx*dx + dy*dy;
-      const b = 2 * (fx*dx + fy*dy);
-      const c = fx*fx + fy*fy - R*R;
-      const disc = Math.sqrt(b*b - 4*a*c);
-      return { t1: (-b - disc) / (2*a), t2: (-b + disc) / (2*a) };
-    }
-
-    // Intersect two parametric lines: p1 + s*d1 = p2 + u*d2
-    function lineIntersect(p1x, p1y, d1x, d1y, p2x, p2y, d2x, d2y) {
-      const denom = d1x * d2y - d1y * d2x;
-      if (Math.abs(denom) < 1e-10) return null;
-      const dx = p2x - p1x, dy = p2y - p1y;
-      const s = (dx * d2y - dy * d2x) / denom;
-      const u = (dx * d1y - dy * d1x) / denom;
-      return { x: p1x + s * d1x, y: p1y + s * d1y, s, u };
-    }
-
-    nSlider.addEventListener('input', draw);
-    gapSlider.addEventListener('input', draw);
-    draw();
-  </script>
-  <style>
+  /* ── DESIGN TOKENS ─────────────────────────────────────────────────────── */
   :root {
-    --ink: #0a0f1e;
-    --ink-light: #1c2340;
-    --paper: #f5f2eb;
-    --paper-warm: #ede9df;
-    --gold: #c9a84c;
-    --teal: #1a6b6b;
-    --teal-light: #2a9090;
-    --red: #8b2635;
-    --muted: #6b7280;
-    --success: #2d6a4f;
-    --border: rgba(10,15,30,0.12);
+    --black:   #000000;
+    --white:   #ffffff;
+    --navy:    #040066;
+    --navy-mid:#0a009f;
+    --cyan:    #00d4ff;
+    --cyan-dim: rgba(0,212,255,0.15);
+
+    --pink:    #ffa6b4;
+    --lavender:#d3beec;
+    --yellow:  #ffeda3;
+    --peach:   #ffc390;
+    --mint:    #c4ebc3;
+
+    --bg:      #f4f6fb;
+    --surface: #ffffff;
+    --surface-2: #eef1f8;
+
+    --text:    #000000;
+    --text-mid:#1a1a3a;
+    --muted:   #6b6b8a;
+
+    --border:  rgba(4,0,102,0.1);
+    --border-strong: rgba(4,0,102,0.2);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Instrument Sans', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
+    font-family: 'Noto Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
   }
 
@@ -282,192 +47,570 @@
     content: '';
     position: fixed; inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 10% 0%, rgba(201,168,76,0.07) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 90% 100%, rgba(26,107,107,0.06) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 50% at 0% 0%, rgba(0,212,255,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 70% at 100% 100%, rgba(4,0,102,0.05) 0%, transparent 55%);
     pointer-events: none; z-index: 0;
   }
 
-  /* ── HEADER ── */
+  /* ── HEADER ──────────────────────────────────────────────────────────────── */
   header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(245,242,235,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
+    position: sticky; top: 0; z-index: 200;
+    background: var(--navy);
+    height: 68px;
+    display: flex; align-items: stretch;
+    box-shadow: 0 2px 24px rgba(4,0,102,0.25);
   }
-  .logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; display: flex; align-items: center; gap: 0.6rem; }
-  .logo-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
-  .header-right { display: flex; align-items: center; gap: 1.5rem; }
-  .header-meta { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  /* ── LOADING ── */
-  .state-msg { display: flex; align-items: center; justify-content: center; min-height: 40vh; flex-direction: column; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
-  .spinner { width: 28px; height: 28px; border: 2px solid var(--border); border-top-color: var(--teal); border-radius: 50%; animation: spin 0.7s linear infinite; }
+  .header-logo {
+    display: flex; align-items: center;
+    padding: 0 2rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+    text-decoration: none;
+    gap: 0.85rem;
+    min-width: 220px;
+  }
+
+
+
+  .logo-text { display: flex; flex-direction: column; gap: 1px; }
+  .logo-name { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.02em; color: var(--white); line-height: 1.1; }
+  .logo-tagline { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; opacity: 0.8; line-height: 1.6; }
+
+  nav { display: flex; align-items: stretch; flex: 1; padding: 0 0.5rem; }
+
+  .nav-link {
+    display: flex; align-items: center;
+    padding: 0 1.25rem;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap; cursor: pointer;
+    background: none; border-top: none; border-left: none; border-right: none;
+    font-family: 'Noto Sans', sans-serif;
+  }
+  .nav-link:hover { color: var(--white); border-bottom-color: rgba(0,212,255,0.35); }
+  .nav-link.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+
+  .nav-badge {
+    font-family: 'Noto Sans Mono', monospace; font-size: 0.48rem; letter-spacing: 0.08em;
+    background: rgba(0,212,255,0.12); color: var(--cyan);
+    border: 1px dashed rgba(0,212,255,0.3);
+    padding: 0.1rem 0.35rem; border-radius: 2px;
+    margin-left: 0.45rem; text-transform: uppercase;
+  }
+
+  .header-right {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0 1.5rem;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+  }
+  .header-count { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); text-transform: uppercase; }
+  .git-link { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.15); padding: 0.35rem 0.8rem; border-radius: 3px; transition: all 0.18s; white-space: nowrap; }
+  .git-link:hover { color: var(--cyan); border-color: rgba(0,212,255,0.4); }
+  .git-link svg { width: 12px; height: 12px; }
+
+
+
+  /* ── LOADING ─────────────────────────────────────────────────────────────── */
+  .state-msg { display: flex; align-items: center; justify-content: center; min-height: 40vh; flex-direction: column; gap: 1rem; font-family: 'Noto Sans Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
+  .spinner { width: 26px; height: 26px; border: 2px solid var(--border); border-top-color: var(--cyan); border-radius: 50%; animation: spin 0.65s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* ── VIEWS ── */
+  /* ── VIEWS ───────────────────────────────────────────────────────────────── */
   #view-index, #view-detail { position: relative; z-index: 1; }
   #view-detail { display: none; }
 
-  /* ── INDEX ── */
-  .index-hero { padding: 5rem 3rem 3rem; max-width: 1200px; margin: 0 auto; }
-  .index-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; max-width: 640px; margin-bottom: 1rem; }
-  .index-hero h1 em { font-style: italic; color: var(--teal); }
-  .index-subtitle { color: var(--muted); font-size: 0.95rem; max-width: 500px; line-height: 1.6; margin-bottom: 2.5rem; }
+  /* ── HERO ────────────────────────────────────────────────────────────────── */
+  .index-hero { padding: 4.5rem 3rem 2.5rem; max-width: 1280px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
 
-  .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-  .filter-btn { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid var(--border); background: transparent; color: var(--muted); border-radius: 2rem; cursor: pointer; transition: all 0.18s; }
-  .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
-  .filter-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .hero-text h1 { font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 800; line-height: 1.05; color: var(--navy); max-width: 560px; margin-bottom: 0.9rem; letter-spacing: -0.025em; }
+  .hero-text h1 span { color: var(--cyan); position: relative; }
+  .hero-text h1 span::after { content: ''; position: absolute; left: 0; bottom: 3px; right: 0; height: 3px; background: var(--cyan); opacity: 0.25; }
+  .index-subtitle { color: var(--muted); font-size: 0.92rem; max-width: 440px; line-height: 1.65; font-weight: 400; }
 
-  /* search */
   .search-wrap { position: relative; }
-  .search-input {
-    font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.04em;
-    padding: 0.45rem 1rem 0.45rem 2.2rem;
-    border: 1px solid var(--border); border-radius: 2rem;
-    background: transparent; color: var(--ink);
-    width: 200px; transition: border-color 0.2s, width 0.3s;
-    outline: none;
-  }
-  .search-input:focus { border-color: var(--teal); width: 240px; }
+  .search-input { font-family: 'Noto Sans Mono', monospace; font-size: 0.75rem; letter-spacing: 0.03em; padding: 0.65rem 1.1rem 0.65rem 2.4rem; border: 1.5px solid var(--border-strong); border-radius: 4px; background: var(--white); color: var(--text); width: 220px; transition: border-color 0.2s, box-shadow 0.2s, width 0.3s; outline: none; }
+  .search-input:focus { border-color: var(--cyan); width: 270px; box-shadow: 0 0 0 3px rgba(0,212,255,0.12); }
   .search-input::placeholder { color: var(--muted); }
-  .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  .search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
 
-  /* grid */
-  .topics-grid { max-width: 1200px; margin: 0 auto; padding: 0 3rem 5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5px; background: var(--border); border: 1px solid var(--border); }
+  /* ── FILTER BAR ──────────────────────────────────────────────────────────── */
+  .filter-section { max-width: 1280px; margin: 0 auto; padding: 0 3rem 2rem; border-bottom: 1px solid var(--border); }
+  .filter-label { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
+  .filter-bar { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .filter-btn { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1.5px solid var(--border-strong); background: var(--surface); color: var(--muted); border-radius: 3px; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+  .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
-  /* card */
-  .topic-card { background: var(--paper); padding: 2rem; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden; animation: fadeUp 0.35s ease forwards; opacity: 0; }
-  .topic-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--teal)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-  .topic-card:hover { background: var(--paper-warm); }
-  .topic-card:hover::after { transform: scaleX(1); }
+  /* ── GRID ────────────────────────────────────────────────────────────────── */
+  .topics-grid { max-width: 1280px; margin: 0 auto; padding: 2.5rem 3rem 5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1px; background: var(--border); }
 
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-  .card-score { display: flex; flex-direction: column; align-items: flex-end; }
-  .score-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; line-height: 1; }
-  .score-denom { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
-  .score-bar { width: 48px; height: 3px; background: var(--paper-warm); margin-top: 4px; border-radius: 2px; overflow: hidden; }
-  .score-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--teal)); }
-  .card-title { font-family: 'DM Serif Display', serif; font-size: 1.35rem; line-height: 1.2; flex: 1; padding-right: 1rem; }
-  .card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+  /* ── CARD ────────────────────────────────────────────────────────────────── */
+  .topic-card { background: var(--surface); padding: 1.75rem 2rem; cursor: pointer; position: relative; overflow: hidden; transition: background 0.18s; animation: fadeUp 0.35s ease forwards; opacity: 0; }
+  .topic-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--card-accent, var(--cyan)); opacity: 0; transition: opacity 0.2s; }
+  .topic-card:hover { background: var(--surface-2); }
+  .topic-card:hover::before { opacity: 1; }
 
-  .tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 2px; border: 1px solid; }
-  .tag-blue  { color: var(--teal); border-color: rgba(26,107,107,0.3); background: rgba(26,107,107,0.05); }
-  .tag-gold  { color: #8a6e20; border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.08); }
-  .tag-red   { color: var(--red); border-color: rgba(139,38,53,0.3); background: rgba(139,38,53,0.05); }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.85rem; }
+  .card-score { text-align: right; flex-shrink: 0; }
+  .score-num { font-size: 2rem; font-weight: 800; line-height: 1; color: var(--navy); }
+  .score-denom { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .score-bar { width: 44px; height: 3px; background: var(--surface-2); margin-top: 5px; border-radius: 2px; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--navy), var(--cyan)); }
+  .card-title { font-size: 1.15rem; font-weight: 700; line-height: 1.25; flex: 1; padding-right: 1rem; letter-spacing: -0.01em; }
+  .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.25rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 400; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1rem; }
 
-  .card-stakeholders { display: flex; align-items: center; gap: 0.4rem; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); }
-  .avatar { width: 22px; height: 22px; border-radius: 50%; background: var(--ink-light); color: var(--paper); font-size: 0.55rem; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; border: 1.5px solid var(--paper); }
+  .tag { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; font-weight: 500; border: 1px solid transparent; }
+  .tag-payment    { background: transparent; color: #005f7a; border-color: rgba(0,212,255,0.6); }
+  .tag-research   { background: transparent; color: #4a2d7a; border-color: rgba(211,190,236,0.9); }
+  .tag-creditcard { background: transparent; color: #7a1525; border-color: rgba(255,166,180,0.8); }
+  .tag-regulation { background: transparent; color: #7a3500; border-color: rgba(255,195,144,0.9); }
+  .tag-blockchain { background: transparent; color: #1a5219; border-color: rgba(196,235,195,1.0); }
+  .tag-infra      { background: transparent; color: #665500; border-color: rgba(200,180,60,0.7); }
+  .tag-digipay    { background: transparent; color: #004f66; border-color: rgba(0,212,255,0.55); }
+  .tag-trusted    { background: transparent; color: #3d2070; border-color: rgba(211,190,236,0.9); }
+  .tag-bankreg    { background: transparent; color: #6a2e00; border-color: rgba(255,195,144,0.9); }
+  .tag-trends     { background: transparent; color: #5a4a00; border-color: rgba(200,180,60,0.65); }
+  .tag-itsec      { background: transparent; color: #6a1020; border-color: rgba(255,166,180,0.75); }
+  .tag-market     { background: transparent; color: #174a16; border-color: rgba(196,235,195,1.0); }
+  .tag-default    { background: transparent; color: var(--navy); border-color: rgba(4,0,102,0.3); }
+
+  /* Category badges */
+  .cat-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.18rem 0.6rem; border-radius: 2px; font-weight: 600; border: 1px solid transparent; white-space: nowrap; }
+  .cat-trusted-services  { background: rgba(211,190,236,0.35); color: #4a2d7a; border-color: rgba(211,190,236,0.75); }
+  .cat-card              { background: rgba(0,212,255,0.12);    color: #005070; border-color: rgba(0,212,255,0.35); }
+  .cat-regulatory        { background: rgba(255,195,144,0.35);  color: #7a3500; border-color: rgba(255,195,144,0.75); }
+  .cat-banking-regulatory{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
+  .cat-it-security       { background: rgba(255,166,180,0.28);  color: #6a1020; border-color: rgba(255,166,180,0.65); }
+  .cat-miscellaneous     { background: rgba(4,0,102,0.06);      color: var(--navy); border-color: rgba(4,0,102,0.18); }
+
+  /* Category filter row */
+  .cat-filter-section { max-width: 1280px; margin: 0 auto; padding: 0.75rem 3rem 0; }
+
+  .card-stakeholders { display: flex; align-items: center; gap: 0.5rem; font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .avatar { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 0.52rem; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans Mono', monospace; border: 2px solid var(--surface); font-weight: 600; }
   .avatar-stack { display: flex; }
-  .avatar-stack .avatar { margin-left: -6px; }
+  .avatar-stack .avatar { margin-left: -7px; }
   .avatar-stack .avatar:first-child { margin-left: 0; }
+  .no-results { grid-column: 1/-1; padding: 4rem; text-align: center; font-family: 'Noto Sans Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; background: var(--surface); }
 
-  /* no results */
-  .no-results { grid-column: 1/-1; padding: 4rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
-
-  /* ── DETAIL ── */
-  .detail-nav { max-width: 1200px; margin: 0 auto; padding: 1.5rem 3rem 0; display: flex; align-items: center; justify-content: space-between; }
-  .back-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; }
-  .back-btn:hover { color: var(--ink); }
+  /* ── DETAIL ──────────────────────────────────────────────────────────────── */
+  .detail-topbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 50; }
+  .detail-nav { max-width: 1280px; margin: 0 auto; padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .back-btn { font-family: 'Noto Sans Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; font-weight: 500; }
+  .back-btn:hover { color: var(--navy); }
   .back-btn svg { width: 14px; height: 14px; }
+  .detail-breadcrumb { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem; }
+  .breadcrumb-sep { opacity: 0.4; }
+  .breadcrumb-current { color: var(--navy); font-weight: 600; }
 
-  .detail-layout { max-width: 1200px; margin: 0 auto; padding: 3rem; display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
+  .detail-layout { max-width: 1280px; margin: 0 auto; padding: 3rem; display: grid; grid-template-columns: 1fr 300px; gap: 4rem; }
 
-  .detail-category { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
-  .detail-category::before { content: ''; display: block; width: 20px; height: 1px; background: var(--teal); }
-  .detail-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; margin-bottom: 1.5rem; }
+  .score-band { background: var(--navy); color: var(--white); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 2rem; margin-bottom: 2.5rem; }
+  .score-band-num { font-size: 4.5rem; font-weight: 800; line-height: 1; color: var(--cyan); }
+  .score-band-right { flex: 1; }
+  .score-band-label { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.5rem; }
+  .score-band-bar { height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; max-width: 200px; }
+  .score-band-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), rgba(0,212,255,0.35)); border-radius: 3px; }
+
+  .detail-category { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+  .detail-category::before { content: ''; display: block; width: 18px; height: 2px; background: var(--cyan); }
+  .detail-title { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.08; margin-bottom: 1.25rem; letter-spacing: -0.025em; color: var(--navy); }
   .detail-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem; }
 
-  .detail-score-display { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 2.5rem; padding: 1.5rem; background: var(--ink); color: var(--paper); }
-  .detail-score-big { font-family: 'DM Serif Display', serif; font-size: 4rem; line-height: 1; }
-  .detail-score-meta { display: flex; flex-direction: column; gap: 0.2rem; }
-  .detail-score-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
-  .detail-score-bar { width: 120px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; overflow: hidden; margin-top: 0.25rem; }
-  .detail-score-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--teal-light)); border-radius: 2px; }
-
-  .section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .section-label { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-  .section-body { font-size: 0.95rem; line-height: 1.7; color: var(--ink-light); margin-bottom: 2.5rem; }
+  .section-body { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); margin-bottom: 2.5rem; font-weight: 400; }
 
-  .actions-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
-  .action-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; border: 1px solid var(--border); background: var(--paper-warm); transition: border-color 0.2s, transform 0.2s; }
-  .action-item:hover { border-color: var(--gold); transform: translateX(4px); }
-  .action-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--gold); font-weight: 500; margin-top: 2px; flex-shrink: 0; }
-  .action-text { font-size: 0.88rem; line-height: 1.5; flex: 1; }
-  .action-status { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; flex-shrink: 0; align-self: center; }
-  .status-open        { background: rgba(201,168,76,0.12); color: #8a6e20; }
-  .status-in-progress { background: rgba(26,107,107,0.12); color: var(--teal); }
-  .status-done        { background: rgba(45,106,79,0.12);  color: var(--success); }
+  .actions-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .action-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; border: 1px solid var(--border); background: var(--surface); transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s; border-radius: 2px; }
+  .action-item:hover { border-color: var(--cyan); transform: translateX(4px); box-shadow: -3px 0 0 var(--cyan); }
+  .action-num { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; color: var(--cyan); font-weight: 600; margin-top: 2px; flex-shrink: 0; }
+  .action-text { font-size: 0.86rem; line-height: 1.52; flex: 1; color: var(--text-mid); }
+  .action-status { font-family: 'Noto Sans Mono', monospace; font-size: 0.55rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; flex-shrink: 0; align-self: flex-start; margin-top: 2px; font-weight: 600; }
+  .status-open        { background: rgba(255,237,163,0.55); color: #665500; }
+  .status-in-progress { background: rgba(0,212,255,0.12);  color: #005f7a; }
+  .status-done        { background: rgba(196,235,195,0.55); color: #1a5219; }
 
-  .sidebar-card { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: var(--paper-warm); }
-  .sidebar-card h3 { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
-  .stakeholder-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-  .stakeholder-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: 'DM Mono', monospace; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .stakeholder-name { font-size: 0.875rem; font-weight: 600; display: block; }
-  .stakeholder-role { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); }
-  .meta-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.82rem; }
-  .meta-row:last-child { border-bottom: none; }
-  .meta-key { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase; }
-  .meta-val { font-weight: 500; }
+  .sidebar-card { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.25rem; background: var(--surface); border-radius: 2px; }
+  .sidebar-card h3 { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
+  .stakeholder-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+  .stakeholder-item:last-child { margin-bottom: 0; }
+  .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; }
+  .stakeholder-name { font-size: 0.85rem; font-weight: 600; display: block; color: var(--text); }
+  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+  .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .meta-key { color: var(--muted); font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .meta-val { font-weight: 600; font-size: 0.82rem; color: var(--navy); }
+  .meta-row-block { padding: 0.6rem 0; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.45rem; }
+  .meta-row-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .meta-pill { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 2px; background: rgba(4,0,102,0.06); border: 1px solid rgba(4,0,102,0.15); color: var(--navy); font-weight: 500; }
 
-  /* git badge */
-  .git-link { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid var(--border); padding: 0.35rem 0.8rem; border-radius: 2rem; transition: all 0.18s; }
-  .git-link:hover { color: var(--ink); border-color: var(--ink); }
-  .git-link svg { width: 13px; height: 13px; }
+  .priority-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; }
+  .priority-critical    { background: rgba(255,166,180,0.35); color: #7a1525; }
+  .priority-high        { background: rgba(255,195,144,0.4);  color: #7a3500; }
+  .priority-medium-high { background: rgba(255,237,163,0.55); color: #665500; }
+  .priority-medium      { background: rgba(196,235,195,0.5);  color: #1a5219; }
+  .priority-low-medium  { background: rgba(211,190,236,0.35); color: #4a2d7a; }
+  .priority-low         { background: rgba(4,0,102,0.06);     color: var(--navy); }
 
-  @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
-  .fade-up { animation: fadeUp 0.38s ease forwards; opacity: 0; }
+  /* ── MANAGEMENT SUMMARY ─────────────────────────────────────────────────── */
+  .mgmt-summary {
+    border-left: 3px solid var(--cyan);
+    background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(4,0,102,0.03) 100%);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 0 2px 2px 0;
+  }
+  .mgmt-summary p { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); font-weight: 400; }
 
-  @media (max-width: 768px) {
-    header { padding: 0 1.25rem; }
-    .index-hero { padding: 3rem 1.5rem 2rem; }
-    .topics-grid { padding: 0 1.5rem 3rem; grid-template-columns: 1fr; }
-    .detail-layout { grid-template-columns: 1fr; padding: 1.5rem; gap: 2rem; }
-    .detail-nav { padding: 1rem 1.5rem 0; flex-wrap: wrap; gap: 0.75rem; }
-    .search-input { width: 160px; }
+  /* ── RISKS & CHANCES ─────────────────────────────────────────────────────── */
+  .risks-chances-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 700px) { .risks-chances-grid { grid-template-columns: 1fr; } }
+  .rc-card { border: 1px solid var(--border); padding: 1.25rem 1.4rem; border-radius: 2px; background: var(--surface); }
+  .rc-card.risks   { border-top: 3px solid var(--pink); }
+  .rc-card.chances { border-top: 3px solid var(--mint); }
+  .rc-header { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .rc-card.risks   .rc-header { color: #7a1525; }
+  .rc-card.chances .rc-header { color: #1a5219; }
+  .rc-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .rc-card.risks   .rc-dot { background: var(--pink); }
+  .rc-card.chances .rc-dot { background: var(--mint); }
+  .rc-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .rc-item { display: flex; gap: 0.65rem; align-items: flex-start; font-size: 0.83rem; line-height: 1.52; color: var(--text-mid); }
+  .rc-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .rc-card.risks   .rc-item::before { background: rgba(255,166,180,0.7); }
+  .rc-card.chances .rc-item::before { background: rgba(196,235,195,0.9); border: 1px solid #5a9e5a; }
+
+  /* ── SOURCES ─────────────────────────────────────────────────────────────── */
+  .sources-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .source-item {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid var(--border); border-radius: 2px;
+    background: var(--surface); text-decoration: none;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .source-item:hover { border-color: var(--cyan); transform: translateX(3px); box-shadow: -3px 0 0 var(--cyan); }
+  .source-icon { width: 28px; height: 28px; border-radius: 2px; background: var(--cyan-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .source-icon svg { width: 13px; height: 13px; color: var(--navy); }
+  .source-label { font-size: 0.84rem; font-weight: 600; color: var(--navy); flex: 1; }
+  .source-arrow { color: var(--muted); flex-shrink: 0; }
+  .source-arrow svg { width: 12px; height: 12px; }
+
+  /* ── DASHBOARD / WHEEL ───────────────────────────────────────────────────── */
+  .dashboard-layout { max-width: 1100px; margin: 0 auto; padding: 3rem; }
+  .dashboard-hero { margin-bottom: 2.5rem; }
+  .dashboard-hero h2 { font-size: 2rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.35rem; }
+  .dashboard-hero p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .wheel-wrap { display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; }
+  .wheel-svg-container { flex: 1; min-width: 320px; max-width: 640px; }
+  .wheel-svg-container svg { width: 100%; height: auto; display: block; }
+  .wheel-aside { flex: 0 0 210px; display: flex; flex-direction: column; gap: 1.25rem; }
+  .aside-card { border: 1px solid var(--border); padding: 1.25rem 1.4rem; background: var(--surface); border-radius: 2px; }
+  .aside-card h4 { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.65rem; font-size: 0.8rem; color: var(--text-mid); }
+  .legend-item:last-child { margin-bottom: 0; }
+  .legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .legend-count { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-left: auto; }
+  .wheel-hint { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; color: var(--muted); line-height: 1.8; }
+  .wheel-hint span { display: flex; gap: 0.5rem; }
+  #wheel-tt { position: fixed; z-index: 9999; display: none; pointer-events: none; background: var(--navy); color: var(--white); padding: 0.6rem 1rem; border-radius: 3px; max-width: 230px; box-shadow: 0 6px 24px rgba(4,0,102,0.35); }
+  #wheel-tt strong { display: block; font-size: 0.83rem; line-height: 1.3; margin-bottom: 0.3rem; }
+  #wheel-tt span { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--cyan); letter-spacing: 0.04em; }
+
+  /* ── EDITOR ──────────────────────────────────────────────────────────────── */
+  #view-editor { display: none; }
+  .editor-layout { max-width: 860px; margin: 0 auto; padding: 3rem; }
+  .editor-header { margin-bottom: 2.5rem; }
+  .editor-header h2 { font-size: 1.9rem; font-weight: 800; color: var(--navy); letter-spacing: -.02em; margin-bottom: .3rem; }
+  .editor-header p  { font-size: .85rem; color: var(--muted); }
+
+  .ed-section { margin-bottom: 2rem; }
+  .ed-section-title {
+    font-family: 'Noto Sans Mono', monospace; font-size: .6rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+  .ed-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .ed-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .ed-row.full { grid-template-columns: 1fr; }
+  .ed-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+
+  .ed-field { display: flex; flex-direction: column; gap: .4rem; }
+  .ed-label {
+    font-family: 'Noto Sans Mono', monospace; font-size: .62rem;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500;
+  }
+  .ed-label .req { color: var(--cyan); margin-left: 2px; }
+
+  .ed-input, .ed-select, .ed-textarea {
+    font-family: 'Noto Sans', sans-serif; font-size: .87rem;
+    padding: .6rem .9rem; border: 1.5px solid var(--border-strong);
+    border-radius: 3px; background: var(--white); color: var(--text);
+    outline: none; transition: border-color .18s, box-shadow .18s; width: 100%;
+  }
+  .ed-input:focus, .ed-select:focus, .ed-textarea:focus {
+    border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,212,255,.1);
+  }
+  .ed-input.error, .ed-select.error { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(255,166,180,.15); }
+  .ed-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+  /* Score slider */
+  .score-slider-wrap { display: flex; align-items: center; gap: 1rem; }
+  .ed-slider {
+    -webkit-appearance: none; appearance: none;
+    flex: 1; height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--navy) 0%, var(--cyan) 100%);
+    outline: none; cursor: pointer;
+  }
+  .ed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 18px;
+    border-radius: 50%; background: var(--navy); border: 3px solid var(--cyan); cursor: pointer;
+  }
+  .score-display {
+    font-size: 1.5rem; font-weight: 800; color: var(--navy);
+    min-width: 2.2rem; text-align: center; line-height: 1;
+  }
+  .score-denom-ed { font-family: 'Noto Sans Mono', monospace; font-size: .6rem; color: var(--muted); }
+
+
+  /* Tags & stakeholders — dropdown + pill pattern */
+  .ed-multi-wrap { display: flex; flex-direction: column; gap: .6rem; }
+  .ed-multi-row  { display: flex; gap: .6rem; align-items: center; }
+  .ed-multi-row .ed-select { flex: 1; }
+  .ed-pills { display: flex; flex-wrap: wrap; gap: .35rem; min-height: 28px; }
+  .ed-pill {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-family: 'Noto Sans Mono', monospace; font-size: .62rem; letter-spacing: .06em;
+    text-transform: uppercase; padding: .25rem .55rem .25rem .75rem;
+    border-radius: 3px; border: 1.5px solid var(--navy);
+    background: var(--navy); color: var(--white);
+    animation: fadeUp .18s ease forwards;
+  }
+  .ed-pill .pill-x {
+    cursor: pointer; opacity: .6; font-size: .9rem; line-height: 1;
+    border: none; background: none; color: inherit; padding: 0;
+    transition: opacity .12s;
+  }
+  .ed-pill .pill-x:hover { opacity: 1; }
+  .ed-pill.sh-pill { background: rgba(4,0,102,.07); color: var(--navy); border-color: var(--border-strong); }
+  .ed-pill.sh-pill .pill-av {
+    width: 16px; height: 16px; border-radius: 50%; background: var(--navy);
+    color: var(--white); font-size: .48rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+
+
+  /* Dynamic lists (actions, risks, chances, sources) */
+  .ed-dyn-list { display: flex; flex-direction: column; gap: .45rem; margin-bottom: .6rem; }
+  .ed-dyn-row { display: flex; gap: .5rem; align-items: flex-start; }
+  .ed-dyn-row .ed-input { flex: 1; }
+  .ed-dyn-row .ed-select { width: 130px; flex-shrink: 0; }
+  .ed-dyn-row .ed-input.src-url { width: 50%; flex: none; }
+  .ed-dyn-row .ed-input.src-label { flex: 1; }
+  .ed-rem-btn {
+    width: 30px; height: 36px; flex-shrink: 0; background: none;
+    border: 1.5px solid var(--border-strong); border-radius: 3px;
+    color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1;
+    transition: all .14s; display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .ed-rem-btn:hover { border-color: var(--pink); color: #7a1525; background: rgba(255,166,180,.1); }
+  .ed-add-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: .62rem; letter-spacing: .07em;
+    text-transform: uppercase; padding: .4rem .9rem; border-radius: 3px;
+    border: 1.5px dashed var(--border-strong); background: none;
+    color: var(--muted); cursor: pointer; transition: all .15s; font-weight: 500;
+    display: inline-flex; align-items: center; gap: .4rem;
+  }
+  .ed-add-btn:hover { border-color: var(--cyan); color: var(--navy); }
+
+  /* Duplicate warning */
+  .ed-dup-warning {
+    display: none; background: rgba(255,166,180,.15); border: 1px solid rgba(255,166,180,.5);
+    border-left: 3px solid var(--pink); padding: .9rem 1.2rem; border-radius: 2px;
+    font-size: .84rem; color: #7a1525; margin-bottom: 1.5rem; line-height: 1.55;
+  }
+  .ed-dup-warning strong { font-weight: 700; }
+
+  /* Action bar */
+  .editor-actions {
+    display: flex; gap: 1rem; align-items: center;
+    padding: 1.5rem 0; border-top: 1px solid var(--border); margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .ed-save-btn {
+    font-family: 'Noto Sans', sans-serif; font-size: .88rem; font-weight: 700;
+    padding: .75rem 2rem; background: var(--navy); color: var(--white);
+    border: none; border-radius: 3px; cursor: pointer; letter-spacing: .02em;
+    transition: background .18s, transform .12s;
+  }
+  .ed-save-btn:hover { background: var(--navy-mid); }
+  .ed-save-btn:active { transform: scale(.98); }
+  .ed-save-btn:disabled { opacity: .45; cursor: not-allowed; }
+  .ed-reset-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: .65rem; letter-spacing: .07em;
+    text-transform: uppercase; padding: .55rem 1.1rem; background: none;
+    border: 1.5px solid var(--border-strong); border-radius: 3px;
+    color: var(--muted); cursor: pointer; transition: all .15s;
+  }
+  .ed-reset-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .ed-status { font-family: 'Noto Sans Mono', monospace; font-size: .65rem; color: var(--muted); }
+  .ed-status.ok   { color: #1a5219; }
+  .ed-status.fail { color: #7a1525; }
+
+  /* ── ANIMATIONS ──────────────────────────────────────────────────────────── */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  .fade-up { animation: fadeUp 0.35s ease forwards; opacity: 0; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .detail-layout { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; }
+  }
+  @media (max-width: 720px) {
+    header { height: auto; flex-wrap: wrap; }
+    .header-logo { min-width: unset; padding: 0.75rem 1.25rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); width: 100%; }
+    nav { overflow-x: auto; padding: 0 0.25rem; -webkit-overflow-scrolling: touch; }
+    .nav-link { padding: 0 0.85rem; font-size: 0.75rem; }
+    .nav-badge { display: none; }
+    .header-right { padding: 0.6rem 1.25rem; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; justify-content: space-between; }
+    .index-hero { padding: 2.5rem 1.5rem 1.5rem; }
+    .filter-section { padding: 0 1.5rem 1.5rem; }
+    .topics-grid { padding: 1.5rem 1.5rem 3rem; grid-template-columns: 1fr; }
+    .detail-nav { padding: 0 1.5rem; }
+    .detail-topbar { top: 0; }
   }
 </style>
 </head>
 <body>
 
+<!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
 <header>
-  <div class="logo"><span class="logo-dot"></span><span id="site-title">Strategic Intelligence</span></div>
+
+  <a class="header-logo" href="#" onclick="showIndex(); return false;">
+    <img src="G+D Netcetera Logo White_sRGB_72.png" alt="G+D Netcetera" style="width:303px;height:33px;object-fit:contain;border-radius:4px;">
+    <div class="logo-text">
+      <span class="logo-name" id="site-title">Company Name</span>
+      <span class="logo-tagline">CPO Strategic Intelligence</span>
+    </div>
+  </a>
+
+  <!-- NAV LINKS — update href values and remove nav-badge when pages are ready -->
+  <nav>
+    <button class="nav-link active" onclick="showIndex()">Topics</button>
+    <button class="nav-link" onclick="showDashboard()">Dashboard</button>
+    <a class="nav-link" href="#">Stakeholders <span class="nav-badge">soon</span></a>
+    <a class="nav-link" href="#">Reports <span class="nav-badge">soon</span></a>
+    <button class="nav-link" onclick="showEditor()">Editor</button>
+  </nav>
+
   <div class="header-right">
-    <span class="header-meta" id="header-meta">Loading…</span>
+    <span class="header-count" id="header-meta">—</span>
     <a class="git-link" id="github-link" href="#" target="_blank">
       <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
       Edit on GitHub
     </a>
   </div>
+
 </header>
 
-<!-- INDEX VIEW -->
+<!-- ══ INDEX VIEW ══════════════════════════════════════════════════════════ -->
 <div id="view-index">
   <div class="index-hero">
-    <h1 id="hero-title">Financial Topics<br><em>Under Scrutiny</em></h1>
-    <p class="index-subtitle" id="hero-subtitle">A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.</p>
-    <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
-      <div class="search-wrap">
-        <svg class="search-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="5"/><path d="M11 11l3 3"/></svg>
-        <input class="search-input" id="search-input" type="text" placeholder="Search topics…" oninput="applyFilters()">
-      </div>
+    <div class="hero-text">
+      <h1>Strategic Topics<br><span>Under Scrutiny</span></h1>
+      <p class="index-subtitle" id="hero-subtitle">A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.</p>
     </div>
+    <div class="search-wrap">
+      <svg class="search-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="5"/><path d="M11 11l3 3"/></svg>
+      <input class="search-input" id="search-input" type="text" placeholder="Search topics…" oninput="applyFilters()">
+    </div>
+  </div>
+
+  <!-- ── TO-DO BOX ──────────────────────────────────────────────────────── -->
+  <div style="max-width: 1280px; margin: 1.5rem auto 0; padding: 0 3rem;">
+    <div style="
+      background: var(--white);
+      border: 1.5px solid var(--border-strong);
+      border-left: 4px solid #040066;
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+    ">
+      <div style="
+        font-family: 'Noto Sans Mono', monospace;
+        font-size: 0.6rem; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--muted);
+        margin-bottom: 0.9rem;
+      ">To-Do</div>
+      <ul id="todo-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Replace placeholder box with dashboard chart
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Review and update topic scores for Q2
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Assign missing stakeholders to open topics
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── INLINE WHEEL CHART ─────────────────────────────────────────────── -->
+  <div style="max-width: 1280px; margin: 1.5rem auto 0; padding: 0 3rem;">
+    <div style="
+      background: var(--white);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+    ">
+      <svg id="index-wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;height:auto;display:block;margin:0 auto;"></svg>
+    </div>
+  </div>
+<div id="index-wheel-tt" style="position:fixed;z-index:9999;display:none;pointer-events:none;background:#040066;color:#fff;padding:.55rem .95rem;border-radius:3px;max-width:220px;box-shadow:0 6px 22px rgba(4,0,102,.35);font-size:.82rem;"></div>
+
+  <div class="cat-filter-section">
+    <div class="filter-label">Filter by category</div>
+    <div class="filter-bar" id="cat-filter-bar"></div>
+  </div>
+
+  <div class="filter-section">
+    <div class="filter-label">Filter by tag</div>
     <div class="filter-bar" id="filter-bar"></div>
   </div>
-  <div id="topics-container" style="position:relative;z-index:1;"></div>
+
+  <div id="topics-container"></div>
 </div>
 
-<!-- DETAIL VIEW -->
+<!-- ══ DETAIL VIEW ═════════════════════════════════════════════════════════ -->
 <div id="view-detail">
-  <div class="detail-nav">
-    <button class="back-btn" onclick="showIndex()">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
-      All Topics
-    </button>
+  <div class="detail-topbar">
+    <div class="detail-nav">
+      <button class="back-btn" onclick="showIndex()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
+        All Topics
+      </button>
+      <div class="detail-breadcrumb">
+        <span>Topics</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current" id="breadcrumb-title">—</span>
+      </div>
+    </div>
   </div>
   <div class="detail-layout">
     <div id="detail-main"></div>
@@ -475,88 +618,378 @@
   </div>
 </div>
 
-<script>
-// ── Config ─────────────────────────────────────────────────────────────────
-// Point this to your raw topics.json file.
-// On GitHub Pages this will be: './topics.json'
-// If you rename the file or move it, update this path.
-const DATA_URL = './topics.json';
+<!-- ══ DASHBOARD VIEW ══════════════════════════════════════════════════════ -->
+<div id="view-dashboard" style="display:none">
+  <div class="dashboard-layout">
+    <div class="dashboard-hero fade-up">
+      <h2>Topic Landscape</h2>
+      <p>All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.</p>
+    </div>
+    <div class="wheel-wrap">
+      <div class="wheel-svg-container">
+        <svg id="wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <div class="wheel-aside">
+        <div class="aside-card">
+          <h4>Categories</h4>
+          <div id="wheel-legend-items"></div>
+        </div>
+        <div class="aside-card">
+          <h4>How to read</h4>
+          <div class="wheel-hint">
+            <span>● Inner ring = score 10</span>
+            <span>● Outer edge = score 1</span>
+            <span>● Topics may appear in multiple slices</span>
+            <span>● Hover for title · click to open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="wheel-tt"></div>
 
-// Optional: link to your GitHub repo so readers can suggest edits
+<!-- ══ EDITOR VIEW ═════════════════════════════════════════════════════════ -->
+<div id="view-editor" style="display:none">
+  <div class="editor-layout">
+
+    <div class="editor-header fade-up">
+      <h2>Topic Editor</h2>
+      <p>Add a new topic to the database. Fill in all required fields marked <span style="color:var(--cyan)">*</span>, then download the updated <code>topics.json</code> and replace the file in your repository.</p>
+    </div>
+
+    <div class="ed-dup-warning" id="ed-dup-warning">
+      <strong>Duplicate detected:</strong> A topic with this title already exists. Please choose a different name or edit the existing topic in <code>topics.json</code>.
+    </div>
+
+    <!-- IDENTITY -->
+    <div class="ed-section">
+      <div class="ed-section-title">Identity</div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-title">Topic Title <span class="req">*</span></label>
+          <input class="ed-input" id="ed-title" type="text" placeholder="e.g. Open Finance API Standardisation" oninput="edCheckDuplicate()">
+        </div>
+      </div>
+      <div class="ed-row" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+        <div class="ed-field">
+          <label class="ed-label">Importance Score <span class="req">*</span></label>
+          <div class="score-slider-wrap">
+            <input class="ed-slider" id="ed-score" type="range" min="1" max="10" value="5"
+              oninput="document.getElementById('ed-score-display').textContent=this.value">
+            <div>
+              <div class="score-display" id="ed-score-display">5</div>
+              <div class="score-denom-ed">/ 10</div>
+            </div>
+          </div>
+        </div>
+        <div class="ed-field">
+          <label class="ed-label" for="ed-category">Category <span class="req">*</span></label>
+          <select class="ed-select" id="ed-category">
+            <option value="">— select —</option>
+            <option>Trusted Services</option><option>Card</option><option>Regulatory</option>
+            <option>Banking Regulatory</option><option>IT Security</option><option>Miscellaneous</option>
+          </select>
+        </div>
+        <div class="ed-field">
+          <label class="ed-label" for="ed-priority">Priority <span class="req">*</span></label>
+          <select class="ed-select" id="ed-priority">
+            <option value="">— select —</option>
+            <option>Critical</option><option>High</option><option>Medium-High</option>
+            <option>Medium</option><option>Low-Medium</option><option>Low</option>
+          </select>
+        </div>
+        <div class="ed-field">
+          <label class="ed-label" for="ed-horizon">Time Horizon</label>
+          <select class="ed-select" id="ed-horizon">
+            <option value="">— select —</option>
+            <option>0–6 months</option><option>6–9 months</option>
+            <option>6–12 months</option><option>12–18 months</option>
+            <option>12–24 months</option><option>18–24 months</option>
+            <option>18–30 months</option><option>18–36 months</option>
+            <option>24–36 months</option><option>24–48 months</option>
+            <option>24–60 months</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAGS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Tags</div>
+      <div class="ed-multi-wrap">
+        <div class="ed-multi-row">
+          <select class="ed-select" id="ed-tags-select" onchange="edAddPill('tag',this)">
+            <option value="">— select a tag —</option>
+          </select>
+        </div>
+        <div class="ed-pills" id="ed-tags-pills"></div>
+      </div>
+    </div>
+
+    <!-- STAKEHOLDERS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Stakeholders</div>
+      <div class="ed-multi-wrap">
+        <div class="ed-multi-row">
+          <select class="ed-select" id="ed-sh-select" onchange="edAddPill('sh',this)">
+            <option value="">— select a stakeholder —</option>
+          </select>
+        </div>
+        <div class="ed-pills" id="ed-sh-pills"></div>
+      </div>
+    </div>
+
+    <!-- DESCRIPTIONS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Descriptions</div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-mgmt">Management Summary</label>
+          <textarea class="ed-textarea" id="ed-mgmt" placeholder="2–4 sentence executive summary for leadership…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-desc">Description <span class="req">*</span></label>
+          <textarea class="ed-textarea" id="ed-desc" placeholder="Short description shown on the topic card…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-extdesc">Extended Description</label>
+          <textarea class="ed-textarea" style="min-height:130px" id="ed-extdesc" placeholder="Full in-depth analysis…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSITION -->
+    <div class="ed-section">
+      <div class="ed-section-title">Position</div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-position">Our Position</label>
+          <input class="ed-input" id="ed-position" type="text" placeholder="e.g. Monitor, Engage, Lead, Oppose…">
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACTS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Impacts</div>
+      <div class="ed-dyn-list" id="ed-impacts-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('impacts')">+ Add Impact</button>
+    </div>
+
+    <!-- DRIVEN BY -->
+    <div class="ed-section">
+      <div class="ed-section-title">Driven By</div>
+      <div class="ed-dyn-list" id="ed-drivenby-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('drivenby')">+ Add Driver</button>
+    </div>
+
+    <!-- WORKING GROUPS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Associated Working Groups</div>
+      <div class="ed-dyn-list" id="ed-wg-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('wg')">+ Add Working Group</button>
+    </div>
+
+    <!-- RISKS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Risks</div>
+      <div class="ed-dyn-list" id="ed-risks-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('risks')">+ Add Risk</button>
+    </div>
+
+    <!-- CHANCES -->
+    <div class="ed-section">
+      <div class="ed-section-title">Chances</div>
+      <div class="ed-dyn-list" id="ed-chances-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('chances')">+ Add Chance</button>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Short-Term Actions</div>
+      <div class="ed-dyn-list" id="ed-actions-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('actions')">+ Add Action</button>
+    </div>
+
+    <!-- SOURCES -->
+    <div class="ed-section">
+      <div class="ed-section-title">Sources &amp; References</div>
+      <div class="ed-dyn-list" id="ed-sources-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('sources')">+ Add Source</button>
+    </div>
+
+    <!-- SAVE BAR -->
+    <div class="editor-actions">
+      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()">⬇ Download updated topics.json</button>
+      <button class="ed-reset-btn" onclick="edReset()">Clear form</button>
+      <span class="ed-status" id="ed-status"></span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Config ──────────────────────────────────────────────────────────────────
+const DATA_URL    = './topics.json';
 const GITHUB_REPO = ''; // e.g. 'https://github.com/yourorg/your-repo'
 
-// ── State ──────────────────────────────────────────────────────────────────
-let db = null;           // full parsed topics.json
-let activeTag = null;
-let searchQuery = '';
+// ── State ───────────────────────────────────────────────────────────────────
+let db = null, activeTag = null, activeCat = null, searchQuery = '';
 
-// ── Tag colour map (extend as needed) ─────────────────────────────────────
-const TAG_COLORS = {
-  payment: 'tag-blue', research: 'tag-gold', 'credit card': 'tag-red',
-  regulation: 'tag-red', blockchain: 'tag-blue', infrastructure: 'tag-gold',
-};
-function tagColor(t) { return TAG_COLORS[t] || 'tag-blue'; }
+// ── Helpers ─────────────────────────────────────────────────────────────────
+function catClass(c) {
+  if (!c) return 'cat-miscellaneous';
+  return 'cat-' + c.toLowerCase().replace(/\s+/g, '-');
+}
+function tagClass(t) {
+  const map = {
+    'payment':          'tag-payment',
+    'research':         'tag-research',
+    'credit card':      'tag-creditcard',
+    'regulation':       'tag-regulation',
+    'blockchain':       'tag-blockchain',
+    'infrastructure':   'tag-infra',
+    'digital payments': 'tag-digipay',
+    'trusted services': 'tag-trusted',
+    'banking regulatory': 'tag-bankreg',
+    'trends':           'tag-trends',
+    'IT security':      'tag-itsec',
+    'market':           'tag-market',
+  };
+  return map[t] || 'tag-default';
+}
+
+const ACCENTS = ['#00d4ff','#ffa6b4','#d3beec','#ffeda3','#ffc390','#c4ebc3'];
+const cardAccent = i => ACCENTS[i % ACCENTS.length];
+
 function initials(name) { return name.split(' ').map(n => n[0]).join(''); }
 
-// ── Stakeholder lookup ─────────────────────────────────────────────────────
+function priorityClass(p) {
+  if (!p) return '';
+  return 'priority-' + p.toLowerCase().replace(/[\s\/]+/g, '-');
+}
+
 function getStakeholders(topic) {
   if (!db) return [];
   return (topic.stakeholders || []).map(ref => {
-    if (typeof ref === 'object') return ref;                          // inline object
+    if (typeof ref === 'object') return ref;
     return db.stakeholders.find(s => s.id === ref) || { name: String(ref), role: '' };
   });
 }
 
-// ── Load data ──────────────────────────────────────────────────────────────
+// ── Load ─────────────────────────────────────────────────────────────────────
 async function loadData() {
-  const container = document.getElementById('topics-container');
-  container.innerHTML = `<div class="state-msg"><div class="spinner"></div><span>Loading topics…</span></div>`;
-
+  document.getElementById('topics-container').innerHTML =
+    `<div class="state-msg"><div class="spinner"></div><span>Loading topics…</span></div>`;
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`Could not load topics.json (${res.status})`);
     db = await res.json();
     boot();
-  } catch (e) {
-    container.innerHTML = `
-      <div class="state-msg">
-        <div style="border:1px solid rgba(139,38,53,0.3);background:rgba(139,38,53,0.05);color:var(--red);
-             padding:1.5rem 2rem;font-family:'DM Mono',monospace;font-size:0.75rem;max-width:480px;line-height:1.7;">
-          <strong>Failed to load topics.json</strong><br><br>
-          ${e.message}<br><br>
-          If running locally, serve the folder with:<br>
-          <code>python -m http.server 3000</code><br>
-          then open <code>http://localhost:3000</code>
-        </div>
-      </div>`;
+  } catch(e) {
+    document.getElementById('topics-container').innerHTML = `
+      <div class="state-msg"><div style="border:1px solid rgba(255,166,180,0.5);background:rgba(255,166,180,0.1);
+        color:#7a1525;padding:1.5rem 2rem;font-family:'Noto Sans Mono', monospace;font-size:0.75rem;
+        max-width:480px;line-height:1.7;">
+        <strong>Failed to load topics.json</strong><br><br>${e.message}<br><br>
+        Serve locally with: <code>python -m http.server 3000</code>
+      </div></div>`;
   }
 }
 
 function boot() {
-  // Header / hero copy from meta
   const meta = db.meta || {};
   document.title = meta.title || 'Strategic Intelligence';
-  document.getElementById('site-title').textContent = meta.title || 'Strategic Intelligence';
+  document.getElementById('site-title').textContent = meta.organisation || 'Company Name';
 
-  // GitHub link
-  const ghLink = document.getElementById('github-link');
-  if (GITHUB_REPO) { ghLink.href = GITHUB_REPO; }
-  else { ghLink.style.display = 'none'; }
+  const gh = document.getElementById('github-link');
+  if (GITHUB_REPO) { gh.href = GITHUB_REPO; } else { gh.style.display = 'none'; }
 
-  // Build filter buttons from tags list
-  const filterBar = document.getElementById('filter-bar');
   const tags = db.tags || [...new Set(db.topics.flatMap(t => t.tags))];
-  filterBar.innerHTML =
-    `<button class="filter-btn active" onclick="setTag(null, this)">All Topics</button>` +
-    tags.map(t => `<button class="filter-btn" onclick="setTag('${t}', this)">${t}</button>`).join('');
+  document.getElementById('filter-bar').innerHTML =
+    `<button class="filter-btn active" onclick="setTag(null,this)">All</button>` +
+    tags.map(t => `<button class="filter-btn" onclick="setTag('${t}',this)">${t}</button>`).join('');
 
+  const cats = db.categories || [...new Set(db.topics.map(t => t.category).filter(Boolean))];
+  document.getElementById('cat-filter-bar').innerHTML =
+    `<button class="filter-btn active" onclick="setCat(null,this)">All</button>` +
+    cats.map(c => `<button class="filter-btn" onclick="setCat('${c}',this)"><span class="cat-badge ${catClass(c)}">${c}</span></button>`).join('');
+
+  renderIndex();
+  renderIndexWheel();
+}
+
+// ── Index wheel (embedded on main page) ──────────────────────────────────────
+function renderIndexWheel() {
+  if (!db) return;
+  const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
+  const f=n=>n.toFixed(2);
+  let h='';
+  [2,4,6,8,10].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    h+=`<circle cx="${cx}" cy="${cy}" r="${f(r)}" fill="none" stroke="rgba(4,0,102,0.07)" stroke-width=".8" ${sc<10?'stroke-dasharray="3,4"':''}/>`;
+  });
+  [2,4,6,8].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    const lp=pToC(cx,cy,r,30);
+    h+=`<text x="${f(lp.x+3)}" y="${f(lp.y)}" font-size="7" fill="rgba(107,107,138,.55)" font-family="Noto Sans Mono" dominant-baseline="middle">${sc}</text>`;
+  });
+  WHEEL_SLICES.forEach((sl,i)=>{
+    const a1=i*60,a2=(i+1)*60,mid=(a1+a2)/2;
+    h+=`<path d="${parallelSector(cx,cy,iR,oR,a1,a2,GAP_PX)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
+    const lR=oR+36,lp=pToC(cx,cy,lR,mid);
+    sl.label.forEach((ln,li)=>{
+      const yo=sl.label.length>1?(li-0.5)*12:0;
+      h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
+    });
+    const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
+    const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
+    const N=topics.length;
+    topics.forEach((tp,j)=>{
+      const r=iR+(10-tp.score)/9*(oR-iR);
+      const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
+      const lo=a1+minOff, hi=a2-minOff;
+      const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      const pos=pToC(cx,cy,r,tA);
+      h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="iwdot" data-id="${tp.id}" style="cursor:pointer"/>`;
+      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
+    });
+  });
+  h+=`<circle cx="${cx}" cy="${cy}" r="${iR}" fill="rgba(4,0,102,.05)" stroke="rgba(4,0,102,.18)" stroke-width="1"/>`;
+  h+=`<text x="${cx}" y="${cy-7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">HIGH</text>`;
+  h+=`<text x="${cx}" y="${cy+7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">SCORE</text>`;
+
+  const svg = document.getElementById('index-wheel-svg');
+  if (!svg) return;
+  svg.innerHTML = h;
+
+  const tt = document.getElementById('index-wheel-tt');
+  document.querySelectorAll('.iwdot').forEach(dot=>{
+    const id=parseInt(dot.dataset.id), t=(db.topics||[]).find(x=>x.id===id);
+    if(!t) return;
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong style="display:block;margin-bottom:.2rem;">${t.title}</strong><span style="font-family:'Noto Sans Mono',monospace;font-size:.6rem;color:#00d4ff;">${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
+    dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
+    dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
+  });
+}
+
+// ── Filtering ────────────────────────────────────────────────────────────────
+function setTag(tag, btn) {
+  activeTag = tag;
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
   renderIndex();
 }
 
-// ── Filtering & search ─────────────────────────────────────────────────────
-function setTag(tag, btn) {
-  activeTag = tag;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+function setCat(cat, btn) {
+  activeCat = cat;
+  document.querySelectorAll('#cat-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderIndex();
 }
@@ -569,157 +1002,549 @@ function applyFilters() {
 function filteredTopics() {
   return (db.topics || [])
     .filter(t => !activeTag || t.tags.includes(activeTag))
-    .filter(t => {
-      if (!searchQuery) return true;
-      return t.title.toLowerCase().includes(searchQuery) ||
-             (t.description || '').toLowerCase().includes(searchQuery) ||
-             t.tags.some(tag => tag.includes(searchQuery));
-    });
+    .filter(t => !activeCat || t.category === activeCat)
+    .filter(t => !searchQuery ||
+      t.title.toLowerCase().includes(searchQuery) ||
+      (t.description||'').toLowerCase().includes(searchQuery) ||
+      t.tags.some(tag => tag.includes(searchQuery)));
 }
 
-// ── Render index ───────────────────────────────────────────────────────────
+// ── Render index ─────────────────────────────────────────────────────────────
 function renderIndex() {
   const topics = filteredTopics();
-  const total = (db.topics || []).length;
-  document.getElementById('header-meta').textContent =
-    `${topics.length} of ${total} Topic${total !== 1 ? 's' : ''}`;
+  const total  = (db.topics||[]).length;
+  document.getElementById('header-meta').textContent = `${topics.length} / ${total} topics`;
 
-  const container = document.getElementById('topics-container');
+  const c = document.getElementById('topics-container');
   if (!topics.length) {
-    container.innerHTML = `<div class="topics-grid"><div class="no-results">No topics match your filters.</div></div>`;
+    c.innerHTML = `<div class="topics-grid"><div class="no-results">No topics match your filters.</div></div>`;
     return;
   }
-
-  container.innerHTML = `
-    <div class="topics-grid">
-      ${topics.map((t, i) => {
-        const stakeholders = getStakeholders(t);
-        return `
-        <div class="topic-card" style="animation-delay:${i * 0.05}s" onclick="showDetail(${t.id})">
-          <div class="card-top">
-            <div class="card-title">${t.title}</div>
-            <div class="card-score">
-              <div class="score-num">${t.score}</div>
-              <div class="score-denom">/ 10</div>
-              <div class="score-bar"><div class="score-fill" style="width:${t.score * 10}%"></div></div>
-            </div>
-          </div>
-          <p class="card-desc">${t.description || ''}</p>
-          <div class="card-tags">
-            ${t.tags.map(tag => `<span class="tag ${tagColor(tag)}">${tag}</span>`).join('')}
-          </div>
-          <div class="card-stakeholders">
-            <div class="avatar-stack">
-              ${stakeholders.map(s => `<div class="avatar" title="${s.name}">${initials(s.name)}</div>`).join('')}
-            </div>
-            <span>${stakeholders.map(s => s.name.split(' ')[0]).join(', ') || '—'}</span>
-          </div>
-        </div>`;
-      }).join('')}
-    </div>`;
+  c.innerHTML = `<div class="topics-grid">${topics.map((t,i) => {
+    const s = getStakeholders(t);
+    return `
+    <div class="topic-card" style="animation-delay:${i*0.05}s;--card-accent:${cardAccent(i)}" onclick="showDetail(${t.id})">
+      <div class="card-top">
+        <div class="card-title">${t.title}</div>
+        <div class="card-score">
+          <div class="score-num">${t.score}</div>
+          <div class="score-denom">/ 10</div>
+          <div class="score-bar"><div class="score-fill" style="width:${t.score*10}%"></div></div>
+        </div>
+      </div>
+      <p class="card-desc">${t.description||''}</p>
+      ${t.category ? `<div style="margin-bottom:0.5rem;"><span class="cat-badge ${catClass(t.category)}">${t.category}</span></div>` : ''}
+      <div class="card-tags">${t.tags.map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
+      <div class="card-stakeholders">
+        <div class="avatar-stack">${s.map(p=>`<div class="avatar" title="${p.name}">${initials(p.name)}</div>`).join('')}</div>
+        <span>${s.map(p=>p.name.split(' ')[0]).join(', ')||'—'}</span>
+      </div>
+    </div>`; }).join('')}</div>`;
 }
 
-// ── Render detail ──────────────────────────────────────────────────────────
+// ── Render detail ─────────────────────────────────────────────────────────────
 function showDetail(id) {
   const t = db.topics.find(x => x.id === id);
   if (!t) return;
-
   document.getElementById('view-index').style.display = 'none';
   document.getElementById('view-detail').style.display = 'block';
-  window.scrollTo(0, 0);
-
-  // Push to URL hash so the page is linkable
+  document.getElementById('breadcrumb-title').textContent = t.title;
+  window.scrollTo(0,0);
   history.pushState({ topicId: id }, '', `#topic-${id}`);
 
-  const stakeholders = getStakeholders(t);
+  const s = getStakeholders(t);
+
+  const linkIcon = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 1h5v5M7.5 8.5L15 1"/></svg>`;
+  const arrowIcon = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 8h10M9 4l4 4-4 4"/></svg>`;
 
   document.getElementById('detail-main').innerHTML = `
-    <div class="detail-header fade-up">
+    <div class="fade-up">
       <div class="detail-category">Strategic Topic</div>
       <h1 class="detail-title">${t.title}</h1>
-      <div class="detail-tags">
-        ${t.tags.map(tag => `<span class="tag ${tagColor(tag)}">${tag}</span>`).join('')}
-      </div>
-      <div class="detail-score-display">
-        <div class="detail-score-big">${t.score}</div>
-        <div class="detail-score-meta">
-          <span class="detail-score-label">Importance Score</span>
-          <div class="detail-score-bar"><div class="detail-score-fill" style="width:${t.score * 10}%"></div></div>
-          <span class="detail-score-label">out of 10</span>
+      <div class="detail-tags">${t.tags.map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
+      <div class="score-band">
+        <div class="score-band-num">${t.score}</div>
+        <div class="score-band-right">
+          <div class="score-band-label">Importance Score / 10</div>
+          <div class="score-band-bar"><div class="score-band-fill" style="width:${t.score*10}%"></div></div>
         </div>
       </div>
     </div>
+
+    ${t.management_summary ? `
+    <div class="fade-up" style="animation-delay:0.05s">
+      <div class="section-label">Management Summary</div>
+      <div class="mgmt-summary"><p>${t.management_summary}</p></div>
+    </div>` : ''}
+
     <div class="fade-up" style="animation-delay:0.1s">
       <div class="section-label">Description</div>
-      <p class="section-body">${t.description || 'No description provided.'}</p>
+      <p class="section-body">${t.description||'No description provided.'}</p>
     </div>
+
+    ${t.extended_description ? `
+    <div class="fade-up" style="animation-delay:0.15s">
+      <div class="section-label">Extended Description</div>
+      <p class="section-body">${t.extended_description}</p>
+    </div>` : ''}
+
+    ${(t.risks&&t.risks.length)||(t.chances&&t.chances.length) ? `
     <div class="fade-up" style="animation-delay:0.2s">
+      <div class="section-label">Risks &amp; Chances</div>
+      <div class="risks-chances-grid">
+        <div class="rc-card chances">
+          <div class="rc-header"><span class="rc-dot"></span>Chances</div>
+          <div class="rc-list">
+            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+          </div>
+        </div>
+        <div class="rc-card risks">
+          <div class="rc-header"><span class="rc-dot"></span>Risks</div>
+          <div class="rc-list">
+            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+          </div>
+        </div>
+      </div>
+    </div>` : ''}
+
+    <div class="fade-up" style="animation-delay:0.25s">
       <div class="section-label">Short-Term Actions</div>
       <div class="actions-list">
-        ${t.actions && t.actions.length
-          ? t.actions.map((a, i) => {
-              const status = a.status || 'open';
-              const text = typeof a === 'string' ? a : a.description;
-              return `
-              <div class="action-item">
-                <span class="action-num">0${i + 1}</span>
+        ${t.actions&&t.actions.length
+          ? t.actions.map((a,i)=>{
+              const status=a.status||'open', text=typeof a==='string'?a:a.description;
+              const num = String(i+1).padStart(2,'0');
+              return `<div class="action-item">
+                <span class="action-num">${num}</span>
                 <span class="action-text">${text}</span>
-                <span class="action-status status-${status.replace(' ', '-')}">${status}</span>
-              </div>`;
-            }).join('')
-          : '<p style="color:var(--muted);font-size:0.85rem">No actions recorded.</p>'
-        }
+                <span class="action-status status-${status.replace(' ','-')}">${status}</span>
+              </div>`;}).join('')
+          : '<p style="color:var(--muted);font-size:0.85rem">No actions recorded.</p>'}
       </div>
-    </div>`;
+    </div>
+
+    ${t.position ? `
+    <div class="fade-up" style="animation-delay:0.28s">
+      <div class="section-label">Position</div>
+      <p style="font-size:0.88rem;line-height:1.7;color:var(--text);margin:0;">${t.position}</p>
+    </div>` : ''}
+
+    ${(t.associated_working_groups||[]).length ? `
+    <div class="fade-up" style="animation-delay:0.29s">
+      <div class="section-label">Associated Working Groups</div>
+      <div class="sources-list">
+        ${(t.associated_working_groups||[]).map(wg => {
+          const name  = typeof wg === 'string' ? wg : (wg.name || wg.label || '');
+          const url   = typeof wg === 'object' ? (wg.url||null) : null;
+          const href  = url && url !== '#' ? url : null;
+          const tag   = href ? 'a' : 'div';
+          const attrs = href ? `href="${url}" target="_blank" rel="noopener"` : '';
+          return `<${tag} class="source-item" ${attrs}>
+            <div class="source-icon">${linkIcon}</div>
+            <span class="source-label">${name}</span>
+            ${href ? `<span class="source-arrow">${arrowIcon}</span>` : ''}
+          </${tag}>`;
+        }).join('')}
+      </div>
+    </div>` : ''}
+
+    ${t.sources&&t.sources.length ? `
+    <div class="fade-up" style="animation-delay:0.3s">
+      <div class="section-label">Sources &amp; References</div>
+      <div class="sources-list">
+        ${t.sources.map(s => {
+          const href = s.url && s.url !== '#' ? s.url : null;
+          const tag = href ? 'a' : 'div';
+          const attrs = href ? `href="${s.url}" target="_blank" rel="noopener"` : '';
+          return `<${tag} class="source-item" ${attrs}>
+            <div class="source-icon">${linkIcon}</div>
+            <span class="source-label">${s.label||s.url}</span>
+            <span class="source-arrow">${arrowIcon}</span>
+          </${tag}>`;
+        }).join('')}
+      </div>
+    </div>` : ''}
+  `;
 
   document.getElementById('detail-sidebar').innerHTML = `
-    <div class="sidebar-card fade-up" style="animation-delay:0.15s">
+    <div class="sidebar-card fade-up" style="animation-delay:0.12s">
       <h3>Stakeholders</h3>
-      ${stakeholders.length
-        ? stakeholders.map(s => `
-          <div class="stakeholder-item">
-            <div class="stakeholder-avatar">${initials(s.name)}</div>
-            <div>
-              <span class="stakeholder-name">${s.name}</span>
-              <span class="stakeholder-role">${s.role || ''}</span>
-            </div>
-          </div>`).join('')
-        : '<p style="color:var(--muted);font-size:0.82rem">No stakeholders assigned.</p>'
-      }
+      ${s.length ? s.map(p=>`
+        <div class="stakeholder-item">
+          <div class="stakeholder-avatar">${initials(p.name)}</div>
+          <div><span class="stakeholder-name">${p.name}</span><span class="stakeholder-role">${p.role||''}</span></div>
+        </div>`).join('')
+        : '<p style="color:var(--muted);font-size:0.82rem">No stakeholders assigned.</p>'}
     </div>
-    <div class="sidebar-card fade-up" style="animation-delay:0.25s">
+    <div class="sidebar-card fade-up" style="animation-delay:0.22s">
       <h3>Metadata</h3>
-      <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at || db.meta?.updated || '—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Priority</span><span class="meta-val">${t.priority || '—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon || '—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Actions</span><span class="meta-val">${(t.actions || []).length} items</span></div>
+      <div class="meta-row"><span class="meta-key">Category</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
+      <div class="meta-row"><span class="meta-key">Priority</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon||'—'}</span></div>
+      ${(t.impacts||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">Impacts</span>
+        <div class="meta-pills">${(t.impacts||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
+      </div>` : `<div class="meta-row"><span class="meta-key">Impacts</span><span class="meta-val">—</span></div>`}
+      ${(t.driven_by||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">Driven By</span>
+        <div class="meta-pills">${(t.driven_by||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
+      </div>` : `<div class="meta-row"><span class="meta-key">Driven By</span><span class="meta-val">—</span></div>`}
+      <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">Actions</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
+      <div class="meta-row"><span class="meta-key">Sources</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
       <div class="meta-row"><span class="meta-key">Score</span><span class="meta-val">${t.score} / 10</span></div>
     </div>`;
 }
 
 function showIndex() {
-  document.getElementById('view-detail').style.display = 'none';
+  ['view-detail','view-dashboard','view-editor'].forEach(id =>
+    document.getElementById(id).style.display = 'none');
   document.getElementById('view-index').style.display = 'block';
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===0));
   history.pushState({}, '', window.location.pathname);
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 }
 
-// Handle back/forward browser navigation
-window.addEventListener('popstate', (e) => {
-  if (e.state && e.state.topicId) {
-    showDetail(e.state.topicId);
-  } else {
-    showIndex();
+// ── Dashboard / Wheel ─────────────────────────────────────────────────────────
+const WHEEL_SLICES = [
+  { label:['TRUSTED','SERVICES'],   cat:'Trusted Services',   bg:'#d3beec', fg:'#4a2d7a' },
+  { label:['CARD'],                 cat:'Card',                bg:'#00d4ff', fg:'#004f66' },
+  { label:['REGULATORY'],           cat:'Regulatory',          bg:'#ffc390', fg:'#7a3500' },
+  { label:['IT','SECURITY'],        cat:'IT Security',         bg:'#ffa6b4', fg:'#7a1525' },
+  { label:['BANKING','REGULATORY'], cat:'Banking Regulatory',  bg:'#c4ebc3', fg:'#1a5219' },
+  { label:['MISCELLANEOUS'],        cat:'Miscellaneous',       bg:'#ffeda3', fg:'#5a4a00' },
+];
+
+function pToC(cx,cy,r,deg){ const rad=(deg-90)*Math.PI/180; return {x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)}; }
+
+// Returns a sector path whose two straight edges are parallel lines (constant gap width at all radii)
+// gap = perpendicular pixel distance from each boundary radial to the slice edge (total gap = 2*gap)
+function parallelSector(cx, cy, iR, oR, b1deg, b2deg, gap) {
+  const f = n => n.toFixed(3);
+  // For boundary at angle bDeg, offset by +d pixels CCW (towards slice interior):
+  // Point on circle R is at SVG-angle = (bDeg-90)*π/180 + arcsin(d/R)
+  const pt = (R, bDeg, d) => {
+    const base = (bDeg - 90) * Math.PI / 180;
+    const phi  = base + Math.asin(d / R);
+    return { x: cx + R * Math.cos(phi), y: cy + R * Math.sin(phi) };
+  };
+  const il = pt(iR, b1deg,  gap);   // inner-left  (b1 + gap)
+  const ol = pt(oR, b1deg,  gap);   // outer-left
+  const ir = pt(iR, b2deg, -gap);   // inner-right (b2 - gap)
+  const or_= pt(oR, b2deg, -gap);   // outer-right
+  const lg = (b2deg - b1deg) > 180 ? 1 : 0;
+  return `M${f(il.x)},${f(il.y)} L${f(ol.x)},${f(ol.y)} A${oR},${oR},0,${lg},1,${f(or_.x)},${f(or_.y)} L${f(ir.x)},${f(ir.y)} A${iR},${iR},0,${lg},0,${f(il.x)},${f(il.y)} Z`;
+}
+
+function showDashboard() {
+  ['view-index','view-detail','view-editor'].forEach(id =>
+    document.getElementById(id).style.display = 'none');
+  document.getElementById('view-dashboard').style.display = 'block';
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===1));
+  renderWheel();
+  window.scrollTo(0,0);
+}
+
+function renderWheel() {
+  if (!db) return;
+  const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
+  const f=n=>n.toFixed(2);
+  let h='';
+  [2,4,6,8,10].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    h+=`<circle cx="${cx}" cy="${cy}" r="${f(r)}" fill="none" stroke="rgba(4,0,102,0.07)" stroke-width=".8" ${sc<10?'stroke-dasharray="3,4"':''}/>`;
+  });
+  [2,4,6,8].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    const lp=pToC(cx,cy,r,30);
+    h+=`<text x="${f(lp.x+3)}" y="${f(lp.y)}" font-size="7" fill="rgba(107,107,138,.55)" font-family="Noto Sans Mono" dominant-baseline="middle">${sc}</text>`;
+  });
+  WHEEL_SLICES.forEach((sl,i)=>{
+    const a1=i*60,a2=(i+1)*60,mid=(a1+a2)/2;
+    h+=`<path d="${parallelSector(cx,cy,iR,oR,a1,a2,GAP_PX)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
+    const lR=oR+36,lp=pToC(cx,cy,lR,mid);
+    sl.label.forEach((ln,li)=>{
+      const yo=sl.label.length>1?(li-0.5)*12:0;
+      h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
+    });
+    const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
+    const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
+    const N=topics.length;
+    topics.forEach((tp,j)=>{
+      const r=iR+(10-tp.score)/9*(oR-iR);
+      const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
+      const lo=a1+minOff, hi=a2-minOff;
+      const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      const pos=pToC(cx,cy,r,tA);
+      h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="wdot" data-id="${tp.id}" style="cursor:pointer"/>`;
+      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
+    });
+  });
+  h+=`<circle cx="${cx}" cy="${cy}" r="${iR}" fill="rgba(4,0,102,.05)" stroke="rgba(4,0,102,.18)" stroke-width="1"/>`;
+  h+=`<text x="${cx}" y="${cy-7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">HIGH</text>`;
+  h+=`<text x="${cx}" y="${cy+7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">SCORE</text>`;
+  document.getElementById('wheel-svg').innerHTML = h;
+  document.getElementById('wheel-legend-items').innerHTML = WHEEL_SLICES.map(sl=>{
+    const n=(db.topics||[]).filter(t=>t.category===sl.cat).length;
+    return `<div class="legend-item"><div class="legend-dot" style="background:${sl.bg};border:2px solid ${sl.fg}"></div><span>${sl.label.join(' ')}</span><span class="legend-count">${n}</span></div>`;
+  }).join('');
+  const tt=document.getElementById('wheel-tt');
+  document.querySelectorAll('.wdot').forEach(dot=>{
+    const id=parseInt(dot.dataset.id),t=(db.topics||[]).find(x=>x.id===id);
+    if(!t) return;
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
+    dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
+    dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
+  });
+}
+
+// ── Editor ────────────────────────────────────────────────────────────────────
+function showEditor() {
+  ['view-index','view-detail','view-dashboard'].forEach(id =>
+    document.getElementById(id).style.display = 'none');
+  document.getElementById('view-editor').style.display = 'block';
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===4));
+  edPopulateStatic();
+  window.scrollTo(0,0);
+}
+
+function edPopulateStatic() {
+  if (!db) return;
+  // Tags dropdown
+  const ts = document.getElementById('ed-tags-select');
+  if (ts && !ts.dataset.built) {
+    (db.tags||[]).forEach(tag => {
+      const o = document.createElement('option');
+      o.value = tag; o.textContent = tag;
+      ts.appendChild(o);
+    });
+    ts.dataset.built = '1';
   }
+  // Stakeholders dropdown
+  const ss = document.getElementById('ed-sh-select');
+  if (ss && !ss.dataset.built) {
+    (db.stakeholders||[]).forEach(sh => {
+      const o = document.createElement('option');
+      o.value = sh.id; o.textContent = `${sh.name} — ${sh.role}`;
+      ss.appendChild(o);
+    });
+    ss.dataset.built = '1';
+  }
+}
+
+function edAddPill(type, select) {
+  const val = select.value;
+  if (!val) return;
+  const pillsId = type === 'tag' ? 'ed-tags-pills' : 'ed-sh-pills';
+  const container = document.getElementById(pillsId);
+  // Prevent duplicates
+  if (container.querySelector(`[data-val="${CSS.escape(val)}"]`)) {
+    select.value = ''; return;
+  }
+  const pill = document.createElement('span');
+  if (type === 'tag') {
+    pill.className = 'ed-pill';
+    pill.dataset.val = val;
+    pill.innerHTML = `${val}<button class="pill-x" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  } else {
+    const sh = (db.stakeholders||[]).find(s => s.id === parseInt(val));
+    if (!sh) { select.value=''; return; }
+    const av = sh.name.split(' ').map(n=>n[0]).join('');
+    pill.className = 'ed-pill sh-pill';
+    pill.dataset.val = val;
+    pill.innerHTML = `<span class="pill-av">${av}</span>${sh.name}<button class="pill-x" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  }
+  container.appendChild(pill);
+  select.value = '';
+}
+
+function edCheckDuplicate() {
+  if (!db) return false;
+  const val = document.getElementById('ed-title').value.trim().toLowerCase();
+  const dup = val && (db.topics||[]).some(t => t.title.trim().toLowerCase() === val);
+  document.getElementById('ed-dup-warning').style.display = dup ? 'block' : 'none';
+  document.getElementById('ed-title').classList.toggle('error', dup);
+  document.getElementById('ed-save-btn').disabled = dup;
+  return dup;
+}
+
+function edAddRow(type) {
+  const list = document.getElementById(`ed-${type}-list`);
+  const row = document.createElement('div');
+  row.className = 'ed-dyn-row';
+  if (type === 'actions') {
+    row.innerHTML = `
+      <input class="ed-input" type="text" placeholder="Action description…">
+      <select class="ed-select">
+        <option value="open">open</option>
+        <option value="in-progress">in-progress</option>
+        <option value="done">done</option>
+      </select>
+      <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  } else if (type === 'sources') {
+    row.innerHTML = `
+      <input class="ed-input src-label" type="text" placeholder="Label (e.g. EU Regulation text)">
+      <input class="ed-input src-url"   type="url"  placeholder="https://…">
+      <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  } else {
+    const placeholders = {
+      risks:    'Describe a risk…',
+      chances:  'Describe a chance…',
+      impacts:  'Describe an impact…',
+      drivenby: 'e.g. EU regulation, market demand…',
+      wg:       'Working group name…',
+    };
+    if (type === 'wg') {
+      row.innerHTML = `
+        <input class="ed-input src-label" type="text" placeholder="Working group name…">
+        <input class="ed-input src-url"   type="url"  placeholder="https://… (optional)">
+        <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+    } else {
+      row.innerHTML = `
+      <input class="ed-input" type="text" placeholder="${placeholders[type]||''}">
+      <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+    }
+  }
+  list.appendChild(row);
+  row.querySelector('input').focus();
+}
+
+function edCollect() {
+  const title   = document.getElementById('ed-title').value.trim();
+  const score   = parseInt(document.getElementById('ed-score').value);
+  const priority= document.getElementById('ed-priority').value;
+  const horizon = document.getElementById('ed-horizon').value;
+  const category= document.getElementById('ed-category').value;
+  const position= document.getElementById('ed-position').value.trim();
+
+  const impacts  = [...document.querySelectorAll('#ed-impacts-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const drivenBy = [...document.querySelectorAll('#ed-drivenby-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const wgs = [...document.querySelectorAll('#ed-wg-list .ed-dyn-row')].map(row => {
+    const ins = row.querySelectorAll('input');
+    return { name: ins[0].value.trim(), url: ins[1].value.trim() };
+  }).filter(w => w.name);
+  const mgmt    = document.getElementById('ed-mgmt').value.trim();
+  const desc    = document.getElementById('ed-desc').value.trim();
+  const extdesc = document.getElementById('ed-extdesc').value.trim();
+
+  const tags  = [...document.querySelectorAll('#ed-tags-pills .ed-pill')].map(p => p.dataset.val);
+  const shIds = [...document.querySelectorAll('#ed-sh-pills .ed-pill')].map(p => parseInt(p.dataset.val));
+
+  const actions = [...document.querySelectorAll('#ed-actions-list .ed-dyn-row')].map(row => {
+    const inputs = row.querySelectorAll('input,select');
+    return { description: inputs[0].value.trim(), status: inputs[1].value };
+  }).filter(a => a.description);
+
+  const risks = [...document.querySelectorAll('#ed-risks-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const chances = [...document.querySelectorAll('#ed-chances-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+
+  const sources = [...document.querySelectorAll('#ed-sources-list .ed-dyn-row')].map(row => {
+    const ins = row.querySelectorAll('input');
+    return { label: ins[0].value.trim(), url: ins[1].value.trim() };
+  }).filter(s => s.label || s.url);
+
+  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
+}
+
+function edValidate(f) {
+  let ok = true;
+  [['ed-title', !f.title], ['ed-category', !f.category], ['ed-priority', !f.priority], ['ed-desc', !f.desc]].forEach(([id, bad]) => {
+    document.getElementById(id).classList.toggle('error', bad);
+    if (bad) ok = false;
+  });
+  return ok;
+}
+
+function edSave() {
+  if (edCheckDuplicate()) return;
+  const f = edCollect();
+  if (!edValidate(f)) {
+    edStatus('Please fill in all required fields.', false);
+    return;
+  }
+
+  const newId = Math.max(0, ...(db.topics||[]).map(t=>t.id)) + 1;
+  const newTopic = {
+    id: newId,
+    title: f.title,
+    score: f.score,
+    priority: f.priority || undefined,
+    category: f.category || undefined,
+    horizon: f.horizon || undefined,
+    description: f.desc,
+    ...(f.mgmt    && { management_summary: f.mgmt }),
+    ...(f.extdesc && { extended_description: f.extdesc }),
+    ...(f.risks.length   && { risks: f.risks }),
+    ...(f.chances.length && { chances: f.chances }),
+    ...(f.position       && { position: f.position }),
+    ...(f.impacts.length && { impacts: f.impacts }),
+    ...(f.drivenBy.length&& { driven_by: f.drivenBy }),
+    ...(f.wgs.length     && { associated_working_groups: f.wgs }),
+    tags: f.tags,
+    stakeholders: f.shIds,
+    actions: f.actions,
+    ...(f.sources.length && { sources: f.sources }),
+  };
+
+  const updated = { ...db, topics: [...(db.topics||[]), newTopic] };
+  const blob = new Blob([JSON.stringify(updated, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'topics.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+
+  // Merge into live db so the new topic is immediately visible
+  db = updated;
+  boot();
+
+  edStatus(`✓ topics.json downloaded with "${f.title}" added (ID ${newId}). Replace the file in your repo.`, true);
+}
+
+function edReset() {
+  document.getElementById('ed-title').value = '';
+  document.getElementById('ed-score').value = 5;
+  document.getElementById('ed-score-display').textContent = '5';
+  document.getElementById('ed-priority').value = '';
+  document.getElementById('ed-horizon').value = '';
+  document.getElementById('ed-category').value = '';
+  document.getElementById('ed-mgmt').value = '';
+  document.getElementById('ed-desc').value = '';
+  document.getElementById('ed-extdesc').value = '';
+  document.getElementById('ed-tags-pills').innerHTML = '';
+  document.getElementById('ed-sh-pills').innerHTML = '';
+  document.getElementById('ed-tags-select').value = '';
+  document.getElementById('ed-sh-select').value = '';
+  ['risks','chances','actions','sources','impacts','drivenby','wg'].forEach(t => document.getElementById(`ed-${t}-list`).innerHTML = '');
+  document.getElementById('ed-position').value = '';
+  document.getElementById('ed-dup-warning').style.display = 'none';
+  document.getElementById('ed-save-btn').disabled = false;
+  document.querySelectorAll('.ed-input.error, .ed-select.error, .ed-textarea.error').forEach(el => el.classList.remove('error'));
+  edStatus('', false);
+}
+
+function edStatus(msg, ok) {
+  const el = document.getElementById('ed-status');
+  el.textContent = msg;
+  el.className = 'ed-status' + (ok ? ' ok' : msg ? ' fail' : '');
+}
+
+
+
+
+window.addEventListener('popstate', e => {
+  if (e.state?.topicId) showDetail(e.state.topicId);
+  else showIndex();
 });
 
-// Handle direct link to a topic via URL hash on load
 function checkHash() {
-  const match = window.location.hash.match(/^#topic-(\d+)$/);
-  if (match && db) showDetail(parseInt(match[1]));
+  const m = window.location.hash.match(/^#topic-(\d+)$/);
+  if (m && db) showDetail(parseInt(m[1]));
 }
 
-// ── Start ──────────────────────────────────────────────────────────────────
 loadData().then(checkHash);
 </script>
 </body>
