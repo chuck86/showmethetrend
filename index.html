@@ -184,7 +184,7 @@
   .cat-trusted-services  { background: rgba(211,190,236,0.35); color: #4a2d7a; border-color: rgba(211,190,236,0.75); }
   .cat-digital-payments  { background: rgba(0,212,255,0.12);    color: #005070; border-color: rgba(0,212,255,0.35); }
   .cat-regulatory        { background: rgba(255,195,144,0.35);  color: #7a3500; border-color: rgba(255,195,144,0.75); }
-  .cat-banking-regulatory{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
+  .cat-banking-regulatory-trends{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
   .cat-it-security       { background: rgba(255,166,180,0.28);  color: #6a1020; border-color: rgba(255,166,180,0.65); }
   .cat-miscellaneous     { background: rgba(4,0,102,0.06);      color: var(--navy); border-color: rgba(4,0,102,0.18); }
 
@@ -844,7 +844,7 @@ let db = null, activeTag = null, activeCat = null, searchQuery = '';
 // ── Helpers ─────────────────────────────────────────────────────────────────
 function catClass(c) {
   if (!c) return 'cat-miscellaneous';
-  return 'cat-' + c.toLowerCase().replace(/\s+/g, '-');
+  return 'cat-' + c.toLowerCase().replace(/\s+/g+/&, '-');
 }
 function tagClass(t) {
   const map = {
