@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Strategic Topic Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ── DESIGN TOKENS ─────────────────────────────────────────────────────── */
   :root {
@@ -37,7 +37,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
@@ -71,25 +71,11 @@
     min-width: 220px;
   }
 
-  /* ↓ Replace this div with <img src="logo.svg"> when you have a logo */
 
-  .logo-placeholder {
-    width: 38px; height: 38px;
-    border: 2px dashed rgba(0,212,255,0.45);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; position: relative;
-  }
-  .logo-placeholder::after {
-    content: 'LOGO';
-    font-family: 'DM Mono', monospace; font-size: 0.45rem;
-    letter-spacing: 0.1em; color: rgba(0,212,255,0.55);
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  }
 
   .logo-text { display: flex; flex-direction: column; gap: 1px; }
   .logo-name { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.02em; color: var(--white); line-height: 1.1; }
-  .logo-tagline { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; opacity: 0.8; }
+  .logo-tagline { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; opacity: 0.8; line-height: 1.6; }
 
   nav { display: flex; align-items: stretch; flex: 1; padding: 0 0.5rem; }
 
@@ -102,13 +88,13 @@
     transition: color 0.15s, border-color 0.15s;
     white-space: nowrap; cursor: pointer;
     background: none; border-top: none; border-left: none; border-right: none;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
   }
   .nav-link:hover { color: var(--white); border-bottom-color: rgba(0,212,255,0.35); }
   .nav-link.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
   .nav-badge {
-    font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.08em;
+    font-family: 'Noto Sans Mono', monospace; font-size: 0.48rem; letter-spacing: 0.08em;
     background: rgba(0,212,255,0.12); color: var(--cyan);
     border: 1px dashed rgba(0,212,255,0.3);
     padding: 0.1rem 0.35rem; border-radius: 2px;
@@ -121,13 +107,15 @@
     border-left: 1px solid rgba(255,255,255,0.1);
     flex-shrink: 0;
   }
-  .header-count { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); text-transform: uppercase; }
-  .git-link { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.15); padding: 0.35rem 0.8rem; border-radius: 3px; transition: all 0.18s; white-space: nowrap; }
+  .header-count { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); text-transform: uppercase; }
+  .git-link { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.15); padding: 0.35rem 0.8rem; border-radius: 3px; transition: all 0.18s; white-space: nowrap; }
   .git-link:hover { color: var(--cyan); border-color: rgba(0,212,255,0.4); }
   .git-link svg { width: 12px; height: 12px; }
 
+
+
   /* ── LOADING ─────────────────────────────────────────────────────────────── */
-  .state-msg { display: flex; align-items: center; justify-content: center; min-height: 40vh; flex-direction: column; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
+  .state-msg { display: flex; align-items: center; justify-content: center; min-height: 40vh; flex-direction: column; gap: 1rem; font-family: 'Noto Sans Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
   .spinner { width: 26px; height: 26px; border: 2px solid var(--border); border-top-color: var(--cyan); border-radius: 50%; animation: spin 0.65s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -144,16 +132,16 @@
   .index-subtitle { color: var(--muted); font-size: 0.92rem; max-width: 440px; line-height: 1.65; font-weight: 400; }
 
   .search-wrap { position: relative; }
-  .search-input { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.03em; padding: 0.65rem 1.1rem 0.65rem 2.4rem; border: 1.5px solid var(--border-strong); border-radius: 4px; background: var(--white); color: var(--text); width: 220px; transition: border-color 0.2s, box-shadow 0.2s, width 0.3s; outline: none; }
+  .search-input { font-family: 'Noto Sans Mono', monospace; font-size: 0.75rem; letter-spacing: 0.03em; padding: 0.65rem 1.1rem 0.65rem 2.4rem; border: 1.5px solid var(--border-strong); border-radius: 4px; background: var(--white); color: var(--text); width: 220px; transition: border-color 0.2s, box-shadow 0.2s, width 0.3s; outline: none; }
   .search-input:focus { border-color: var(--cyan); width: 270px; box-shadow: 0 0 0 3px rgba(0,212,255,0.12); }
   .search-input::placeholder { color: var(--muted); }
   .search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
 
   /* ── FILTER BAR ──────────────────────────────────────────────────────────── */
   .filter-section { max-width: 1280px; margin: 0 auto; padding: 0 3rem 2rem; border-bottom: 1px solid var(--border); }
-  .filter-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
+  .filter-label { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
   .filter-bar { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-  .filter-btn { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1.5px solid var(--border-strong); background: var(--surface); color: var(--muted); border-radius: 3px; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+  .filter-btn { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1.5px solid var(--border-strong); background: var(--surface); color: var(--muted); border-radius: 3px; cursor: pointer; transition: all 0.15s; font-weight: 500; }
   .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
   .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
@@ -169,42 +157,48 @@
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.85rem; }
   .card-score { text-align: right; flex-shrink: 0; }
   .score-num { font-size: 2rem; font-weight: 800; line-height: 1; color: var(--navy); }
-  .score-denom { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .score-denom { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
   .score-bar { width: 44px; height: 3px; background: var(--surface-2); margin-top: 5px; border-radius: 2px; overflow: hidden; }
   .score-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--navy), var(--cyan)); }
   .card-title { font-size: 1.15rem; font-weight: 700; line-height: 1.25; flex: 1; padding-right: 1rem; letter-spacing: -0.01em; }
   .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.25rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 400; }
   .card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1rem; }
 
-  .tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; font-weight: 500; border: 1px solid transparent; }
-  .tag-payment    { background: rgba(0,212,255,0.1);    color: #005f7a; border-color: rgba(0,212,255,0.3); }
-  .tag-research   { background: rgba(211,190,236,0.3);  color: #4a2d7a; border-color: rgba(211,190,236,0.7); }
-  .tag-creditcard { background: rgba(255,166,180,0.25); color: #7a1525; border-color: rgba(255,166,180,0.6); }
-  .tag-regulation { background: rgba(255,195,144,0.3);  color: #7a3500; border-color: rgba(255,195,144,0.7); }
-  .tag-blockchain { background: rgba(196,235,195,0.35); color: #1a5219; border-color: rgba(196,235,195,0.8); }
-  .tag-infra      { background: rgba(255,237,163,0.4);  color: #665500; border-color: rgba(255,237,163,0.9); }
-  .tag-digipay    { background: rgba(0,212,255,0.13);   color: #004f66; border-color: rgba(0,212,255,0.35); }
-  .tag-trusted    { background: rgba(211,190,236,0.35); color: #3d2070; border-color: rgba(211,190,236,0.75); }
-  .tag-bankreg    { background: rgba(255,195,144,0.35); color: #6a2e00; border-color: rgba(255,195,144,0.75); }
-  .tag-trends     { background: rgba(255,237,163,0.45); color: #5a4a00; border-color: rgba(255,237,163,0.95); }
-  .tag-itsec      { background: rgba(255,166,180,0.28); color: #6a1020; border-color: rgba(255,166,180,0.65); }
-  .tag-market     { background: rgba(196,235,195,0.4);  color: #174a16; border-color: rgba(196,235,195,0.85); }
-  .tag-default    { background: rgba(4,0,102,0.06);     color: var(--navy); border-color: rgba(4,0,102,0.2); }
+  .tag { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; font-weight: 500; border: 1px solid transparent; }
+  .tag-payment    { background: transparent; color: #005f7a; border-color: rgba(0,212,255,0.6); }
+  .tag-research   { background: transparent; color: #4a2d7a; border-color: rgba(211,190,236,0.9); }
+  .tag-creditcard { background: transparent; color: #7a1525; border-color: rgba(255,166,180,0.8); }
+  .tag-blockchain { background: transparent; color: #1a5219; border-color: rgba(196,235,195,1.0); }
+  .tag-infra      { background: transparent; color: #665500; border-color: rgba(200,180,60,0.7); }
+  .tag-market     { background: transparent; color: #174a16; border-color: rgba(196,235,195,1.0); }
+  .tag-default    { background: transparent; color: var(--navy); border-color: rgba(4,0,102,0.3); }
 
-  .card-stakeholders { display: flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
-  .avatar { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 0.52rem; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; border: 2px solid var(--surface); font-weight: 600; }
+  /* Category badges */
+  .cat-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.18rem 0.6rem; border-radius: 2px; font-weight: 600; border: 1px solid transparent; white-space: nowrap; }
+  .cat-trusted-services  { background: rgba(211,190,236,0.35); color: #4a2d7a; border-color: rgba(211,190,236,0.75); }
+  .cat-card              { background: rgba(0,212,255,0.12);    color: #005070; border-color: rgba(0,212,255,0.35); }
+  .cat-regulatory        { background: rgba(255,195,144,0.35);  color: #7a3500; border-color: rgba(255,195,144,0.75); }
+  .cat-banking-regulatory{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
+  .cat-it-security       { background: rgba(255,166,180,0.28);  color: #6a1020; border-color: rgba(255,166,180,0.65); }
+  .cat-miscellaneous     { background: rgba(4,0,102,0.06);      color: var(--navy); border-color: rgba(4,0,102,0.18); }
+
+  /* Category filter row */
+  .cat-filter-section { max-width: 1280px; margin: 0 auto; padding: 0.75rem 3rem 0; }
+
+  .card-stakeholders { display: flex; align-items: center; gap: 0.5rem; font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .avatar { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 0.52rem; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans Mono', monospace; border: 2px solid var(--surface); font-weight: 600; }
   .avatar-stack { display: flex; }
   .avatar-stack .avatar { margin-left: -7px; }
   .avatar-stack .avatar:first-child { margin-left: 0; }
-  .no-results { grid-column: 1/-1; padding: 4rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; background: var(--surface); }
+  .no-results { grid-column: 1/-1; padding: 4rem; text-align: center; font-family: 'Noto Sans Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; background: var(--surface); }
 
   /* ── DETAIL ──────────────────────────────────────────────────────────────── */
   .detail-topbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 50; }
   .detail-nav { max-width: 1280px; margin: 0 auto; padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 52px; }
-  .back-btn { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; font-weight: 500; }
+  .back-btn { font-family: 'Noto Sans Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; font-weight: 500; }
   .back-btn:hover { color: var(--navy); }
   .back-btn svg { width: 14px; height: 14px; }
-  .detail-breadcrumb { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem; }
+  .detail-breadcrumb { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem; }
   .breadcrumb-sep { opacity: 0.4; }
   .breadcrumb-current { color: var(--navy); font-weight: 600; }
 
@@ -213,48 +207,263 @@
   .score-band { background: var(--navy); color: var(--white); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 2rem; margin-bottom: 2.5rem; }
   .score-band-num { font-size: 4.5rem; font-weight: 800; line-height: 1; color: var(--cyan); }
   .score-band-right { flex: 1; }
-  .score-band-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.5rem; }
+  .score-band-label { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; margin-bottom: 0.5rem; }
   .score-band-bar { height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; max-width: 200px; }
   .score-band-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), rgba(0,212,255,0.35)); border-radius: 3px; }
 
-  .detail-category { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+  .detail-category { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
   .detail-category::before { content: ''; display: block; width: 18px; height: 2px; background: var(--cyan); }
   .detail-title { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.08; margin-bottom: 1.25rem; letter-spacing: -0.025em; color: var(--navy); }
   .detail-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem; }
 
-  .section-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .section-body { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); margin-bottom: 2.5rem; font-weight: 400; }
 
   .actions-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.5rem; }
   .action-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; border: 1px solid var(--border); background: var(--surface); transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s; border-radius: 2px; }
   .action-item:hover { border-color: var(--cyan); transform: translateX(4px); box-shadow: -3px 0 0 var(--cyan); }
-  .action-num { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--cyan); font-weight: 600; margin-top: 2px; flex-shrink: 0; }
+  .action-num { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; color: var(--cyan); font-weight: 600; margin-top: 2px; flex-shrink: 0; }
   .action-text { font-size: 0.86rem; line-height: 1.52; flex: 1; color: var(--text-mid); }
-  .action-status { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; flex-shrink: 0; align-self: flex-start; margin-top: 2px; font-weight: 600; }
+  .action-status { font-family: 'Noto Sans Mono', monospace; font-size: 0.55rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; flex-shrink: 0; align-self: flex-start; margin-top: 2px; font-weight: 600; }
   .status-open        { background: rgba(255,237,163,0.55); color: #665500; }
   .status-in-progress { background: rgba(0,212,255,0.12);  color: #005f7a; }
   .status-done        { background: rgba(196,235,195,0.55); color: #1a5219; }
 
   .sidebar-card { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.25rem; background: var(--surface); border-radius: 2px; }
-  .sidebar-card h3 { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
+  .sidebar-card h3 { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
   .stakeholder-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
   .stakeholder-item:last-child { margin-bottom: 0; }
-  .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'DM Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; }
+  .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; }
   .stakeholder-name { font-size: 0.85rem; font-weight: 600; display: block; color: var(--text); }
-  .stakeholder-role { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
   .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
   .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .meta-key { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .meta-key { color: var(--muted); font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
   .meta-val { font-weight: 600; font-size: 0.82rem; color: var(--navy); }
+  .meta-row-block { padding: 0.6rem 0; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.45rem; }
+  .meta-row-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .meta-pill { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 2px; background: rgba(4,0,102,0.06); border: 1px solid rgba(4,0,102,0.15); color: var(--navy); font-weight: 500; }
 
-  .priority-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; }
+  .priority-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; }
   .priority-critical    { background: rgba(255,166,180,0.35); color: #7a1525; }
   .priority-high        { background: rgba(255,195,144,0.4);  color: #7a3500; }
   .priority-medium-high { background: rgba(255,237,163,0.55); color: #665500; }
   .priority-medium      { background: rgba(196,235,195,0.5);  color: #1a5219; }
   .priority-low-medium  { background: rgba(211,190,236,0.35); color: #4a2d7a; }
   .priority-low         { background: rgba(4,0,102,0.06);     color: var(--navy); }
+
+  /* ── MANAGEMENT SUMMARY ─────────────────────────────────────────────────── */
+  .mgmt-summary {
+    border-left: 3px solid var(--cyan);
+    background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(4,0,102,0.03) 100%);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 0 2px 2px 0;
+  }
+  .mgmt-summary p { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); font-weight: 400; }
+
+  /* ── RISKS & CHANCES ─────────────────────────────────────────────────────── */
+  .risks-chances-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 700px) { .risks-chances-grid { grid-template-columns: 1fr; } }
+  .rc-card { border: 1px solid var(--border); padding: 1.25rem 1.4rem; border-radius: 2px; background: var(--surface); }
+  .rc-card.risks   { border-top: 3px solid var(--pink); }
+  .rc-card.chances { border-top: 3px solid var(--mint); }
+  .rc-header { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .rc-card.risks   .rc-header { color: #7a1525; }
+  .rc-card.chances .rc-header { color: #1a5219; }
+  .rc-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .rc-card.risks   .rc-dot { background: var(--pink); }
+  .rc-card.chances .rc-dot { background: var(--mint); }
+  .rc-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .rc-item { display: flex; gap: 0.65rem; align-items: flex-start; font-size: 0.83rem; line-height: 1.52; color: var(--text-mid); }
+  .rc-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .rc-card.risks   .rc-item::before { background: rgba(255,166,180,0.7); }
+  .rc-card.chances .rc-item::before { background: rgba(196,235,195,0.9); border: 1px solid #5a9e5a; }
+
+  /* ── SOURCES ─────────────────────────────────────────────────────────────── */
+  .sources-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .source-item {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid var(--border); border-radius: 2px;
+    background: var(--surface); text-decoration: none;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .source-item:hover { border-color: var(--cyan); transform: translateX(3px); box-shadow: -3px 0 0 var(--cyan); }
+  .source-icon { width: 28px; height: 28px; border-radius: 2px; background: var(--cyan-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .source-icon svg { width: 13px; height: 13px; color: var(--navy); }
+  .source-label { font-size: 0.84rem; font-weight: 600; color: var(--navy); flex: 1; }
+  .source-arrow { color: var(--muted); flex-shrink: 0; }
+  .source-arrow svg { width: 12px; height: 12px; }
+
+  /* ── DASHBOARD / WHEEL ───────────────────────────────────────────────────── */
+  .dashboard-layout { max-width: 1100px; margin: 0 auto; padding: 3rem; }
+  .dashboard-hero { margin-bottom: 2.5rem; }
+  .dashboard-hero h2 { font-size: 2rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.35rem; }
+  .dashboard-hero p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .wheel-wrap { display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; }
+  .wheel-svg-container { flex: 1; min-width: 320px; max-width: 640px; }
+  .wheel-svg-container svg { width: 100%; height: auto; display: block; }
+  .wheel-aside { flex: 0 0 210px; display: flex; flex-direction: column; gap: 1.25rem; }
+  .aside-card { border: 1px solid var(--border); padding: 1.25rem 1.4rem; background: var(--surface); border-radius: 2px; }
+  .aside-card h4 { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.65rem; font-size: 0.8rem; color: var(--text-mid); }
+  .legend-item:last-child { margin-bottom: 0; }
+  .legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .legend-count { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-left: auto; }
+  .wheel-hint { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; color: var(--muted); line-height: 1.8; }
+  .wheel-hint span { display: flex; gap: 0.5rem; }
+  #wheel-tt { position: fixed; z-index: 9999; display: none; pointer-events: none; background: var(--navy); color: var(--white); padding: 0.6rem 1rem; border-radius: 3px; max-width: 230px; box-shadow: 0 6px 24px rgba(4,0,102,0.35); }
+  #wheel-tt strong { display: block; font-size: 0.83rem; line-height: 1.3; margin-bottom: 0.3rem; }
+  #wheel-tt span { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--cyan); letter-spacing: 0.04em; }
+
+  /* ── EDITOR ──────────────────────────────────────────────────────────────── */
+  #view-editor { display: none; }
+  .editor-layout { max-width: 860px; margin: 0 auto; padding: 3rem; }
+  .editor-header { margin-bottom: 2.5rem; }
+  .editor-header h2 { font-size: 1.9rem; font-weight: 800; color: var(--navy); letter-spacing: -.02em; margin-bottom: .3rem; }
+  .editor-header p  { font-size: .85rem; color: var(--muted); }
+
+  .ed-section { margin-bottom: 2rem; }
+  .ed-section-title {
+    font-family: 'Noto Sans Mono', monospace; font-size: .6rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+  .ed-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .ed-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .ed-row.full { grid-template-columns: 1fr; }
+  .ed-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+
+  .ed-field { display: flex; flex-direction: column; gap: .4rem; }
+  .ed-label {
+    font-family: 'Noto Sans Mono', monospace; font-size: .62rem;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500;
+  }
+  .ed-label .req { color: var(--cyan); margin-left: 2px; }
+
+  .ed-input, .ed-select, .ed-textarea {
+    font-family: 'Noto Sans', sans-serif; font-size: .87rem;
+    padding: .6rem .9rem; border: 1.5px solid var(--border-strong);
+    border-radius: 3px; background: var(--white); color: var(--text);
+    outline: none; transition: border-color .18s, box-shadow .18s; width: 100%;
+  }
+  .ed-input:focus, .ed-select:focus, .ed-textarea:focus {
+    border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,212,255,.1);
+  }
+  .ed-input.error, .ed-select.error { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(255,166,180,.15); }
+  .ed-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+  /* Score slider */
+  .score-slider-wrap { display: flex; align-items: center; gap: 1rem; }
+  .ed-slider {
+    -webkit-appearance: none; appearance: none;
+    flex: 1; height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--navy) 0%, var(--cyan) 100%);
+    outline: none; cursor: pointer;
+  }
+  .ed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 18px;
+    border-radius: 50%; background: var(--navy); border: 3px solid var(--cyan); cursor: pointer;
+  }
+  .score-display {
+    font-size: 1.5rem; font-weight: 800; color: var(--navy);
+    min-width: 2.2rem; text-align: center; line-height: 1;
+  }
+  .score-denom-ed { font-family: 'Noto Sans Mono', monospace; font-size: .6rem; color: var(--muted); }
+
+
+  /* Tags & stakeholders — dropdown + pill pattern */
+  .ed-multi-wrap { display: flex; flex-direction: column; gap: .6rem; }
+  .ed-multi-row  { display: flex; gap: .6rem; align-items: center; }
+  .ed-multi-row .ed-select { flex: 1; }
+  .ed-pills { display: flex; flex-wrap: wrap; gap: .35rem; min-height: 28px; }
+  .ed-pill {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-family: 'Noto Sans Mono', monospace; font-size: .62rem; letter-spacing: .06em;
+    text-transform: uppercase; padding: .25rem .55rem .25rem .75rem;
+    border-radius: 3px; border: 1.5px solid var(--navy);
+    background: var(--navy); color: var(--white);
+    animation: fadeUp .18s ease forwards;
+  }
+  .ed-pill .pill-x {
+    cursor: pointer; opacity: .6; font-size: .9rem; line-height: 1;
+    border: none; background: none; color: inherit; padding: 0;
+    transition: opacity .12s;
+  }
+  .ed-pill .pill-x:hover { opacity: 1; }
+  .ed-pill.sh-pill { background: rgba(4,0,102,.07); color: var(--navy); border-color: var(--border-strong); }
+  .ed-pill.sh-pill .pill-av {
+    width: 16px; height: 16px; border-radius: 50%; background: var(--navy);
+    color: var(--white); font-size: .48rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+
+
+  /* Dynamic lists (actions, risks, chances, sources) */
+  .ed-dyn-list { display: flex; flex-direction: column; gap: .45rem; margin-bottom: .6rem; }
+  .ed-dyn-row { display: flex; gap: .5rem; align-items: flex-start; }
+  .ed-dyn-row .ed-input { flex: 1; }
+  .ed-dyn-row .ed-select { width: 130px; flex-shrink: 0; }
+  .ed-dyn-row .ed-input.src-url { width: 50%; flex: none; }
+  .ed-dyn-row .ed-input.src-label { flex: 1; }
+  .ed-rem-btn {
+    width: 30px; height: 36px; flex-shrink: 0; background: none;
+    border: 1.5px solid var(--border-strong); border-radius: 3px;
+    color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1;
+    transition: all .14s; display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .ed-rem-btn:hover { border-color: var(--pink); color: #7a1525; background: rgba(255,166,180,.1); }
+  .ed-add-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: .62rem; letter-spacing: .07em;
+    text-transform: uppercase; padding: .4rem .9rem; border-radius: 3px;
+    border: 1.5px dashed var(--border-strong); background: none;
+    color: var(--muted); cursor: pointer; transition: all .15s; font-weight: 500;
+    display: inline-flex; align-items: center; gap: .4rem;
+  }
+  .ed-add-btn:hover { border-color: var(--cyan); color: var(--navy); }
+
+  /* Duplicate warning */
+  .ed-dup-warning {
+    display: none; background: rgba(255,166,180,.15); border: 1px solid rgba(255,166,180,.5);
+    border-left: 3px solid var(--pink); padding: .9rem 1.2rem; border-radius: 2px;
+    font-size: .84rem; color: #7a1525; margin-bottom: 1.5rem; line-height: 1.55;
+  }
+  .ed-dup-warning strong { font-weight: 700; }
+
+  /* Action bar */
+  .editor-actions {
+    display: flex; gap: 1rem; align-items: center;
+    padding: 1.5rem 0; border-top: 1px solid var(--border); margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .ed-save-btn {
+    font-family: 'Noto Sans', sans-serif; font-size: .88rem; font-weight: 700;
+    padding: .75rem 2rem; background: var(--navy); color: var(--white);
+    border: none; border-radius: 3px; cursor: pointer; letter-spacing: .02em;
+    transition: background .18s, transform .12s;
+  }
+  .ed-save-btn:hover { background: var(--navy-mid); }
+  .ed-save-btn:active { transform: scale(.98); }
+  .ed-save-btn:disabled { opacity: .45; cursor: not-allowed; }
+  .ed-reset-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: .65rem; letter-spacing: .07em;
+    text-transform: uppercase; padding: .55rem 1.1rem; background: none;
+    border: 1.5px solid var(--border-strong); border-radius: 3px;
+    color: var(--muted); cursor: pointer; transition: all .15s;
+  }
+  .ed-reset-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .ed-status { font-family: 'Noto Sans Mono', monospace; font-size: .65rem; color: var(--muted); }
+  .ed-status.ok   { color: #1a5219; }
+  .ed-status.fail { color: #7a1525; }
 
   /* ── ANIMATIONS ──────────────────────────────────────────────────────────── */
   @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
@@ -284,26 +493,21 @@
 <!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
 <header>
 
-  <!-- LOGO — replace .logo-placeholder with your <img> tag when ready -->
   <a class="header-logo" href="#" onclick="showIndex(); return false;">
-    <img src="G+D Netcetera Logo White_sRGB_72.png" alt="G+D Netcetera" style="width:303px;height:73px;object-fit:contain;border-radius:4px;">
-<!--<div class="logo-placeholder">
-        TO ADD YOUR LOGO: replace the div above with:
-      style="width:38px;height:38px;object-fit:contain"> 
-  </div> 
+    <img src="G+D Netcetera Logo White_sRGB_72.png" alt="G+D Netcetera" style="width:303px;height:33px;object-fit:contain;border-radius:4px;">
     <div class="logo-text">
       <span class="logo-name" id="site-title">Company Name</span>
-      <span class="logo-tagline">Strategic Intelligence</span>
-    </div>-->
+      <span class="logo-tagline">CPO Strategic Intelligence</span>
+    </div>
   </a>
 
   <!-- NAV LINKS — update href values and remove nav-badge when pages are ready -->
   <nav>
-    <button class="nav-link active" onclick="showIndex()">Topics</button>
-    <a class="nav-link" href="#">Dashboard <span class="nav-badge">soon</span></a>
+    <button class="nav-link active" onclick="showDashboard()">Dashboard</button>
+    <button class="nav-link" onclick="showIndex()">Topics</button>
     <a class="nav-link" href="#">Stakeholders <span class="nav-badge">soon</span></a>
     <a class="nav-link" href="#">Reports <span class="nav-badge">soon</span></a>
-    <a class="nav-link" href="#">Settings <span class="nav-badge">soon</span></a>
+    <button class="nav-link" onclick="showEditor()">Editor</button>
   </nav>
 
   <div class="header-right">
@@ -317,16 +521,34 @@
 </header>
 
 <!-- ══ INDEX VIEW ══════════════════════════════════════════════════════════ -->
-<div id="view-index">
+<div id="view-index" style="display:none">
   <div class="index-hero">
     <div class="hero-text">
-      <h1>Strategic Topics Radar<br><span>Unter Beobachtung</span></h1>
-      <p class="index-subtitle" id="hero-subtitle">Übersicht aller strategischen Themen. Geordnet nach Wichtigkeit inkl. Stakeholder und kurzfristigen Action-Points.</p>
+      <h1>Strategic Topics<br><span>Under Scrutiny</span></h1>
+      <p class="index-subtitle" id="hero-subtitle">A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.</p>
     </div>
     <div class="search-wrap">
       <svg class="search-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="5"/><path d="M11 11l3 3"/></svg>
       <input class="search-input" id="search-input" type="text" placeholder="Search topics…" oninput="applyFilters()">
     </div>
+  </div>
+
+  <!-- ── INLINE WHEEL CHART ─────────────────────────────────────────────── -->
+  <div style="max-width: 1280px; margin: 1.5rem auto 0; padding: 0 3rem;">
+    <div style="
+      background: var(--white);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+    ">
+      <svg id="index-wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;height:auto;display:block;margin:0 auto;"></svg>
+    </div>
+  </div>
+<div id="index-wheel-tt" style="position:fixed;z-index:9999;display:none;pointer-events:none;background:#040066;color:#fff;padding:.55rem .95rem;border-radius:3px;max-width:220px;box-shadow:0 6px 22px rgba(4,0,102,.35);font-size:.82rem;"></div>
+
+  <div class="cat-filter-section">
+    <div class="filter-label">Filter by category</div>
+    <div class="filter-bar" id="cat-filter-bar"></div>
   </div>
 
   <div class="filter-section">
@@ -358,28 +580,304 @@
   </div>
 </div>
 
+<!-- ══ DASHBOARD VIEW ══════════════════════════════════════════════════════ -->
+<div id="view-dashboard">
+  <div class="dashboard-layout">
+    <div class="dashboard-hero fade-up">
+      <h2>Topic Landscape</h2>
+      <p>All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.</p>
+    </div>
+
+    <!-- ── TO-DO BOX ─────────────────────────────────────────────────────── -->
+    <div style="
+      background: var(--white);
+      border: 1.5px solid var(--border-strong);
+      border-left: 4px solid #040066;
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    ">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;">To-Do</div>
+      <ul id="todo-list" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Review and update topic scores for Q2
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Assign missing stakeholders to open topics
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Add working group links for IT Security topics
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── WHEEL CHART ────────────────────────────────────────────────────── -->
+    <div class="wheel-wrap">
+      <div class="wheel-svg-container">
+        <svg id="wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <div class="wheel-aside">
+        <div class="aside-card">
+          <h4>Categories</h4>
+          <div id="wheel-legend-items"></div>
+        </div>
+        <div class="aside-card">
+          <h4>How to read</h4>
+          <div class="wheel-hint">
+            <span>● Inner ring = score 10</span>
+            <span>● Outer edge = score 1</span>
+            <span>● Topics may appear in multiple slices</span>
+            <span>● Hover for title · click to open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NEWSFEED ───────────────────────────────────────────────────────── -->
+    <div style="
+      margin-top: 2.5rem;
+      background: var(--white);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+    ">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Newsfeed</div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="padding:0.9rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start;">
+          <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">Mar 2026</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">Placeholder news item one</div>
+            <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Replace this with a relevant news headline or regulatory update. Link to the source if available.</div>
+          </div>
+        </div>
+        <div style="padding:0.9rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start;">
+          <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">Feb 2026</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">Placeholder news item two</div>
+            <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Replace this with a relevant news headline or regulatory update. Link to the source if available.</div>
+          </div>
+        </div>
+        <div style="padding:0.9rem 0;display:flex;gap:1.25rem;align-items:flex-start;">
+          <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">Jan 2026</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">Placeholder news item three</div>
+            <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Replace this with a relevant news headline or regulatory update. Link to the source if available.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="wheel-tt"></div>
+
+<!-- ══ EDITOR VIEW ═════════════════════════════════════════════════════════ -->
+<div id="view-editor" style="display:none">
+  <div class="editor-layout">
+
+    <div class="editor-header fade-up">
+      <h2>Topic Editor</h2>
+      <p>Add a new topic to the database. Fill in all required fields marked <span style="color:var(--cyan)">*</span>, then download the updated <code>topics.json</code> and replace the file in your repository.</p>
+    </div>
+
+    <div class="ed-dup-warning" id="ed-dup-warning">
+      <strong>Duplicate detected:</strong> A topic with this title already exists. Please choose a different name or edit the existing topic in <code>topics.json</code>.
+    </div>
+
+    <!-- IDENTITY -->
+    <div class="ed-section">
+      <div class="ed-section-title">Identity</div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-title">Topic Title <span class="req">*</span></label>
+          <input class="ed-input" id="ed-title" type="text" placeholder="e.g. Open Finance API Standardisation" oninput="edCheckDuplicate()">
+        </div>
+      </div>
+      <div class="ed-row" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+        <div class="ed-field">
+          <label class="ed-label">Importance Score <span class="req">*</span></label>
+          <div class="score-slider-wrap">
+            <input class="ed-slider" id="ed-score" type="range" min="1" max="10" value="5"
+              oninput="document.getElementById('ed-score-display').textContent=this.value">
+            <div>
+              <div class="score-display" id="ed-score-display">5</div>
+              <div class="score-denom-ed">/ 10</div>
+            </div>
+          </div>
+        </div>
+        <div class="ed-field">
+          <label class="ed-label" for="ed-category">Category <span class="req">*</span></label>
+          <select class="ed-select" id="ed-category">
+            <option value="">— select —</option>
+            <option>Trusted Services</option><option>Card</option><option>Regulatory</option>
+            <option>Banking Regulatory</option><option>IT Security</option><option>Miscellaneous</option>
+          </select>
+        </div>
+        <div class="ed-field">
+          <label class="ed-label" for="ed-priority">Priority <span class="req">*</span></label>
+          <select class="ed-select" id="ed-priority">
+            <option value="">— select —</option>
+            <option>Critical</option><option>High</option><option>Medium-High</option>
+            <option>Medium</option><option>Low-Medium</option><option>Low</option>
+          </select>
+        </div>
+        <div class="ed-field">
+          <label class="ed-label" for="ed-horizon">Time Horizon</label>
+          <select class="ed-select" id="ed-horizon">
+            <option value="">— select —</option>
+            <option>0–6 months</option><option>6–9 months</option>
+            <option>6–12 months</option><option>12–18 months</option>
+            <option>12–24 months</option><option>18–24 months</option>
+            <option>18–30 months</option><option>18–36 months</option>
+            <option>24–36 months</option><option>24–48 months</option>
+            <option>24–60 months</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAGS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Tags</div>
+      <div class="ed-multi-wrap">
+        <div class="ed-multi-row">
+          <select class="ed-select" id="ed-tags-select" onchange="edAddPill('tag',this)">
+            <option value="">— select a tag —</option>
+          </select>
+        </div>
+        <div class="ed-pills" id="ed-tags-pills"></div>
+      </div>
+    </div>
+
+    <!-- STAKEHOLDERS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Stakeholders</div>
+      <div class="ed-multi-wrap">
+        <div class="ed-multi-row">
+          <select class="ed-select" id="ed-sh-select" onchange="edAddPill('sh',this)">
+            <option value="">— select a stakeholder —</option>
+          </select>
+        </div>
+        <div class="ed-pills" id="ed-sh-pills"></div>
+      </div>
+    </div>
+
+    <!-- DESCRIPTIONS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Descriptions</div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-mgmt">Management Summary</label>
+          <textarea class="ed-textarea" id="ed-mgmt" placeholder="2–4 sentence executive summary for leadership…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-desc">Description <span class="req">*</span></label>
+          <textarea class="ed-textarea" id="ed-desc" placeholder="Short description shown on the topic card…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-extdesc">Extended Description</label>
+          <textarea class="ed-textarea" style="min-height:130px" id="ed-extdesc" placeholder="Full in-depth analysis…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSITION -->
+    <div class="ed-section">
+      <div class="ed-section-title">Position</div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-position">Our Position</label>
+          <input class="ed-input" id="ed-position" type="text" placeholder="e.g. Monitor, Engage, Lead, Oppose…">
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACTS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Impacts</div>
+      <div class="ed-dyn-list" id="ed-impacts-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('impacts')">+ Add Impact</button>
+    </div>
+
+    <!-- DRIVEN BY -->
+    <div class="ed-section">
+      <div class="ed-section-title">Driven By</div>
+      <div class="ed-dyn-list" id="ed-drivenby-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('drivenby')">+ Add Driver</button>
+    </div>
+
+    <!-- WORKING GROUPS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Associated Working Groups</div>
+      <div class="ed-dyn-list" id="ed-wg-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('wg')">+ Add Working Group</button>
+    </div>
+
+    <!-- RISKS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Risks</div>
+      <div class="ed-dyn-list" id="ed-risks-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('risks')">+ Add Risk</button>
+    </div>
+
+    <!-- CHANCES -->
+    <div class="ed-section">
+      <div class="ed-section-title">Chances</div>
+      <div class="ed-dyn-list" id="ed-chances-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('chances')">+ Add Chance</button>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Short-Term Actions</div>
+      <div class="ed-dyn-list" id="ed-actions-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('actions')">+ Add Action</button>
+    </div>
+
+    <!-- SOURCES -->
+    <div class="ed-section">
+      <div class="ed-section-title">Sources &amp; References</div>
+      <div class="ed-dyn-list" id="ed-sources-list"></div>
+      <button class="ed-add-btn" onclick="edAddRow('sources')">+ Add Source</button>
+    </div>
+
+    <!-- SAVE BAR -->
+    <div class="editor-actions">
+      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()">⬇ Download updated topics.json</button>
+      <button class="ed-reset-btn" onclick="edReset()">Clear form</button>
+      <span class="ed-status" id="ed-status"></span>
+    </div>
+
+  </div>
+</div>
+
 <script>
 // ── Config ──────────────────────────────────────────────────────────────────
 const DATA_URL    = './topics.json';
 const GITHUB_REPO = ''; // e.g. 'https://github.com/yourorg/your-repo'
 
 // ── State ───────────────────────────────────────────────────────────────────
-let db = null, activeTag = null, searchQuery = '';
+let db = null, activeTag = null, activeCat = null, searchQuery = '';
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
+function catClass(c) {
+  if (!c) return 'cat-miscellaneous';
+  return 'cat-' + c.toLowerCase().replace(/\s+/g, '-');
+}
 function tagClass(t) {
   const map = {
     'payment':          'tag-payment',
     'research':         'tag-research',
     'credit card':      'tag-creditcard',
-    'regulation':       'tag-regulation',
     'blockchain':       'tag-blockchain',
     'infrastructure':   'tag-infra',
-    'digital payments': 'tag-digipay',
-    'trusted services': 'tag-trusted',
-    'banking regulatory': 'tag-bankreg',
-    'trends':           'tag-trends',
-    'IT security':      'tag-itsec',
     'market':           'tag-market',
   };
   return map[t] || 'tag-default';
@@ -415,7 +913,7 @@ async function loadData() {
   } catch(e) {
     document.getElementById('topics-container').innerHTML = `
       <div class="state-msg"><div style="border:1px solid rgba(255,166,180,0.5);background:rgba(255,166,180,0.1);
-        color:#7a1525;padding:1.5rem 2rem;font-family:'DM Mono',monospace;font-size:0.75rem;
+        color:#7a1525;padding:1.5rem 2rem;font-family:'Noto Sans Mono', monospace;font-size:0.75rem;
         max-width:480px;line-height:1.7;">
         <strong>Failed to load topics.json</strong><br><br>${e.message}<br><br>
         Serve locally with: <code>python -m http.server 3000</code>
@@ -436,13 +934,82 @@ function boot() {
     `<button class="filter-btn active" onclick="setTag(null,this)">All</button>` +
     tags.map(t => `<button class="filter-btn" onclick="setTag('${t}',this)">${t}</button>`).join('');
 
+  const cats = db.categories || [...new Set(db.topics.map(t => t.category).filter(Boolean))];
+  document.getElementById('cat-filter-bar').innerHTML =
+    `<button class="filter-btn active" onclick="setCat(null,this)">All</button>` +
+    cats.map(c => `<button class="filter-btn" onclick="setCat('${c}',this)"><span class="cat-badge ${catClass(c)}">${c}</span></button>`).join('');
+
   renderIndex();
+  renderIndexWheel();
+  renderWheel();
+}
+
+// ── Index wheel (embedded on main page) ──────────────────────────────────────
+function renderIndexWheel() {
+  if (!db) return;
+  const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
+  const f=n=>n.toFixed(2);
+  let h='';
+  [2,4,6,8,10].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    h+=`<circle cx="${cx}" cy="${cy}" r="${f(r)}" fill="none" stroke="rgba(4,0,102,0.07)" stroke-width=".8" ${sc<10?'stroke-dasharray="3,4"':''}/>`;
+  });
+  [2,4,6,8].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    const lp=pToC(cx,cy,r,30);
+    h+=`<text x="${f(lp.x+3)}" y="${f(lp.y)}" font-size="7" fill="rgba(107,107,138,.55)" font-family="Noto Sans Mono" dominant-baseline="middle">${sc}</text>`;
+  });
+  WHEEL_SLICES.forEach((sl,i)=>{
+    const a1=i*60,a2=(i+1)*60,mid=(a1+a2)/2;
+    h+=`<path d="${parallelSector(cx,cy,iR,oR,a1,a2,GAP_PX)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
+    const lR=oR+36,lp=pToC(cx,cy,lR,mid);
+    sl.label.forEach((ln,li)=>{
+      const yo=sl.label.length>1?(li-0.5)*12:0;
+      h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
+    });
+    const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
+    const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
+    const N=topics.length;
+    topics.forEach((tp,j)=>{
+      const r=iR+(10-tp.score)/9*(oR-iR);
+      const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
+      const lo=a1+minOff, hi=a2-minOff;
+      const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      const pos=pToC(cx,cy,r,tA);
+      h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="iwdot" data-id="${tp.id}" style="cursor:pointer"/>`;
+      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
+    });
+  });
+  h+=`<circle cx="${cx}" cy="${cy}" r="${iR}" fill="rgba(4,0,102,.05)" stroke="rgba(4,0,102,.18)" stroke-width="1"/>`;
+  h+=`<text x="${cx}" y="${cy-7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">HIGH</text>`;
+  h+=`<text x="${cx}" y="${cy+7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">SCORE</text>`;
+
+  const svg = document.getElementById('index-wheel-svg');
+  if (!svg) return;
+  svg.innerHTML = h;
+
+  const tt = document.getElementById('index-wheel-tt');
+  document.querySelectorAll('.iwdot').forEach(dot=>{
+    const id=parseInt(dot.dataset.id), t=(db.topics||[]).find(x=>x.id===id);
+    if(!t) return;
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong style="display:block;margin-bottom:.2rem;">${t.title}</strong><span style="font-family:'Noto Sans Mono',monospace;font-size:.6rem;color:#00d4ff;">${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
+    dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
+    dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
+  });
 }
 
 // ── Filtering ────────────────────────────────────────────────────────────────
 function setTag(tag, btn) {
   activeTag = tag;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderIndex();
+}
+
+function setCat(cat, btn) {
+  activeCat = cat;
+  document.querySelectorAll('#cat-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderIndex();
 }
@@ -455,6 +1022,7 @@ function applyFilters() {
 function filteredTopics() {
   return (db.topics || [])
     .filter(t => !activeTag || t.tags.includes(activeTag))
+    .filter(t => !activeCat || t.category === activeCat)
     .filter(t => !searchQuery ||
       t.title.toLowerCase().includes(searchQuery) ||
       (t.description||'').toLowerCase().includes(searchQuery) ||
@@ -485,6 +1053,7 @@ function renderIndex() {
         </div>
       </div>
       <p class="card-desc">${t.description||''}</p>
+      ${t.category ? `<div style="margin-bottom:0.5rem;"><span class="cat-badge ${catClass(t.category)}">${t.category}</span></div>` : ''}
       <div class="card-tags">${t.tags.map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
       <div class="card-stakeholders">
         <div class="avatar-stack">${s.map(p=>`<div class="avatar" title="${p.name}">${initials(p.name)}</div>`).join('')}</div>
@@ -505,6 +1074,9 @@ function showDetail(id) {
 
   const s = getStakeholders(t);
 
+  const linkIcon = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 1h5v5M7.5 8.5L15 1"/></svg>`;
+  const arrowIcon = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 8h10M9 4l4 4-4 4"/></svg>`;
+
   document.getElementById('detail-main').innerHTML = `
     <div class="fade-up">
       <div class="detail-category">Strategic Topic</div>
@@ -518,24 +1090,101 @@ function showDetail(id) {
         </div>
       </div>
     </div>
+
+    ${t.management_summary ? `
+    <div class="fade-up" style="animation-delay:0.05s">
+      <div class="section-label">Management Summary</div>
+      <div class="mgmt-summary"><p>${t.management_summary}</p></div>
+    </div>` : ''}
+
     <div class="fade-up" style="animation-delay:0.1s">
       <div class="section-label">Description</div>
       <p class="section-body">${t.description||'No description provided.'}</p>
     </div>
+
+    ${t.extended_description ? `
+    <div class="fade-up" style="animation-delay:0.15s">
+      <div class="section-label">Extended Description</div>
+      <p class="section-body">${t.extended_description}</p>
+    </div>` : ''}
+
+    ${(t.risks&&t.risks.length)||(t.chances&&t.chances.length) ? `
     <div class="fade-up" style="animation-delay:0.2s">
+      <div class="section-label">Risks &amp; Chances</div>
+      <div class="risks-chances-grid">
+        <div class="rc-card chances">
+          <div class="rc-header"><span class="rc-dot"></span>Chances</div>
+          <div class="rc-list">
+            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+          </div>
+        </div>
+        <div class="rc-card risks">
+          <div class="rc-header"><span class="rc-dot"></span>Risks</div>
+          <div class="rc-list">
+            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+          </div>
+        </div>
+      </div>
+    </div>` : ''}
+
+    <div class="fade-up" style="animation-delay:0.25s">
       <div class="section-label">Short-Term Actions</div>
       <div class="actions-list">
         ${t.actions&&t.actions.length
           ? t.actions.map((a,i)=>{
               const status=a.status||'open', text=typeof a==='string'?a:a.description;
+              const num = String(i+1).padStart(2,'0');
               return `<div class="action-item">
-                <span class="action-num">0${i+1}</span>
+                <span class="action-num">${num}</span>
                 <span class="action-text">${text}</span>
                 <span class="action-status status-${status.replace(' ','-')}">${status}</span>
               </div>`;}).join('')
           : '<p style="color:var(--muted);font-size:0.85rem">No actions recorded.</p>'}
       </div>
-    </div>`;
+    </div>
+
+    ${t.position ? `
+    <div class="fade-up" style="animation-delay:0.28s">
+      <div class="section-label">Position</div>
+      <p style="font-size:0.88rem;line-height:1.7;color:var(--text);margin:0;">${t.position}</p>
+    </div>` : ''}
+
+    ${(t.associated_working_groups||[]).length ? `
+    <div class="fade-up" style="animation-delay:0.29s">
+      <div class="section-label">Associated Working Groups</div>
+      <div class="sources-list">
+        ${(t.associated_working_groups||[]).map(wg => {
+          const name  = typeof wg === 'string' ? wg : (wg.name || wg.label || '');
+          const url   = typeof wg === 'object' ? (wg.url||null) : null;
+          const href  = url && url !== '#' ? url : null;
+          const tag   = href ? 'a' : 'div';
+          const attrs = href ? `href="${url}" target="_blank" rel="noopener"` : '';
+          return `<${tag} class="source-item" ${attrs}>
+            <div class="source-icon">${linkIcon}</div>
+            <span class="source-label">${name}</span>
+            ${href ? `<span class="source-arrow">${arrowIcon}</span>` : ''}
+          </${tag}>`;
+        }).join('')}
+      </div>
+    </div>` : ''}
+
+    ${t.sources&&t.sources.length ? `
+    <div class="fade-up" style="animation-delay:0.3s">
+      <div class="section-label">Sources &amp; References</div>
+      <div class="sources-list">
+        ${t.sources.map(s => {
+          const href = s.url && s.url !== '#' ? s.url : null;
+          const tag = href ? 'a' : 'div';
+          const attrs = href ? `href="${s.url}" target="_blank" rel="noopener"` : '';
+          return `<${tag} class="source-item" ${attrs}>
+            <div class="source-icon">${linkIcon}</div>
+            <span class="source-label">${s.label||s.url}</span>
+            <span class="source-arrow">${arrowIcon}</span>
+          </${tag}>`;
+        }).join('')}
+      </div>
+    </div>` : ''}
+  `;
 
   document.getElementById('detail-sidebar').innerHTML = `
     <div class="sidebar-card fade-up" style="animation-delay:0.12s">
@@ -549,21 +1198,362 @@ function showDetail(id) {
     </div>
     <div class="sidebar-card fade-up" style="animation-delay:0.22s">
       <h3>Metadata</h3>
+      <div class="meta-row"><span class="meta-key">Category</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
       <div class="meta-row"><span class="meta-key">Priority</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon||'—'}</span></div>
+      ${(t.impacts||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">Impacts</span>
+        <div class="meta-pills">${(t.impacts||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
+      </div>` : `<div class="meta-row"><span class="meta-key">Impacts</span><span class="meta-val">—</span></div>`}
+      ${(t.driven_by||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">Driven By</span>
+        <div class="meta-pills">${(t.driven_by||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
+      </div>` : `<div class="meta-row"><span class="meta-key">Driven By</span><span class="meta-val">—</span></div>`}
       <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">Actions</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
+      <div class="meta-row"><span class="meta-key">Sources</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
       <div class="meta-row"><span class="meta-key">Score</span><span class="meta-val">${t.score} / 10</span></div>
     </div>`;
 }
 
 function showIndex() {
-  document.getElementById('view-detail').style.display = 'none';
+  ['view-detail','view-dashboard','view-editor'].forEach(id =>
+    document.getElementById(id).style.display = 'none');
   document.getElementById('view-index').style.display = 'block';
-  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===0));
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===1));
   history.pushState({}, '', window.location.pathname);
   window.scrollTo(0,0);
 }
+
+// ── Dashboard / Wheel ─────────────────────────────────────────────────────────
+const WHEEL_SLICES = [
+  { label:['TRUSTED','SERVICES'],   cat:'Trusted Services',   bg:'#d3beec', fg:'#4a2d7a' },
+  { label:['DIGITAL','PAYMENTS'],   cat:'Card',                bg:'#00d4ff', fg:'#004f66' },
+  { label:['REGULATORY'],           cat:'Regulatory',          bg:'#ffc390', fg:'#7a3500' },
+  { label:['IT','SECURITY'],        cat:'IT Security',         bg:'#ffa6b4', fg:'#7a1525' },
+  { label:['BANKING REG.','& TRENDS'], cat:'Banking Regulatory',  bg:'#c4ebc3', fg:'#1a5219' },
+  { label:['MISCELLANEOUS'],        cat:'Miscellaneous',       bg:'#ffeda3', fg:'#5a4a00' },
+];
+
+function pToC(cx,cy,r,deg){ const rad=(deg-90)*Math.PI/180; return {x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)}; }
+
+// Returns a sector path whose two straight edges are parallel lines (constant gap width at all radii)
+// gap = perpendicular pixel distance from each boundary radial to the slice edge (total gap = 2*gap)
+function parallelSector(cx, cy, iR, oR, b1deg, b2deg, gap) {
+  const f = n => n.toFixed(3);
+  // For boundary at angle bDeg, offset by +d pixels CCW (towards slice interior):
+  // Point on circle R is at SVG-angle = (bDeg-90)*π/180 + arcsin(d/R)
+  const pt = (R, bDeg, d) => {
+    const base = (bDeg - 90) * Math.PI / 180;
+    const phi  = base + Math.asin(d / R);
+    return { x: cx + R * Math.cos(phi), y: cy + R * Math.sin(phi) };
+  };
+  const il = pt(iR, b1deg,  gap);   // inner-left  (b1 + gap)
+  const ol = pt(oR, b1deg,  gap);   // outer-left
+  const ir = pt(iR, b2deg, -gap);   // inner-right (b2 - gap)
+  const or_= pt(oR, b2deg, -gap);   // outer-right
+  const lg = (b2deg - b1deg) > 180 ? 1 : 0;
+  return `M${f(il.x)},${f(il.y)} L${f(ol.x)},${f(ol.y)} A${oR},${oR},0,${lg},1,${f(or_.x)},${f(or_.y)} L${f(ir.x)},${f(ir.y)} A${iR},${iR},0,${lg},0,${f(il.x)},${f(il.y)} Z`;
+}
+
+function showDashboard() {
+  ['view-index','view-detail','view-editor'].forEach(id =>
+    document.getElementById(id).style.display = 'none');
+  document.getElementById('view-dashboard').style.display = 'block';
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===0));
+  renderWheel();
+  window.scrollTo(0,0);
+}
+
+function renderWheel() {
+  if (!db) return;
+  const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
+  const f=n=>n.toFixed(2);
+  let h='';
+  [2,4,6,8,10].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    h+=`<circle cx="${cx}" cy="${cy}" r="${f(r)}" fill="none" stroke="rgba(4,0,102,0.07)" stroke-width=".8" ${sc<10?'stroke-dasharray="3,4"':''}/>`;
+  });
+  [2,4,6,8].forEach(sc=>{
+    const r=iR+(10-sc)/9*(oR-iR);
+    const lp=pToC(cx,cy,r,30);
+    h+=`<text x="${f(lp.x+3)}" y="${f(lp.y)}" font-size="7" fill="rgba(107,107,138,.55)" font-family="Noto Sans Mono" dominant-baseline="middle">${sc}</text>`;
+  });
+  WHEEL_SLICES.forEach((sl,i)=>{
+    const a1=i*60,a2=(i+1)*60,mid=(a1+a2)/2;
+    h+=`<path d="${parallelSector(cx,cy,iR,oR,a1,a2,GAP_PX)}" fill="${sl.bg}" fill-opacity=".18" stroke="${sl.bg}" stroke-width=".8" stroke-opacity=".55"/>`;
+    const lR=oR+36,lp=pToC(cx,cy,lR,mid);
+    sl.label.forEach((ln,li)=>{
+      const yo=sl.label.length>1?(li-0.5)*12:0;
+      h+=`<text x="${f(lp.x)}" y="${f(lp.y+yo)}" text-anchor="middle" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="${sl.fg}" font-family="Noto Sans,sans-serif" style="letter-spacing:.07em">${ln}</text>`;
+    });
+    const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
+    const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
+    const N=topics.length;
+    topics.forEach((tp,j)=>{
+      const r=iR+(10-tp.score)/9*(oR-iR);
+      const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
+      const lo=a1+minOff, hi=a2-minOff;
+      const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      const pos=pToC(cx,cy,r,tA);
+      h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="wdot" data-id="${tp.id}" style="cursor:pointer"/>`;
+      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
+    });
+  });
+  h+=`<circle cx="${cx}" cy="${cy}" r="${iR}" fill="rgba(4,0,102,.05)" stroke="rgba(4,0,102,.18)" stroke-width="1"/>`;
+  h+=`<text x="${cx}" y="${cy-7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">HIGH</text>`;
+  h+=`<text x="${cx}" y="${cy+7}" text-anchor="middle" dominant-baseline="middle" font-size="7.5" fill="rgba(4,0,102,.35)" font-family="Noto Sans Mono">SCORE</text>`;
+  document.getElementById('wheel-svg').innerHTML = h;
+  document.getElementById('wheel-legend-items').innerHTML = WHEEL_SLICES.map(sl=>{
+    const n=(db.topics||[]).filter(t=>t.category===sl.cat).length;
+    return `<div class="legend-item"><div class="legend-dot" style="background:${sl.bg};border:2px solid ${sl.fg}"></div><span>${sl.label.join(' ')}</span><span class="legend-count">${n}</span></div>`;
+  }).join('');
+  const tt=document.getElementById('wheel-tt');
+  document.querySelectorAll('.wdot').forEach(dot=>{
+    const id=parseInt(dot.dataset.id),t=(db.topics||[]).find(x=>x.id===id);
+    if(!t) return;
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
+    dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
+    dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
+  });
+}
+
+// ── Editor ────────────────────────────────────────────────────────────────────
+function showEditor() {
+  ['view-index','view-detail','view-dashboard'].forEach(id =>
+    document.getElementById(id).style.display = 'none');
+  document.getElementById('view-editor').style.display = 'block';
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===4));
+  edPopulateStatic();
+  window.scrollTo(0,0);
+}
+
+function edPopulateStatic() {
+  if (!db) return;
+  // Tags dropdown
+  const ts = document.getElementById('ed-tags-select');
+  if (ts && !ts.dataset.built) {
+    (db.tags||[]).forEach(tag => {
+      const o = document.createElement('option');
+      o.value = tag; o.textContent = tag;
+      ts.appendChild(o);
+    });
+    ts.dataset.built = '1';
+  }
+  // Stakeholders dropdown
+  const ss = document.getElementById('ed-sh-select');
+  if (ss && !ss.dataset.built) {
+    (db.stakeholders||[]).forEach(sh => {
+      const o = document.createElement('option');
+      o.value = sh.id; o.textContent = `${sh.name} — ${sh.role}`;
+      ss.appendChild(o);
+    });
+    ss.dataset.built = '1';
+  }
+}
+
+function edAddPill(type, select) {
+  const val = select.value;
+  if (!val) return;
+  const pillsId = type === 'tag' ? 'ed-tags-pills' : 'ed-sh-pills';
+  const container = document.getElementById(pillsId);
+  // Prevent duplicates
+  if (container.querySelector(`[data-val="${CSS.escape(val)}"]`)) {
+    select.value = ''; return;
+  }
+  const pill = document.createElement('span');
+  if (type === 'tag') {
+    pill.className = 'ed-pill';
+    pill.dataset.val = val;
+    pill.innerHTML = `${val}<button class="pill-x" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  } else {
+    const sh = (db.stakeholders||[]).find(s => s.id === parseInt(val));
+    if (!sh) { select.value=''; return; }
+    const av = sh.name.split(' ').map(n=>n[0]).join('');
+    pill.className = 'ed-pill sh-pill';
+    pill.dataset.val = val;
+    pill.innerHTML = `<span class="pill-av">${av}</span>${sh.name}<button class="pill-x" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  }
+  container.appendChild(pill);
+  select.value = '';
+}
+
+function edCheckDuplicate() {
+  if (!db) return false;
+  const val = document.getElementById('ed-title').value.trim().toLowerCase();
+  const dup = val && (db.topics||[]).some(t => t.title.trim().toLowerCase() === val);
+  document.getElementById('ed-dup-warning').style.display = dup ? 'block' : 'none';
+  document.getElementById('ed-title').classList.toggle('error', dup);
+  document.getElementById('ed-save-btn').disabled = dup;
+  return dup;
+}
+
+function edAddRow(type) {
+  const list = document.getElementById(`ed-${type}-list`);
+  const row = document.createElement('div');
+  row.className = 'ed-dyn-row';
+  if (type === 'actions') {
+    row.innerHTML = `
+      <input class="ed-input" type="text" placeholder="Action description…">
+      <select class="ed-select">
+        <option value="open">open</option>
+        <option value="in-progress">in-progress</option>
+        <option value="done">done</option>
+      </select>
+      <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  } else if (type === 'sources') {
+    row.innerHTML = `
+      <input class="ed-input src-label" type="text" placeholder="Label (e.g. EU Regulation text)">
+      <input class="ed-input src-url"   type="url"  placeholder="https://…">
+      <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  } else {
+    const placeholders = {
+      risks:    'Describe a risk…',
+      chances:  'Describe a chance…',
+      impacts:  'Describe an impact…',
+      drivenby: 'e.g. EU regulation, market demand…',
+      wg:       'Working group name…',
+    };
+    if (type === 'wg') {
+      row.innerHTML = `
+        <input class="ed-input src-label" type="text" placeholder="Working group name…">
+        <input class="ed-input src-url"   type="url"  placeholder="https://… (optional)">
+        <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+    } else {
+      row.innerHTML = `
+      <input class="ed-input" type="text" placeholder="${placeholders[type]||''}">
+      <button class="ed-rem-btn" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+    }
+  }
+  list.appendChild(row);
+  row.querySelector('input').focus();
+}
+
+function edCollect() {
+  const title   = document.getElementById('ed-title').value.trim();
+  const score   = parseInt(document.getElementById('ed-score').value);
+  const priority= document.getElementById('ed-priority').value;
+  const horizon = document.getElementById('ed-horizon').value;
+  const category= document.getElementById('ed-category').value;
+  const position= document.getElementById('ed-position').value.trim();
+
+  const impacts  = [...document.querySelectorAll('#ed-impacts-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const drivenBy = [...document.querySelectorAll('#ed-drivenby-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const wgs = [...document.querySelectorAll('#ed-wg-list .ed-dyn-row')].map(row => {
+    const ins = row.querySelectorAll('input');
+    return { name: ins[0].value.trim(), url: ins[1].value.trim() };
+  }).filter(w => w.name);
+  const mgmt    = document.getElementById('ed-mgmt').value.trim();
+  const desc    = document.getElementById('ed-desc').value.trim();
+  const extdesc = document.getElementById('ed-extdesc').value.trim();
+
+  const tags  = [...document.querySelectorAll('#ed-tags-pills .ed-pill')].map(p => p.dataset.val);
+  const shIds = [...document.querySelectorAll('#ed-sh-pills .ed-pill')].map(p => parseInt(p.dataset.val));
+
+  const actions = [...document.querySelectorAll('#ed-actions-list .ed-dyn-row')].map(row => {
+    const inputs = row.querySelectorAll('input,select');
+    return { description: inputs[0].value.trim(), status: inputs[1].value };
+  }).filter(a => a.description);
+
+  const risks = [...document.querySelectorAll('#ed-risks-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+  const chances = [...document.querySelectorAll('#ed-chances-list .ed-dyn-row input')].map(i=>i.value.trim()).filter(Boolean);
+
+  const sources = [...document.querySelectorAll('#ed-sources-list .ed-dyn-row')].map(row => {
+    const ins = row.querySelectorAll('input');
+    return { label: ins[0].value.trim(), url: ins[1].value.trim() };
+  }).filter(s => s.label || s.url);
+
+  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
+}
+
+function edValidate(f) {
+  let ok = true;
+  [['ed-title', !f.title], ['ed-category', !f.category], ['ed-priority', !f.priority], ['ed-desc', !f.desc]].forEach(([id, bad]) => {
+    document.getElementById(id).classList.toggle('error', bad);
+    if (bad) ok = false;
+  });
+  return ok;
+}
+
+function edSave() {
+  if (edCheckDuplicate()) return;
+  const f = edCollect();
+  if (!edValidate(f)) {
+    edStatus('Please fill in all required fields.', false);
+    return;
+  }
+
+  const newId = Math.max(0, ...(db.topics||[]).map(t=>t.id)) + 1;
+  const newTopic = {
+    id: newId,
+    title: f.title,
+    score: f.score,
+    priority: f.priority || undefined,
+    category: f.category || undefined,
+    horizon: f.horizon || undefined,
+    description: f.desc,
+    ...(f.mgmt    && { management_summary: f.mgmt }),
+    ...(f.extdesc && { extended_description: f.extdesc }),
+    ...(f.risks.length   && { risks: f.risks }),
+    ...(f.chances.length && { chances: f.chances }),
+    ...(f.position       && { position: f.position }),
+    ...(f.impacts.length && { impacts: f.impacts }),
+    ...(f.drivenBy.length&& { driven_by: f.drivenBy }),
+    ...(f.wgs.length     && { associated_working_groups: f.wgs }),
+    tags: f.tags,
+    stakeholders: f.shIds,
+    actions: f.actions,
+    ...(f.sources.length && { sources: f.sources }),
+  };
+
+  const updated = { ...db, topics: [...(db.topics||[]), newTopic] };
+  const blob = new Blob([JSON.stringify(updated, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'topics.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+
+  // Merge into live db so the new topic is immediately visible
+  db = updated;
+  boot();
+
+  edStatus(`✓ topics.json downloaded with "${f.title}" added (ID ${newId}). Replace the file in your repo.`, true);
+}
+
+function edReset() {
+  document.getElementById('ed-title').value = '';
+  document.getElementById('ed-score').value = 5;
+  document.getElementById('ed-score-display').textContent = '5';
+  document.getElementById('ed-priority').value = '';
+  document.getElementById('ed-horizon').value = '';
+  document.getElementById('ed-category').value = '';
+  document.getElementById('ed-mgmt').value = '';
+  document.getElementById('ed-desc').value = '';
+  document.getElementById('ed-extdesc').value = '';
+  document.getElementById('ed-tags-pills').innerHTML = '';
+  document.getElementById('ed-sh-pills').innerHTML = '';
+  document.getElementById('ed-tags-select').value = '';
+  document.getElementById('ed-sh-select').value = '';
+  ['risks','chances','actions','sources','impacts','drivenby','wg'].forEach(t => document.getElementById(`ed-${t}-list`).innerHTML = '');
+  document.getElementById('ed-position').value = '';
+  document.getElementById('ed-dup-warning').style.display = 'none';
+  document.getElementById('ed-save-btn').disabled = false;
+  document.querySelectorAll('.ed-input.error, .ed-select.error, .ed-textarea.error').forEach(el => el.classList.remove('error'));
+  edStatus('', false);
+}
+
+function edStatus(msg, ok) {
+  const el = document.getElementById('ed-status');
+  el.textContent = msg;
+  el.className = 'ed-status' + (ok ? ' ok' : msg ? ' fail' : '');
+}
+
+
+
 
 window.addEventListener('popstate', e => {
   if (e.state?.topicId) showDetail(e.state.topicId);
