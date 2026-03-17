@@ -18,6 +18,14 @@
     "IT security",
     "market"
   ],
+  "categories": [
+    "Trusted Services",
+    "Digital Payments",
+    "Regulatory",
+    "Banking Regulatory and Trends",
+    "IT Security",
+    "Miscellaneous"
+  ],
   "stakeholders": [
     {
       "id": 1,
@@ -537,8 +545,9 @@
       "score": 7,
       "priority": "Medium-High",
       "horizon": "24–48 months",
-      "description": "The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks in payment flows, customer relationships, and deposit funding.",
-      "management_summary": "The Digital Euro is a structural, long-cycle threat and opportunity that requires early engagement rather than a wait-and-see approach. The holding limit design will determine the disintermediation impact. Banks that participate actively in the intermediary model stand to gain a distribution role; those that disengage risk being bypassed entirely.",
+      "description": "The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks \
+                      in payment flows, customer relationships, and deposit funding.",
+      "management_summary": "The Digital Euro is a structural, long-cycle threat and opportunity that requires early engagement rather than a wait-and-see approach. The holding limit design will determine the disintermediation impact. Banks that participate actively in the intermediary model stand to gain a distribution role; those that disengage risk being bypassed entirely. Legislation: EU Commission proposal in June 2023. Trilog will probably start in second half of 2026. Technical aspects: Projectstart in 2021",
       "extended_description": "The ECB's Digital Euro preparation phase (launched November 2023) focuses on rulebook development, technical architecture finalisation, and legislative progress. The ECB has proposed a holding limit of €3,000 per citizen to mitigate bank run risk during stress scenarios, though this is subject to legislative negotiation. Commercial banks would act as distributors (onboarding, KYC, wallet provision) under a supervised intermediary model — preserving the customer relationship but introducing a new settlement liability. The primary disintermediation risk is in transactional deposits: if the Digital Euro offers equivalent convenience to a bank account with ECB credit quality, switching costs for consumers decrease significantly. Banks face a structural question: do we proactively shape the distribution model, or minimise investment and react?",
       "risks": [
         "High holding limits (€3,000+) could trigger significant retail deposit outflows in stress scenarios, threatening funding stability.",
@@ -1224,14 +1233,73 @@
       "driven_by": [],
       "position": "",
       "associated_working_groups": []
+    },
+	{
+      "id": 18,
+      "title": "EUDI Wallet",
+      "score": 10,
+      "priority": "High",
+      "horizon": "TBD",
+      "description": "Bei der EU Digital Identity Wallet handelt es sich um eine Lösung zur SPeicherung von Ident-Daten und Attributen für eine EU-weite Nutzung. Ziel ist ein eigenständiges Identifizierungsmedium zu schaffen, dass eine Identifizierung auf unterschiedlichen Vertrauensniveaus ermöglicht. Die Nutzung der Wallet soll für die Nutzenden kostenlos sein und es ist in bestimmten Fällen eine Akzepetanzpflicht (Gatekeeper) vorgesehen. Es ist ein langfristig angelegtes Projekt mit ungewissem Ausgang.",
+      "management_summary": "EUDI-Wallet ermöglicht unzählige (neue) digitale Geschäftsfälle - auch für Unternehmen (dank Business Wallet). Die EUDI-Wallet kann als EU-weit einheitliche digitale Brieftasche unterschiedlichste Daten und Nachweise vorhalten, um u.a. sicheres Einloggen bei Online-Diensten, freigeben von Transaktionen, digitales Unterschreiben von Dokumenten, Altersnachweis oder Vorzeigen von Tickets usw. zu ermöglichen. Akzeptanzpflicht für große Player (regulierte Branchen, Online-Plattformen)",
+      "extended_description": "Die EUDI-Wallet ist eine der wichtigsten Initiativen der EU für die digitale Souveränität ihrer Bürger. Sie ermöglicht es EU-Bürgern, ihre Identität und Nachweise sicher, datenschutzkonform und grenzüberschreitend digital zu nutzen. Sie speichert offizielle Dokumente wie Personalausweis, Führerschein, Zeugnisse (etc.) - und dient zum bequemen Ausweisen, Anmelden bei Diensten oder digitalen Unterschreiben. Höhere Sicherheit im Vergleich zu physischen Dokumenten - volle Kontrolle der Nutzer über ihre Daten, nur notwendige Informationen werden weitergegeben (Datensparsamkeit) - bis Ende 2026 müssen alle EU-Mitgliedstaaten eine Wallet bereitstellen, in D ist die Einführung der staatlichen Wallet für Anfang 2027 vorgesehen - basiert auf der überarbeiteten eIDAS 2.0-Verordnung (siehe Themenblatt eIDAS) , die einheitliche Sicherheitsstandards in der gesamten EU sicherstellt - Banken (und andere definierte Unternehmen) müssen bei einer Online-Kontoeröffnung sowie beim Log-in ins Online-Banking und bei Online-Banking-Transaktionen den Einsatz der EUDI-Wallet unterstützen, wenn der Kunde dies möchte. Diese Akzeptanzpflicht gilt ab Dezember 2027. - Die European Business Wallet wurde Ende November 2025 von der Kommission  vorgeschlagen um Unternehmen zu ermöglichen Vorgänge und Interaktionen zu digitalisieren, die derzeit in vielen Fällen noch analog erfolgen müssen. Dadurch können Unternehmen Dokumente digital unterzeichnen und mit Zeitstempeln und Siegeln versehen, geprüfte Dokumente sicher erstellen, speichern und austauschen, sicher mit anderen Unternehmen oder öffentlichen Verwaltungen im eigenen Land und in den anderen 26 Mitgliedstaaten kommunizieren. Es werden jährliche Einsparungen für die Unternehmen im Bereich von 150 Mrd. Euro erwartet. ",
+      "risks": [
+        "Nutzung bleibt hinter Erwartungen zurück (Invest) (vgl. Nutzungsverhalten ePerso).",
+        "Derzeit unklarer Business Case.",
+        "Verlust des USPs der GWG Wiederverwendung der Banken.",
+        "Möglicher Verlust Wettbewerbsvorteil deutscher Vertrauensdiensteanbieter."
+      ],
+      "chances": [
+        "Nachfrage / Bedarf der Banken durch Nutzungsverpflichtung / Akzeptanzpflicht ",
+        "künftig viele Use Cases denkbar (Staat setzt große Hoffnung in Anwendung und Effizienzgewinne)",
+        "Nutzung der Wallet als sog. Verifier",
+        "Offener Standard zur Platzierung / Einbindung der Vertrauensdienste in die Wallet"
+      ],
+      "sources": [
+        {
+          "label": "Bundesbank: Struktur des deutschen Bankensektors",
+          "url": "https://www.bundesbank.de/de/statistiken/banken-und-andere-finanzielle-institute/banken"
+        },
+        {
+          "label": "BaFin: Erlaubnisverfahren und Portfoliotransfers",
+          "url": "https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/Erlaubnisverfahren/erlaubnisverfahren_node.html"
+        },
+        {
+          "label": "Handelsblatt: Auslandsbanken in Deutschland — Marktübersicht",
+          "url": "https://www.handelsblatt.com/finanzen/banken-versicherungen"
+        }
+      ],
+      "tags": [
+        "infrastructure"
+      ],
+      "stakeholders": [
+        9,
+        2,
+        4
+      ],
+      "actions": [
+        {
+          "description": "Gespräche mit möglichen Partnern/Banken zur Teilnahme an SPRIND-Pilot.",
+          "status": "open"
+        },
+        {
+          "description": "Teilnahme an Piloten (SPRIND)",
+          "status": "open"
+        },
+        {
+          "description": "Aufbau Know-How (durch externes Consulting, Governikus)",
+          "status": "open"
+        },
+        {
+          "description": "Intensive Beobachtung in DK, BdB und BITKOM Arbeitsgruppen",
+          "status": "open"
+        }
+      ],
+      "category": "Regulatory",
+      "impacts": [],
+      "driven_by": ["Politik"],
+      "position": "",
+      "associated_working_groups": []
     }
-  ],
-  "categories": [
-    "Trusted Services",
-    "Digital Payments",
-    "Regulatory",
-    "Banking Regulatory and Trends",
-    "IT Security",
-    "Miscellaneous"
   ]
 }
