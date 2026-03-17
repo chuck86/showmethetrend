@@ -6,6 +6,7 @@
 <title>Strategic Topic Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 <style>
   /* ── DESIGN TOKENS ─────────────────────────────────────────────────────── */
   :root {
@@ -680,11 +681,11 @@
 
     <div class="editor-header fade-up">
       <h2>Topic Editor</h2>
-      <p>Add a new topic to the database. Fill in all required fields marked <span style="color:var(--cyan)">*</span>, then download the updated <code>topics.json</code> and replace the file in your repository.</p>
+      <p>Add a new topic to the database. Fill in all required fields marked <span style="color:var(--cyan)">*</span>, then download the updated <code>topics.yaml</code> and replace the file in your repository.</p>
     </div>
 
     <div class="ed-dup-warning" id="ed-dup-warning">
-      <strong>Duplicate detected:</strong> A topic with this title already exists. Please choose a different name or edit the existing topic in <code>topics.json</code>.
+      <strong>Duplicate detected:</strong> A topic with this title already exists. Please choose a different name or edit the existing topic in <code>topics.yaml</code>.
     </div>
 
     <!-- IDENTITY -->
@@ -850,7 +851,7 @@
 
     <!-- SAVE BAR -->
     <div class="editor-actions">
-      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()">⬇ Download updated topics.json</button>
+      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()">⬇ Download updated topics.yaml</button>
       <button class="ed-reset-btn" onclick="edReset()">Clear form</button>
       <span class="ed-status" id="ed-status"></span>
     </div>
@@ -860,7 +861,7 @@
 
 <script>
 // ── Config ──────────────────────────────────────────────────────────────────
-const DATA_URL    = './topics.json';
+const DATA_URL    = './topics.yaml';
 const GITHUB_REPO = ''; // e.g. 'https://github.com/yourorg/your-repo'
 
 // ── State ───────────────────────────────────────────────────────────────────
@@ -907,15 +908,16 @@ async function loadData() {
     `<div class="state-msg"><div class="spinner"></div><span>Loading topics…</span></div>`;
   try {
     const res = await fetch(DATA_URL);
-    if (!res.ok) throw new Error(`Could not load topics.json (${res.status})`);
-    db = await res.json();
+    if (!res.ok) throw new Error(`Could not load topics.yaml (${res.status})`);
+    const text = await res.text();
+    db = jsyaml.load(text);
     boot();
   } catch(e) {
     document.getElementById('topics-container').innerHTML = `
       <div class="state-msg"><div style="border:1px solid rgba(255,166,180,0.5);background:rgba(255,166,180,0.1);
         color:#7a1525;padding:1.5rem 2rem;font-family:'Noto Sans Mono', monospace;font-size:0.75rem;
         max-width:480px;line-height:1.7;">
-        <strong>Failed to load topics.json</strong><br><br>${e.message}<br><br>
+        <strong>Failed to load topics.yaml</strong><br><br>${e.message}<br><br>
         Serve locally with: <code>python -m http.server 3000</code>
       </div></div>`;
   }
@@ -1510,10 +1512,10 @@ function edSave() {
   };
 
   const updated = { ...db, topics: [...(db.topics||[]), newTopic] };
-  const blob = new Blob([JSON.stringify(updated, null, 2)], { type: 'application/json' });
+  const blob = new Blob([jsyaml.dump(updated, { indent: 2, lineWidth: -1, noRefs: true })], { type: 'text/yaml' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'topics.json';
+  a.download = 'topics.yaml';
   a.click();
   URL.revokeObjectURL(a.href);
 
@@ -1521,7 +1523,7 @@ function edSave() {
   db = updated;
   boot();
 
-  edStatus(`✓ topics.json downloaded with "${f.title}" added (ID ${newId}). Replace the file in your repo.`, true);
+  edStatus(`✓ topics.yaml downloaded with "${f.title}" added (ID ${newId}). Replace the file in your repo.`, true);
 }
 
 function edReset() {
