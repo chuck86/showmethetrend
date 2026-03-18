@@ -138,7 +138,7 @@ topics:
     url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2225
   - label: EBA Opinion on BNPL and CCD2 Scope
     url: |-
-      https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-opinion-application-ccd2
+      https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-opinion-application-cc[d2
   - label: 'KPMG: BNPL Regulation Impact Assessment'
     url: https://kpmg.com/xx/en/home/insights/2023/06/bnpl-regulation-impact.html
   tags:
@@ -332,7 +332,7 @@ topics:
   position: ''
   associated_working_groups: []
 - id: 6
-  title: []Embedded Finance Partnerships
+  title: Embedded Finance Partnerships
   score: 4
   priority: Low-Medium
   horizon: 24–36 months
