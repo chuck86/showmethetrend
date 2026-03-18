@@ -303,7 +303,7 @@
   .source-arrow svg { width: 12px; height: 12px; }
 
   /* ── DASHBOARD / WHEEL ───────────────────────────────────────────────────── */
-  .dashboard-layout { max-width: 1100px; margin: 0 auto; padding: 3rem; }
+  .dashboard-layout { max-width: 1280px; margin: 0 auto; padding: 0; }
   .dashboard-hero { margin-bottom: 2.5rem; }
   .dashboard-hero h2 { font-size: 2rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.35rem; }
   .dashboard-hero p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
@@ -584,12 +584,14 @@
 <!-- ══ DASHBOARD VIEW ══════════════════════════════════════════════════════ -->
 <div id="view-dashboard">
   <div class="dashboard-layout">
-    <div class="index-hero" style="padding-left:0;padding-right:0;max-width:unset;">
+    <div class="index-hero">
       <div class="hero-text">
         <h1>Strategic Topics<br><span>Radar Analysis</span></h1>
         <p class="index-subtitle">All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.</p>
       </div>
     </div>
+
+    <div style="padding: 0 3rem 3rem;">
 
     <!-- ── TO-DO BOX ─────────────────────────────────────────────────────── -->
     <div style="
@@ -671,10 +673,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- end newsfeed -->
 
-  </div>
-</div>
+    </div><!-- end padded body wrapper -->
+
+  </div><!-- end dashboard-layout -->
+</div><!-- end view-dashboard -->
 <div id="wheel-tt"></div>
 
 <!-- ══ EDITOR VIEW ═════════════════════════════════════════════════════════ -->
