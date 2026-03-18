@@ -2,13 +2,6 @@ meta:
   title: Strategic Topic Intelligence
   organisation: Payment Enablement
   updated: March 2026
-categories:
-- Trusted Services
-- Card
-- Regulatory
-- Banking Regulatory
-- IT Security
-- Miscellaneous
 tags:
 - payment
 - research
@@ -51,11 +44,17 @@ topics:
   priority: Medium-High
   horizon: 12–18 months
   description: |-
-    Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.
+    Stablecoins are - in contrast to crypto currencies - pegged to (relatively) stable assets or currencies (EUR, USD). Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. 
+    Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.
   management_summary: |-
-    Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. We recommend a contained pilot programme while monitoring ECB policy closely.
+    Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA 
+    framework provides a regulatory pathway in Europe but timelines remain uncertain. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, 
+    supporting Banks in their stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely.
   extended_description: |-
-    Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for on-chain transactions. The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being interpreted. Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.
+    Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border 
+    B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for 
+    on-chain transactions. The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being 
+    interpreted. Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.
   risks:
   - |-
     Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
@@ -333,7 +332,7 @@ topics:
   position: ''
   associated_working_groups: []
 - id: 6
-  title: Embedded Finance Partnerships
+  title: []Embedded Finance Partnerships
   score: 4
   priority: Low-Medium
   horizon: 24–36 months
@@ -389,33 +388,53 @@ topics:
   associated_working_groups: []
 - id: 7
   title: girocard 4.0
-  score: 8
+  score: 7
   priority: High
   horizon: 12–24 months
   description: |-
-    The girocard scheme is undergoing a fundamental modernisation to support contactless mobile payments, NFC-based wallets, and online e-commerce use cases. girocard 4.0 introduces a new technical architecture enabling tokenisation and digital wallet integration.
+    The girocard scheme is undergoing a fundamental modernisation to support contactless mobile payments, NFC-based wallets, and online e-commerce use 
+    cases. girocard 4.0 introduces a new technical architecture enabling tokenisation and digital wallet integration.
   management_summary: |-
-    girocard 4.0 is the most significant scheme modernisation since the introduction of contactless. Failure to migrate on time risks exclusion from Apple Pay and Google Pay wallet ecosystems, which are now primary payment interfaces for under-40 demographics. Migration investment is non-negotiable; the commercial opportunity lies in wallet-native product features.
+    girocard 4.0 is the most significant scheme modernisation since the introduction of contactless. Failure to migrate on time risks exclusion from 
+    Apple Pay and Google Pay wallet ecosystems, which are now primary payment interfaces for under-40 demographics. Migration investment is non-negotiable; 
+    the commercial opportunity lies in wallet-native product features.
+    Currently some banks are already provide their customers with in-app girocard transactions (android and iOS)
   extended_description: |-
-    The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft, replaces the proprietary girocard EMV kernel with a new tokenisation-capable architecture supporting Apple Pay, Google Pay, and German OEM wallet integrations. The scheme also introduces an e-commerce capability, addressing the longstanding gap where girocard could not be used for online purchases without a co-badged scheme (Maestro, now being phased out). Token Service Provider (TSP) integration is required at the issuer level; banks using Atruvia processing benefit from a shared migration path, but independent processors must implement TSP connectivity separately. The scheme timeline envisions full migration by end of 2026 with a transition period through 2027.
+    The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft, replaces the proprietary girocard EMV kernel with a new tokenisation-capable 
+    architecture supporting Apple Pay, Google Pay, and German OEM wallet integrations, theirby (as a side-effect) also strengthening the national 
+    payment infrastructure (while reducing dependency from major international schemes) The scheme also introduces an e-commerce capability, addressing 
+    the longstanding gap where girocard could not be used for online purchases without a co-badged scheme (Maestro, now being phased out). Token 
+    Service Provider (TSP) integration is required at the issuer level; banks using Atruvia processing benefit from a shared migration path, but 
+    independent processors must implement TSP connectivity separately. 
+    EURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap. Girocard 2.0: e-commerce and in-app-transactions; girocard 3.0: e- and 
+    app-payments; girocard 4.0: convenience and added value.
+    The scheme timeline envisions full migration by end of 2026 with a transition period through 2027. 
+    This planed extension closes a functional gap that is offered by (for instance) credit card schemes (rental car reservation, hotel booking, integration 
+    in third party wallets, in-app payments).
   risks:
+  - |-
+    High investmens in technology. Training necessary.
+  - |-
+    Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
   - |-
     Migration delay risks exclusion from Apple Pay and Google Pay wallet integrations, ceding market share to Visa/Mastercard debit.
   - |-
     TSP integration complexity may be underestimated, particularly for banks with legacy issuing systems.
-  - Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is
-    possible.
+  - |-
+    Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is possible.
   - |-
     Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
   chances:
   - |-
-    girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders.
+    girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders
   - |-
     E-commerce capability opens a new acceptance channel for girocard, previously absent from online retail.
   - |-
     Tokenisation infrastructure is reusable for Digital Euro distribution and future CBDC wallet integration.
   - |-
     Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem.
+  - |-
+    Business modell expansion by offering new services based on new technical possibilities
   sources:
   - label: 'Deutsche Kreditwirtschaft: girocard 4.0 Programme'
     url: https://die-dk.de/zahlungsverkehr/girocard/
@@ -431,6 +450,16 @@ topics:
   - 4
   - 5
   actions:
+  - description: Discussing the following point with BdB counterparts. Lobbying efforts. Alignment with product strategy. Focus on relevant 
+                 product features. Definition of mandatory parts for implementation
+    status: open
+  - description: |-
+      Technological development: Offering support for banks in their girocard 4.0 integration efforts.
+    status: open
+  - description: development of standardized security concepts and tools
+    status: open
+  - description: Training, conultation and ressource allocation to support banks in their necessary adaptations. enabling a timly rollout.
+    status: open
   - description: |-
       Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.
     status: in-progress
@@ -445,7 +474,7 @@ topics:
     status: open
   category: Card
   impacts: []
-  driven_by: []
+  driven_by: policy, customes, competition
   position: ''
   associated_working_groups: []
 - id: 8
@@ -1055,3 +1084,10 @@ topics:
   driven_by: []
   position: ''
   associated_working_groups: []
+categories:
+- Trusted Services
+- Card
+- Regulatory
+- Banking Regulatory
+- IT Security
+- Miscellaneous
