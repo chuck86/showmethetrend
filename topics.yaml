@@ -745,12 +745,22 @@ topics:
   score: 7
   priority: Medium-High
   horizon: 12–24 months
-  description: |-
-    The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU member states, creating both compliance obligations and a strategic opportunity to act as identity service providers.
-  management_summary: |-
-    eIDAS 2.0 is primarily a compliance topic in the near term but carries a genuine commercial opportunity: qualifying as a Trust Service Provider positions the bank as a core infrastructure player in the EU digital identity ecosystem. The investment required is moderate and largely overlaps with existing eKYC infrastructure.
-  extended_description: |-
-    eIDAS 2.0 (Regulation 910/2014 revised) harmonises digital identity trust levels across the EU, requiring member states to recognise each other's notified eID schemes at all assurance levels. For banks, the most relevant changes are: mandatory acceptance of eIDAS-compliant digital identities for KYC purposes, new obligations around qualified electronic signatures and seals, and the opportunity to register as a qualified Trust Service Provider (QTSP). QTSPs can offer electronic signature, timestamp, and identity verification services commercially. The regulation also creates a framework for attribute attestation services — banks could issue certified financial attribute attestations (income, account ownership) that third parties can verify without direct data access, a privacy-preserving model with significant commercial potential.
+  description: "The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU \
+    \ member states, creating both compliance obligations and a strategic opportunity to act as identity service provides. \n \
+    \ eIDAS comprises solutions for signatures, seals, timestamps, identification (eID, video-ident, etc.), further development to fulfill \
+    \ clients workflows and process requirements - B2C relevance."
+  management_summary: "eIDAS 2.0 is primarily a compliance topic in the near term but carries a genuine commercial opportunity: qualifying \
+    \ as a Trust Service Provider positions the bank as a core infrastructure player in the EU digital identity ecosystem. The investment \
+    \ required is moderate and largely overlaps with existing eKYC infrastructure. \n \
+    \ Huge potential (in theory at least). NCS already posesses (at least in large parts) the necessary infrastructure. Obligation to accept eIDAS \ 
+    \ identification creates pressure to implement."
+  extended_description: "eIDAS 2.0 (Regulation 910/2014 revised) harmonises digital identity trust levels across the EU, requiring member states \
+    \ to recognise each other's notified eID schemes at all assurance levels. For banks, the most relevant changes are: mandatory acceptance of \
+    \ eIDAS-compliant digital identities for KYC purposes, new obligations around qualified electronic signatures and seals, and the opportunity \
+    \ to register as a qualified Trust Service Provider (QTSP). QTSPs can offer electronic signature, timestamp, and identity verification services \
+    \ commercially. The regulation also creates a framework for attribute attestation services — banks could issue certified financial attribute \
+    \ attestations (income, account ownership) that third parties can verify without direct data access, a privacy-preserving model with significant \
+    \ commercial potential."
   risks:
   - |-
     QTSP certification process is complex and time-consuming; underestimating the timeline risks missing early market positioning.
@@ -762,6 +772,8 @@ topics:
     Liability framework for eIDAS-certified identity assertions is still being interpreted in the context of AML obligations.
   chances:
   - |-
+    Increase in sales by leveraging NCS usp. Usability for GWG and flexibility in combinung NCS solutions
+  - |-
     QTSP status enables fee-generating identity verification and electronic signature services for corporate and retail clients.
   - |-
     Certified financial attribute attestations create a new data product that commands premium pricing from third-party verifiers.
@@ -769,6 +781,8 @@ topics:
     Early QTSP positioning creates barriers to entry for non-bank identity competitors in the German financial sector.
   - |-
     eIDAS 2.0 compliance overlaps significantly with EUDI Wallet relying party requirements, reducing total integration cost.
+  - |-
+    Growth in customer range. Growth in market potential (e.g. eGov)
   sources:
   - label: eIDAS 2.0 — EU Regulation 2024/1183
     url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1183
@@ -806,11 +820,11 @@ topics:
   - eIDAS 2.0 regulation
   - EUDI Wallet rollout
   - National eID infrastructure
-  position: Implement
+  position: Follow actively
   associated_working_groups:
   - name: EU eIDAS Expert Group
     url: ''
-  - name: TeleTrusT Arbeitsgruppe eID
+  - name: PG eIDAS 2.0 Umsetzung
     url: ''
 - id: 11
   title: "[UPDATE NECESSARY] EUDI Wallet"
