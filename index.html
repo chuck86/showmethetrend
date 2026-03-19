@@ -319,9 +319,9 @@
   .legend-count { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-left: auto; }
   .wheel-hint { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; color: var(--muted); line-height: 1.8; }
   .wheel-hint span { display: flex; gap: 0.5rem; }
-  #wheel-tt { position: fixed; z-index: 9999; display: none; pointer-events: none; background: var(--navy); color: var(--white); padding: 0.6rem 1rem; border-radius: 3px; max-width: 230px; box-shadow: 0 6px 24px rgba(4,0,102,0.35); }
-  #wheel-tt strong { display: block; font-size: 0.83rem; line-height: 1.3; margin-bottom: 0.3rem; }
-  #wheel-tt span { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--cyan); letter-spacing: 0.04em; }
+  #wheel-tt, #index-wheel-tt { position: fixed; z-index: 9999; display: none; pointer-events: none; background: var(--navy); color: var(--white); padding: 0.6rem 1rem; border-radius: 3px; max-width: 230px; box-shadow: 0 6px 24px rgba(4,0,102,0.35); }
+  #wheel-tt strong, #index-wheel-tt strong { display: block; font-size: 0.83rem; line-height: 1.3; margin-bottom: 0.3rem; }
+  #wheel-tt span, #index-wheel-tt span { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--cyan); letter-spacing: 0.04em; }
 
   /* ── EDITOR ──────────────────────────────────────────────────────────────── */
   #view-editor { display: none; }
@@ -545,7 +545,7 @@
       <svg id="index-wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;height:auto;display:block;margin:0 auto;"></svg>
     </div>
   </div>
-<div id="index-wheel-tt" style="position:fixed;z-index:9999;display:none;pointer-events:none;background:#040066;color:#fff;padding:.55rem .95rem;border-radius:3px;max-width:220px;box-shadow:0 6px 22px rgba(4,0,102,.35);font-size:.82rem;"></div>
+<div id="index-wheel-tt"></div>
 
   <div class="cat-filter-section">
     <div class="filter-label">Filter by category</div>
@@ -1000,7 +1000,7 @@ function renderIndexWheel() {
   document.querySelectorAll('.iwdot').forEach(dot=>{
     const id=parseInt(dot.dataset.id), t=(db.topics||[]).find(x=>x.id===id);
     if(!t) return;
-    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong style="display:block;margin-bottom:.2rem;">${t.title}</strong><span style="font-family:'Noto Sans Mono',monospace;font-size:.6rem;color:#00d4ff;">${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.display='block'; tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
     dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
