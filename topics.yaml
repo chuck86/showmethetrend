@@ -2,6 +2,13 @@ meta:
   title: Strategic Topic Intelligence
   organisation: Payment Enablement
   updated: March 2026
+categories:
+- Trusted Services
+- Card
+- Regulatory
+- Banking Regulatory
+- IT Security
+- Miscellaneous
 tags:
 - payment
 - research
@@ -43,18 +50,29 @@ topics:
   score: 6
   priority: Medium-High
   horizon: 12–18 months
-  description: |-
-    Stablecoins are - in contrast to crypto currencies - pegged to (relatively) stable assets or currencies (EUR, USD). Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. 
-    Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.
-  management_summary: |-
-    Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement, potentially reducing correspondent banking costs by 30–60%. The MiCA 
-    framework provides a regulatory pathway in Europe but timelines remain uncertain. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, 
-    supporting Banks in their stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely.
-  extended_description: |-
-    Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border 
-    B2B payments where SWIFT latency and correspondent banking fees are pain points. Integration would require changes to our treasury management system, a new token custody model, and updated AML/CFT screening procedures for 
-    on-chain transactions. The technology stack is mature (Ethereum L2, Polygon, or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being 
-    interpreted. Our key differentiator could be a white-label stablecoin settlement corridor offered to corporate clients.
+  description: "Stablecoins are - in contrast to crypto currencies - pegged to (relatively)\
+    \ stable assets or currencies (EUR, USD). Evaluating the strategic opportunity\
+    \ to integrate stablecoin rails into our payments infrastructure. \nRelevant for\
+    \ cross-border settlement speed and cost reduction while navigating regulatory\
+    \ uncertainty in the EU and US."
+  management_summary: "Stablecoins are currently gaining more public interest. Stablecoin\
+    \ payment rails offer a credible medium-term alternative for cross-border settlement,\
+    \ potentially reducing correspondent banking costs by 30–60%. The MiCA \nframework\
+    \ provides a regulatory pathway in Europe but timelines remain uncertain. It should\
+    \ be noted, that there is a potential danger of stablecoins canibalizing other\
+    \ products including the payment sector. However, \nsupporting Banks in their\
+    \ stablecoin integration if we position ourselfes early on. We recommend a contained\
+    \ pilot programme while monitoring ECB policy closely."
+  extended_description: "Euro-denominated stablecoins — particularly those issued\
+    \ under the MiCA e-money token regime — are gaining traction as settlement instruments\
+    \ among tier-1 fintechs and some corporates. The primary use case is cross-border\
+    \ \nB2B payments where SWIFT latency and correspondent banking fees are pain points.\
+    \ Integration would require changes to our treasury management system, a new token\
+    \ custody model, and updated AML/CFT screening procedures for \non-chain transactions.\
+    \ The technology stack is mature (Ethereum L2, Polygon, or private permissioned\
+    \ chains), but the regulatory treatment of stablecoin-settled transactions for\
+    \ capital and liquidity purposes is still being \ninterpreted. Our key differentiator\
+    \ could be a white-label stablecoin settlement corridor offered to corporate clients."
   risks:
   - |-
     Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
@@ -100,10 +118,21 @@ topics:
       approval.
     status: open
   category: Miscellaneous
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Treasury operations
+  - Correspondent banking
+  - AML/CFT compliance
+  - Product portfolio
+  driven_by:
+  - MiCA regulation
+  - ECB digital currency strategy
+  - fintech competition
+  position: Monitor & Evaluate
+  associated_working_groups:
+  - name: EBA Digital Finance Working Group
+    url: ''
+  - name: BdB Arbeitsgruppe Digitale Währungen
+    url: ''
 - id: 2
   title: Buy Now, Pay Later Regulation
   score: 9
@@ -160,10 +189,21 @@ topics:
   - description: Run customer communication strategy to manage expectation changes.
     status: open
   category: Card
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Credit product portfolio
+  - Risk models
+  - Customer onboarding
+  - Legal & compliance
+  driven_by:
+  - EU Consumer Credit Directive revision
+  - BaFin supervision expansion
+  - Market growth
+  position: Comply & Adapt
+  associated_working_groups:
+  - name: EBA Consumer Protection WG
+    url: ''
+  - name: BdB Arbeitsgruppe Konsumentenkredite
+    url: ''
 - id: 3
   title: Real-Time Payment Rails
   score: 8
@@ -216,10 +256,21 @@ topics:
   - description: Pilot instant settlement for merchant payouts with top-50 partners.
     status: open
   category: Miscellaneous
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Core banking infrastructure
+  - Treasury liquidity
+  - Fraud management
+  - SLA commitments
+  driven_by:
+  - EU Instant Payments Regulation
+  - EPC SCT Inst scheme
+  - Customer expectations
+  position: Implement
+  associated_working_groups:
+  - name: EPC Instant Payments WG
+    url: ''
+  - name: DK Technische Arbeitsgruppe Zahlungsverkehr
+    url: ''
 - id: 4
   title: AI Credit Scoring Models
   score: 7
@@ -270,10 +321,21 @@ topics:
   - description: Establish model governance board with quarterly review cadence.
     status: done
   category: Card
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Credit decisioning
+  - Model risk management
+  - Regulatory capital
+  - Fairness & explainability
+  driven_by:
+  - EU AI Act
+  - Competitive pressure from fintechs
+  - Data availability
+  position: Pilot & Scale
+  associated_working_groups:
+  - name: EBA IReF Data WG
+    url: ''
+  - name: BdB Arbeitsgruppe KI & Daten
+    url: ''
 - id: 5
   title: Open Banking Data Monetisation
   score: 5
@@ -327,10 +389,21 @@ topics:
       third-party adoption.
     status: open
   category: Banking Regulatory
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - API infrastructure
+  - Data governance
+  - Revenue model
+  - Customer consent management
+  driven_by:
+  - PSD3/PSR
+  - FIDA regulation
+  - Open Finance policy agenda
+  position: Explore
+  associated_working_groups:
+  - name: Berlin Group NextGenPSD2
+    url: https://www.berlin-group.org
+  - name: EBA Open Finance WG
+    url: ''
 - id: 6
   title: Embedded Finance Partnerships
   score: 4
@@ -382,46 +455,64 @@ topics:
   - description: Negotiate pilot embedded credit product with one tier-1 retail partner.
     status: open
   category: Card
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Partner management
+  - Technology stack
+  - Brand & liability
+  - Regulatory perimeter
+  driven_by:
+  - Platform economy growth
+  - BaaS market development
+  - Customer expectation shifts
+  position: Selective Engagement
+  associated_working_groups:
+  - name: EBA Payment Institutions WG
+    url: ''
+  - name: Bitkom Arbeitsgruppe Banking-as-a-Service
+    url: ''
 - id: 7
   title: girocard 4.0
   score: 6
   priority: High
   horizon: 12–24 months
-  description: |-
-    The girocard scheme is undergoing a fundamental modernisation to support contactless mobile payments, NFC-based wallets, and online e-commerce use 
-    cases. girocard 4.0 introduces a new technical architecture enabling tokenisation and digital wallet integration.
-  management_summary: |-
-    girocard 4.0 is the most significant scheme modernisation since the introduction of contactless. Failure to migrate on time risks exclusion from 
-    Apple Pay and Google Pay wallet ecosystems, which are now primary payment interfaces for under-40 demographics. Migration investment is non-negotiable; 
-    the commercial opportunity lies in wallet-native product features.
-    Currently some banks are already provide their customers with in-app girocard transactions (android and iOS)
-  extended_description: |-
-    The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft, replaces the proprietary girocard EMV kernel with a new tokenisation-capable 
-    architecture supporting Apple Pay, Google Pay, and German OEM wallet integrations, theirby (as a side-effect) also strengthening the national 
-    payment infrastructure (while reducing dependency from major international schemes) The scheme also introduces an e-commerce capability, addressing 
-    the longstanding gap where girocard could not be used for online purchases without a co-badged scheme (Maestro, now being phased out). Token 
-    Service Provider (TSP) integration is required at the issuer level; banks using Atruvia processing benefit from a shared migration path, but 
-    independent processors must implement TSP connectivity separately. 
-    EURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap. Girocard 2.0: e-commerce and in-app-transactions; girocard 3.0: e- and 
-    app-payments; girocard 4.0: convenience and added value.
-    The scheme timeline envisions full migration by end of 2026 with a transition period through 2027. 
-    This planed extension closes a functional gap that is offered by (for instance) credit card schemes (rental car reservation, hotel booking, integration 
-    in third party wallets, in-app payments).
+  description: "The girocard scheme is undergoing a fundamental modernisation to support\
+    \ contactless mobile payments, NFC-based wallets, and online e-commerce use \n\
+    cases. girocard 4.0 introduces a new technical architecture enabling tokenisation\
+    \ and digital wallet integration."
+  management_summary: "girocard 4.0 is the most significant scheme modernisation since\
+    \ the introduction of contactless. Failure to migrate on time risks exclusion\
+    \ from \nApple Pay and Google Pay wallet ecosystems, which are now primary payment\
+    \ interfaces for under-40 demographics. Migration investment is non-negotiable;\
+    \ \nthe commercial opportunity lies in wallet-native product features.\nCurrently\
+    \ some banks are already provide their customers with in-app girocard transactions\
+    \ (android and iOS)"
+  extended_description: "The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft,\
+    \ replaces the proprietary girocard EMV kernel with a new tokenisation-capable\
+    \ \narchitecture supporting Apple Pay, Google Pay, and German OEM wallet integrations,\
+    \ theirby (as a side-effect) also strengthening the national \npayment infrastructure\
+    \ (while reducing dependency from major international schemes) The scheme also\
+    \ introduces an e-commerce capability, addressing \nthe longstanding gap where\
+    \ girocard could not be used for online purchases without a co-badged scheme (Maestro,\
+    \ now being phased out). Token \nService Provider (TSP) integration is required\
+    \ at the issuer level; banks using Atruvia processing benefit from a shared migration\
+    \ path, but \nindependent processors must implement TSP connectivity separately.\
+    \ \nEURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap.\
+    \ Girocard 2.0: e-commerce and in-app-transactions; girocard 3.0: e- and \napp-payments;\
+    \ girocard 4.0: convenience and added value.\nThe scheme timeline envisions full\
+    \ migration by end of 2026 with a transition period through 2027. \nThis planed\
+    \ extension closes a functional gap that is offered by (for instance) credit card\
+    \ schemes (rental car reservation, hotel booking, integration \nin third party\
+    \ wallets, in-app payments)."
   risks:
-  - |-
-    High investmens in technology. Training necessary.
+  - High investmens in technology. Training necessary.
   - |-
     Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
   - |-
     Migration delay risks exclusion from Apple Pay and Google Pay wallet integrations, ceding market share to Visa/Mastercard debit.
   - |-
     TSP integration complexity may be underestimated, particularly for banks with legacy issuing systems.
-  - |-
-    Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is possible.
+  - Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is
+    possible.
   - |-
     Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
   chances:
@@ -433,8 +524,7 @@ topics:
     Tokenisation infrastructure is reusable for Digital Euro distribution and future CBDC wallet integration.
   - |-
     Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem.
-  - |-
-    Business modell expansion by offering new services based on new technical possibilities
+  - Business modell expansion by offering new services based on new technical possibilities
   sources:
   - label: 'Deutsche Kreditwirtschaft: girocard 4.0 Programme'
     url: https://die-dk.de/zahlungsverkehr/girocard/
@@ -450,15 +540,16 @@ topics:
   - 4
   - 5
   actions:
-  - description: Discussing the following point with BdB counterparts. Lobbying efforts. Alignment with product strategy. Focus on relevant 
-                 product features. Definition of mandatory parts for implementation
-    status: open
   - description: |-
-      Technological development: Offering support for banks in their girocard 4.0 integration efforts.
+      Discussing the following point with BdB counterparts. Lobbying efforts. Alignment with product strategy. Focus on relevant product features. Definition of mandatory parts for implementation
+    status: open
+  - description: 'Technological development: Offering support for banks in their girocard
+      4.0 integration efforts.'
     status: open
   - description: development of standardized security concepts and tools
     status: open
-  - description: Training, conultation and ressource allocation to support banks in their necessary adaptations. enabling a timly rollout.
+  - description: |-
+      Training, conultation and ressource allocation to support banks in their necessary adaptations. enabling a timly rollout.
     status: open
   - description: |-
       Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.
@@ -473,10 +564,21 @@ topics:
       partners.
     status: open
   category: Card
-  impacts: []
-  driven_by: policy
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Card product portfolio
+  - Terminal infrastructure
+  - Scheme fees
+  - Competitive positioning
+  driven_by:
+  - DK scheme evolution
+  - Contactless & online use case expansion
+  - Girocard decline risk
+  position: Actively Shape
+  associated_working_groups:
+  - name: DK Arbeitsgruppe girocard
+    url: ''
+  - name: Euro Retail Payments Board (ERPB)
+    url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
 - id: 8
   title: Digitaler Euro
   score: 7
@@ -533,10 +635,21 @@ topics:
       Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.
     status: open
   category: Regulatory
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Deposit base
+  - Payment product strategy
+  - Customer interface
+  - AML obligations
+  driven_by:
+  - ECB investigation phase
+  - EU legislative proposal
+  - Disintermediation risk
+  position: Monitor & Prepare
+  associated_working_groups:
+  - name: ECB Digital Euro Market Advisory Group
+    url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
+  - name: EPC Digital Euro WG
+    url: ''
 - id: 9
   title: Instant Payments (EU-Verordnung)
   score: 9
@@ -593,10 +706,20 @@ topics:
       transaction windows.
     status: open
   category: Regulatory
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Payment processing infrastructure
+  - Fraud screening
+  - Pricing model
+  - Treasury liquidity
+  driven_by:
+  - EU Instant Payments Regulation (mandatory deadlines)
+  - EPC SCT Inst scheme
+  position: Comply & Optimise
+  associated_working_groups:
+  - name: EPC Payments Schemes WG
+    url: https://www.europeanpaymentscouncil.eu
+  - name: DK Arbeitsgruppe Instant Payments
+    url: ''
 - id: 10
   title: eIDAS 2.0
   score: 7
@@ -654,10 +777,21 @@ topics:
       timelines and technical standards.
     status: open
   category: Trusted Services
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Digital onboarding
+  - E-signature workflows
+  - Identity verification
+  - KYC processes
+  driven_by:
+  - eIDAS 2.0 regulation
+  - EUDI Wallet rollout
+  - National eID infrastructure
+  position: Implement
+  associated_working_groups:
+  - name: EU eIDAS Expert Group
+    url: ''
+  - name: TeleTrusT Arbeitsgruppe eID
+    url: ''
 - id: 11
   title: EUDI Wallet
   score: 6
@@ -713,10 +847,21 @@ topics:
       a valid onboarding channel.
     status: open
   category: Trusted Services
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Customer authentication
+  - Digital identity
+  - Onboarding costs
+  - Data privacy
+  driven_by:
+  - eIDAS 2.0 mandate
+  - National large-scale pilots
+  - EBA guidance
+  position: Pilot
+  associated_working_groups:
+  - name: EU EUDI Wallet Consortium
+    url: https://eudiwalletconsortium.org
+  - name: EBF Digital Identity Task Force
+    url: ''
 - id: 12
   title: Open Banking APIs vs. FIDA
   score: 4
@@ -771,10 +916,23 @@ topics:
   - description: Submit response to EBA/EC consultation on FIDA technical standards.
     status: open
   category: Banking Regulatory
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - API strategy
+  - Data sharing obligations
+  - Customer consent
+  - Competitive data access
+  driven_by:
+  - FIDA regulation proposal
+  - PSD3/PSR framework
+  - Data economy policy
+  position: Monitor & Respond
+  associated_working_groups:
+  - name: Berlin Group
+    url: https://www.berlin-group.org
+  - name: EBA Open Finance WG
+    url: ''
+  - name: BdB Arbeitsgruppe Open Banking
+    url: ''
 - id: 13
   title: PSD2/PSDR und Request to Pay (R2P)
   score: 8
@@ -831,10 +989,23 @@ topics:
       availability benchmarks.
     status: open
   category: Banking Regulatory
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - SCA implementation
+  - Liability regime
+  - Payment initiation services
+  - R2P product launch
+  driven_by:
+  - PSR/PSD3 legislative revision
+  - EPC SRTP scheme
+  - EBA regulatory mandates
+  position: Implement & Shape
+  associated_working_groups:
+  - name: EPC SRTP WG
+    url: https://www.europeanpaymentscouncil.eu
+  - name: EBA PSD2 Expert Group
+    url: ''
+  - name: DK Arbeitsgruppe Zahlungsdienste
+    url: ''
 - id: 14
   title: KRITIS-Dachgesetz
   score: 8
@@ -893,10 +1064,21 @@ topics:
       Establish cross-functional crisis response team with defined escalation paths as required by the regulation.
     status: open
   category: IT Security
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Operational resilience
+  - Incident reporting
+  - Supplier management
+  - Physical security
+  driven_by:
+  - German KRITIS-Dachgesetz legislation
+  - BSI regulatory expansion
+  - NIS2 Directive
+  position: Comply
+  associated_working_groups:
+  - name: BSI Arbeitsgruppe Kritische Infrastrukturen
+    url: https://www.bsi.bund.de
+  - name: BdB AG Informationssicherheit
+    url: ''
 - id: 15
   title: DORA (Digital Operational Resilience Act)
   score: 9
@@ -957,10 +1139,22 @@ topics:
       management framework under DORA.
     status: open
   category: IT Security
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - ICT risk management
+  - Third-party oversight
+  - Incident reporting
+  - TLPT testing
+  driven_by:
+  - DORA regulation (mandatory from Jan 2025)
+  - ESA supervisory expectations
+  position: Comply
+  associated_working_groups:
+  - name: EBA DORA Implementation WG
+    url: ''
+  - name: BdB AG DORA
+    url: ''
+  - name: Bitkom AG Financial Services
+    url: ''
 - id: 16
   title: Atruvia Kernbank-Software
   score: 6
@@ -1018,10 +1212,21 @@ topics:
       Review vendor risk concentration and assess contingency options in the event of major platform delays.
     status: open
   category: Miscellaneous
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
+  impacts:
+  - Core banking operations
+  - IT architecture
+  - Migration risk
+  - Vendor dependency
+  driven_by:
+  - Atruvia product roadmap
+  - VR-Bank consolidation strategy
+  - Digital transformation
+  position: Manage & Plan
+  associated_working_groups:
+  - name: Atruvia Kundenrat
+    url: ''
+  - name: DZ BANK Gruppe IT-Gremien
+    url: ''
 - id: 17
   title: Rückzug Auslandsbanken
   score: 5
@@ -1080,14 +1285,18 @@ topics:
       Assess whether competitor exit in specific regions creates a case for accelerated branch or digital expansion.
     status: open
   category: Miscellaneous
-  impacts: []
-  driven_by: []
-  position: ''
-  associated_working_groups: []
-categories:
-- Trusted Services
-- Card
-- Regulatory
-- Banking Regulatory
-- IT Security
-- Miscellaneous
+  impacts:
+  - Competitive landscape
+  - Talent acquisition
+  - Loan portfolio opportunities
+  - Market share
+  driven_by:
+  - Post-Brexit restructuring
+  - Regulatory cost pressure
+  - German market consolidation
+  position: Opportunistically Engage
+  associated_working_groups:
+  - name: BdB Marktstruktur-Arbeitsgruppe
+    url: ''
+  - name: BaFin Bankaufsichtsgremien
+    url: ''
