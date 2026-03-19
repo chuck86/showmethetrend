@@ -138,10 +138,11 @@ topics:
   score: 9
   priority: Critical
   horizon: 6–9 months
-  description: |-
-    New EU directives requiring BNPL products to undergo full creditworthiness assessments are expected to reshape the competitive landscape significantly. Our existing BNPL portfolio may require substantial product redesign.
-  management_summary: |-
-    The incoming BNPL regulation is the single most time-critical compliance challenge in our retail portfolio. Non-compliance risks supervisory action and product suspension. Immediate investment in credit assessment infrastructure is required, but the regulation also presents an opportunity to reshape the product for long-term sustainability and differentiation from unregulated fintechs.
+  description: "New EU directives requiring BNPL products to undergo full creditworthiness assessments are expected to reshape the competitive landscape significantly. \
+    \ Our existing BNPL portfolio may require substantial product redesign."
+  management_summary: "The incoming BNPL regulation is the single most time-critical compliance challenge in our retail portfolio. Non-compliance risks supervisory \
+    \ action and product suspension. Immediate investment in credit assessment infrastructure is required, but the regulation also presents an opportunity to reshape \
+    \ the product for long-term sustainability and differentiation from unregulated fintechs."
   extended_description: |-
     The EU Consumer Credit Directive revision (CCD2) explicitly brings BNPL products under consumer credit regulation for the first time, requiring mandatory creditworthiness checks, standardised pre-contractual disclosures (SECCI), and cooling-off periods. This eliminates the regulatory arbitrage that enabled fintech BNPL growth. For incumbents, the transition is operationally complex: existing BNPL decisioning models must be upgraded to full credit assessment standards without creating excessive friction that destroys conversion rates. The German implementation deadline is expected within 6–9 months. Products above €200 require full assessment; below €200 a proportionate check is required. Our BNPL book has approximately 40% of transactions below the threshold.
   risks:
