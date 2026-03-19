@@ -134,7 +134,7 @@ topics:
   - name: BdB Arbeitsgruppe Digitale Währungen
     url: ''
 - id: 2
-  title: Buy Now, Pay Later Regulation
+  title: "[REPLACE] Buy Now, Pay Later Regulation"
   score: 9
   priority: Critical
   horizon: 6–9 months
@@ -206,7 +206,7 @@ topics:
   - name: BdB Arbeitsgruppe Konsumentenkredite
     url: ''
 - id: 3
-  title: Real-Time Payment Rails
+  title: "[REPLACE] Real-Time Payment Rails"
   score: 8
   priority: High
   horizon: 6–12 months
@@ -273,7 +273,7 @@ topics:
   - name: DK Technische Arbeitsgruppe Zahlungsverkehr
     url: ''
 - id: 4
-  title: AI Credit Scoring Models
+  title: "[REPLACE] AI Credit Scoring Models"
   score: 7
   priority: Medium-High
   horizon: 18–24 months
@@ -338,7 +338,7 @@ topics:
   - name: BdB Arbeitsgruppe KI & Daten
     url: ''
 - id: 5
-  title: Open Banking Data Monetisation
+  title: "[UPDATE NECESSARY] Open Banking Data Monetisation"
   score: 5
   priority: Medium
   horizon: 18–30 months
@@ -406,7 +406,7 @@ topics:
   - name: EBA Open Finance WG
     url: ''
 - id: 6
-  title: Embedded Finance Partnerships
+  title: "[UPDATE NECESSARY] Embedded Finance Partnerships"
   score: 4
   priority: Low-Medium
   horizon: 24–36 months
@@ -497,8 +497,8 @@ topics:
     \ now being phased out). Token \nService Provider (TSP) integration is required\
     \ at the issuer level; banks using Atruvia processing benefit from a shared migration\
     \ path, but \nindependent processors must implement TSP connectivity separately.\
-    \ \nEURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap.\
-    \ Girocard 2.0: e-commerce and in-app-transactions; girocard 3.0: e- and \napp-payments;\
+    \ \nEURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap.\n \
+    \ Girocard 2.0: e-commerce and in-app-transactions; \n girocard 3.0: e- and app-payments;\n \
     \ girocard 4.0: convenience and added value.\nThe scheme timeline envisions full\
     \ migration by end of 2026 with a transition period through 2027. \nThis planed\
     \ extension closes a functional gap that is offered by (for instance) credit card\
@@ -652,7 +652,7 @@ topics:
   - name: EPC Digital Euro WG
     url: ''
 - id: 9
-  title: Instant Payments (EU-Verordnung)
+  title: "[REPLACE] Instant Payments (EU-Verordnung)"
   score: 9
   priority: Critical
   horizon: 0–12 months
@@ -722,7 +722,7 @@ topics:
   - name: DK Arbeitsgruppe Instant Payments
     url: ''
 - id: 10
-  title: eIDAS 2.0
+  title: "[UPDATE NECESSARY] eIDAS 2.0"
   score: 7
   priority: Medium-High
   horizon: 12–24 months
@@ -794,7 +794,7 @@ topics:
   - name: TeleTrusT Arbeitsgruppe eID
     url: ''
 - id: 11
-  title: EUDI Wallet
+  title: "[UPDATE NECESSARY] EUDI Wallet"
   score: 6
   priority: Medium
   horizon: 18–36 months
@@ -864,7 +864,7 @@ topics:
   - name: EBF Digital Identity Task Force
     url: ''
 - id: 12
-  title: Open Banking APIs vs. FIDA
+  title: "[UPDATE NECESSARY] Open Banking APIs vs. FIDA"
   score: 4
   priority: Low-Medium
   horizon: 12–30 months
@@ -935,7 +935,7 @@ topics:
   - name: BdB Arbeitsgruppe Open Banking
     url: ''
 - id: 13
-  title: PSD2/PSDR und Request to Pay (R2P)
+  title: "[UPDATE NECESSARY] PSD2/PSDR und Request to Pay (R2P)"
   score: 8
   priority: High
   horizon: 6–18 months
@@ -1008,7 +1008,7 @@ topics:
   - name: DK Arbeitsgruppe Zahlungsdienste
     url: ''
 - id: 14
-  title: KRITIS-Dachgesetz
+  title: "[UPDATE NECESSARY] KRITIS-Dachgesetz"
   score: 8
   priority: High
   horizon: 6–18 months
@@ -1081,7 +1081,7 @@ topics:
   - name: BdB AG Informationssicherheit
     url: ''
 - id: 15
-  title: DORA (Digital Operational Resilience Act)
+  title: "[UPDATE NECESSARY] DORA (Digital Operational Resilience Act)"
   score: 9
   priority: Critical
   horizon: 0–6 months
@@ -1157,7 +1157,7 @@ topics:
   - name: Bitkom AG Financial Services
     url: ''
 - id: 16
-  title: Atruvia Kernbank-Software
+  title: "[UPDATE NECESSARY] Atruvia Kernbank-Software"
   score: 6
   priority: Medium
   horizon: 24–60 months
@@ -1229,7 +1229,7 @@ topics:
   - name: DZ BANK Gruppe IT-Gremien
     url: ''
 - id: 17
-  title: Rückzug Auslandsbanken
+  title: "[UPDATE NECESSARY] Rückzug Auslandsbanken"
   score: 5
   priority: Medium
   horizon: 6–24 months
