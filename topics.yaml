@@ -741,9 +741,9 @@ topics:
   - name: DK Arbeitsgruppe Instant Payments
     url: ''
 - id: 10
-  title: "[UPDATE NECESSARY] eIDAS 2.0"
-  score: 7
-  priority: Medium-High
+  title: "eIDAS 2.0"
+  score: 9
+  priority: High
   horizon: 12–24 months
   description: "The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU \
     \ member states, creating both compliance obligations and a strategic opportunity to act as identity service provides. \n \
