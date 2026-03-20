@@ -408,7 +408,7 @@ topics:
   - description: Build API developer portal with sandbox environment to accelerate
       third-party adoption.
     status: open
-  category: Banking Regulatory
+  category: Banking Regulatory & Trends
   impacts:
   - API infrastructure
   - Data governance
@@ -949,7 +949,7 @@ topics:
     status: open
   - description: Submit response to EBA/EC consultation on FIDA technical standards.
     status: open
-  category: Banking Regulatory
+  category: Banking Regulatory & Trends
   impacts:
   - API strategy
   - Data sharing obligations
@@ -1022,7 +1022,7 @@ topics:
   - description: Ensure TPP access infrastructure meets updated PSDR performance and
       availability benchmarks.
     status: open
-  category: Banking Regulatory
+  category: Banking Regulatory & Trends
   impacts:
   - SCA implementation
   - Liability regime
