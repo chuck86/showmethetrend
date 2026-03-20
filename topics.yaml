@@ -926,12 +926,13 @@ topics:
   - name: EBF Digital Identity Task Force
     url: ''
 - id: 12
-  title: "[UPDATE NECESSARY] Open Banking APIs vs. FIDA"
+  title: "FIDA - Financial Data Access Regulation"
   score: 4
   priority: Low-Medium
   horizon: 12–30 months
   description: |-
-    The Financial Data Access (FIDA) regulation goes significantly beyond PSD2, mandating data sharing across savings, investments, insurance, and pension products. Banks face both defensive obligations and offensive data product opportunities.
+      The Financial Data Access (FIDA) regulation goes significantly beyond PSD2, mandating data sharing across savings, investments, \
+    / insurance, and pension products. Banks face both defensive obligations and offensive data product opportunities.
   management_summary: |-
     FIDA represents the largest expansion of open banking obligations since PSD2. The compliance burden is real but manageable if we treat it as an architecture investment rather than a point solution. The commercial upside — acting as a data hub for the full customer financial profile — is substantial and should drive the product roadmap.
   extended_description: |-
