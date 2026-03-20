@@ -828,33 +828,61 @@ topics:
     url: ''
 - id: 11
   title: "[UPDATE NECESSARY] EUDI Wallet"
-  score: 6
-  priority: Medium
+  score: 9
+  priority: High
   horizon: 18–36 months
-  description: |-
-    The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity credentials, payment initiation, and document storage. Member states must offer a wallet by 2026.
-  management_summary: |-
-    The EUDI Wallet is moving faster than most banks anticipated. The large-scale pilots are producing concrete technical outputs, and the 2026 member state deadline is credible. Banks need to define their relying party strategy now to avoid being unprepared when wallet-based customer interactions become mainstream.
-  extended_description: |-
-    The EUDI Wallet Architecture and Reference Framework (ARF) defines a standardised mobile wallet enabling citizens to store and present identity attributes, documents, and credentials. For banks, the primary interaction model is as a relying party: accepting EUDI Wallet credentials for KYC, account opening, and strong customer authentication instead of proprietary identity verification flows. Banks may also act as attestation providers, issuing certified financial credentials (e.g. proof of bank account ownership, income certification) into citizen wallets. The four large-scale pilots (POTENTIAL, EWC, DC4EU, NOBID) are producing reference implementations across healthcare, travel, education, and finance. The financial pilot (EWC) is most directly relevant and is testing bank-issued PID attributes in payment and onboarding scenarios.
+  description: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity credentials, \
+    \ payment initiation, and document storage. Member states must offer a wallet by 2026.\ 
+    \ Opens door for (new) digital processes - for corporations too (see European business Wallet EUBW). \n \
+    \ - Usage for the user will be free. \n -Longterm project with unclear outcome \n - independant ID procedure offering multiple trust levels \
+    \ \n - Acceptance is mandatory (at least in certain cases)."
+  management_summary: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity \
+    \ credentials, payment initiation, and document storage. Member states must offer a wallet by 2026. It is currently moving faster \
+    \ than anticipated. The large-scale pilots are producing concrete technical outputs, and the 2026 member state deadline is credible. "
+  extended_description: "The EUDI Wallet Architecture and Reference Framework (ARF) defines a standardised mobile wallet enabling citizens to \
+    \ store and present identity attributes, documents, and credentials across borders within the EU. For banks, the primary interaction model is as a relying party: \
+    \ accepting EUDI Wallet credentials for KYC, account opening, and strong customer authentication instead of proprietary identity verification \
+    \ flows. Banks may also act as attestation providers, issuing certified financial credentials (e.g. proof of bank account ownership, income \
+    \ certification) into citizen wallets. The four large-scale pilots (POTENTIAL, EWC, DC4EU, NOBID) are producing reference implementations \ 
+    \ across healthcare, travel, education, and finance. The financial pilot (EWC) is most directly relevant and is testing bank-issued PID attributes \
+    \ in payment and onboarding scenarios. \n \
+    \ It is one of the most important initiatives of the EU on its way to digital sovereignty of its citizens. \n \
+    \ - storage of official documents such as national id, drivers licence, certificats,... \n \
+    \ - offers comfortable way for identification, login to services or digital signatures \n \
+    \ - high security standard compared to physical documents \n \
+    \ - user has complete control regarding usage of his/her data. Only necessary information is exchanged (privacy by design) \n \
+    \ - all eu member states must offer a wallet by end of 2026. Rollout in Germany planed for start of 2027. \n \
+    \ - based on eIDAS 2.0. \n \
+    \ Banks (and other corporations) must offer the usage of EUDI Wallet for \n \
+    \ - Online banking account opening \n - Online banking log-in \n - Online banking transactions \n \
+    \ if the customer agrees by december 2027. \n \
+    \ The European Business Wallet (EUBW) was proposed by the EU Commission in november 2025. Enabling corporations to digitize their \
+    \ processes and interactions. Corporations can \n \
+    \ - sign documents digitally, with timestamp and seal \n - securely create, save and exchange verified documents with other corporations \
+    \ or public sector (even cross border within the EU). \n \
+    \ A yearly cost reduction for corporations of 150 bln. EUR is expected."
   risks:
   - |-
     EUDI Wallet adoption speed is uncertain; over-investing in integration ahead of user adoption could result in stranded costs.
   - |-
     Competing wallet ecosystems (Apple Wallet, Google Wallet) may limit EUDI Wallet uptake among tech-savvy demographics.
   - |-
-    Relying party integration requires significant backend changes to identity verification and onboarding workflows.
+    Possible loss of USP of AML-reusage for banks
   - |-
     Privacy-by-design constraints in the wallet architecture may limit the data available to relying parties for AML screening.
+  - |- 
+    Possible loss of advantage as german trusted services provider
   chances:
   - |-
-    EUDI Wallet onboarding reduces KYC cost per customer by an estimated 40–60% compared to current video-ident processes.
+    High demand expected due to mandatory acceptance
   - |-
-    Wallet-based SCA (Strong Customer Authentication) eliminates SMS OTP dependency, reducing fraud and operational cost.
+    Potentially many use cases
+  - |-
+    Wallet-usage as so called verifier
   - |-
     Issuing certified financial attributes positions the bank as a trusted anchor in the EU digital identity ecosystem.
   - |-
-    Early relying party adoption creates a seamless onboarding experience that is a strong competitive differentiator.
+    Open standard for embedding trusted services into the wallet
   sources:
   - label: EUDI Wallet Architecture & Reference Framework
     url: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
@@ -862,7 +890,8 @@ topics:
     url: https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation
   - label: 'EWC Pilot: Financial Services Use Case'
     url: https://eudiwalletconsortium.org/
-  tags: []
+  tags:
+    - infrastructure
   stakeholders:
   - 7
   - 4
@@ -877,8 +906,8 @@ topics:
   - description: |-
       Participate in large-scale pilot (LSP) consortium relevant to the banking sector (e.g. POTENTIAL or DC4EU).
     status: open
-  - description: Define internal policy on acceptance of EUDI Wallet credentials as
-      a valid onboarding channel.
+  - description: |-
+      Initiate talks with potential partners / banks for participation in SPRIND-Pilot.
     status: open
   category: Trusted Services
   impacts:
@@ -890,7 +919,7 @@ topics:
   - eIDAS 2.0 mandate
   - National large-scale pilots
   - EBA guidance
-  position: Pilot
+  position: monitor
   associated_working_groups:
   - name: EU EUDI Wallet Consortium
     url: https://eudiwalletconsortium.org
