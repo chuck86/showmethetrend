@@ -827,7 +827,7 @@ topics:
   - name: PG eIDAS 2.0 Umsetzung
     url: ''
 - id: 11
-  title: "[UPDATE NECESSARY] EUDI Wallet"
+  title: "EUDI Wallet"
   score: 9
   priority: High
   horizon: 18–36 months
