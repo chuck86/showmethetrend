@@ -146,7 +146,7 @@ topics:
   - MiCA regulation
   - ECB digital currency strategy
   - fintech competition
-  position: Monitor & Evaluate
+  position: Monitor & Prepare
   associated_working_groups:
   - name: EBA Digital Finance Working Group
     url: ''
@@ -919,7 +919,7 @@ topics:
   - eIDAS 2.0 mandate
   - National large-scale pilots
   - EBA guidance
-  position: monitor
+  position: Monitor & Prepare
   associated_working_groups:
   - name: EU EUDI Wallet Consortium
     url: https://eudiwalletconsortium.org
@@ -988,7 +988,7 @@ topics:
   - FIDA regulation proposal
   - PSD3/PSR framework
   - Data economy policy
-  position: Monitor & Respond
+  position: Monitor & Prepare
   associated_working_groups:
   - name: Berlin Group
     url: https://www.berlin-group.org
