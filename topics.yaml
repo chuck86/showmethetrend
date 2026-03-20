@@ -925,17 +925,29 @@ topics:
     url: https://eudiwalletconsortium.org
   - name: EBF Digital Identity Task Force
     url: ''
+  - name: CC Sicherheit
+    url: ''
+  - name: BdB-Projekt eIDAS 2.0 Umsetzung
+  - url: ''
 - id: 12
   title: "FIDA - Financial Data Access Regulation"
-  score: 4
+  score: 2
   priority: Low-Medium
   horizon: 12–30 months
   description: "The Financial Data Access (FIDA) regulation goes significantly beyond PSD2, mandating data sharing across savings, \
    \ investments, insurance, and pension products. Banks face both defensive obligations and offensive data product opportunities."
-  management_summary: |-
-    FIDA represents the largest expansion of open banking obligations since PSD2. The compliance burden is real but manageable if we treat it as an architecture investment rather than a point solution. The commercial upside — acting as a data hub for the full customer financial profile — is substantial and should drive the product roadmap.
-  extended_description: |-
-    FIDA (Financial Data Access Regulation) was proposed by the European Commission in June 2023 as part of the retail financial services strategy. It mandates data sharing for savings accounts, investments, insurance, occupational pensions, and mortgage data — all currently outside PSD2 scope. Financial data sharing schemes (FDSS) must be established by industry, with a fallback regulatory standard if industry fails to agree. The permission framework introduces customer dashboard requirements: customers must have a single interface to manage all data sharing consents across institutions. For banks, FIDA creates a dual role: as a data holder (mandatory sharing obligations) and as a data user (ability to access customer data held at other institutions for value-added services). The data user opportunity — aggregating a complete customer financial picture for advisory, lending, and personalisation — is the primary commercial case.
+  management_summary: "FIDA represents the largest expansion of open banking obligations since PSD2. The compliance burden is real \
+   \ but manageable if we treat it as an architecture investment rather than a point solution. The commercial upside — acting as a \
+   \ data hub for the full customer financial profile — is substantial and should drive the product roadmap.\n \
+   \ TBD ."
+  extended_description: "FIDA (Financial Data Access Regulation) was proposed by the European Commission in June 2023 as part of the \
+   \ retail financial services strategy. It mandates data sharing for savings accounts, investments, insurance, occupational pensions, \
+   \ and mortgage data — all currently outside PSD2 scope. Financial data sharing schemes (FDSS) must be established by industry, with \
+   \ a fallback regulatory standard if industry fails to agree. The permission framework introduces customer dashboard requirements: \
+   \ customers must have a single interface to manage all data sharing consents across institutions. For banks, FIDA creates a dual role: \
+   \ as a data holder (mandatory sharing obligations) and as a data user (ability to access customer data held at other institutions \
+   \ for value-added services). The data user opportunity — aggregating a complete customer financial picture for advisory, lending, \ 
+   \ and personalisation — is the primary commercial case."
   risks:
   - |-
     FIDA compliance requires significant API and consent management infrastructure investment across all product lines.
@@ -961,7 +973,8 @@ topics:
     url: https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money
   - label: 'Deloitte: FIDA Impact Assessment for Banks'
     url: https://www2.deloitte.com/de/de/pages/financial-services/articles/fida.html
-  tags: []
+  tags:
+    - infrastructure
   stakeholders:
   - 7
   - 3
