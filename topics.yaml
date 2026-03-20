@@ -4,9 +4,9 @@ meta:
   updated: March 2026
 categories:
 - Trusted Services
-- Card
+- Digital Payments
 - Regulatory
-- Banking Regulatory
+- Banking Regulatory & Trends
 - IT Security
 - Miscellaneous
 tags:
@@ -208,7 +208,7 @@ topics:
     status: open
   - description: Run customer communication strategy to manage expectation changes.
     status: open
-  category: Card
+  category: Digital Payments
   impacts:
   - Credit product portfolio
   - Risk models
@@ -340,7 +340,7 @@ topics:
     status: open
   - description: Establish model governance board with quarterly review cadence.
     status: done
-  category: Card
+  category: Digital Payments
   impacts:
   - Credit decisioning
   - Model risk management
@@ -474,7 +474,7 @@ topics:
     status: open
   - description: Negotiate pilot embedded credit product with one tier-1 retail partner.
     status: open
-  category: Card
+  category: Digital Payments
   impacts:
   - Partner management
   - Technology stack
@@ -583,7 +583,7 @@ topics:
   - description: Communicate girocard 4.0 migration timeline to merchant acquiring
       partners.
     status: open
-  category: Card
+  category: Digital Payments
   impacts:
   - Card product portfolio
   - Terminal infrastructure
