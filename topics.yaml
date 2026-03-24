@@ -681,7 +681,7 @@ topics:
     management_summary: "TBD"
     description: "Text \
     \ \
-    \ Text 2"
+    \ \nText 2"
     extended_description: "PSDR (PSD3 + PSR combined) maintains the SCA architecture but introduces refined exemptions (e.g. transaction risk analysis thresholds adjusted \ 
       \ for inflation), updated liability rules for APP fraud (shifting more liability to the sending PSP), and performance benchmarks for TPP access APIs. The parallel   \
       \ development of SEPA Request-to-Pay (EPC SRTP scheme) creates a structured, consent-based alternative to direct debit. R2P messages are sent by a creditor to a     \
