@@ -6,7 +6,7 @@ categories:
   - Trusted Services
   - Digital Payments
   - Regulatory
-  - Banking Regulatory & Trends
+  - Banking Regulatory and Trends
   - IT Security
   - Miscellaneous
 tags:
@@ -264,7 +264,7 @@ topics:
         url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
   - id: 3
     title: "[UPDATE NECESSARY] Open Banking"
-    category: Banking Regulatory & Trends
+    category: Banking Regulatory and Trends
     score: 5
     priority: Medium
     horizon: 18–30 months
@@ -594,7 +594,7 @@ topics:
       - url: ''
   - id: 7
     title: "FIDA - Financial Data Access Regulation"
-    category: Banking Regulatory & Trends
+    category: Banking Regulatory and Trends
     score: 2
     priority: Low-Medium
     horizon: 12–30 months
@@ -674,7 +674,7 @@ topics:
         url: ''
   - id: 8
     title: "[UPDATE NECESSARY] PSD3/PSDR und Request to Pay (R2P)"
-    category: Banking Regulatory & Trends
+    category: Banking Regulatory and Trends
     score: 8
     priority: High
     horizon: 6–18 months
@@ -791,7 +791,7 @@ topics:
         url: ''
   - id: 10
     title: "giroAPI"
-    category: Banking Regulatory & Trends
+    category: Banking Regulatory and Trends
     score: 6
     priority: Medium
     horizon: 6–24 months
