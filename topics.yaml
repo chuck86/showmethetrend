@@ -153,211 +153,116 @@ topics:
   - name: BdB Arbeitsgruppe Digitale Währungen
     url: ''
 - id: 2
-  title: "[REPLACE] Buy Now, Pay Later Regulation"
-  score: 9
-  priority: Critical
-  horizon: 6–9 months
-  description: "New EU directives requiring BNPL products to undergo full creditworthiness assessments are expected to reshape the competitive landscape significantly. \
-    \ Our existing BNPL portfolio may require substantial product redesign."
-  management_summary: "The incoming BNPL regulation is the single most time-critical compliance challenge in our retail portfolio. Non-compliance risks supervisory \
-    \ action and product suspension. Immediate investment in credit assessment infrastructure is required, but the regulation also presents an opportunity to reshape \
-    \ the product for long-term sustainability and differentiation from unregulated fintechs."
-  extended_description: |-
-    The EU Consumer Credit Directive revision (CCD2) explicitly brings BNPL products under consumer credit regulation for the first time, requiring mandatory creditworthiness checks, standardised pre-contractual disclosures (SECCI), and cooling-off periods. This eliminates the regulatory arbitrage that enabled fintech BNPL growth. For incumbents, the transition is operationally complex: existing BNPL decisioning models must be upgraded to full credit assessment standards without creating excessive friction that destroys conversion rates. The German implementation deadline is expected within 6–9 months. Products above €200 require full assessment; below €200 a proportionate check is required. Our BNPL book has approximately 40% of transactions below the threshold.
-  risks:
-  - |-
-    Failure to meet the national transposition deadline triggers supervisory action and mandatory product suspension.
-  - Upgraded creditworthiness requirements could reduce approval rates by 15–25%,
-    impacting revenue.
-  - Operational cost of compliance (new screening infrastructure, staff, legal) estimated
-    at €2–4M.
-  - Customer friction during transition may accelerate churn to compliant fintech
-    competitors.
-  chances:
-  - |-
-    Regulatory compliance as a competitive moat: many fintech BNPL providers cannot absorb the compliance cost and will exit or downscale.
-  - |-
-    Opportunity to reposition BNPL as a responsible credit product, improving brand trust with regulators and consumers.
-  - Compliant BNPL infrastructure can be repurposed as a white-label offering for
-    retail partners.
-  - Stricter regulation reduces the pool of BNPL providers, potentially increasing
-    our market share.
-  sources:
-  - label: EU Consumer Credit Directive 2 — Full Text
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2225
-  - label: EBA Opinion on BNPL and CCD2 Scope
-    url: |-
-      https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-opinion-application-cc[d2
-  - label: 'KPMG: BNPL Regulation Impact Assessment'
-    url: https://kpmg.com/xx/en/home/insights/2023/06/bnpl-regulation-impact.html
-  tags:
-  - credit card
-  - research
-  stakeholders:
-  - 3
-  - 4
-  - 1
-  actions:
-  - description: Map all active BNPL products against new directive requirements;
-      identify non-compliant features.
-    status: in-progress
-  - description: Engage lobbying body to submit commentary on implementation timeline.
-    status: open
-  - description: |-
-      Build credit assessment pipeline that satisfies directive without degrading approval rates by more than 8%.
-    status: open
-  - description: Run customer communication strategy to manage expectation changes.
-    status: open
-  category: Digital Payments
-  impacts:
-  - Credit product portfolio
-  - Risk models
-  - Customer onboarding
-  - Legal & compliance
-  driven_by:
-  - EU Consumer Credit Directive revision
-  - BaFin supervision expansion
-  - Market growth
-  position: Comply & Adapt
-  associated_working_groups:
-  - name: EBA Consumer Protection WG
-    url: ''
-  - name: BdB Arbeitsgruppe Konsumentenkredite
-    url: ''
-- id: 3
-  title: "[REPLACE] Real-Time Payment Rails"
-  score: 8
+  title: girocard 4.0
+  score: 6
   priority: High
-  horizon: 6–12 months
-  description: |-
-    Instant payment mandates across the EU and increasing consumer expectation for 24/7 settlement are pushing our legacy batch infrastructure to its limits. Adoption of ISO 20022 is now a hard requirement.
-  management_summary: |-
-    The EU Instant Payments Regulation creates a hard deadline for full SCT Inst coverage. Our current infrastructure handles ~60% of eligible transactions in real time; the remaining gap requires targeted investment. Beyond compliance, instant rails are a platform for new overlay products that can generate incremental revenue.
-  extended_description: |-
-    SCT Inst adoption in Germany has lagged eurozone peers, partly due to the fragmented PSP landscape and legacy batch processing in cooperative banking. The regulation mandates 24/7 availability, 10-second settlement, and fee parity with standard SEPA transfers. ISO 20022 migration — already mandatory for high-value payments via TARGET2/T2 — now cascades into retail payment messaging, requiring changes to transaction enrichment, sanctions screening, and reconciliation workflows. The technical migration path involves upgrading our core banking message hub, updating our CSM (Clearing and Settlement Mechanism) connectivity to RT1 or TIPS, and re-engineering fraud detection to operate within a sub-10-second window.
+  horizon: 12–24 months
+  description: "The girocard scheme is undergoing a fundamental modernisation to support\
+    \ contactless mobile payments, NFC-based wallets, and online e-commerce use \n\
+    cases. girocard 4.0 introduces a new technical architecture enabling tokenisation\
+    \ and digital wallet integration."
+  management_summary: "girocard 4.0 is the most significant scheme modernisation since\
+    \ the introduction of contactless. Failure to migrate on time risks exclusion\
+    \ from \nApple Pay and Google Pay wallet ecosystems, which are now primary payment\
+    \ interfaces for under-40 demographics. Migration investment is non-negotiable;\
+    \ \nthe commercial opportunity lies in wallet-native product features.\nCurrently\
+    \ some banks are already provide their customers with in-app girocard transactions\
+    \ (android and iOS)"
+  extended_description: "The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft,\
+    \ replaces the proprietary girocard EMV kernel with a new tokenisation-capable\
+    \ \narchitecture supporting Apple Pay, Google Pay, and German OEM wallet integrations,\
+    \ theirby (as a side-effect) also strengthening the national \npayment infrastructure\
+    \ (while reducing dependency from major international schemes) The scheme also\
+    \ introduces an e-commerce capability, addressing \nthe longstanding gap where\
+    \ girocard could not be used for online purchases without a co-badged scheme (Maestro,\
+    \ now being phased out). Token \nService Provider (TSP) integration is required\
+    \ at the issuer level; banks using Atruvia processing benefit from a shared migration\
+    \ path, but \nindependent processors must implement TSP connectivity separately.\
+    \ \nEURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap.\n \
+    \ Girocard 2.0: e-commerce and in-app-transactions; \n girocard 3.0: e- and app-payments;\n \
+    \ girocard 4.0: convenience and added value.\nThe scheme timeline envisions full\
+    \ migration by end of 2026 with a transition period through 2027. \nThis planed\
+    \ extension closes a functional gap that is offered by (for instance) credit card\
+    \ schemes (rental car reservation, hotel booking, integration \nin third party\
+    \ wallets, in-app payments)."
   risks:
-  - |-
-    Failure to meet the October 2025 regulatory deadline results in supervisory fines and reputational damage.
-  - |-
-    Sub-10-second fraud screening is technically challenging; false positive rates may increase without model recalibration.
-  - |-
-    Fee parity requirement eliminates instant payment revenue premiums currently charged to some corporate clients.
-  - Legacy core banking system may require costly middleware to support real-time
-    message enrichment.
+    - High investmens in technology. Training necessary.
+    - |-
+      Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
+    - |-
+      Migration delay risks exclusion from Apple Pay and Google Pay wallet integrations, ceding market share to Visa/Mastercard debit.
+    - |-
+      TSP integration complexity may be underestimated, particularly for banks with legacy issuing systems.
+    - Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is
+      possible.
+    - |-
+      Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
   chances:
-  - |-
-    Instant rails enable Request-to-Pay (R2P) overlay services, unlocking new B2B and e-commerce revenue streams.
-  - |-
-    24/7 settlement capability is a prerequisite for competing in the embedded finance and open banking market.
-  - First compliant institutions gain early positioning in the pan-European instant
-    payment ecosystem.
-  - |-
-    ISO 20022 richer data enables improved reconciliation services for corporate clients — a premium product opportunity.
+    - |-
+      girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders
+    - |-
+      E-commerce capability opens a new acceptance channel for girocard, previously absent from online retail.
+    - |-
+      Tokenisation infrastructure is reusable for Digital Euro distribution and future CBDC wallet integration.
+    - |-
+      Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem.
+    - Business modell expansion by offering new services based on new technical possibilities
   sources:
-  - label: EU Instant Payments Regulation — Official Text
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886
-  - label: 'ECB: TIPS Platform Overview'
-    url: https://www.ecb.europa.eu/paym/target/tips/html/index.en.html
-  - label: EPC SEPA Instant Credit Transfer Rulebook
-    url: |-
-      https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-instant-credit-transfer-rulebook
+    - label: 'Deutsche Kreditwirtschaft: girocard 4.0 Programme'
+      url: https://die-dk.de/zahlungsverkehr/girocard/
+    - label: 'Bundesbank: Retail Payments Strategy Germany'
+      url: https://www.bundesbank.de/en/tasks/payment-systems/retail-payments
+    - label: 'Atruvia: girocard Migration Documentation (internal)'
+      url: '#'
   tags:
-  - payment
-  - infrastructure
+    - infrastructure
+    - market
   stakeholders:
-  - 4
-  - 5
+    - 6
+    - 4
+    - 5
   actions:
-  - description: Complete ISO 20022 migration for domestic rails by end of Q3 2026.
-    status: in-progress
-  - description: Evaluate Vocalink vs proprietary clearing for pan-EU instant payment
-      capability.
-    status: open
-  - description: Pilot instant settlement for merchant payouts with top-50 partners.
-    status: open
-  category: Miscellaneous
-  impacts:
-  - Core banking infrastructure
-  - Treasury liquidity
-  - Fraud management
-  - SLA commitments
-  driven_by:
-  - EU Instant Payments Regulation
-  - EPC SCT Inst scheme
-  - Customer expectations
-  position: Implement
-  associated_working_groups:
-  - name: EPC Instant Payments WG
-    url: ''
-  - name: DK Technische Arbeitsgruppe Zahlungsverkehr
-    url: ''
-- id: 4
-  title: "[REPLACE] AI Credit Scoring Models"
-  score: 7
-  priority: Medium-High
-  horizon: 18–24 months
-  description: |-
-    Machine learning models are outperforming traditional bureau-based scores on default prediction, particularly for thin-file customers. However, explainability requirements under the EU AI Act introduce operational complexity.
-  management_summary: |-
-    ML-based credit scoring offers a measurable improvement in default prediction accuracy (estimated 8–12% reduction in credit losses) but requires a new governance framework to satisfy EU AI Act requirements. A phased shadow-mode rollout is the recommended approach, enabling model validation before full deployment.
-  extended_description: |-
-    Traditional credit scoring relying on bureau data systematically disadvantages thin-file customers — young adults, recent migrants, and gig economy workers — creating both financial inclusion risk and missed revenue. Gradient-boosted and neural network models trained on transactional behaviour outperform bureau-only approaches on default prediction, particularly for these segments. However, the EU AI Act classifies consumer credit scoring as a high-risk AI application, requiring conformity assessment, explainability documentation, human oversight mechanisms, and ongoing bias monitoring. Our current vendor (FICO) has begun integrating AI Act compliance tooling but timelines are unclear. An internal model development path would provide more control but requires significant data science capability investment.
-  risks:
-  - |-
-    EU AI Act high-risk classification requires full conformity assessment, documentation, and ongoing audit — cost and timeline uncertain.
-  - |-
-    Model bias against protected characteristics (age, ethnicity, gender proxies) creates regulatory and reputational exposure.
-  - |-
-    Model drift over economic cycles may increase credit losses if recalibration cadence is insufficient.
-  - Dependency on transactional data raises data minimisation concerns under GDPR.
-  chances:
-  - |-
-    8–12% estimated reduction in credit losses by better identifying true creditworthiness of thin-file applicants.
-  - |-
-    Financial inclusion positioning: serving underserved segments that traditional scorecards reject improves CRA standing.
-  - |-
-    ML models can be retrained quarterly, responding to economic shifts faster than annual bureau recalibration cycles.
-  - |-
-    Proprietary scoring model as a competitive differentiator and potential licensing revenue to peer institutions.
-  sources:
-  - label: EU AI Act — High-Risk AI Systems (Annex III)
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689
-  - label: EBA Guidelines on Internal Governance — AI in Credit
-    url: https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-internal-governance
-  - label: 'ECB: Machine Learning in Credit Risk'
-    url: https://www.ecb.europa.eu/pub/research/working-papers/html/index.en.html
-  tags:
-  - research
-  - credit card
-  stakeholders:
-  - 3
-  - 2
-  actions:
-  - description: Deploy challenger ML model in shadow mode alongside existing scorecard
-      for 90-day comparison.
-    status: open
-  - description: Engage AI Act notified body to pre-certify model explainability documentation.
-    status: open
-  - description: Establish model governance board with quarterly review cadence.
-    status: done
+    - description: |-
+        Discussing the following point with BdB counterparts. Lobbying efforts. Alignment with product strategy. Focus on relevant product features. Definition of mandatory parts for implementation
+      status: open
+    - description: 'Technological development: Offering support for banks in their girocard
+      4.0 integration efforts.'
+      status: open
+    - description: development of standardized security concepts and tools
+      status: open
+    - description: |-
+        Training, conultation and ressource allocation to support banks in their necessary adaptations. enabling a timly rollout.
+      status: open
+    - description: |-
+        Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.
+      status: in-progress
+    - description: Coordinate with Deutsche Kreditwirtschaft (DK) working groups to
+        influence scheme rule development.
+      status: open
+    - description: |-
+        Define roadmap for mobile wallet integration (Apple Pay, Google Pay) under girocard 4.0 tokenisation framework.
+      status: open
+    - description: Communicate girocard 4.0 migration timeline to merchant acquiring
+        partners.
+      status: open
   category: Digital Payments
   impacts:
-  - Credit decisioning
-  - Model risk management
-  - Regulatory capital
-  - Fairness & explainability
+    - Card product portfolio
+    - Terminal infrastructure
+    - Scheme fees
+    - Competitive positioning
   driven_by:
-  - EU AI Act
-  - Competitive pressure from fintechs
-  - Data availability
-  position: Pilot & Scale
+    - DK scheme evolution
+    - Contactless & online use case expansion
+    - Girocard decline risk
+  position: Actively Shape
   associated_working_groups:
-  - name: EBA IReF Data WG
-    url: ''
-  - name: BdB Arbeitsgruppe KI & Daten
-    url: ''
-- id: 5
-  title: "[UPDATE NECESSARY] Open Banking Data Monetisation"
+    - name: DK Arbeitsgruppe girocard
+      url: ''
+    - name: Euro Retail Payments Board (ERPB)
+      url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
+- id: 3
+  title: "[UPDATE NECESSARY] Open Banking APIs"
   score: 5
   priority: Medium
   horizon: 18–30 months
@@ -424,182 +329,7 @@ topics:
     url: https://www.berlin-group.org
   - name: EBA Open Finance WG
     url: ''
-- id: 6
-  title: "[UPDATE NECESSARY] Embedded Finance Partnerships"
-  score: 4
-  priority: Low-Medium
-  horizon: 24–36 months
-  description: |-
-    The shift toward Banking-as-a-Service enables non-financial brands to embed our products at point-of-need. Early moves in this space could secure anchor distribution partnerships with e-commerce and mobility platforms.
-  management_summary: |-
-    Embedded finance is a genuine distribution channel shift, not a technology trend. The medium-term risk of inaction is loss of customer acquisition channels to platform-native financial services. A selective BaaS strategy targeting 2–3 anchor partnerships in e-commerce and mobility is recommended before the window closes.
-  extended_description: |-
-    Embedded finance describes the integration of financial products (payments, credit, insurance) directly into non-financial customer journeys — at checkout, at vehicle purchase, at SaaS billing. The infrastructure layer (Banking-as-a-Service) enables this by exposing banking capabilities via API to non-bank distributors. Key verticals in Germany: automotive (integrated financing at point of sale), e-commerce (buy-now-pay-later and instalment at checkout), and B2B SaaS (embedded invoice financing and payment collection). The regulatory model requires either a full BaaS licence or a white-label arrangement under our existing licence. The main strategic risk is commoditisation: as BaaS infrastructure becomes standardised, margins compress and the bank becomes a balance sheet utility rather than a brand.
-  risks:
-  - |-
-    Commoditisation risk: BaaS infrastructure providers (Solarisbank, Railsr) could disintermediate banks entirely.
-  - |-
-    Regulatory liability for partner conduct: embedded finance partners may expose us to AML and consumer protection liability.
-  - |-
-    Technical integration complexity with diverse partner stacks increases time-to-market and ongoing maintenance cost.
-  - |-
-    Brand dilution if the end customer experience is poor and the bank is not visible as the product provider.
-  chances:
-  - |-
-    Access to non-banking distribution channels that we cannot replicate organically (e.g. automotive dealer networks, e-commerce platforms).
-  - |-
-    Embedded credit products at point-of-sale have 3–5x higher conversion rates than standalone credit application funnels.
-  - |-
-    BaaS model generates fee income without requiring additional branches or customer-facing infrastructure.
-  - Partnership data from embedded contexts enriches credit and behavioural models
-    significantly.
-  sources:
-  - label: 'Bundesbank: BaaS and Embedded Finance in Germany'
-    url: https://www.bundesbank.de/en/publications/research/research-brief
-  - label: 'McKinsey: Embedded Finance Market Sizing'
-    url: https://www.mckinsey.com/industries/financial-services/our-insights/embedded-finance
-  - label: 'BaFin: Outsourcing and White-Label Banking Guidance'
-    url: https://www.bafin.de/EN/Aufsicht/BankenFinanzdienstleister/Outsourcing/outsourcing_artikel.html
-  tags:
-  - payment
-  - credit card
-  stakeholders:
-  - 1
-  - 3
-  actions:
-  - description: Define BaaS product catalogue and tiered partnership framework.
-    status: open
-  - description: Run RFP for white-label card issuing partners in Nordics and DACH
-      markets.
-    status: open
-  - description: Negotiate pilot embedded credit product with one tier-1 retail partner.
-    status: open
-  category: Digital Payments
-  impacts:
-  - Partner management
-  - Technology stack
-  - Brand & liability
-  - Regulatory perimeter
-  driven_by:
-  - Platform economy growth
-  - BaaS market development
-  - Customer expectation shifts
-  position: Selective Engagement
-  associated_working_groups:
-  - name: EBA Payment Institutions WG
-    url: ''
-  - name: Bitkom Arbeitsgruppe Banking-as-a-Service
-    url: ''
-- id: 7
-  title: girocard 4.0
-  score: 6
-  priority: High
-  horizon: 12–24 months
-  description: "The girocard scheme is undergoing a fundamental modernisation to support\
-    \ contactless mobile payments, NFC-based wallets, and online e-commerce use \n\
-    cases. girocard 4.0 introduces a new technical architecture enabling tokenisation\
-    \ and digital wallet integration."
-  management_summary: "girocard 4.0 is the most significant scheme modernisation since\
-    \ the introduction of contactless. Failure to migrate on time risks exclusion\
-    \ from \nApple Pay and Google Pay wallet ecosystems, which are now primary payment\
-    \ interfaces for under-40 demographics. Migration investment is non-negotiable;\
-    \ \nthe commercial opportunity lies in wallet-native product features.\nCurrently\
-    \ some banks are already provide their customers with in-app girocard transactions\
-    \ (android and iOS)"
-  extended_description: "The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft,\
-    \ replaces the proprietary girocard EMV kernel with a new tokenisation-capable\
-    \ \narchitecture supporting Apple Pay, Google Pay, and German OEM wallet integrations,\
-    \ theirby (as a side-effect) also strengthening the national \npayment infrastructure\
-    \ (while reducing dependency from major international schemes) The scheme also\
-    \ introduces an e-commerce capability, addressing \nthe longstanding gap where\
-    \ girocard could not be used for online purchases without a co-badged scheme (Maestro,\
-    \ now being phased out). Token \nService Provider (TSP) integration is required\
-    \ at the issuer level; banks using Atruvia processing benefit from a shared migration\
-    \ path, but \nindependent processors must implement TSP connectivity separately.\
-    \ \nEURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap.\n \
-    \ Girocard 2.0: e-commerce and in-app-transactions; \n girocard 3.0: e- and app-payments;\n \
-    \ girocard 4.0: convenience and added value.\nThe scheme timeline envisions full\
-    \ migration by end of 2026 with a transition period through 2027. \nThis planed\
-    \ extension closes a functional gap that is offered by (for instance) credit card\
-    \ schemes (rental car reservation, hotel booking, integration \nin third party\
-    \ wallets, in-app payments)."
-  risks:
-  - High investmens in technology. Training necessary.
-  - |-
-    Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
-  - |-
-    Migration delay risks exclusion from Apple Pay and Google Pay wallet integrations, ceding market share to Visa/Mastercard debit.
-  - |-
-    TSP integration complexity may be underestimated, particularly for banks with legacy issuing systems.
-  - Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is
-    possible.
-  - |-
-    Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
-  chances:
-  - |-
-    girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders
-  - |-
-    E-commerce capability opens a new acceptance channel for girocard, previously absent from online retail.
-  - |-
-    Tokenisation infrastructure is reusable for Digital Euro distribution and future CBDC wallet integration.
-  - |-
-    Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem.
-  - Business modell expansion by offering new services based on new technical possibilities
-  sources:
-  - label: 'Deutsche Kreditwirtschaft: girocard 4.0 Programme'
-    url: https://die-dk.de/zahlungsverkehr/girocard/
-  - label: 'Bundesbank: Retail Payments Strategy Germany'
-    url: https://www.bundesbank.de/en/tasks/payment-systems/retail-payments
-  - label: 'Atruvia: girocard Migration Documentation (internal)'
-    url: '#'
-  tags:
-  - infrastructure
-  - market
-  stakeholders:
-  - 6
-  - 4
-  - 5
-  actions:
-  - description: |-
-      Discussing the following point with BdB counterparts. Lobbying efforts. Alignment with product strategy. Focus on relevant product features. Definition of mandatory parts for implementation
-    status: open
-  - description: 'Technological development: Offering support for banks in their girocard
-      4.0 integration efforts.'
-    status: open
-  - description: development of standardized security concepts and tools
-    status: open
-  - description: |-
-      Training, conultation and ressource allocation to support banks in their necessary adaptations. enabling a timly rollout.
-    status: open
-  - description: |-
-      Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.
-    status: in-progress
-  - description: Coordinate with Deutsche Kreditwirtschaft (DK) working groups to
-      influence scheme rule development.
-    status: open
-  - description: |-
-      Define roadmap for mobile wallet integration (Apple Pay, Google Pay) under girocard 4.0 tokenisation framework.
-    status: open
-  - description: Communicate girocard 4.0 migration timeline to merchant acquiring
-      partners.
-    status: open
-  category: Digital Payments
-  impacts:
-  - Card product portfolio
-  - Terminal infrastructure
-  - Scheme fees
-  - Competitive positioning
-  driven_by:
-  - DK scheme evolution
-  - Contactless & online use case expansion
-  - Girocard decline risk
-  position: Actively Shape
-  associated_working_groups:
-  - name: DK Arbeitsgruppe girocard
-    url: ''
-  - name: Euro Retail Payments Board (ERPB)
-    url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
-- id: 8
+- id: 4
   title: Digitaler Euro
   score: 7
   priority: Medium-High
@@ -670,77 +400,7 @@ topics:
     url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
   - name: EPC Digital Euro WG
     url: ''
-- id: 9
-  title: "[REPLACE] Instant Payments (EU-Verordnung)"
-  score: 9
-  priority: Critical
-  horizon: 0–12 months
-  description: |-
-    The EU Instant Payments Regulation mandates that all PSPs within the eurozone offer SEPA Instant Credit Transfer (SCT Inst) by October 2025, with pricing not exceeding standard SEPA transfers. This is a hard compliance deadline with significant infrastructure implications.
-  management_summary: |-
-    Instant Payments compliance is a done deal — the deadline has passed for euro accounts. Focus must now shift to the non-euro account migration (2027), overlay product commercialisation, and fraud model hardening. R2P in particular is the highest-value near-term overlay opportunity and should be prioritised for development.
-  extended_description: |-
-    The regulation entered force in April 2024 with a phased implementation timeline: PSPs offering euro accounts had until October 2025 to offer SCT Inst; PSPs in non-euro EU member states have until 2027. Verification of Payee (VoP) is a parallel mandatory obligation under the same regulation, requiring name-IBAN matching before payment execution. Our VoP implementation is in final testing. The overlay services layer — Request-to-Pay, A2A payment initiation, and payroll instant crediting — represents the commercial upside of the infrastructure investment. R2P in particular is seeing growing corporate adoption in Germany as a structured alternative to direct debit.
-  risks:
-  - |-
-    Fraud on instant rails is a growing concern: APP (Authorised Push Payment) fraud has increased 40% YoY across eurozone PSPs.
-  - |-
-    VoP implementation errors could trigger false positives that block legitimate payments and damage client relationships.
-  - |-
-    Fee parity requirement permanently eliminates the instant payment premium, requiring new overlay monetisation models.
-  - |-
-    Non-euro account migration (2027) requires a second infrastructure upgrade cycle within 18 months of the first.
-  chances:
-  - |-
-    R2P overlay positions us as the primary payment initiation layer for SME invoice collection — high-value sticky product.
-  - |-
-    Instant payroll crediting for HR/payroll clients is a differentiated service with strong retention impact.
-  - |-
-    24/7 instant settlement capability is the foundation for embedded finance and real-time treasury management products.
-  - VoP infrastructure can be monetised as a standalone fraud prevention service for
-    smaller PSPs.
-  sources:
-  - label: EU Instant Payments Regulation (EU) 2024/886
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886
-  - label: 'EPC: SEPA Request-to-Pay Scheme'
-    url: https://www.europeanpaymentscouncil.eu/what-we-do/other-sepa-payments/sepa-request-pay
-  - label: 'EBA: Guidelines on Instant Payments Fraud Prevention'
-    url: https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money
-  tags:
-  - payment
-  stakeholders:
-  - 6
-  - 5
-  - 3
-  actions:
-  - description: |-
-      Confirm full SCT Inst coverage across all euro payment accounts before the October 2025 regulatory deadline.
-    status: done
-  - description: |-
-      Align SEPA Instant pricing to comply with the mandatory fee parity requirement and revise tariff sheets accordingly.
-    status: in-progress
-  - description: |-
-      Develop value-added overlay services (e.g. Request-to-Pay, Confirmation of Payee) to monetise instant infrastructure.
-    status: open
-  - description: Run fraud model validation specifically calibrated for sub-10-second
-      transaction windows.
-    status: open
-  category: Regulatory
-  impacts:
-  - Payment processing infrastructure
-  - Fraud screening
-  - Pricing model
-  - Treasury liquidity
-  driven_by:
-  - EU Instant Payments Regulation (mandatory deadlines)
-  - EPC SCT Inst scheme
-  position: Comply & Optimise
-  associated_working_groups:
-  - name: EPC Payments Schemes WG
-    url: https://www.europeanpaymentscouncil.eu
-  - name: DK Arbeitsgruppe Instant Payments
-    url: ''
-- id: 10
+- id: 5
   title: "eIDAS 2.0"
   score: 9
   priority: High
@@ -826,7 +486,7 @@ topics:
     url: ''
   - name: PG eIDAS 2.0 Umsetzung
     url: ''
-- id: 11
+- id: 6
   title: "EUDI Wallet"
   score: 9
   priority: High
@@ -929,7 +589,7 @@ topics:
     url: ''
   - name: BdB-Projekt eIDAS 2.0 Umsetzung
   - url: ''
-- id: 12
+- id: 7
   title: "FIDA - Financial Data Access Regulation"
   score: 2
   priority: Low-Medium
@@ -1009,8 +669,8 @@ topics:
     url: ''
   - name: BdB Arbeitsgruppe Open Banking
     url: ''
-- id: 13
-  title: "[UPDATE NECESSARY] PSD2/PSDR und Request to Pay (R2P)"
+- id: 8
+  title: "[UPDATE NECESSARY] PSD3/PSDR und Request to Pay (R2P)"
   score: 8
   priority: High
   horizon: 6–18 months
@@ -1082,297 +742,770 @@ topics:
     url: ''
   - name: DK Arbeitsgruppe Zahlungsdienste
     url: ''
-- id: 14
-  title: "[UPDATE NECESSARY] KRITIS-Dachgesetz"
-  score: 8
-  priority: High
-  horizon: 6–18 months
-  description: |-
-    Germany's KRITIS umbrella law expands critical infrastructure protection obligations beyond IT to physical resilience and business continuity. Financial institutions above defined thresholds face enhanced reporting, risk assessment, and resilience testing requirements.
-  management_summary: |-
-    The KRITIS-Dachgesetz closes a significant gap in German critical infrastructure law by adding physical resilience obligations to the existing IT security framework. Registration with BBK is likely required; the gap analysis should be completed immediately to understand the compliance investment needed before the first regulatory reporting cycle.
-  extended_description: |-
-    The KRITIS-Dachgesetz (enacted 2024, implementation from 2025) transposes the EU CER (Critical Entities Resilience) Directive and creates an umbrella framework for all critical sectors, including the financial sector. Operators of critical infrastructure (KRITIS) above threshold values must: register with the Federal Office for Civil Protection (BBK), submit risk analyses covering physical threats, natural disasters, and cross-sector dependencies, implement resilience measures, and report significant disruptions. The financial sector threshold is defined by the German Banking Act in terms of balance sheet total and systemic importance. The interaction with BAIT, BSI-KritisV, and DORA is complex — DORA covers ICT risk, KRITIS-Dachgesetz covers physical and cross-sector resilience, and BAIT covers IT governance broadly. A unified resilience governance framework that satisfies all three is the recommended approach.
-  risks:
-  - |-
-    Physical resilience gap analysis may reveal significant under-investment in data centre physical security and supply chain resilience.
-  - |-
-    Cross-sector dependency mapping (energy, telecoms, water) is a new obligation with no established methodology in banking.
-  - |-
-    BBK reporting requirements overlap with but do not perfectly align with existing BaFin/BSI reporting obligations, creating double-reporting burden.
-  - Failure to register within the required timeframe triggers administrative fines
-    of up to €10M.
-  chances:
-  - |-
-    Unified resilience framework satisfying DORA, KRITIS-Dachgesetz, and BAIT simultaneously reduces total compliance cost versus silo approach.
-  - |-
-    Physical resilience investment reduces operational risk profile and may reduce insurance premiums for operational risk coverage.
-  - |-
-    KRITIS-Dachgesetz compliance positions the institution positively in tenders requiring demonstrable critical infrastructure resilience (e.g. public sector banking mandates).
-  - |-
-    Cross-sector resilience intelligence sharing (information sharing as required by the law) creates early warning capability for systemic threats.
-  sources:
-  - label: KRITIS-Dachgesetz — Bundesgesetzblatt
-    url: https://www.bgbl.de
-  - label: 'BBK: Umsetzungsleitfaden KRITIS-DachG'
-    url: |-
-      https://www.bbk.bund.de/DE/Themen/Kritische-Infrastrukturen/KRITIS-Dachgesetz/kritis-dachgesetz_node.html
-  - label: 'BSI: KRITIS-Sektor Finanzwesen'
-    url: |-
-      https://www.bsi.bund.de/DE/Themen/KRITIS-und-regulierte-Unternehmen/Kritische-Infrastrukturen/kritis_node.html
-  tags:
-  - infrastructure
-  stakeholders:
-  - 8
-  - 3
-  - 5
-  actions:
-  - description: |-
-      Determine if the institution meets KRITIS-Dachgesetz threshold criteria and formally register with BBK if required.
-    status: in-progress
-  - description: |-
-      Conduct a resilience gap analysis covering physical infrastructure, supply chain dependencies, and cross-sector interfaces.
-    status: open
-  - description: |-
-      Update the Business Continuity Management (BCM) framework to align with the new law and CER Directive.
-    status: open
-  - description: |-
-      Establish cross-functional crisis response team with defined escalation paths as required by the regulation.
-    status: open
-  category: IT Security
-  impacts:
-  - Operational resilience
-  - Incident reporting
-  - Supplier management
-  - Physical security
-  driven_by:
-  - German KRITIS-Dachgesetz legislation
-  - BSI regulatory expansion
-  - NIS2 Directive
-  position: Comply
-  associated_working_groups:
-  - name: BSI Arbeitsgruppe Kritische Infrastrukturen
-    url: https://www.bsi.bund.de
-  - name: BdB AG Informationssicherheit
-    url: ''
-- id: 15
-  title: "[UPDATE NECESSARY] DORA (Digital Operational Resilience Act)"
-  score: 9
-  priority: Critical
-  horizon: 0–6 months
-  description: |-
-    DORA entered application in January 2025, introducing binding requirements on ICT risk management, incident classification and reporting, digital operational resilience testing (TLPT), and third-party ICT provider oversight across all EU financial entities.
-  management_summary: |-
-    DORA is in force and supervisory assessment has begun. The ICT third-party register and contractual remediation with critical providers are the two most material outstanding gaps. TLPT scheduling should be initiated with the lead supervisor immediately. Non-compliance at this stage of implementation is a significant supervisory relationship risk.
-  extended_description: |-
-    DORA (Regulation EU 2022/2554) applies to banks, investment firms, insurance companies, crypto-asset service providers, and critical ICT third-party service providers (CTPPs). The regulation creates five pillars: ICT risk management framework, ICT-related incident management and reporting, digital operational resilience testing, ICT third-party risk management, and information sharing. The most operationally challenging elements are: the ICT third-party register (a comprehensive inventory of all ICT vendor relationships with criticality classification and contractual terms review) and the TLPT programme (threat-led penetration testing conducted by approved testers under supervisor oversight, required at least every 3 years for significant firms). The ESAs (EBA, ESMA, EIOPA) published final RTS and ITS in January 2024; national supervisors (BaFin) have begun first-wave DORA examinations.
-  risks:
-  - |-
-    Incomplete ICT third-party register identified in BaFin examination could result in formal supervisory findings.
-  - |-
-    Critical ICT third-party contracts without mandatory DORA clauses (audit rights, exit strategy, SLA) create legal exposure.
-  - |-
-    TLPT programme requires engaging approved external red-team providers; availability of qualified providers is limited.
-  - |-
-    Major ICT incident misclassification (below reporting threshold) could be construed as failure to comply with incident reporting obligations.
-  chances:
-  - |-
-    DORA compliance investment creates a genuinely more resilient ICT infrastructure that reduces operational risk losses.
-  - |-
-    ICT vendor consolidation triggered by DORA third-party risk review may reduce vendor complexity and ongoing management cost.
-  - |-
-    DORA-compliant ICT risk framework is a commercial differentiator in enterprise banking tenders where institutional resilience matters.
-  - |-
-    Information sharing under DORA's framework (ISAC participation) improves threat intelligence capability at industry level.
-  sources:
-  - label: DORA — EU Regulation 2022/2554 (Full Text)
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022R2554
-  - label: 'EBA: DORA Technical Standards and Guidelines'
-    url: |-
-      https://www.eba.europa.eu/regulation-and-policy/operational-resilience/digital-operational-resilience-act-dora
-  - label: 'BaFin: DORA-Umsetzungshinweise für Banken'
-    url: https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/IT-Aufsicht/DORA/dora_node.html
-  tags:
-  - infrastructure
-  stakeholders:
-  - 8
-  - 5
-  - 3
-  actions:
-  - description: |-
-      Complete the ICT third-party provider register and classify all providers against DORA's criticality criteria.
-    status: in-progress
-  - description: |-
-      Update contracts with critical ICT providers to include mandatory DORA clauses (audit rights, exit strategies, SLAs).
-    status: in-progress
-  - description: |-
-      Design and schedule the Threat-Led Penetration Testing (TLPT) programme in coordination with the lead supervisor.
-    status: open
-  - description: |-
-      Establish major ICT incident classification criteria and test the end-to-end supervisory reporting workflow.
-    status: open
-  - description: Train first and second line of defence teams on updated ICT risk
-      management framework under DORA.
-    status: open
-  category: IT Security
-  impacts:
-  - ICT risk management
-  - Third-party oversight
-  - Incident reporting
-  - TLPT testing
-  driven_by:
-  - DORA regulation (mandatory from Jan 2025)
-  - ESA supervisory expectations
-  position: Comply
-  associated_working_groups:
-  - name: EBA DORA Implementation WG
-    url: ''
-  - name: BdB AG DORA
-    url: ''
-  - name: Bitkom AG Financial Services
-    url: ''
-- id: 16
-  title: "[UPDATE NECESSARY] Atruvia Kernbank-Software"
-  score: 6
-  priority: Medium
-  horizon: 24–60 months
-  description: |-
-    Atruvia is rolling out its next-generation core banking platform (agree21 / Fusion Banking) across cooperative banking clients. The transition involves significant migration complexity and directly shapes digital product capabilities and innovation timelines.
-  management_summary: |-
-    Atruvia's platform roadmap is a binding constraint on our digital product velocity. The agree21 migration will take 3–5 years for full transition. We must identify where the Atruvia roadmap timeline is a strategic bottleneck and define a selective build-or-integrate strategy for the 2–3 highest-impact features where we cannot afford to wait.
-  extended_description: |-
-    Atruvia (formerly Fiducia & GAD) is the dominant core banking processor for German cooperative banks, serving over 900 institutions. The agree21 migration is the largest banking IT migration programme in Germany, replacing two legacy systems (GAD and agree) with a unified Temenos-based platform. The migration is proceeding bank-by-bank under a coordinated programme, with completion expected in 2027–2028. The new platform significantly improves API availability (via Atruvia's openAPI platform), real-time processing capabilities, and cloud integration. However, the migration window creates uncertainty: feature delivery timelines may shift, and institutions mid-migration have reduced IT flexibility. Key questions for our institution: when is our migration slot, what features become available pre- vs. post-migration, and which product capabilities should we build independently versus waiting for Atruvia delivery.
-  risks:
-  - |-
-    Migration delays could defer critical product capabilities (e.g. real-time account information APIs) by 12–24 months versus plan.
-  - |-
-    High vendor concentration risk: dependency on a single core banking provider with no short-term alternative.
-  - |-
-    Mid-migration IT freeze periods reduce our ability to implement regulatory changes and product features simultaneously.
-  - |-
-    Cost of migration support and integration work is material and may compete with strategic product investment budgets.
-  chances:
-  - |-
-    agree21 platform significantly improves our API architecture, enabling faster fintech integration and open banking product development.
-  - |-
-    Post-migration, real-time processing capabilities unlock instant payment overlays and treasury management products not currently feasible.
-  - |-
-    Atruvia's shared platform investment is economically efficient — we benefit from infrastructure R&D investment shared across 900+ institutions.
-  - |-
-    Migration creates a forcing function to rationalise legacy integrations, reducing ongoing IT complexity and maintenance cost.
-  sources:
-  - label: 'Atruvia: agree21 Migration Programme'
-    url: https://www.atruvia.de/loesungen/banksteuerung/agree21/
-  - label: 'Atruvia: openAPI Platform Documentation'
-    url: https://developer.atruvia.de
-  - label: 'BVR: Digitalisierungsstrategie der Genossenschaftsbanken'
-    url: https://www.bvr.de/Themen/Digitalisierung
-  tags:
-  - market
-  - infrastructure
-  stakeholders:
-  - 5
-  - 4
-  - 9
-  actions:
-  - description: |-
-      Map current core banking integration points and identify which capabilities are affected by the agree21 migration roadmap.
-    status: in-progress
-  - description: |-
-      Establish a dedicated Atruvia liaison role to maintain visibility of platform roadmap changes and early-access features.
-    status: open
-  - description: |-
-      Evaluate build-vs-integrate decision for top-3 product features where Atruvia roadmap timeline is insufficient.
-    status: open
-  - description: |-
-      Review vendor risk concentration and assess contingency options in the event of major platform delays.
-    status: open
-  category: Miscellaneous
-  impacts:
-  - Core banking operations
-  - IT architecture
-  - Migration risk
-  - Vendor dependency
-  driven_by:
-  - Atruvia product roadmap
-  - VR-Bank consolidation strategy
-  - Digital transformation
-  position: Manage & Plan
-  associated_working_groups:
-  - name: Atruvia Kundenrat
-    url: ''
-  - name: DZ BANK Gruppe IT-Gremien
-    url: ''
-- id: 17
-  title: "[UPDATE NECESSARY] Rückzug Auslandsbanken"
-  score: 5
-  priority: Medium
-  horizon: 6–24 months
-  description: |-
-    Several international retail and corporate banks have reduced or fully exited the German market, citing structural cost pressures and regulatory complexity. This creates selective opportunities to acquire customer portfolios, talent, and market share.
-  management_summary: |-
-    The exit of foreign banks from Germany is a slow-moving structural trend that creates episodic acquisition opportunities. The SME lending segment and private banking are the most attractive targets. A standing M&A readiness framework and active market intelligence process are the prerequisites for acting quickly when opportunities arise.
-  extended_description: |-
-    The post-2020 wave of foreign bank exits from Germany includes ING Deutschland (partial retail), HSBC Trinkaus (private banking sold to Bethmann/ABN AMRO), and Goldman Sachs Marcus (full retail exit). The drivers are structural: German retail banking has persistently low margins due to price-sensitive customers, strong savings bank and cooperative bank competition, and high regulatory compliance costs for non-domestic operators. The resulting gaps are most pronounced in: SME lending (particularly for international trade finance), private banking for high-net-worth clients, and specialised corporate banking services (structured products, syndicated lending). Acquiring a loan book or client portfolio from an exiting bank typically requires BaFin approval for the portfolio transfer and due diligence on credit quality — cycles of 6–12 months from announcement to completion.
-  risks:
-  - |-
-    Portfolio acquisitions from exiting banks may carry hidden credit quality issues undisclosed in initial due diligence.
-  - |-
-    Integration of acquired client portfolios and staff is operationally complex and may distract management attention.
-  - |-
-    Regulatory approval timelines for portfolio transfers can be lengthy, reducing our ability to act on time-sensitive opportunities.
-  - |-
-    Remaining foreign banks may stabilise or be acquired by stronger competitors, reducing the addressable opportunity.
-  chances:
-  - |-
-    SME loan book acquisitions could grow our business lending portfolio by 10–20% without organic origination investment.
-  - |-
-    Talent acquisition from exiting institutions provides immediate access to experienced relationship managers and specialists.
-  - |-
-    Market share gains in underserved segments (e.g. international SME trade finance) create new client relationships with strong long-term value.
-  - |-
-    Regional branch or office acquisitions from exiting banks provide physical distribution at below-greenfield cost.
-  sources:
-  - label: 'Bundesbank: Struktur des deutschen Bankensektors'
-    url: https://www.bundesbank.de/de/statistiken/banken-und-andere-finanzielle-institute/banken
-  - label: 'BaFin: Erlaubnisverfahren und Portfoliotransfers'
-    url: |-
-      https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/Erlaubnisverfahren/erlaubnisverfahren_node.html
-  - label: 'Handelsblatt: Auslandsbanken in Deutschland — Marktübersicht'
-    url: https://www.handelsblatt.com/finanzen/banken-versicherungen
-  tags:
-  - market
-  - research
-  stakeholders:
-  - 9
-  - 2
-  - 4
-  actions:
-  - description: |-
-      Maintain a market intelligence tracker of announced and rumoured foreign bank exits, including portfolio sizes and affected segments.
-    status: in-progress
-  - description: |-
-      Define acquisition criteria for opportunistic portfolio purchases (SME loan books, custody assets, corporate client mandates).
-    status: open
-  - description: |-
-      Develop a targeted recruitment strategy to capture senior relationship managers released from exiting institutions.
-    status: open
-  - description: |-
-      Assess whether competitor exit in specific regions creates a case for accelerated branch or digital expansion.
-    status: open
-  category: Miscellaneous
-  impacts:
-  - Competitive landscape
-  - Talent acquisition
-  - Loan portfolio opportunities
-  - Market share
-  driven_by:
-  - Post-Brexit restructuring
-  - Regulatory cost pressure
-  - German market consolidation
-  position: Opportunistically Engage
-  associated_working_groups:
-  - name: BdB Marktstruktur-Arbeitsgruppe
-    url: ''
-  - name: BaFin Bankaufsichtsgremien
-    url: ''
+  - id: 9
+    title: "Wero"
+    score: 10
+    priority: Medium
+    horizon: 6–24 months
+    management_summary: " MGMT Summary"
+    description: "description"
+    extended_description: "Extended description"
+    risks:
+      - |-
+        Risk 1
+      - |-
+        Risk 2
+    chances:
+      - |-
+        Chance 1
+      - |-
+        Chance 2
+    sources:
+      - label: 'label'
+        url: https://www.https://www.netcetera.com/home.html
+    tags:
+      - market
+      - research
+    stakeholders:
+      - 9
+    actions:
+      - description: |-
+          Action
+        status: in-progress
+      - description: |-
+           Action
+        status: open
+    category: Miscellaneous
+    impacts:
+      - impact 1
+      - impact 2
+    driven_by:
+      - driver 1
+      - driver 2
+    position: TBD
+    associated_working_groups:
+      - name: Name
+        url: ''
+  - id: 10
+    title: "giroAPI"
+    score: 6
+    priority: Medium
+    horizon: 6–24 months
+    management_summary: " MGMT Summary"
+    description: "description"
+    extended_description: "Extended description"
+    risks:
+      - |-
+        Risk 1
+      - |-
+        Risk 2
+    chances:
+      - |-
+        Chance 1
+      - |-
+        Chance 2
+    sources:
+      - label: 'label'
+        url: https://www.https://www.netcetera.com/home.html
+    tags:
+      - market
+      - research
+    stakeholders:
+      - 9
+    actions:
+      - description: |-
+          Action
+        status: in-progress
+      - description: |-
+          Action
+        status: open
+    category: Miscellaneous
+    impacts:
+      - impact 1
+      - impact 2
+    driven_by:
+      - driver 1
+      - driver 2
+    position: TBD
+    associated_working_groups:
+      - name: Name
+        url: ''
+  - id: 11
+    title: "KI"
+    score: 3
+    priority: Medium
+    horizon: 6–24 months
+    management_summary: " MGMT Summary"
+    description: "description"
+    extended_description: "Extended description"
+    risks:
+      - |-
+        Risk 1
+      - |-
+        Risk 2
+    chances:
+      - |-
+        Chance 1
+      - |-
+        Chance 2
+    sources:
+      - label: 'label'
+        url: https://www.https://www.netcetera.com/home.html
+    tags:
+      - market
+      - research
+    stakeholders:
+      - 9
+    actions:
+      - description: |-
+          Action
+        status: in-progress
+      - description: |-
+          Action
+        status: open
+    category: Miscellaneous
+    impacts:
+      - impact 1
+      - impact 2
+    driven_by:
+      - driver 1
+      - driver 2
+    position: TBD
+    associated_working_groups:
+      - name: Name
+        url: ''
+#- id: 92
+#  title: "[UPDATE NECESSARY] KRITIS-Dachgesetz"
+#  score: 8
+#  priority: High
+#  horizon: 6–18 months
+#  description: |-
+#    Germany's KRITIS umbrella law expands critical infrastructure protection obligations beyond IT to physical resilience and business continuity. Financial institutions above defined thresholds face enhanced reporting, risk assessment, and resilience testing requirements.
+#  management_summary: |-
+#    The KRITIS-Dachgesetz closes a significant gap in German critical infrastructure law by adding physical resilience obligations to the existing IT security framework. Registration with BBK is likely required; the gap analysis should be completed immediately to understand the compliance investment needed before the first regulatory reporting cycle.
+#  extended_description: |-
+#    The KRITIS-Dachgesetz (enacted 2024, implementation from 2025) transposes the EU CER (Critical Entities Resilience) Directive and creates an umbrella framework for all critical sectors, including the financial sector. Operators of critical infrastructure (KRITIS) above threshold values must: register with the Federal Office for Civil Protection (BBK), submit risk analyses covering physical threats, natural disasters, and cross-sector dependencies, implement resilience measures, and report significant disruptions. The financial sector threshold is defined by the German Banking Act in terms of balance sheet total and systemic importance. The interaction with BAIT, BSI-KritisV, and DORA is complex — DORA covers ICT risk, KRITIS-Dachgesetz covers physical and cross-sector resilience, and BAIT covers IT governance broadly. A unified resilience governance framework that satisfies all three is the recommended approach.
+#  risks:
+#    - |-
+#      Physical resilience gap analysis may reveal significant under-investment in data centre physical security and supply chain resilience.
+#    - |-
+#      Cross-sector dependency mapping (energy, telecoms, water) is a new obligation with no established methodology in banking.
+#    - |-
+#      BBK reporting requirements overlap with but do not perfectly align with existing BaFin/BSI reporting obligations, creating double-reporting burden.
+#    - Failure to register within the required timeframe triggers administrative fines
+#      of up to €10M.
+#  chances:
+#    - |-
+#      Unified resilience framework satisfying DORA, KRITIS-Dachgesetz, and BAIT simultaneously reduces total compliance cost versus silo approach.
+#    - |-
+#      Physical resilience investment reduces operational risk profile and may reduce insurance premiums for operational risk coverage.
+#    - |-
+#      KRITIS-Dachgesetz compliance positions the institution positively in tenders requiring demonstrable critical infrastructure resilience (e.g. public sector banking mandates).
+#    - |-
+#      Cross-sector resilience intelligence sharing (information sharing as required by the law) creates early warning capability for systemic threats.
+#  sources:
+#    - label: KRITIS-Dachgesetz — Bundesgesetzblatt
+#      url: https://www.bgbl.de
+#    - label: 'BBK: Umsetzungsleitfaden KRITIS-DachG'
+#      url: |-
+#        https://www.bbk.bund.de/DE/Themen/Kritische-Infrastrukturen/KRITIS-Dachgesetz/kritis-dachgesetz_node.html
+#    - label: 'BSI: KRITIS-Sektor Finanzwesen'
+#      url: |-
+#        https://www.bsi.bund.de/DE/Themen/KRITIS-und-regulierte-Unternehmen/Kritische-Infrastrukturen/kritis_node.html
+#  tags:
+#    - infrastructure
+#  stakeholders:
+#    - 8
+#    - 3
+#    - 5
+#  actions:
+#    - description: |-
+#        Determine if the institution meets KRITIS-Dachgesetz threshold criteria and formally register with BBK if required.
+#      status: in-progress
+#    - description: |-
+#        Conduct a resilience gap analysis covering physical infrastructure, supply chain dependencies, and cross-sector interfaces.
+#      status: open
+#    - description: |-
+#        Update the Business Continuity Management (BCM) framework to align with the new law and CER Directive.
+#      status: open
+#    - description: |-
+#        Establish cross-functional crisis response team with defined escalation paths as required by the regulation.
+#      status: open
+#  category: IT Security
+#  impacts:
+#    - Operational resilience
+#    - Incident reporting
+#    - Supplier management
+#    - Physical security
+#  driven_by:
+#    - German KRITIS-Dachgesetz legislation
+#    - BSI regulatory expansion
+#    - NIS2 Directive
+#  position: Comply
+#  associated_working_groups:
+#    - name: BSI Arbeitsgruppe Kritische Infrastrukturen
+#      url: https://www.bsi.bund.de
+#    - name: BdB AG Informationssicherheit
+#      url: ''
+#- id: 91
+#  title: "[UPDATE NECESSARY] DORA (Digital Operational Resilience Act)"
+#  score: 9
+#  priority: Critical
+#  horizon: 0–6 months
+#  description: |-
+#    DORA entered application in January 2025, introducing binding requirements on ICT risk management, incident classification and reporting, digital operational resilience testing (TLPT), and third-party ICT provider oversight across all EU financial entities.
+#  management_summary: |-
+#    DORA is in force and supervisory assessment has begun. The ICT third-party register and contractual remediation with critical providers are the two most material outstanding gaps. TLPT scheduling should be initiated with the lead supervisor immediately. Non-compliance at this stage of implementation is a significant supervisory relationship risk.
+#  extended_description: |-
+#    DORA (Regulation EU 2022/2554) applies to banks, investment firms, insurance companies, crypto-asset service providers, and critical ICT third-party service providers (CTPPs). The regulation creates five pillars: ICT risk management framework, ICT-related incident management and reporting, digital operational resilience testing, ICT third-party risk management, and information sharing. The most operationally challenging elements are: the ICT third-party register (a comprehensive inventory of all ICT vendor relationships with criticality classification and contractual terms review) and the TLPT programme (threat-led penetration testing conducted by approved testers under supervisor oversight, required at least every 3 years for significant firms). The ESAs (EBA, ESMA, EIOPA) published final RTS and ITS in January 2024; national supervisors (BaFin) have begun first-wave DORA examinations.
+#  risks:
+#    - |-
+#      Incomplete ICT third-party register identified in BaFin examination could result in formal supervisory findings.
+#    - |-
+#      Critical ICT third-party contracts without mandatory DORA clauses (audit rights, exit strategy, SLA) create legal exposure.
+#    - |-
+#      TLPT programme requires engaging approved external red-team providers; availability of qualified providers is limited.
+#    - |-
+#      Major ICT incident misclassification (below reporting threshold) could be construed as failure to comply with incident reporting obligations.
+#  chances:
+#    - |-
+#      DORA compliance investment creates a genuinely more resilient ICT infrastructure that reduces operational risk losses.
+#    - |-
+#      ICT vendor consolidation triggered by DORA third-party risk review may reduce vendor complexity and ongoing management cost.
+#    - |-
+#      DORA-compliant ICT risk framework is a commercial differentiator in enterprise banking tenders where institutional resilience matters.
+#    - |-
+#      Information sharing under DORA's framework (ISAC participation) improves threat intelligence capability at industry level.
+#  sources:
+#    - label: DORA — EU Regulation 2022/2554 (Full Text)
+#      url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32022R2554
+#    - label: 'EBA: DORA Technical Standards and Guidelines'
+#      url: |-
+#        https://www.eba.europa.eu/regulation-and-policy/operational-resilience/digital-operational-resilience-act-dora
+#    - label: 'BaFin: DORA-Umsetzungshinweise für Banken'
+#      url: https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/IT-Aufsicht/DORA/dora_node.html
+#  tags:
+#    - infrastructure
+#  stakeholders:
+#    - 8
+#    - 5
+#    - 3
+#  actions:
+#    - description: |-
+#        Complete the ICT third-party provider register and classify all providers against DORA's criticality criteria.
+#      status: in-progress
+#    - description: |-
+#        Update contracts with critical ICT providers to include mandatory DORA clauses (audit rights, exit strategies, SLAs).
+#      status: in-progress
+#    - description: |-
+#        Design and schedule the Threat-Led Penetration Testing (TLPT) programme in coordination with the lead supervisor.
+#      status: open
+#    - description: |-
+#        Establish major ICT incident classification criteria and test the end-to-end supervisory reporting workflow.
+#      status: open
+#    - description: Train first and second line of defence teams on updated ICT risk
+#        management framework under DORA.
+#      status: open
+#  category: IT Security
+#  impacts:
+#    - ICT risk management
+#    - Third-party oversight
+#    - Incident reporting
+#    - TLPT testing
+#  driven_by:
+#    - DORA regulation (mandatory from Jan 2025)
+#    - ESA supervisory expectations
+#  position: Comply
+#  associated_working_groups:
+#    - name: EBA DORA Implementation WG
+#      url: ''
+#    - name: BdB AG DORA
+#      url: ''
+#    - name: Bitkom AG Financial Services
+#      url: ''
+#- id: 90
+#  title: "[UPDATE NECESSARY] Atruvia Kernbank-Software"
+#  score: 6
+#  priority: Medium
+#  horizon: 24–60 months
+#  description: |-
+#    Atruvia is rolling out its next-generation core banking platform (agree21 / Fusion Banking) across cooperative banking clients. The transition involves significant migration complexity and directly shapes digital product capabilities and innovation timelines.
+#  management_summary: |-
+#    Atruvia's platform roadmap is a binding constraint on our digital product velocity. The agree21 migration will take 3–5 years for full transition. We must identify where the Atruvia roadmap timeline is a strategic bottleneck and define a selective build-or-integrate strategy for the 2–3 highest-impact features where we cannot afford to wait.
+#  extended_description: |-
+#    Atruvia (formerly Fiducia & GAD) is the dominant core banking processor for German cooperative banks, serving over 900 institutions. The agree21 migration is the largest banking IT migration programme in Germany, replacing two legacy systems (GAD and agree) with a unified Temenos-based platform. The migration is proceeding bank-by-bank under a coordinated programme, with completion expected in 2027–2028. The new platform significantly improves API availability (via Atruvia's openAPI platform), real-time processing capabilities, and cloud integration. However, the migration window creates uncertainty: feature delivery timelines may shift, and institutions mid-migration have reduced IT flexibility. Key questions for our institution: when is our migration slot, what features become available pre- vs. post-migration, and which product capabilities should we build independently versus waiting for Atruvia delivery.
+#  risks:
+#    - |-
+#      Migration delays could defer critical product capabilities (e.g. real-time account information APIs) by 12–24 months versus plan.
+#    - |-
+#      High vendor concentration risk: dependency on a single core banking provider with no short-term alternative.
+#    - |-
+#      Mid-migration IT freeze periods reduce our ability to implement regulatory changes and product features simultaneously.
+#    - |-
+#      Cost of migration support and integration work is material and may compete with strategic product investment budgets.
+#  chances:
+#    - |-
+#      agree21 platform significantly improves our API architecture, enabling faster fintech integration and open banking product development.
+#    - |-
+#      Post-migration, real-time processing capabilities unlock instant payment overlays and treasury management products not currently feasible.
+#    - |-
+#      Atruvia's shared platform investment is economically efficient — we benefit from infrastructure R&D investment shared across 900+ institutions.
+#    - |-
+#      Migration creates a forcing function to rationalise legacy integrations, reducing ongoing IT complexity and maintenance cost.
+#  sources:
+#    - label: 'Atruvia: agree21 Migration Programme'
+#      url: https://www.atruvia.de/loesungen/banksteuerung/agree21/
+#    - label: 'Atruvia: openAPI Platform Documentation'
+#      url: https://developer.atruvia.de
+#    - label: 'BVR: Digitalisierungsstrategie der Genossenschaftsbanken'
+#      url: https://www.bvr.de/Themen/Digitalisierung
+#  tags:
+#    - market
+#    - infrastructure
+#  stakeholders:
+#    - 5
+#    - 4
+#    - 9
+#  actions:
+#    - description: |-
+#        Map current core banking integration points and identify which capabilities are affected by the agree21 migration roadmap.
+#      status: in-progress
+#    - description: |-
+#        Establish a dedicated Atruvia liaison role to maintain visibility of platform roadmap changes and early-access features.
+#      status: open
+#    - description: |-
+#        Evaluate build-vs-integrate decision for top-3 product features where Atruvia roadmap timeline is insufficient.
+#      status: open
+#    - description: |-
+#        Review vendor risk concentration and assess contingency options in the event of major platform delays.
+#      status: open
+#  category: Miscellaneous
+#  impacts:
+#    - Core banking operations
+#    - IT architecture
+#    - Migration risk
+#    - Vendor dependency
+#  driven_by:
+#    - Atruvia product roadmap
+#    - VR-Bank consolidation strategy
+#    - Digital transformation
+#  position: Manage & Plan
+#  associated_working_groups:
+#    - name: Atruvia Kundenrat
+#      url: ''
+#    - name: DZ BANK Gruppe IT-Gremien
+#      url: ''
+#- id: 89
+#  title: "[UPDATE NECESSARY] Rückzug Auslandsbanken"
+#  score: 5
+#  priority: Medium
+#  horizon: 6–24 months
+#  description: |-
+#    Several international retail and corporate banks have reduced or fully exited the German market, citing structural cost pressures and regulatory complexity. This creates selective opportunities to acquire customer portfolios, talent, and market share.
+#  management_summary: |-
+#    The exit of foreign banks from Germany is a slow-moving structural trend that creates episodic acquisition opportunities. The SME lending segment and private banking are the most attractive targets. A standing M&A readiness framework and active market intelligence process are the prerequisites for acting quickly when opportunities arise.
+#  extended_description: |-
+#    The post-2020 wave of foreign bank exits from Germany includes ING Deutschland (partial retail), HSBC Trinkaus (private banking sold to Bethmann/ABN AMRO), and Goldman Sachs Marcus (full retail exit). The drivers are structural: German retail banking has persistently low margins due to price-sensitive customers, strong savings bank and cooperative bank competition, and high regulatory compliance costs for non-domestic operators. The resulting gaps are most pronounced in: SME lending (particularly for international trade finance), private banking for high-net-worth clients, and specialised corporate banking services (structured products, syndicated lending). Acquiring a loan book or client portfolio from an exiting bank typically requires BaFin approval for the portfolio transfer and due diligence on credit quality — cycles of 6–12 months from announcement to completion.
+#  risks:
+#    - |-
+#      Portfolio acquisitions from exiting banks may carry hidden credit quality issues undisclosed in initial due diligence.
+#    - |-
+#      Integration of acquired client portfolios and staff is operationally complex and may distract management attention.
+#    - |-
+#      Regulatory approval timelines for portfolio transfers can be lengthy, reducing our ability to act on time-sensitive opportunities.
+#    - |-
+#      Remaining foreign banks may stabilise or be acquired by stronger competitors, reducing the addressable opportunity.
+#  chances:
+#    - |-
+#      SME loan book acquisitions could grow our business lending portfolio by 10–20% without organic origination investment.
+#    - |-
+#      Talent acquisition from exiting institutions provides immediate access to experienced relationship managers and specialists.
+#    - |-
+#      Market share gains in underserved segments (e.g. international SME trade finance) create new client relationships with strong long-term value.
+#    - |-
+#      Regional branch or office acquisitions from exiting banks provide physical distribution at below-greenfield cost.
+#  sources:
+#    - label: 'Bundesbank: Struktur des deutschen Bankensektors'
+#      url: https://www.bundesbank.de/de/statistiken/banken-und-andere-finanzielle-institute/banken
+#    - label: 'BaFin: Erlaubnisverfahren und Portfoliotransfers'
+#      url: |-
+#        https://www.bafin.de/DE/Aufsicht/BankenFinanzdienstleister/Erlaubnisverfahren/erlaubnisverfahren_node.html
+#    - label: 'Handelsblatt: Auslandsbanken in Deutschland — Marktübersicht'
+#      url: https://www.handelsblatt.com/finanzen/banken-versicherungen
+#  tags:
+#    - market
+#    - research
+#  stakeholders:
+#    - 9
+#    - 2
+#    - 4
+#  actions:
+#    - description: |-
+#        Maintain a market intelligence tracker of announced and rumoured foreign bank exits, including portfolio sizes and affected segments.
+#      status: in-progress
+#    - description: |-
+#        Define acquisition criteria for opportunistic portfolio purchases (SME loan books, custody assets, corporate client mandates).
+#      status: open
+#    - description: |-
+#        Develop a targeted recruitment strategy to capture senior relationship managers released from exiting institutions.
+#      status: open
+#    - description: |-
+#        Assess whether competitor exit in specific regions creates a case for accelerated branch or digital expansion.
+#      status: open
+#  category: Miscellaneous
+#  impacts:
+#    - Competitive landscape
+#    - Talent acquisition
+#    - Loan portfolio opportunities
+#    - Market share
+#  driven_by:
+#    - Post-Brexit restructuring
+#    - Regulatory cost pressure
+#    - German market consolidation
+#  position: Opportunistically Engage
+#  associated_working_groups:
+#    - name: BdB Marktstruktur-Arbeitsgruppe
+#      url: ''
+#    - name: BaFin Bankaufsichtsgremien
+#      url: ''
+#- id: 93
+#  title: "[REPLACE] Instant Payments (EU-Verordnung)"
+#  score: 9
+#  priority: Critical
+#  horizon: 0–12 months
+#  description: |-
+#    The EU Instant Payments Regulation mandates that all PSPs within the eurozone offer SEPA Instant Credit Transfer (SCT Inst) by October 2025, with pricing not exceeding standard SEPA transfers. This is a hard compliance deadline with significant infrastructure implications.
+#  management_summary: |-
+#    Instant Payments compliance is a done deal — the deadline has passed for euro accounts. Focus must now shift to the non-euro account migration (2027), overlay product commercialisation, and fraud model hardening. R2P in particular is the highest-value near-term overlay opportunity and should be prioritised for development.
+#  extended_description: |-
+#    The regulation entered force in April 2024 with a phased implementation timeline: PSPs offering euro accounts had until October 2025 to offer SCT Inst; PSPs in non-euro EU member states have until 2027. Verification of Payee (VoP) is a parallel mandatory obligation under the same regulation, requiring name-IBAN matching before payment execution. Our VoP implementation is in final testing. The overlay services layer — Request-to-Pay, A2A payment initiation, and payroll instant crediting — represents the commercial upside of the infrastructure investment. R2P in particular is seeing growing corporate adoption in Germany as a structured alternative to direct debit.
+#  risks:
+#    - |-
+#      Fraud on instant rails is a growing concern: APP (Authorised Push Payment) fraud has increased 40% YoY across eurozone PSPs.
+#    - |-
+#      VoP implementation errors could trigger false positives that block legitimate payments and damage client relationships.
+#    - |-
+#      Fee parity requirement permanently eliminates the instant payment premium, requiring new overlay monetisation models.
+#    - |-
+#      Non-euro account migration (2027) requires a second infrastructure upgrade cycle within 18 months of the first.
+#  chances:
+#    - |-
+#      R2P overlay positions us as the primary payment initiation layer for SME invoice collection — high-value sticky product.
+#    - |-
+#      Instant payroll crediting for HR/payroll clients is a differentiated service with strong retention impact.
+#    - |-
+#      24/7 instant settlement capability is the foundation for embedded finance and real-time treasury management products.
+#    - VoP infrastructure can be monetised as a standalone fraud prevention service for
+#      smaller PSPs.
+#  sources:
+#    - label: EU Instant Payments Regulation (EU) 2024/886
+#      url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886
+#    - label: 'EPC: SEPA Request-to-Pay Scheme'
+#      url: https://www.europeanpaymentscouncil.eu/what-we-do/other-sepa-payments/sepa-request-pay
+#    - label: 'EBA: Guidelines on Instant Payments Fraud Prevention'
+#      url: https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money
+#  tags:
+#    - payment
+#  stakeholders:
+#    - 6
+#    - 5
+#    - 3
+#  actions:
+#    - description: |-
+#        Confirm full SCT Inst coverage across all euro payment accounts before the October 2025 regulatory deadline.
+#      status: done
+#    - description: |-
+#        Align SEPA Instant pricing to comply with the mandatory fee parity requirement and revise tariff sheets accordingly.
+#      status: in-progress
+#    - description: |-
+#        Develop value-added overlay services (e.g. Request-to-Pay, Confirmation of Payee) to monetise instant infrastructure.
+#      status: open
+#    - description: Run fraud model validation specifically calibrated for sub-10-second
+#        transaction windows.
+#      status: open
+#  category: Regulatory
+#  impacts:
+#    - Payment processing infrastructure
+#    - Fraud screening
+#    - Pricing model
+#    - Treasury liquidity
+#  driven_by:
+#    - EU Instant Payments Regulation (mandatory deadlines)
+#    - EPC SCT Inst scheme
+#  position: Comply & Optimise
+#  associated_working_groups:
+#    - name: EPC Payments Schemes WG
+#      url: https://www.europeanpaymentscouncil.eu
+#    - name: DK Arbeitsgruppe Instant Payments
+#      url: ''
+#- id: 99
+#  title: "[REPLACE] Buy Now, Pay Later Regulation"
+#  score: 9
+#  priority: Critical
+#  horizon: 6–9 months
+#  description: "New EU directives requiring BNPL products to undergo full creditworthiness assessments are expected to reshape the competitive landscape significantly. \
+#    \ Our existing BNPL portfolio may require substantial product redesign."
+#  management_summary: "The incoming BNPL regulation is the single most time-critical compliance challenge in our retail portfolio. Non-compliance risks supervisory \
+#    \ action and product suspension. Immediate investment in credit assessment infrastructure is required, but the regulation also presents an opportunity to reshape \
+#    \ the product for long-term sustainability and differentiation from unregulated fintechs."
+#  extended_description: |-
+#    The EU Consumer Credit Directive revision (CCD2) explicitly brings BNPL products under consumer credit regulation for the first time, requiring mandatory creditworthiness checks, standardised pre-contractual disclosures (SECCI), and cooling-off periods. This eliminates the regulatory arbitrage that enabled fintech BNPL growth. For incumbents, the transition is operationally complex: existing BNPL decisioning models must be upgraded to full credit assessment standards without creating excessive friction that destroys conversion rates. The German implementation deadline is expected within 6–9 months. Products above €200 require full assessment; below €200 a proportionate check is required. Our BNPL book has approximately 40% of transactions below the threshold.
+#  risks:
+#    - |-
+#      Failure to meet the national transposition deadline triggers supervisory action and mandatory product suspension.
+#    - Upgraded creditworthiness requirements could reduce approval rates by 15–25%,
+#      impacting revenue.
+#    - Operational cost of compliance (new screening infrastructure, staff, legal) estimated
+#      at €2–4M.
+#    - Customer friction during transition may accelerate churn to compliant fintech
+#      competitors.
+#  chances:
+#    - |-
+#      Regulatory compliance as a competitive moat: many fintech BNPL providers cannot absorb the compliance cost and will exit or downscale.
+#    - |-
+#      Opportunity to reposition BNPL as a responsible credit product, improving brand trust with regulators and consumers.
+#    - Compliant BNPL infrastructure can be repurposed as a white-label offering for
+#      retail partners.
+#    - Stricter regulation reduces the pool of BNPL providers, potentially increasing
+#      our market share.
+#  sources:
+#    - label: EU Consumer Credit Directive 2 — Full Text
+#      url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023L2225
+#    - label: EBA Opinion on BNPL and CCD2 Scope
+#      url: |-
+#        https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-opinion-application-cc[d2
+#    - label: 'KPMG: BNPL Regulation Impact Assessment'
+#      url: https://kpmg.com/xx/en/home/insights/2023/06/bnpl-regulation-impact.html
+#  tags:
+#    - credit card
+#    - research
+#  stakeholders:
+#    - 3
+#    - 4
+#    - 1
+#  actions:
+#    - description: Map all active BNPL products against new directive requirements;
+#        identify non-compliant features.
+#      status: in-progress
+#    - description: Engage lobbying body to submit commentary on implementation timeline.
+#      status: open
+#    - description: |-
+#        Build credit assessment pipeline that satisfies directive without degrading approval rates by more than 8%.
+#      status: open
+#    - description: Run customer communication strategy to manage expectation changes.
+#      status: open
+#  category: Digital Payments
+#  impacts:
+#    - Credit product portfolio
+#    - Risk models
+#    - Customer onboarding
+#    - Legal & compliance
+#  driven_by:
+#    - EU Consumer Credit Directive revision
+#    - BaFin supervision expansion
+#    - Market growth
+#  position: Comply & Adapt
+#  associated_working_groups:
+#    - name: EBA Consumer Protection WG
+#      url: ''
+#    - name: BdB Arbeitsgruppe Konsumentenkredite
+#      url: ''
+#- id: 98
+#  title: "[REPLACE] Real-Time Payment Rails"
+#  score: 8
+#  priority: High
+#  horizon: 6–12 months
+#  description: |-
+#    Instant payment mandates across the EU and increasing consumer expectation for 24/7 settlement are pushing our legacy batch infrastructure to its limits. Adoption of ISO 20022 is now a hard requirement.
+#  management_summary: |-
+#    The EU Instant Payments Regulation creates a hard deadline for full SCT Inst coverage. Our current infrastructure handles ~60% of eligible transactions in real time; the remaining gap requires targeted investment. Beyond compliance, instant rails are a platform for new overlay products that can generate incremental revenue.
+#  extended_description: |-
+#    SCT Inst adoption in Germany has lagged eurozone peers, partly due to the fragmented PSP landscape and legacy batch processing in cooperative banking. The regulation mandates 24/7 availability, 10-second settlement, and fee parity with standard SEPA transfers. ISO 20022 migration — already mandatory for high-value payments via TARGET2/T2 — now cascades into retail payment messaging, requiring changes to transaction enrichment, sanctions screening, and reconciliation workflows. The technical migration path involves upgrading our core banking message hub, updating our CSM (Clearing and Settlement Mechanism) connectivity to RT1 or TIPS, and re-engineering fraud detection to operate within a sub-10-second window.
+#  risks:
+#    - |-
+#      Failure to meet the October 2025 regulatory deadline results in supervisory fines and reputational damage.
+#    - |-
+#      Sub-10-second fraud screening is technically challenging; false positive rates may increase without model recalibration.
+#    - |-
+#      Fee parity requirement eliminates instant payment revenue premiums currently charged to some corporate clients.
+#    - Legacy core banking system may require costly middleware to support real-time
+#      message enrichment.
+#  chances:
+#    - |-
+#      Instant rails enable Request-to-Pay (R2P) overlay services, unlocking new B2B and e-commerce revenue streams.
+#    - |-
+#      24/7 settlement capability is a prerequisite for competing in the embedded finance and open banking market.
+#    - First compliant institutions gain early positioning in the pan-European instant
+#      payment ecosystem.
+#    - |-
+#      ISO 20022 richer data enables improved reconciliation services for corporate clients — a premium product opportunity.
+#  sources:
+#    - label: EU Instant Payments Regulation — Official Text
+#      url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R0886
+#    - label: 'ECB: TIPS Platform Overview'
+#      url: https://www.ecb.europa.eu/paym/target/tips/html/index.en.html
+#    - label: EPC SEPA Instant Credit Transfer Rulebook
+#      url: |-
+#        https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-instant-credit-transfer-rulebook
+#  tags:
+#    - payment
+#    - infrastructure
+#  stakeholders:
+#    - 4
+#    - 5
+#  actions:
+#    - description: Complete ISO 20022 migration for domestic rails by end of Q3 2026.
+#      status: in-progress
+#    - description: Evaluate Vocalink vs proprietary clearing for pan-EU instant payment
+#        capability.
+#      status: open
+#    - description: Pilot instant settlement for merchant payouts with top-50 partners.
+#      status: open
+#  category: Miscellaneous
+#  impacts:
+#    - Core banking infrastructure
+#    - Treasury liquidity
+#    - Fraud management
+#    - SLA commitments
+#  driven_by:
+#    - EU Instant Payments Regulation
+#    - EPC SCT Inst scheme
+#    - Customer expectations
+#  position: Implement
+#  associated_working_groups:
+#    - name: EPC Instant Payments WG
+#      url: ''
+#    - name: DK Technische Arbeitsgruppe Zahlungsverkehr
+#      url: ''
+#- id: 97
+#  title: "[REPLACE] AI Credit Scoring Models"
+#  score: 7
+#  priority: Medium-High
+#  horizon: 18–24 months
+#  description: |-
+#    Machine learning models are outperforming traditional bureau-based scores on default prediction, particularly for thin-file customers. However, explainability requirements under the EU AI Act introduce operational complexity.
+#  management_summary: |-
+#    ML-based credit scoring offers a measurable improvement in default prediction accuracy (estimated 8–12% reduction in credit losses) but requires a new governance framework to satisfy EU AI Act requirements. A phased shadow-mode rollout is the recommended approach, enabling model validation before full deployment.
+#  extended_description: |-
+#    Traditional credit scoring relying on bureau data systematically disadvantages thin-file customers — young adults, recent migrants, and gig economy workers — creating both financial inclusion risk and missed revenue. Gradient-boosted and neural network models trained on transactional behaviour outperform bureau-only approaches on default prediction, particularly for these segments. However, the EU AI Act classifies consumer credit scoring as a high-risk AI application, requiring conformity assessment, explainability documentation, human oversight mechanisms, and ongoing bias monitoring. Our current vendor (FICO) has begun integrating AI Act compliance tooling but timelines are unclear. An internal model development path would provide more control but requires significant data science capability investment.
+#  risks:
+#    - |-
+#      EU AI Act high-risk classification requires full conformity assessment, documentation, and ongoing audit — cost and timeline uncertain.
+#    - |-
+#      Model bias against protected characteristics (age, ethnicity, gender proxies) creates regulatory and reputational exposure.
+#    - |-
+#      Model drift over economic cycles may increase credit losses if recalibration cadence is insufficient.
+#    - Dependency on transactional data raises data minimisation concerns under GDPR.
+#  chances:
+#    - |-
+#      8–12% estimated reduction in credit losses by better identifying true creditworthiness of thin-file applicants.
+#    - |-
+#      Financial inclusion positioning: serving underserved segments that traditional scorecards reject improves CRA standing.
+#    - |-
+#      ML models can be retrained quarterly, responding to economic shifts faster than annual bureau recalibration cycles.
+#    - |-
+#      Proprietary scoring model as a competitive differentiator and potential licensing revenue to peer institutions.
+#  sources:
+#    - label: EU AI Act — High-Risk AI Systems (Annex III)
+#      url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689
+#    - label: EBA Guidelines on Internal Governance — AI in Credit
+#      url: https://www.eba.europa.eu/regulation-and-policy/internal-governance/guidelines-internal-governance
+#    - label: 'ECB: Machine Learning in Credit Risk'
+#      url: https://www.ecb.europa.eu/pub/research/working-papers/html/index.en.html
+#  tags:
+#    - research
+#    - credit card
+#  stakeholders:
+#    - 3
+#    - 2
+#  actions:
+#    - description: Deploy challenger ML model in shadow mode alongside existing scorecard
+#        for 90-day comparison.
+#      status: open
+#    - description: Engage AI Act notified body to pre-certify model explainability documentation.
+#      status: open
+#    - description: Establish model governance board with quarterly review cadence.
+#      status: done
+#  category: Digital Payments
+#  impacts:
+#    - Credit decisioning
+#    - Model risk management
+#    - Regulatory capital
+#    - Fairness & explainability
+#  driven_by:
+#    - EU AI Act
+#    - Competitive pressure from fintechs
+#    - Data availability
+#  position: Pilot & Scale
+#  associated_working_groups:
+#    - name: EBA IReF Data WG
+#      url: ''
+#    - name: BdB Arbeitsgruppe KI & Daten
+#      url: ''
+#- id: 96
+#  title: "[UPDATE NECESSARY] Embedded Finance Partnerships"
+#  score: 4
+#  priority: Low-Medium
+#  horizon: 24–36 months
+#  description: |-
+#    The shift toward Banking-as-a-Service enables non-financial brands to embed our products at point-of-need. Early moves in this space could secure anchor distribution partnerships with e-commerce and mobility platforms.
+#  management_summary: |-
+#    Embedded finance is a genuine distribution channel shift, not a technology trend. The medium-term risk of inaction is loss of customer acquisition channels to platform-native financial services. A selective BaaS strategy targeting 2–3 anchor partnerships in e-commerce and mobility is recommended before the window closes.
+#  extended_description: |-
+#    Embedded finance describes the integration of financial products (payments, credit, insurance) directly into non-financial customer journeys — at checkout, at vehicle purchase, at SaaS billing. The infrastructure layer (Banking-as-a-Service) enables this by exposing banking capabilities via API to non-bank distributors. Key verticals in Germany: automotive (integrated financing at point of sale), e-commerce (buy-now-pay-later and instalment at checkout), and B2B SaaS (embedded invoice financing and payment collection). The regulatory model requires either a full BaaS licence or a white-label arrangement under our existing licence. The main strategic risk is commoditisation: as BaaS infrastructure becomes standardised, margins compress and the bank becomes a balance sheet utility rather than a brand.
+#  risks:
+#    - |-
+#      Commoditisation risk: BaaS infrastructure providers (Solarisbank, Railsr) could disintermediate banks entirely.
+#    - |-
+#      Regulatory liability for partner conduct: embedded finance partners may expose us to AML and consumer protection liability.
+#    - |-
+#      Technical integration complexity with diverse partner stacks increases time-to-market and ongoing maintenance cost.
+#    - |-
+#      Brand dilution if the end customer experience is poor and the bank is not visible as the product provider.
+#  chances:
+#    - |-
+#      Access to non-banking distribution channels that we cannot replicate organically (e.g. automotive dealer networks, e-commerce platforms).
+#    - |-
+#      Embedded credit products at point-of-sale have 3–5x higher conversion rates than standalone credit application funnels.
+#    - |-
+#      BaaS model generates fee income without requiring additional branches or customer-facing infrastructure.
+#    - Partnership data from embedded contexts enriches credit and behavioural models
+#      significantly.
+#  sources:
+#    - label: 'Bundesbank: BaaS and Embedded Finance in Germany'
+#      url: https://www.bundesbank.de/en/publications/research/research-brief
+#    - label: 'McKinsey: Embedded Finance Market Sizing'
+#      url: https://www.mckinsey.com/industries/financial-services/our-insights/embedded-finance
+#    - label: 'BaFin: Outsourcing and White-Label Banking Guidance'
+#      url: https://www.bafin.de/EN/Aufsicht/BankenFinanzdienstleister/Outsourcing/outsourcing_artikel.html
+#  tags:
+#    - payment
+#    - credit card
+#  stakeholders:
+#    - 1
+#    - 3
+#  actions:
+#    - description: Define BaaS product catalogue and tiered partnership framework.
+#      status: open
+#    - description: Run RFP for white-label card issuing partners in Nordics and DACH
+#        markets.
+#      status: open
+#    - description: Negotiate pilot embedded credit product with one tier-1 retail partner.
+#      status: open
+#  category: Digital Payments
+#  impacts:
+#    - Partner management
+#    - Technology stack
+#    - Brand & liability
+#    - Regulatory perimeter
+#  driven_by:
+#    - Platform economy growth
+#    - BaaS market development
+#    - Customer expectation shifts
+#  position: Selective Engagement
+#  associated_working_groups:
+#    - name: EBA Payment Institutions WG
+#      url: ''
+#    - name: Bitkom Arbeitsgruppe Banking-as-a-Service
+#      url: ''
+
