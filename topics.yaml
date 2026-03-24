@@ -48,6 +48,7 @@ stakeholders:
 topics:
 - id: 1
   title: "Stablecoins"
+  category: Miscellaneous
   score: 3
   priority: Low
   horizon: 36-60 months
@@ -138,7 +139,6 @@ topics:
   - description: Engage the ECB sandbox programme to position for early regulatory
       approval.
     status: open
-  category: Miscellaneous
   impacts:
   - Correspondent banking
   - AML/CFT compliance
@@ -155,6 +155,7 @@ topics:
     url: ''
 - id: 2
   title: girocard 4.0
+  category: Digital Payments
   score: 6
   priority: High
   horizon: 12–24 months
@@ -246,7 +247,6 @@ topics:
     - description: Communicate girocard 4.0 migration timeline to merchant acquiring
         partners.
       status: open
-  category: Digital Payments
   impacts:
     - Card product portfolio
     - Terminal infrastructure
@@ -263,7 +263,8 @@ topics:
     - name: Euro Retail Payments Board (ERPB)
       url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
 - id: 3
-  title: "[UPDATE NECESSARY] Open Banking APIs"
+  title: "[UPDATE NECESSARY] Open Banking"
+  category: Banking Regulatory & Trends
   score: 5
   priority: Medium
   horizon: 18–30 months
@@ -314,7 +315,6 @@ topics:
   - description: Build API developer portal with sandbox environment to accelerate
       third-party adoption.
     status: open
-  category: Banking Regulatory & Trends
   impacts:
   - API infrastructure
   - Data governance
