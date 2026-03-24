@@ -6,8 +6,8 @@
 <title>Strategic Topic Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 <style>
   /* ── DESIGN TOKENS ─────────────────────────────────────────────────────── */
   :root {
@@ -183,6 +183,7 @@
   .cat-banking-regulatory-and-trends{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
   .cat-it-security       { background: rgba(255,166,180,0.28);  color: #6a1020; border-color: rgba(255,166,180,0.65); }
   .cat-miscellaneous     { background: rgba(4,0,102,0.06);      color: var(--navy); border-color: rgba(4,0,102,0.18); }
+  .tag-regulation { background: transparent; color: #7a3500; border-color: rgba(255,195,144,0.9); }
 
   /* Category filter row */
   .cat-filter-section { max-width: 1280px; margin: 0 auto; padding: 0.75rem 3rem 0; }
@@ -221,6 +222,30 @@
   .section-label { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .section-body { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); margin-bottom: 2.5rem; font-weight: 400; }
+
+  /* ── MARKDOWN PROSE ──────────────────────────────────────────────────────── */
+  .md-prose { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); font-weight: 400; }
+  .md-prose p { margin: 0 0 0.9em; }
+  .md-prose p:last-child { margin-bottom: 0; }
+  .md-prose h1, .md-prose h2, .md-prose h3, .md-prose h4 {
+    font-family: 'Noto Sans', sans-serif; font-weight: 700; color: var(--navy);
+    letter-spacing: -0.01em; margin: 1.4em 0 0.4em;
+  }
+  .md-prose h1 { font-size: 1.2rem; }
+  .md-prose h2 { font-size: 1.05rem; }
+  .md-prose h3 { font-size: 0.95rem; }
+  .md-prose h4 { font-size: 0.88rem; }
+  .md-prose ul, .md-prose ol { padding-left: 1.4em; margin: 0.4em 0 0.9em; display: flex; flex-direction: column; gap: 0.3em; }
+  .md-prose li { line-height: 1.6; }
+  .md-prose ul li { list-style: disc; }
+  .md-prose ol li { list-style: decimal; }
+  .md-prose strong { font-weight: 700; color: var(--text); }
+  .md-prose em { font-style: italic; }
+  .md-prose code { font-family: 'Noto Sans Mono', monospace; font-size: 0.82em; background: rgba(4,0,102,0.06); padding: 0.1em 0.4em; border-radius: 2px; }
+  .md-prose blockquote { border-left: 3px solid var(--border-strong); margin: 0.8em 0; padding: 0.5em 1em; color: var(--muted); font-style: italic; }
+  .md-prose hr { border: none; border-top: 1px solid var(--border); margin: 1.2em 0; }
+  .md-prose a { color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
+  .mgmt-summary .md-prose p { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); }
 
   .actions-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.5rem; }
   .action-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; border: 1px solid var(--border); background: var(--surface); transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s; border-radius: 2px; }
@@ -720,8 +745,8 @@
           <label class="ed-label" for="ed-category">Category <span class="req">*</span></label>
           <select class="ed-select" id="ed-category">
             <option value="">— select —</option>
-            <option>Trusted Services</option><option>Card</option><option>Regulatory</option>
-            <option>Banking Regulatory</option><option>IT Security</option><option>Miscellaneous</option>
+            <option>Trusted Services</option><option>Digital Payments</option><option>Regulatory</option>
+            <option>Banking Regulatory and Trends</option><option>IT Security</option><option>Miscellaneous</option>
           </select>
         </div>
         <div class="ed-field">
@@ -871,6 +896,13 @@
 const DATA_URL    = './topics.yaml';
 const GITHUB_REPO = ''; // e.g. 'https://github.com/yourorg/your-repo'
 
+// ── Markdown renderer ────────────────────────────────────────────────────────
+function md(text) {
+  if (!text) return '';
+  if (typeof marked === 'undefined') return `<p>${text}</p>`;
+  return marked.parse(text, { breaks: true, gfm: true });
+}
+
 // ── State ───────────────────────────────────────────────────────────────────
 let db = null, activeTag = null, activeCat = null, searchQuery = '';
 
@@ -887,6 +919,7 @@ function tagClass(t) {
     'blockchain':       'tag-blockchain',
     'infrastructure':   'tag-infra',
     'market':           'tag-market',
+    'regulation':       'tag-regulation',
   };
   return map[t] || 'tag-default';
 }
@@ -1103,18 +1136,18 @@ function showDetail(id) {
     ${t.management_summary ? `
     <div class="fade-up" style="animation-delay:0.05s">
       <div class="section-label">Management Summary</div>
-      <div class="mgmt-summary"><p>${t.management_summary}</p></div>
+      <div class="mgmt-summary"><div class="md-prose">${md(t.management_summary)}</div></div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.1s">
       <div class="section-label">Description</div>
-      <p class="section-body">${t.description||'No description provided.'}</p>
+      <div class="section-body md-prose">${md(t.description||'No description provided.')}</div>
     </div>
 
     ${t.extended_description ? `
     <div class="fade-up" style="animation-delay:0.15s">
       <div class="section-label">Extended Description</div>
-      <p class="section-body">${t.extended_description}</p>
+      <div class="section-body md-prose">${md(t.extended_description)}</div>
     </div>` : ''}
 
     ${(t.risks&&t.risks.length)||(t.chances&&t.chances.length) ? `
@@ -1145,7 +1178,7 @@ function showDetail(id) {
               const num = String(i+1).padStart(2,'0');
               return `<div class="action-item">
                 <span class="action-num">${num}</span>
-                <span class="action-text">${text}</span>
+                <span class="action-text">${md(text)}</span>
                 <span class="action-status status-${status.replace(' ','-')}">${status}</span>
               </div>`;}).join('')
           : '<p style="color:var(--muted);font-size:0.85rem">No actions recorded.</p>'}
@@ -1155,7 +1188,7 @@ function showDetail(id) {
     ${t.position ? `
     <div class="fade-up" style="animation-delay:0.28s">
       <div class="section-label">Position</div>
-      <p style="font-size:0.88rem;line-height:1.7;color:var(--text);margin:0;">${t.position}</p>
+      <div class="md-prose" style="font-size:0.88rem;">${md(t.position)}</div>
     </div>` : ''}
 
     ${(t.associated_working_groups||[]).length ? `
