@@ -691,7 +691,7 @@ topics:
 
       PSR harmonisiert Verhaltensregeln EU-weit und verhindert nationale Unterschiede aus PSD2-Zeit.
 
-      ##Kernziele
+      ## Kernziele
       - Höherer Verbraucherschutz, effektive Betrugsbekämpfung, **Open Finance** statt Open Banking.
       - Betrugsdaten müssen zwischen PSPs geteilt werden, Plattformen haften bei ausbleibender Reaktion.
       - SCA wird **risikobasiert** und barrierefrei, Kunden erhalten Echtzeit-Kontrollfunktionen über Limits.
@@ -700,7 +700,7 @@ topics:
       
       PSR regelt Zahlungsrechte, Ausführungsfristen, Haftung, SCA und **dedizierte APIs** für Drittanbieter.
       
-      ##Betrugsprävention 
+      ## Betrugsprävention 
       
       - PSPs haften bei Social Engineering, müssen Betrugsdaten 5 Jahre speichern und teilen.
       - Verification of Payee (VoP) wird verpflichtend, Plattformen müssen nach Hinweis Betrugsinhalte löschen.
@@ -708,12 +708,12 @@ topics:
       - Open Banking umfasst Kontoauszüge, Zahlungsinitiierung, Stornofunktionen und Testumgebungen.
       - Kunden steuern über **Dashboards** granular Datenfreigaben an TPPs, Diskriminierung ist verboten.
       
-      ##Gebührentransparenz
+      ## Gebührentransparenz
       
       - Alle Kosten (FX, ATM, Zusatzleistungen) vor Zahlung vollständig darstellen.
       - PSD3/PSR verzahnen sich mit **FIDA** für erweiterte Finanzdaten-Nutzung über Kontodaten hinaus.
       
-      ##Zeitplan 
+      ## Zeitplan 
       
       - PSR gilt direkt nach Veröffentlichung +18 Monate, PSD3-Transposition in 18 Monaten.
       - Bestehende Lizenzen gültig während **24-monatiger Übergangsfrist**, dann Re-Lizenzierung erforderlich.
