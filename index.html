@@ -876,6 +876,7 @@ let db = null, activeTag = null, activeCat = null, searchQuery = '';
 // ── Helpers ─────────────────────────────────────────────────────────────────
 function catClass(c) {
   if (!c) return 'cat-miscellaneous';
+  if (c='Banking Regulatory & Trends') return 'cat-banking-regulatory';
   return 'cat-' + c.toLowerCase().replace(/\s+/g, '-');
 }
 function tagClass(t) {
