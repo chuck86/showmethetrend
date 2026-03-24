@@ -818,10 +818,10 @@ topics:
       - 9
     actions:
       - description: |-
-          Action
+          Action 1
         status: in-progress
       - description: |-
-          Action
+          Action 2
         status: open
     impacts:
       - impact 1
