@@ -693,25 +693,25 @@ topics:
       \ können. [stibbe](https://www.stibbe.com/publications-and-insights/commission-publishes-psd3-and-psr-proposal-a-tightening-of-the-regulation) \n \
       \ Viele bisher in PSD2 enthaltene Detailpflichten (z.B. Teile der Sorgfalts‑, Informations‑ und Open‑Banking‑Regeln) werden in die PSR verlagert, um eine **einheitliche** Anwendung sicherzustellen. 
       \ [sza](https://www.sza.de/en/thinktank/psd3-psr-eu-payment-services-regulation) \n \n \
-
-## Zentrale inhaltliche Schwerpunkte
-
-- Betrugsprävention und Haftung: Ausweitung von Haftungsregeln, insbesondere bei Betrugsfällen, verstärkte Pflicht zur Datenanalyse, zum Austausch betrugsrelevanter Informationen und zu erweiterten „Verification of Payee“-Mechanismen. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)
-- Starke Kundenauthentifizierung (SCA) und Kundenschnittstelle: Verschärfte Anforderungen an SCA, neue Funktionen für Kunden zur Steuerung von Zahlungs‑ und Ausgabenlimits sowie Echtzeit‑Sperr‑ und Blockierungsoptionen. [banking](https://banking.vision/payment-services-directive-3-regulation/)
-- Open Banking / Datenzugang: Konsolidierung und Weiterentwicklung der Open‑Banking‑Regeln, eng verzahnt mit dem geplanten Rahmen für Finanzdatennutzung (FIDA/FDA), inklusive Governance‑ und Einwilligungsanforderungen. [capco](https://www.capco.com/intelligence/capco-intelligence/psd3-psr-the-council-of-the-eu-proposal-on-the-consent-panel-and-fraud)
-- Plattform‑ und Intermediärhaftung: Einführung eines formalen Haftungsrahmens, der bei bestimmten Konstellationen auch große Online‑Plattformen in die Verantwortung nimmt, wenn sie bekannte Betrugsinhalte nicht entfernen. [worldline](https://worldline.com/en/home/main-navigation/resources/blogs/2026/the-scope-and-timeline-are-locked-in-for-psd3-and-psr-what-should-psps-know)
-
-## Zeitplan und Umsetzungsrahmen
-
-- Nach der politischen Einigung Ende 2025 wird PSR voraussichtlich 20 Tage nach Veröffentlichung in Kraft treten und nach ca. 18 Monaten anwendbar, während PSD3 innerhalb von rund 18 Monaten in nationales Recht zu überführen ist. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)
-- Bestehende Lizenzen von Zahlungs‑ und E‑Geld‑Instituten bleiben für einen Übergangszeitraum (z.B. 24 Monate) gültig, erfordern aber eine Re‑Lizenzierung nach neuem Recht. [stibbe](https://www.stibbe.com/publications-and-insights/commission-publishes-psd3-and-psr-proposal-a-tightening-of-the-regulation)
-- Insgesamt ist mit einer marktrelevanten Wirkung der neuen Vorgaben im Zeitraum zweite Jahreshälfte 2027 bis etwa Mitte 2028 zu rechnen. [worldline](https://worldline.com/en/home/main-navigation/resources/blogs/2026/the-scope-and-timeline-are-locked-in-for-psd3-and-psr-what-should-psps-know)
-
-## Implikationen für Management und Handlungsempfehlung
-
-- Institute müssen frühzeitig eine Gap‑Analyse ihrer Governance‑, Risiko‑ und IT‑Landschaft gegenüber PSD3/PSR durchführen und insbesondere Betrugsprävention, Schnittstellen‑Security und Datenmanagement neu ausrichten. [kpmg](https://kpmg.com/de/de/themen/corporate-governance-und-compliance/regulatorik-und-nachhaltigkeit/psd3-und-psr-vorgaben-und-handlungsempfehlungen.html)
-- Strategisch eröffnen sich Chancen über verbesserte Kundenschnittstellen, neue datengetriebene Services und erweiterte Open‑Banking‑Use‑Cases, erfordern jedoch gezielte Investitionen in Technologie, Compliance und Produktdesign. [finnius](https://finnius.com/en/eu-proposals-for-psd3-psr-financial-data-access-and-a-digital-euro/)
-- Kurzfristig empfiehlt sich die Etablierung eines bereichsübergreifenden PSD3/PSR‑Programms (Legal, Compliance, IT, Produkt, Vertrieb), um regulatorische Risiken zu minimieren und Wettbewerbsvorteile aus der Reform zu ziehen. [capco](https://www.capco.com/intelligence/capco-intelligence/psd3-psr-the-council-of-the-eu-proposal-on-the-consent-panel-and-fraud)"
+      \ Die zentralen inhaltlichen Schwerpunkte beinhalten: \n \
+      \ - Betrugsprävention und Haftung: Ausweitung von Haftungsregeln, insbesondere bei Betrugsfällen, verstärkte Pflicht zur Datenanalyse, zum Austausch betrugsrelevanter Informationen und zu erweiterten \ 
+      \ „Verification of Payee“-Mechanismen. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)\n \
+      \ - Starke Kundenauthentifizierung (SCA) und Kundenschnittstelle: Verschärfte Anforderungen an SCA, neue Funktionen für Kunden zur Steuerung von Zahlungs‑ und \
+      \ Ausgabenlimits sowie Echtzeit‑Sperr‑ und Blockierungsoptionen. [banking](https://banking.vision/payment-services-directive-3-regulation/) \n \
+      \ - Open Banking / Datenzugang: Konsolidierung und Weiterentwicklung der Open‑Banking‑Regeln, eng verzahnt mit dem geplanten Rahmen für Finanzdatennutzung (FIDA/FDA), \
+      \ inklusive Governance‑ und Einwilligungsanforderungen. [capco](https://www.capco.com/intelligence/capco-intelligence/psd3-psr-the-council-of-the-eu-proposal-on-the-consent-panel-and-fraud) \
+      \ - Plattform‑ und Intermediärhaftung: Einführung eines formalen Haftungsrahmens, der bei bestimmten Konstellationen auch große Online‑Plattformen in die Verantwortung nimmt, wenn sie bekannte \
+      \ Betrugsinhalte nicht entfernen. [worldline](https://worldline.com/en/home/main-navigation/resources/blogs/2026/the-scope-and-timeline-are-locked-in-for-psd3-and-psr-what-should-psps-know).\n \n \
+      \ Zeitplan und Umsetzungsrahmen:
+      \ - Nach der politischen Einigung Ende 2025 wird PSR voraussichtlich 20 Tage nach Veröffentlichung in Kraft treten und nach ca. 18 Monaten anwendbar, während PSD3 innerhalb von rund 18 Monaten in nationales \
+      \ Recht zu überführen ist. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)\n \
+      \- Bestehende Lizenzen von Zahlungs‑ und E‑Geld‑Instituten bleiben für einen Übergangszeitraum (z.B. 24 Monate) gültig, erfordern aber eine Re‑Lizenzierung nach neuem Recht. \n \
+      \- Insgesamt ist mit einer marktrelevanten Wirkung der neuen Vorgaben im Zeitraum zweite Jahreshälfte 2027 bis etwa Mitte 2028 zu rechnen. \
+      \n \
+      \ Implikationen für Management und Handlungsempfehlung\n\
+      \- Institute müssen frühzeitig eine Gap‑Analyse ihrer Governance‑, Risiko‑ und IT‑Landschaft gegenüber PSD3/PSR durchführen und insbesondere Betrugsprävention, Schnittstellen‑Security und Datenmanagement neu ausrichten. \ 
+      \ - Strategisch eröffnen sich Chancen über verbesserte Kundenschnittstellen, neue datengetriebene Services und erweiterte Open‑Banking‑Use‑Cases, erfordern jedoch gezielte Investitionen in Technologie, Compliance und Produktdesign. \
+      \- Kurzfristig empfiehlt sich die Etablierung eines bereichsübergreifenden PSD3/PSR‑Programms (Legal, Compliance, IT, Produkt, Vertrieb), um regulatorische Risiken zu minimieren und Wettbewerbsvorteile aus der Reform zu ziehen."
     extended_description: "PSDR (PSD3 + PSR combined) maintains the SCA architecture but introduces refined exemptions (e.g. transaction risk analysis thresholds adjusted \ 
       \ for inflation), updated liability rules for APP fraud (shifting more liability to the sending PSP), and performance benchmarks for TPP access APIs. The parallel   \
       \ development of SEPA Request-to-Pay (EPC SRTP scheme) creates a structured, consent-based alternative to direct debit. R2P messages are sent by a creditor to a     \
