@@ -678,12 +678,45 @@ topics:
     score: 8
     priority: High
     horizon: 6–18 months
-    description: |-
-      The Payment Services Directive Review (PSDR) will update SCA rules and liability frameworks. Simultaneously, SEPA Request-to-Pay is gaining adoption as a structured messaging layer enabling invoice-triggered payment flows.
-    management_summary: |-
-      PSDR is a compliance maintenance task; R2P is the growth opportunity. R2P for SME invoice collection is the most commercially actionable near-term overlay product on our instant payment infrastructure. A focused launch for the top-200 corporate clients is the recommended first move.
-    extended_description: |-
-      PSDR (PSD3 + PSR combined) maintains the SCA architecture but introduces refined exemptions (e.g. transaction risk analysis thresholds adjusted for inflation), updated liability rules for APP fraud (shifting more liability to the sending PSP), and performance benchmarks for TPP access APIs. The parallel development of SEPA Request-to-Pay (EPC SRTP scheme) creates a structured, consent-based alternative to direct debit. R2P messages are sent by a creditor to a debtor via their respective PSPs; the debtor approves or declines payment within a defined window. This model is particularly well-suited to B2B invoice settlement, subscription billing, and regulated collections. German corporate clients are actively requesting R2P capability for accounts receivable automation.
+    management_summary: "PSDR is a compliance maintenance task; R2P is the growth opportunity. R2P for SME invoice collection is the most commercially \
+      \ actionable near-term overlay product on our instant payment infrastructure. A focused launch for the top-200 corporate clients is the recommended first move."
+    description: "PSD3 und PSR markieren eine grundlegende Reform des europäischen Zahlungsverkehrsrahmens, mit dem die EU Sicherheit, Harmonisierung und Innovation im Zahlungsverkehr \
+      \ deutlich stärkt. \n \
+      \ - PSD3 ersetzt bzw. modernisiert PSD2 und integriert gleichzeitig die bisher eigenständige E‑Money‑Richtlinie (EMD2) in einen einheitlichen Rahmen für Zahlungs‑ und E‑Geld‑Dienstleister. \n \
+      \ - Parallel schafft die neue **PSR** (Payment Services Regulation) ein unmittelbar geltendes EU‑Regelwerk, das zentrale Geschäfts‑ und Verhaltenspflichten harmonisiert und nationale \
+      \ Abweichungen aus der PSD2‑Ära reduziert. [sza](https://www.sza.de/de/thinktank/psd3-psr-eu-zahlungsdiensteregulierung) \n \
+      \ - Übergeordnetes Ziel ist ein sicheres, transparentes und innovationsfreundliches Zahlungsökosystem mit höherem Verbraucherschutz und fairen Wettbewerbsbedingungen. \
+      \ [kpmg](https://kpmg.com/de/de/themen/corporate-governance-und-compliance/regulatorik-und-nachhaltigkeit/psd3-und-psr-vorgaben-und-handlungsempfehlungen.html) \n \
+      \ PSD3 bleibt als Richtlinie ausgestaltet und regelt vor allem Zulassung, Aufsicht und organisatorische Anforderungen an Zahlungsdienstleister, während PSR als Verordnung direkt in allen Mitgliedstaaten \ 
+      \ gilt und operative Vorgaben bündelt. [winheller](https://winheller.com/blog/payment-services-directive-3/) \n \
+      \ Die Unterscheidung zwischen Zahlungsinstituten und E‑Geld‑Instituten wird weitgehend aufgehoben, künftig stehen „Payment Institutions“ im Zentrum, die zusätzlich eine E‑Geld‑Lizenzierung integrieren \
+      \ können. [stibbe](https://www.stibbe.com/publications-and-insights/commission-publishes-psd3-and-psr-proposal-a-tightening-of-the-regulation) \n \
+      \ Viele bisher in PSD2 enthaltene Detailpflichten (z.B. Teile der Sorgfalts‑, Informations‑ und Open‑Banking‑Regeln) werden in die PSR verlagert, um eine **einheitliche** Anwendung sicherzustellen. 
+      \ [sza](https://www.sza.de/en/thinktank/psd3-psr-eu-payment-services-regulation) \n \n \
+
+## Zentrale inhaltliche Schwerpunkte
+
+- Betrugsprävention und Haftung: Ausweitung von Haftungsregeln, insbesondere bei Betrugsfällen, verstärkte Pflicht zur Datenanalyse, zum Austausch betrugsrelevanter Informationen und zu erweiterten „Verification of Payee“-Mechanismen. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)
+- Starke Kundenauthentifizierung (SCA) und Kundenschnittstelle: Verschärfte Anforderungen an SCA, neue Funktionen für Kunden zur Steuerung von Zahlungs‑ und Ausgabenlimits sowie Echtzeit‑Sperr‑ und Blockierungsoptionen. [banking](https://banking.vision/payment-services-directive-3-regulation/)
+- Open Banking / Datenzugang: Konsolidierung und Weiterentwicklung der Open‑Banking‑Regeln, eng verzahnt mit dem geplanten Rahmen für Finanzdatennutzung (FIDA/FDA), inklusive Governance‑ und Einwilligungsanforderungen. [capco](https://www.capco.com/intelligence/capco-intelligence/psd3-psr-the-council-of-the-eu-proposal-on-the-consent-panel-and-fraud)
+- Plattform‑ und Intermediärhaftung: Einführung eines formalen Haftungsrahmens, der bei bestimmten Konstellationen auch große Online‑Plattformen in die Verantwortung nimmt, wenn sie bekannte Betrugsinhalte nicht entfernen. [worldline](https://worldline.com/en/home/main-navigation/resources/blogs/2026/the-scope-and-timeline-are-locked-in-for-psd3-and-psr-what-should-psps-know)
+
+## Zeitplan und Umsetzungsrahmen
+
+- Nach der politischen Einigung Ende 2025 wird PSR voraussichtlich 20 Tage nach Veröffentlichung in Kraft treten und nach ca. 18 Monaten anwendbar, während PSD3 innerhalb von rund 18 Monaten in nationales Recht zu überführen ist. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)
+- Bestehende Lizenzen von Zahlungs‑ und E‑Geld‑Instituten bleiben für einen Übergangszeitraum (z.B. 24 Monate) gültig, erfordern aber eine Re‑Lizenzierung nach neuem Recht. [stibbe](https://www.stibbe.com/publications-and-insights/commission-publishes-psd3-and-psr-proposal-a-tightening-of-the-regulation)
+- Insgesamt ist mit einer marktrelevanten Wirkung der neuen Vorgaben im Zeitraum zweite Jahreshälfte 2027 bis etwa Mitte 2028 zu rechnen. [worldline](https://worldline.com/en/home/main-navigation/resources/blogs/2026/the-scope-and-timeline-are-locked-in-for-psd3-and-psr-what-should-psps-know)
+
+## Implikationen für Management und Handlungsempfehlung
+
+- Institute müssen frühzeitig eine Gap‑Analyse ihrer Governance‑, Risiko‑ und IT‑Landschaft gegenüber PSD3/PSR durchführen und insbesondere Betrugsprävention, Schnittstellen‑Security und Datenmanagement neu ausrichten. [kpmg](https://kpmg.com/de/de/themen/corporate-governance-und-compliance/regulatorik-und-nachhaltigkeit/psd3-und-psr-vorgaben-und-handlungsempfehlungen.html)
+- Strategisch eröffnen sich Chancen über verbesserte Kundenschnittstellen, neue datengetriebene Services und erweiterte Open‑Banking‑Use‑Cases, erfordern jedoch gezielte Investitionen in Technologie, Compliance und Produktdesign. [finnius](https://finnius.com/en/eu-proposals-for-psd3-psr-financial-data-access-and-a-digital-euro/)
+- Kurzfristig empfiehlt sich die Etablierung eines bereichsübergreifenden PSD3/PSR‑Programms (Legal, Compliance, IT, Produkt, Vertrieb), um regulatorische Risiken zu minimieren und Wettbewerbsvorteile aus der Reform zu ziehen. [capco](https://www.capco.com/intelligence/capco-intelligence/psd3-psr-the-council-of-the-eu-proposal-on-the-consent-panel-and-fraud)"
+    extended_description: "PSDR (PSD3 + PSR combined) maintains the SCA architecture but introduces refined exemptions (e.g. transaction risk analysis thresholds adjusted \ 
+      \ for inflation), updated liability rules for APP fraud (shifting more liability to the sending PSP), and performance benchmarks for TPP access APIs. The parallel   \
+      \ development of SEPA Request-to-Pay (EPC SRTP scheme) creates a structured, consent-based alternative to direct debit. R2P messages are sent by a creditor to a     \
+      \ debtor via their respective PSPs; the debtor approves or declines payment within a defined window. This model is particularly well-suited to B2B invoice settlement, \
+      \ subscription billing, and regulated collections. German corporate clients are actively requesting R2P capability for accounts receivable automation."
     risks:
       - |-
         PSDR APP fraud liability shift increases our financial exposure for push payment fraud on instant rails.
@@ -710,6 +743,10 @@ topics:
         url: https://finance.ec.europa.eu/publications/proposal-payment-services-regulation_en
       - label: 'Deutsche Bundesbank: Zahlungsverkehrsbericht 2024'
         url: https://www.bundesbank.de/de/aufgaben/unbarer-zahlungsverkehr/zahlungsverkehr-und-abwicklungssysteme
+      - label: 'SZA'
+        url: https://www.sza.de/en/thinktank/psd3-psr-eu-payment-services-regulation
+      - name: 'finnius'
+        url: https://finnius.com/en/eu-proposals-for-psd3-psr-financial-data-access-and-a-digital-euro/
     tags: []
     stakeholders:
       - 6
@@ -809,8 +846,8 @@ topics:
       - |-
         Chance 2
     sources:
-      - label: 'label'
-        url: https://www.https://www.netcetera.com/home.html
+      - label: label
+        url: 'https://www.sza.de/en/thinktank/psd3-psr-eu-payment-services-regulation'
     tags:
       - market
       - research
