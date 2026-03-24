@@ -679,30 +679,29 @@ topics:
     priority: High
     horizon: 6–18 months
     management_summary: "TBD"
-    description: |- PSD3 und PSR markieren eine grundlegende Reform des europäischen Zahlungsverkehrsrahmens, mit dem die EU Sicherheit, Harmonisierung und Innovation im Zahlungsverkehr 
-       deutlich stärkt. 
-       * PSD3 ersetzt bzw. modernisiert PSD2 und integriert gleichzeitig die bisher eigenständige E‑Money‑Richtlinie (EMD2) in einen einheitlichen Rahmen für Zahlungs‑ und E‑Geld‑Dienstleister. 
-       * Parallel schafft die neue PSR (Payment Services Regulation) ein unmittelbar geltendes EU‑Regelwerk, das zentrale Geschäfts‑ und Verhaltenspflichten harmonisiert und nationale 
-       Abweichungen aus der PSD2‑Ära reduziert.
-       * Übergeordnetes Ziel ist ein sicheres, transparentes und innovationsfreundliches Zahlungsökosystem mit höherem Verbraucherschutz und fairen Wettbewerbsbedingungen.
-       PSD3 bleibt als Richtlinie ausgestaltet und regelt vor allem Zulassung, Aufsicht und organisatorische Anforderungen an Zahlungsdienstleister, während PSR als Verordnung direkt in allen Mitgliedstaaten 
-       gilt und operative Vorgaben bündelt. 
-       Die Unterscheidung zwischen Zahlungsinstituten und E‑Geld‑Instituten wird weitgehend aufgehoben, künftig stehen „Payment Institutions“ im Zentrum, die zusätzlich eine E‑Geld‑Lizenzierung integrieren 
-       können. 
-       Viele bisher in PSD2 enthaltene Detailpflichten (z.B. Teile der Sorgfalts‑, Informations‑ und Open‑Banking‑Regeln) werden in die PSR verlagert, um eine einheitliche Anwendung sicherzustellen. 
+    description: |- PSD3 und PSR markieren eine grundlegende Reform des europäischen Zahlungsverkehrsrahmens, mit dem die EU Sicherheit, Harmonisierung und Innovation im Zahlungsverkehr deutlich stärkt. 
+       #* PSD3 ersetzt bzw. modernisiert PSD2 und integriert gleichzeitig die bisher eigenständige E‑Money‑Richtlinie (EMD2) in einen einheitlichen Rahmen für Zahlungs‑ und E‑Geld‑Dienstleister. 
+       #* Parallel schafft die neue PSR (Payment Services Regulation) ein unmittelbar geltendes EU‑Regelwerk, das zentrale Geschäfts‑ und Verhaltenspflichten harmonisiert und nationale 
+       #Abweichungen aus der PSD2‑Ära reduziert.
+       #* Übergeordnetes Ziel ist ein sicheres, transparentes und innovationsfreundliches Zahlungsökosystem mit höherem Verbraucherschutz und fairen Wettbewerbsbedingungen.
+       #PSD3 bleibt als Richtlinie ausgestaltet und regelt vor allem Zulassung, Aufsicht und organisatorische Anforderungen an Zahlungsdienstleister, während PSR als Verordnung direkt in allen Mitgliedstaaten 
+       #gilt und operative Vorgaben bündelt. 
+       #Die Unterscheidung zwischen Zahlungsinstituten und E‑Geld‑Instituten wird weitgehend aufgehoben, künftig stehen „Payment Institutions“ im Zentrum, die zusätzlich eine E‑Geld‑Lizenzierung integrieren 
+       #können. 
+       #Viele bisher in PSD2 enthaltene Detailpflichten (z.B. Teile der Sorgfalts‑, Informations‑ und Open‑Banking‑Regeln) werden in die PSR verlagert, um eine einheitliche Anwendung sicherzustellen. 
       ### Zentrale inhaltliche Schwerpunkte
-      * Betrugsprävention und Haftung: Ausweitung von Haftungsregeln insbesondere bei Betrugsfällen, verstärkte Pflicht zur Datenanalyse und zum Austausch betrugsrelevanter Informationen sowie weiterentwickelte Verification‑of‑Payee‑Mechanismen.
-      * Starke Kundenauthentifizierung (SCA) und Kundenschnittstelle - Verschärfte Anforderungen an SCA, neue Funktionen für Kunden zur Steuerung von Zahlungs‑ und Ausgabenlimits sowie Echtzeit‑Sperr‑ und Blockierungsoptionen.
-      * Open Banking / Datenzugang: Konsolidierung und Weiterentwicklung der Open‑Banking‑Regeln, eng verzahnt mit dem geplanten Rahmen für Finanzdatennutzung, inklusive Governance‑ und Einwilligungsanforderungen.
-      * Plattform‑ und Intermediärhaftung: Einführung eines formalen Haftungsrahmens, der bei bestimmten Konstellationen auch große Online‑Plattformen in die Verantwortung nimmt, wenn sie bekannte Betrugsinhalte nicht entfernen.
-      Zeitplan und Umsetzungsrahmen:
-      * Nach der politischen Einigung Ende 2025 wird PSR voraussichtlich 20 Tage nach Veröffentlichung in Kraft treten und nach ca. 18 Monaten anwendbar, während PSD3 innerhalb von rund 18 Monaten in nationales Recht zu überführen ist. 
-      * Bestehende Lizenzen von Zahlungs‑ und E‑Geld‑Instituten bleiben für einen Übergangszeitraum (z.B. 24 Monate) gültig, erfordern aber eine Re‑Lizenzierung nach neuem Recht.
-      * Insgesamt ist mit einer marktrelevanten Wirkung der neuen Vorgaben im Zeitraum zweite Jahreshälfte 2027 bis etwa Mitte 2028 zu rechnen. 
+      #* Betrugsprävention und Haftung: Ausweitung von Haftungsregeln insbesondere bei Betrugsfällen, verstärkte Pflicht zur Datenanalyse und zum Austausch betrugsrelevanter Informationen sowie weiterentwickelte Verification‑of‑Payee‑Mechanismen.
+      #* Starke Kundenauthentifizierung (SCA) und Kundenschnittstelle - Verschärfte Anforderungen an SCA, neue Funktionen für Kunden zur Steuerung von Zahlungs‑ und Ausgabenlimits sowie Echtzeit‑Sperr‑ und Blockierungsoptionen.
+      #* Open Banking / Datenzugang: Konsolidierung und Weiterentwicklung der Open‑Banking‑Regeln, eng verzahnt mit dem geplanten Rahmen für Finanzdatennutzung, inklusive Governance‑ und Einwilligungsanforderungen.
+      #* Plattform‑ und Intermediärhaftung: Einführung eines formalen Haftungsrahmens, der bei bestimmten Konstellationen auch große Online‑Plattformen in die Verantwortung nimmt, wenn sie bekannte Betrugsinhalte nicht entfernen.
+      #Zeitplan und Umsetzungsrahmen:
+      #* Nach der politischen Einigung Ende 2025 wird PSR voraussichtlich 20 Tage nach Veröffentlichung in Kraft treten und nach ca. 18 Monaten anwendbar, während PSD3 innerhalb von rund 18 Monaten in nationales Recht zu überführen ist. 
+      #* Bestehende Lizenzen von Zahlungs‑ und E‑Geld‑Instituten bleiben für einen Übergangszeitraum (z.B. 24 Monate) gültig, erfordern aber eine Re‑Lizenzierung nach neuem Recht.
+      #* Insgesamt ist mit einer marktrelevanten Wirkung der neuen Vorgaben im Zeitraum zweite Jahreshälfte 2027 bis etwa Mitte 2028 zu rechnen. 
       ### Implikationen für Management und Handlungsempfehlung
-      * Institute müssen frühzeitig eine Gap‑Analyse ihrer Governance‑, Risiko‑ und IT‑Landschaft gegenüber PSD3/PSR durchführen und insbesondere Betrugsprävention, Schnittstellen‑Security und Datenmanagement neu ausrichten. 
-      * Strategisch eröffnen sich Chancen über verbesserte Kundenschnittstellen, neue datengetriebene Services und erweiterte Open‑Banking‑Use‑Cases, erfordern jedoch gezielte Investitionen in Technologie, Compliance und Produktdesign. 
-      * Kurzfristig empfiehlt sich die Etablierung eines bereichsübergreifenden PSD3/PSR‑Programms (Legal, Compliance, IT, Produkt, Vertrieb), um regulatorische Risiken zu minimieren und Wettbewerbsvorteile aus der Reform zu ziehen.
+      #* Institute müssen frühzeitig eine Gap‑Analyse ihrer Governance‑, Risiko‑ und IT‑Landschaft gegenüber PSD3/PSR durchführen und insbesondere Betrugsprävention, Schnittstellen‑Security und Datenmanagement neu ausrichten. 
+      #* Strategisch eröffnen sich Chancen über verbesserte Kundenschnittstellen, neue datengetriebene Services und erweiterte Open‑Banking‑Use‑Cases, erfordern jedoch gezielte Investitionen in Technologie, Compliance und Produktdesign. 
+      #* Kurzfristig empfiehlt sich die Etablierung eines bereichsübergreifenden PSD3/PSR‑Programms (Legal, Compliance, IT, Produkt, Vertrieb), um regulatorische Risiken zu minimieren und Wettbewerbsvorteile aus der Reform zu ziehen.
     extended_description: "PSDR (PSD3 + PSR combined) maintains the SCA architecture but introduces refined exemptions (e.g. transaction risk analysis thresholds adjusted \ 
       \ for inflation), updated liability rules for APP fraud (shifting more liability to the sending PSP), and performance benchmarks for TPP access APIs. The parallel   \
       \ development of SEPA Request-to-Pay (EPC SRTP scheme) creates a structured, consent-based alternative to direct debit. R2P messages are sent by a creditor to a     \
