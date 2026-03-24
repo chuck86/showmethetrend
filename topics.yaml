@@ -16,6 +16,7 @@ tags:
 - blockchain
 - infrastructure
 - market
+- regulation
 stakeholders:
 - id: 1
   name: Sarah Chen
@@ -366,7 +367,9 @@ topics:
   - label: 'BIS: Retail CBDC Design Principles'
     url: https://www.bis.org/cpmi/publ/d174.htm
   tags:
-  - research
+  - payment
+  - infrastructure
+  - regulation
   stakeholders:
   - 1
   - 6
@@ -384,7 +387,7 @@ topics:
   - description: |-
       Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.
     status: open
-  category: Regulatory
+  category: Digital Payments
   impacts:
   - Deposit base
   - Payment product strategy
@@ -775,7 +778,7 @@ topics:
       - description: |-
            Action
         status: open
-    category: Miscellaneous
+    category: Digital Payments
     impacts:
       - impact 1
       - impact 2
@@ -819,7 +822,7 @@ topics:
       - description: |-
           Action
         status: open
-    category: Miscellaneous
+    category: Banking Regulatory & Trends
     impacts:
       - impact 1
       - impact 2
