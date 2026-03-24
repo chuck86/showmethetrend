@@ -332,6 +332,7 @@ topics:
     url: ''
 - id: 4
   title: Digitaler Euro
+  category: Digital Payments
   score: 7
   priority: Medium-High
   horizon: 24–48 months
@@ -387,7 +388,6 @@ topics:
   - description: |-
       Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.
     status: open
-  category: Digital Payments
   impacts:
   - Deposit base
   - Payment product strategy
@@ -405,6 +405,7 @@ topics:
     url: ''
 - id: 5
   title: "eIDAS 2.0"
+  category: Trusted Services
   score: 9
   priority: High
   horizon: 12–24 months
@@ -473,7 +474,6 @@ topics:
   - description: Engage national supervisory body (BSI / BNetzA) on implementation
       timelines and technical standards.
     status: open
-  category: Trusted Services
   impacts:
   - Digital onboarding
   - E-signature workflows
@@ -491,6 +491,7 @@ topics:
     url: ''
 - id: 6
   title: "EUDI Wallet"
+  category: Trusted Services
   score: 9
   priority: High
   horizon: 18–36 months
@@ -572,7 +573,6 @@ topics:
   - description: |-
       Initiate talks with potential partners / banks for participation in SPRIND-Pilot.
     status: open
-  category: Trusted Services
   impacts:
   - Customer authentication
   - Digital identity
@@ -594,6 +594,7 @@ topics:
   - url: ''
 - id: 7
   title: "FIDA - Financial Data Access Regulation"
+  category: Banking Regulatory & Trends
   score: 2
   priority: Low-Medium
   horizon: 12–30 months
@@ -654,7 +655,6 @@ topics:
     status: open
   - description: Submit response to EBA/EC consultation on FIDA technical standards.
     status: open
-  category: Banking Regulatory & Trends
   impacts:
   - API strategy
   - Data sharing obligations
@@ -674,6 +674,7 @@ topics:
     url: ''
 - id: 8
   title: "[UPDATE NECESSARY] PSD3/PSDR und Request to Pay (R2P)"
+  category: Banking Regulatory & Trends
   score: 8
   priority: High
   horizon: 6–18 months
@@ -727,7 +728,6 @@ topics:
   - description: Ensure TPP access infrastructure meets updated PSDR performance and
       availability benchmarks.
     status: open
-  category: Banking Regulatory & Trends
   impacts:
   - SCA implementation
   - Liability regime
@@ -747,6 +747,7 @@ topics:
     url: ''
   - id: 9
     title: "Wero"
+    category: Digital Payments
     score: 10
     priority: Medium
     horizon: 6–24 months
@@ -778,7 +779,6 @@ topics:
       - description: |-
            Action
         status: open
-    category: Digital Payments
     impacts:
       - impact 1
       - impact 2
@@ -791,6 +791,7 @@ topics:
         url: ''
   - id: 10
     title: "giroAPI"
+    category: Banking Regulatory & Trends
     score: 6
     priority: Medium
     horizon: 6–24 months
@@ -822,7 +823,6 @@ topics:
       - description: |-
           Action
         status: open
-    category: Banking Regulatory & Trends
     impacts:
       - impact 1
       - impact 2
@@ -835,6 +835,7 @@ topics:
         url: ''
   - id: 11
     title: "KI"
+    category: Regulatory
     score: 3
     priority: Medium
     horizon: 6–24 months
@@ -866,7 +867,6 @@ topics:
       - description: |-
           Action
         status: open
-    category: Regulatory
     impacts:
       - impact 1
       - impact 2
