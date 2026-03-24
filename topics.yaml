@@ -692,17 +692,13 @@ topics:
       \ Die Unterscheidung zwischen Zahlungsinstituten und E‑Geld‑Instituten wird weitgehend aufgehoben, künftig stehen „Payment Institutions“ im Zentrum, die zusätzlich eine E‑Geld‑Lizenzierung integrieren \
       \ können. [stibbe](https://www.stibbe.com/publications-and-insights/commission-publishes-psd3-and-psr-proposal-a-tightening-of-the-regulation) \n \
       \ Viele bisher in PSD2 enthaltene Detailpflichten (z.B. Teile der Sorgfalts‑, Informations‑ und Open‑Banking‑Regeln) werden in die PSR verlagert, um eine **einheitliche** Anwendung sicherzustellen. 
-      \ [sza](https://www.sza.de/en/thinktank/psd3-psr-eu-payment-services-regulation) \n \n \
-      \ Die zentralen inhaltlichen Schwerpunkte beinhalten: \n \
-      \ - Betrugsprävention und Haftung: Ausweitung von Haftungsregeln, insbesondere bei Betrugsfällen, verstärkte Pflicht zur Datenanalyse, zum Austausch betrugsrelevanter Informationen und zu erweiterten \ 
-      \ „Verification of Payee“-Mechanismen. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)\n \
-      \ - Starke Kundenauthentifizierung (SCA) und Kundenschnittstelle: Verschärfte Anforderungen an SCA, neue Funktionen für Kunden zur Steuerung von Zahlungs‑ und \
-      \ Ausgabenlimits sowie Echtzeit‑Sperr‑ und Blockierungsoptionen. [banking](https://banking.vision/payment-services-directive-3-regulation/) \n \
-      \ - Open Banking / Datenzugang: Konsolidierung und Weiterentwicklung der Open‑Banking‑Regeln, eng verzahnt mit dem geplanten Rahmen für Finanzdatennutzung (FIDA/FDA), \
-      \ inklusive Governance‑ und Einwilligungsanforderungen. [capco](https://www.capco.com/intelligence/capco-intelligence/psd3-psr-the-council-of-the-eu-proposal-on-the-consent-panel-and-fraud) \
-      \ - Plattform‑ und Intermediärhaftung: Einführung eines formalen Haftungsrahmens, der bei bestimmten Konstellationen auch große Online‑Plattformen in die Verantwortung nimmt, wenn sie bekannte \
-      \ Betrugsinhalte nicht entfernen. [worldline](https://worldline.com/en/home/main-navigation/resources/blogs/2026/the-scope-and-timeline-are-locked-in-for-psd3-and-psr-what-should-psps-know).\n \n \
-      \ Zeitplan und Umsetzungsrahmen:
+      \ [sza](https://www.sza.de/en/thinktank/psd3-psr-eu-payment-services-regulation)"
+      section: "Zentrale inhaltliche Schwerpunkte"
+      bullets: "Betrugsprävention und Haftung: Ausweitung von Haftungsregeln insbesondere bei Betrugsfällen, verstärkte Pflicht zur Datenanalyse und zum Austausch betrugsrelevanter Informationen sowie weiterentwickelte Verification‑of‑Payee‑Mechanismen."
+              "Starke Kundenauthentifizierung (SCA) und Kundenschnittstelle: Verschärfte Anforderungen an SCA, neue Funktionen für Kunden zur Steuerung von Zahlungs‑ und Ausgabenlimits sowie Echtzeit‑Sperr‑ und Blockierungsoptionen."
+              "Open Banking / Datenzugang: Konsolidierung und Weiterentwicklung der Open‑Banking‑Regeln, eng verzahnt mit dem geplanten Rahmen für Finanzdatennutzung, inklusive Governance‑ und Einwilligungsanforderungen."
+              "Plattform‑ und Intermediärhaftung: Einführung eines formalen Haftungsrahmens, der bei bestimmten Konstellationen auch große Online‑Plattformen in die Verantwortung nimmt, wenn sie bekannte Betrugsinhalte nicht entfernen."
+      \ Zeitplan und Umsetzungsrahmen:\
       \ - Nach der politischen Einigung Ende 2025 wird PSR voraussichtlich 20 Tage nach Veröffentlichung in Kraft treten und nach ca. 18 Monaten anwendbar, während PSD3 innerhalb von rund 18 Monaten in nationales \
       \ Recht zu überführen ist. [thepaypers](https://thepaypers.com/regulations/explainers/explainer-psd3-and-psr-overview-and-key-considerations)\n \
       \- Bestehende Lizenzen von Zahlungs‑ und E‑Geld‑Instituten bleiben für einen Übergangszeitraum (z.B. 24 Monate) gültig, erfordern aber eine Re‑Lizenzierung nach neuem Recht. \n \
