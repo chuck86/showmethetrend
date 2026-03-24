@@ -679,12 +679,12 @@ topics:
     priority: High
     horizon: 6–18 months
     management_summary: |
-      ## Regulatory Background
+      ### Regulatory Background
     
       The EU Instant Payments Regulation entered into force in April 2024
       and sets binding deadlines for all euro payment service providers.
     
-      ## Key Requirements
+      # Key Requirements
     
       - All euro accounts must be able to **receive** instant payments by January 2025
       - All euro accounts must be able to **send** instant payments by October 2025
