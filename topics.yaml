@@ -3,61 +3,61 @@ meta:
   organisation: Payment Enablement
   updated: March 2026
 categories:
-- Trusted Services
-- Digital Payments
-- Regulatory
-- Banking Regulatory & Trends
-- IT Security
-- Miscellaneous
+  - Trusted Services
+  - Digital Payments
+  - Regulatory
+  - Banking Regulatory & Trends
+  - IT Security
+  - Miscellaneous
 tags:
-- payment
-- research
-- credit card
-- blockchain
-- infrastructure
-- market
-- regulation
+  - payment
+  - research
+  - credit card
+  - blockchain
+  - infrastructure
+  - market
+  - regulation
 stakeholders:
-- id: 1
-  name: Sarah Chen
-  role: Head of Digital Assets
-- id: 2
-  name: Marcus Webb
-  role: Risk Officer
-- id: 3
-  name: Priya Nair
-  role: Compliance Director
-- id: 4
-  name: Thomas Kraft
-  role: Product Lead
-- id: 5
-  name: Lena Fischer
-  role: Engineering Director
-- id: 6
-  name: Klaus Berger
-  role: Head of Payments
-- id: 7
-  name: Anna Hoffmann
-  role: Regulatory Affairs Lead
-- id: 8
-  name: Stefan Müller
-  role: Chief Information Security Officer
-- id: 9
-  name: Jana Becker
-  role: Head of Strategy & Market Intelligence
+  - id: 1
+    name: Sarah Chen
+    role: Head of Digital Assets
+  - id: 2
+    name: Marcus Webb
+    role: Risk Officer
+  - id: 3
+    name: Priya Nair
+    role: Compliance Director
+  - id: 4
+    name: Thomas Kraft
+    role: Product Lead
+  - id: 5
+    name: Lena Fischer
+    role: Engineering Director
+  - id: 6
+    name: Klaus Berger
+    role: Head of Payments
+  - id: 7
+    name: Anna Hoffmann
+    role: Regulatory Affairs Lead
+  - id: 8
+    name: Stefan Müller
+    role: Chief Information Security Officer
+  - id: 9
+    name: Jana Becker
+    role: Head of Strategy & Market Intelligence
 topics:
-- id: 1
-  title: "Stablecoins"
-  category: Miscellaneous
-  score: 3
-  priority: Low
-  horizon: 36-60 months
-  description: "Stablecoins are - in contrast to crypto currencies - pegged to (relatively)\
+  - id: 1
+    title: "Stablecoins"
+    category: Miscellaneous
+    score: 3
+    priority: Low
+    horizon: 36-60 months
+    description: "Stablecoins are - in contrast to crypto currencies - pegged to (relatively)\
     \ stable assets or currencies (EUR, USD). Evaluating the strategic opportunity\
     \ to integrate stablecoin rails into our payments infrastructure. \nRelevant for\
     \ cross-border settlement speed and cost reduction while navigating regulatory\
     \ uncertainty in the EU and US."
-  management_summary: "Stablecoins are currently gaining more public interest. Stablecoin\
+    management_summary: "Stablecoins are currently gaining more public interest. Stablecoin\
     \ payment rails offer a credible medium-term alternative for cross-border settlement,\
     \ potentially reducing correspondent banking costs by 30–60%. The MiCA \nframework\
     \ provides a regulatory pathway in Europe but timelines remain uncertain. It should\
@@ -68,7 +68,7 @@ topics:
     \ US is driving further development and want to strengthen their position. ECB wants \
     \ thought through regulation. Banks see the chances and significance of stablecoin technology \
     \ and enforce further development (Qivalis)."
-  extended_description: "Euro-denominated stablecoins — particularly those issued\
+    extended_description: "Euro-denominated stablecoins — particularly those issued\
     \ under the MiCA e-money token regime — are gaining traction as settlement instruments\
     \ among tier-1 fintechs and some corporates. The primary use case is cross-border\
     \ \nB2B payments where SWIFT latency and correspondent banking fees are pain points.\
@@ -95,82 +95,82 @@ topics:
     \ chains), but the regulatory treatment of stablecoin-settled transactions for\
     \ capital and liquidity purposes is still being \ninterpreted. Our key differentiator\
     \ could be a white-label stablecoin settlement corridor offered to corporate clients."
-  risks:
-  - |-
-    Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
-  - Liquidity and de-peg risk if the underlying stablecoin reserve management fails.
-  - 'AML/CFT complexity: on-chain transactions require new screening tooling and staff
+    risks:
+      - |-
+        Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
+      - Liquidity and de-peg risk if the underlying stablecoin reserve management fails.
+      - 'AML/CFT complexity: on-chain transactions require new screening tooling and staff
     training.'
-  - Reputational risk if a partner bank or stablecoin issuer experiences a public
-    failure during pilot.
-  chances:
-  - |-
-    First-mover advantage in corporate cross-border settlement within the German cooperative banking sector.
-  - 30–60% cost reduction on international payment corridors compared to SWIFT/correspondent
-    model.
-  - 'New revenue stream: white-label stablecoin settlement infrastructure sold to
+      - Reputational risk if a partner bank or stablecoin issuer experiences a public
+        failure during pilot.
+    chances:
+      - |-
+        First-mover advantage in corporate cross-border settlement within the German cooperative banking sector.
+      - 30–60% cost reduction on international payment corridors compared to SWIFT/correspondent
+        model.
+      - 'New revenue stream: white-label stablecoin settlement infrastructure sold to
     smaller regional banks.'
-  - |-
-    Positions the institution for a Digital Euro intermediary role given overlapping technical architecture.
-  sources:
-  - label: "MiCA Regulation — EU Official Journal"
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114
-  - label: 'ECB: Progress on Digital Euro Project'
-    url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
-  - label: 'BIS Working Paper: Stablecoins as Settlement Assets'
-    url: https://www.bis.org/publ/work1180.htm
-  tags:
-  - payment
-  - blockchain
-  - research
-  stakeholders:
-  - 1
-  - 2
-  actions:
-  - description: Commission external legal review of MiCA compliance requirements
-      for stablecoin custody by Q2 2026.
-    status: open
-  - description: |-
-      Prototype a stablecoin settlement corridor on testnet with two partner banks to validate latency and cost assumptions.
-    status: open
-  - description: Define internal risk appetite threshold for stablecoin exposure as
-      % of treasury holdings.
-    status: open
-  - description: Engage the ECB sandbox programme to position for early regulatory
-      approval.
-    status: open
-  impacts:
-  - Correspondent banking
-  - AML/CFT compliance
-  - Product portfolio
-  driven_by:
-  - MiCA regulation
-  - ECB digital currency strategy
-  - fintech competition
-  position: Monitor & Prepare
-  associated_working_groups:
-  - name: EBA Digital Finance Working Group
-    url: ''
-  - name: BdB Arbeitsgruppe Digitale Währungen
-    url: ''
-- id: 2
-  title: girocard 4.0
-  category: Digital Payments
-  score: 6
-  priority: High
-  horizon: 12–24 months
-  description: "The girocard scheme is undergoing a fundamental modernisation to support\
+      - |-
+        Positions the institution for a Digital Euro intermediary role given overlapping technical architecture.
+    sources:
+      - label: "MiCA Regulation — EU Official Journal"
+        url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1114
+      - label: 'ECB: Progress on Digital Euro Project'
+        url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
+      - label: 'BIS Working Paper: Stablecoins as Settlement Assets'
+        url: https://www.bis.org/publ/work1180.htm
+    tags:
+      - payment
+      - blockchain
+      - research
+    stakeholders:
+      - 1
+      - 2
+    actions:
+      - description: Commission external legal review of MiCA compliance requirements
+          for stablecoin custody by Q2 2026.
+        status: open
+      - description: |-
+          Prototype a stablecoin settlement corridor on testnet with two partner banks to validate latency and cost assumptions.
+        status: open
+      - description: Define internal risk appetite threshold for stablecoin exposure as
+          % of treasury holdings.
+        status: open
+      - description: Engage the ECB sandbox programme to position for early regulatory
+          approval.
+        status: open
+    impacts:
+      - Correspondent banking
+      - AML/CFT compliance
+      - Product portfolio
+    driven_by:
+      - MiCA regulation
+      - ECB digital currency strategy
+      - fintech competition
+    position: Monitor & Prepare
+    associated_working_groups:
+      - name: EBA Digital Finance Working Group
+        url: ''
+      - name: BdB Arbeitsgruppe Digitale Währungen
+        url: ''
+  - id: 2
+    title: girocard 4.0
+    category: Digital Payments
+    score: 6
+    priority: High
+    horizon: 12–24 months
+    description: "The girocard scheme is undergoing a fundamental modernisation to support\
     \ contactless mobile payments, NFC-based wallets, and online e-commerce use \n\
     cases. girocard 4.0 introduces a new technical architecture enabling tokenisation\
     \ and digital wallet integration."
-  management_summary: "girocard 4.0 is the most significant scheme modernisation since\
+    management_summary: "girocard 4.0 is the most significant scheme modernisation since\
     \ the introduction of contactless. Failure to migrate on time risks exclusion\
     \ from \nApple Pay and Google Pay wallet ecosystems, which are now primary payment\
     \ interfaces for under-40 demographics. Migration investment is non-negotiable;\
     \ \nthe commercial opportunity lies in wallet-native product features.\nCurrently\
     \ some banks are already provide their customers with in-app girocard transactions\
     \ (android and iOS)"
-  extended_description: "The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft,\
+    extended_description: "The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft,\
     \ replaces the proprietary girocard EMV kernel with a new tokenisation-capable\
     \ \narchitecture supporting Apple Pay, Google Pay, and German OEM wallet integrations,\
     \ theirby (as a side-effect) also strengthening the national \npayment infrastructure\
@@ -187,323 +187,323 @@ topics:
     \ extension closes a functional gap that is offered by (for instance) credit card\
     \ schemes (rental car reservation, hotel booking, integration \nin third party\
     \ wallets, in-app payments)."
-  risks:
-    - High investmens in technology. Training necessary.
-    - |-
-      Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
-    - |-
-      Migration delay risks exclusion from Apple Pay and Google Pay wallet integrations, ceding market share to Visa/Mastercard debit.
-    - |-
-      TSP integration complexity may be underestimated, particularly for banks with legacy issuing systems.
-    - Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is
-      possible.
-    - |-
-      Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
-  chances:
-    - |-
-      girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders
-    - |-
-      E-commerce capability opens a new acceptance channel for girocard, previously absent from online retail.
-    - |-
-      Tokenisation infrastructure is reusable for Digital Euro distribution and future CBDC wallet integration.
-    - |-
-      Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem.
-    - Business modell expansion by offering new services based on new technical possibilities
-  sources:
-    - label: 'Deutsche Kreditwirtschaft: girocard 4.0 Programme'
-      url: https://die-dk.de/zahlungsverkehr/girocard/
-    - label: 'Bundesbank: Retail Payments Strategy Germany'
-      url: https://www.bundesbank.de/en/tasks/payment-systems/retail-payments
-    - label: 'Atruvia: girocard Migration Documentation (internal)'
-      url: '#'
-  tags:
-    - infrastructure
-    - market
-  stakeholders:
-    - 6
-    - 4
-    - 5
-  actions:
-    - description: |-
-        Discussing the following point with BdB counterparts. Lobbying efforts. Alignment with product strategy. Focus on relevant product features. Definition of mandatory parts for implementation
-      status: open
-    - description: 'Technological development: Offering support for banks in their girocard
+    risks:
+      - High investmens in technology. Training necessary.
+      - |-
+        Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
+      - |-
+        Migration delay risks exclusion from Apple Pay and Google Pay wallet integrations, ceding market share to Visa/Mastercard debit.
+      - |-
+        TSP integration complexity may be underestimated, particularly for banks with legacy issuing systems.
+      - Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is
+        possible.
+      - |-
+        Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
+    chances:
+      - |-
+        girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders
+      - |-
+        E-commerce capability opens a new acceptance channel for girocard, previously absent from online retail.
+      - |-
+        Tokenisation infrastructure is reusable for Digital Euro distribution and future CBDC wallet integration.
+      - |-
+        Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem.
+      - Business modell expansion by offering new services based on new technical possibilities
+    sources:
+      - label: 'Deutsche Kreditwirtschaft: girocard 4.0 Programme'
+        url: https://die-dk.de/zahlungsverkehr/girocard/
+      - label: 'Bundesbank: Retail Payments Strategy Germany'
+        url: https://www.bundesbank.de/en/tasks/payment-systems/retail-payments
+      - label: 'Atruvia: girocard Migration Documentation (internal)'
+        url: '#'
+    tags:
+      - infrastructure
+      - market
+    stakeholders:
+      - 6
+      - 4
+      - 5
+    actions:
+      - description: |-
+          Discussing the following point with BdB counterparts. Lobbying efforts. Alignment with product strategy. Focus on relevant product features. Definition of mandatory parts for implementation
+        status: open
+      - description: 'Technological development: Offering support for banks in their girocard
       4.0 integration efforts.'
-      status: open
-    - description: development of standardized security concepts and tools
-      status: open
-    - description: |-
-        Training, conultation and ressource allocation to support banks in their necessary adaptations. enabling a timly rollout.
-      status: open
-    - description: |-
-        Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.
-      status: in-progress
-    - description: Coordinate with Deutsche Kreditwirtschaft (DK) working groups to
-        influence scheme rule development.
-      status: open
-    - description: |-
-        Define roadmap for mobile wallet integration (Apple Pay, Google Pay) under girocard 4.0 tokenisation framework.
-      status: open
-    - description: Communicate girocard 4.0 migration timeline to merchant acquiring
-        partners.
-      status: open
-  impacts:
-    - Card product portfolio
-    - Terminal infrastructure
-    - Scheme fees
-    - Competitive positioning
-  driven_by:
-    - DK scheme evolution
-    - Contactless & online use case expansion
-    - Girocard decline risk
-  position: Actively Shape
-  associated_working_groups:
-    - name: DK Arbeitsgruppe girocard
-      url: ''
-    - name: Euro Retail Payments Board (ERPB)
-      url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
-- id: 3
-  title: "[UPDATE NECESSARY] Open Banking"
-  category: Banking Regulatory & Trends
-  score: 5
-  priority: Medium
-  horizon: 18–30 months
-  description: |-
-    PSD3 expands the scope of data sharing mandates while introducing new revenue-sharing frameworks. There is a significant opportunity to position as a premium data aggregator for third-party fintechs and corporates.
-  management_summary: |-
-    Open banking has matured from a compliance obligation into a genuine commercial platform. FIDA will further expand the data scope. The near-term priority is building a developer portal and productising our API layer; longer-term, acting as a premium financial data provider for corporates and fintechs represents a scalable revenue stream.
-  extended_description: |-
-    PSD2 mandated open banking APIs as a compliance measure; PSD3 and FIDA now create an environment where data sharing is both mandatory and commercially structured. Our current PSD2 API infrastructure has a 97.2% availability rate and serves ~45 active TPPs, but it has not been positioned as a commercial product. The step change required is: first, building a developer portal with sandbox, documentation, and premium API tiers; second, defining data products (cash flow analytics, KYC data, payment initiation bundles) with clear pricing; third, targeting corporate treasurers and fintechs as primary buyer segments. FIDA will add investment, insurance, and pension data to the mandatory sharing perimeter by 2027, multiplying the data asset base significantly.
-  risks:
-  - |-
-    FIDA implementation delays or scope changes could undermine the business case for premium data products.
-  - |-
-    Data quality and standardisation issues across legacy systems may reduce the value of aggregated data products.
-  - |-
-    GDPR and data minimisation requirements limit the permissible use cases for monetised financial data.
-  - |-
-    Large tech platforms (Google, Apple) entering financial data aggregation with superior distribution channels.
-  chances:
-  - |-
-    FIDA creates a legal framework for charging for data access, converting a cost centre into a revenue line.
-  - |-
-    Corporate treasury clients will pay a premium for enriched, real-time cash flow data and payment initiation APIs.
-  - |-
-    Positioning as a trusted data intermediary differentiates from pure-play fintechs who lack the institutional trust.
-  - |-
-    Developer ecosystem around our API portal can accelerate fintech partnership pipeline at low acquisition cost.
-  sources:
-  - label: 'European Commission: FIDA Proposal'
-    url: https://finance.ec.europa.eu/publications/financial-data-access-fida_en
-  - label: 'EPC: PSD3 and Open Banking Overview'
-    url: |-
-      https://www.europeanpaymentscouncil.eu/news-insights/insight/psd3-and-psr-what-changes-are-coming-open-banking
-  - label: 'Open Banking Excellence: Market Report 2025'
-    url: https://www.openbanking.org.uk/insights/
-  tags:
-  - payment
-  - research
-  stakeholders:
-  - 5
-  - 4
-  actions:
-  - description: Map consent management architecture against PSD3 requirements.
-    status: open
-  - description: Identify top-3 data product propositions with clear revenue model
-      for enterprise clients.
-    status: open
-  - description: Build API developer portal with sandbox environment to accelerate
-      third-party adoption.
-    status: open
-  impacts:
-  - API infrastructure
-  - Data governance
-  - Revenue model
-  - Customer consent management
-  driven_by:
-  - PSD3/PSR
-  - FIDA regulation
-  - Open Finance policy agenda
-  position: Explore
-  associated_working_groups:
-  - name: Berlin Group NextGenPSD2
-    url: https://www.berlin-group.org
-  - name: EBA Open Finance WG
-    url: ''
-- id: 4
-  title: Digitaler Euro
-  category: Digital Payments
-  score: 7
-  priority: Medium-High
-  horizon: 24–48 months
-  description: |-
-    The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks in payment flows, customer relationships, and deposit funding.
-  management_summary: |-
-    The Digital Euro is a structural, long-cycle threat and opportunity that requires early engagement rather than a wait-and-see approach. The holding limit design will determine the disintermediation impact. Banks that participate actively in the intermediary model stand to gain a distribution role; those that disengage risk being bypassed entirely.
-  extended_description: |-
-    The ECB's Digital Euro preparation phase (launched November 2023) focuses on rulebook development, technical architecture finalisation, and legislative progress. The ECB has proposed a holding limit of €3,000 per citizen to mitigate bank run risk during stress scenarios, though this is subject to legislative negotiation. Commercial banks would act as distributors (onboarding, KYC, wallet provision) under a supervised intermediary model — preserving the customer relationship but introducing a new settlement liability. The primary disintermediation risk is in transactional deposits: if the Digital Euro offers equivalent convenience to a bank account with ECB credit quality, switching costs for consumers decrease significantly. Banks face a structural question: do we proactively shape the distribution model, or minimise investment and react?
-  risks:
-  - |-
-    High holding limits (€3,000+) could trigger significant retail deposit outflows in stress scenarios, threatening funding stability.
-  - |-
-    If banks are excluded from the distribution layer, the customer relationship migrates to ECB-controlled infrastructure.
-  - |-
-    Implementation complexity of Digital Euro wallet integration into existing banking apps and core systems.
-  - Political and legislative uncertainty may delay or fundamentally alter the Digital
-    Euro design.
-  chances:
-  - |-
-    Banks acting as intermediaries retain the customer relationship and earn distribution fees from the ECB.
-  - |-
-    Digital Euro infrastructure overlaps significantly with girocard 4.0 tokenisation and stablecoin rail investments.
-  - Early adopter banks gain influence over the ECB intermediary rulebook design.
-  - |-
-    Digital Euro wallet integration is a customer engagement opportunity that can be bundled with premium banking services.
-  sources:
-  - label: 'ECB: Digital Euro Preparation Phase'
-    url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
-  - label: 'European Parliament: Digital Euro Legislative Proposal'
-    url: |-
-      https://www.europarl.europa.eu/legislative-train/theme-a-europe-fit-for-the-digital-age/file-digital-euro
-  - label: 'BIS: Retail CBDC Design Principles'
-    url: https://www.bis.org/cpmi/publ/d174.htm
-  tags:
-  - payment
-  - infrastructure
-  - regulation
-  stakeholders:
-  - 1
-  - 6
-  - 7
-  actions:
-  - description: |-
-      Monitor ECB preparation phase milestones and publish quarterly internal briefings for senior leadership.
-    status: in-progress
-  - description: |-
-      Model disintermediation scenarios under different holding limit assumptions (€500, €1,000, €3,000) and estimate deposit outflow impact.
-    status: open
-  - description: Engage via banking association working groups to provide input on
-      intermediary model design.
-    status: open
-  - description: |-
-      Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.
-    status: open
-  impacts:
-  - Deposit base
-  - Payment product strategy
-  - Customer interface
-  - AML obligations
-  driven_by:
-  - ECB investigation phase
-  - EU legislative proposal
-  - Disintermediation risk
-  position: Monitor & Prepare
-  associated_working_groups:
-  - name: ECB Digital Euro Market Advisory Group
-    url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
-  - name: EPC Digital Euro WG
-    url: ''
-- id: 5
-  title: "eIDAS 2.0"
-  category: Trusted Services
-  score: 9
-  priority: High
-  horizon: 12–24 months
-  description: "The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU \
+        status: open
+      - description: development of standardized security concepts and tools
+        status: open
+      - description: |-
+          Training, conultation and ressource allocation to support banks in their necessary adaptations. enabling a timly rollout.
+        status: open
+      - description: |-
+          Assess current card issuing systems for girocard 4.0 token service compatibility and identify required upgrades.
+        status: in-progress
+      - description: Coordinate with Deutsche Kreditwirtschaft (DK) working groups to
+          influence scheme rule development.
+        status: open
+      - description: |-
+          Define roadmap for mobile wallet integration (Apple Pay, Google Pay) under girocard 4.0 tokenisation framework.
+        status: open
+      - description: Communicate girocard 4.0 migration timeline to merchant acquiring
+          partners.
+        status: open
+    impacts:
+      - Card product portfolio
+      - Terminal infrastructure
+      - Scheme fees
+      - Competitive positioning
+    driven_by:
+      - DK scheme evolution
+      - Contactless & online use case expansion
+      - Girocard decline risk
+    position: Actively Shape
+    associated_working_groups:
+      - name: DK Arbeitsgruppe girocard
+        url: ''
+      - name: Euro Retail Payments Board (ERPB)
+        url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
+  - id: 3
+    title: "[UPDATE NECESSARY] Open Banking"
+    category: Banking Regulatory & Trends
+    score: 5
+    priority: Medium
+    horizon: 18–30 months
+    description: |-
+      PSD3 expands the scope of data sharing mandates while introducing new revenue-sharing frameworks. There is a significant opportunity to position as a premium data aggregator for third-party fintechs and corporates.
+    management_summary: |-
+      Open banking has matured from a compliance obligation into a genuine commercial platform. FIDA will further expand the data scope. The near-term priority is building a developer portal and productising our API layer; longer-term, acting as a premium financial data provider for corporates and fintechs represents a scalable revenue stream.
+    extended_description: |-
+      PSD2 mandated open banking APIs as a compliance measure; PSD3 and FIDA now create an environment where data sharing is both mandatory and commercially structured. Our current PSD2 API infrastructure has a 97.2% availability rate and serves ~45 active TPPs, but it has not been positioned as a commercial product. The step change required is: first, building a developer portal with sandbox, documentation, and premium API tiers; second, defining data products (cash flow analytics, KYC data, payment initiation bundles) with clear pricing; third, targeting corporate treasurers and fintechs as primary buyer segments. FIDA will add investment, insurance, and pension data to the mandatory sharing perimeter by 2027, multiplying the data asset base significantly.
+    risks:
+      - |-
+        FIDA implementation delays or scope changes could undermine the business case for premium data products.
+      - |-
+        Data quality and standardisation issues across legacy systems may reduce the value of aggregated data products.
+      - |-
+        GDPR and data minimisation requirements limit the permissible use cases for monetised financial data.
+      - |-
+        Large tech platforms (Google, Apple) entering financial data aggregation with superior distribution channels.
+    chances:
+      - |-
+        FIDA creates a legal framework for charging for data access, converting a cost centre into a revenue line.
+      - |-
+        Corporate treasury clients will pay a premium for enriched, real-time cash flow data and payment initiation APIs.
+      - |-
+        Positioning as a trusted data intermediary differentiates from pure-play fintechs who lack the institutional trust.
+      - |-
+        Developer ecosystem around our API portal can accelerate fintech partnership pipeline at low acquisition cost.
+    sources:
+      - label: 'European Commission: FIDA Proposal'
+        url: https://finance.ec.europa.eu/publications/financial-data-access-fida_en
+      - label: 'EPC: PSD3 and Open Banking Overview'
+        url: |-
+          https://www.europeanpaymentscouncil.eu/news-insights/insight/psd3-and-psr-what-changes-are-coming-open-banking
+      - label: 'Open Banking Excellence: Market Report 2025'
+        url: https://www.openbanking.org.uk/insights/
+    tags:
+      - payment
+      - research
+    stakeholders:
+      - 5
+      - 4
+    actions:
+      - description: Map consent management architecture against PSD3 requirements.
+        status: open
+      - description: Identify top-3 data product propositions with clear revenue model
+          for enterprise clients.
+        status: open
+      - description: Build API developer portal with sandbox environment to accelerate
+          third-party adoption.
+        status: open
+    impacts:
+      - API infrastructure
+      - Data governance
+      - Revenue model
+      - Customer consent management
+    driven_by:
+      - PSD3/PSR
+      - FIDA regulation
+      - Open Finance policy agenda
+    position: Explore
+    associated_working_groups:
+      - name: Berlin Group NextGenPSD2
+        url: https://www.berlin-group.org
+      - name: EBA Open Finance WG
+        url: ''
+  - id: 4
+    title: Digitaler Euro
+    category: Digital Payments
+    score: 7
+    priority: Medium-High
+    horizon: 24–48 months
+    description: |-
+      The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks in payment flows, customer relationships, and deposit funding.
+    management_summary: |-
+      The Digital Euro is a structural, long-cycle threat and opportunity that requires early engagement rather than a wait-and-see approach. The holding limit design will determine the disintermediation impact. Banks that participate actively in the intermediary model stand to gain a distribution role; those that disengage risk being bypassed entirely.
+    extended_description: |-
+      The ECB's Digital Euro preparation phase (launched November 2023) focuses on rulebook development, technical architecture finalisation, and legislative progress. The ECB has proposed a holding limit of €3,000 per citizen to mitigate bank run risk during stress scenarios, though this is subject to legislative negotiation. Commercial banks would act as distributors (onboarding, KYC, wallet provision) under a supervised intermediary model — preserving the customer relationship but introducing a new settlement liability. The primary disintermediation risk is in transactional deposits: if the Digital Euro offers equivalent convenience to a bank account with ECB credit quality, switching costs for consumers decrease significantly. Banks face a structural question: do we proactively shape the distribution model, or minimise investment and react?
+    risks:
+      - |-
+        High holding limits (€3,000+) could trigger significant retail deposit outflows in stress scenarios, threatening funding stability.
+      - |-
+        If banks are excluded from the distribution layer, the customer relationship migrates to ECB-controlled infrastructure.
+      - |-
+        Implementation complexity of Digital Euro wallet integration into existing banking apps and core systems.
+      - Political and legislative uncertainty may delay or fundamentally alter the Digital
+        Euro design.
+    chances:
+      - |-
+        Banks acting as intermediaries retain the customer relationship and earn distribution fees from the ECB.
+      - |-
+        Digital Euro infrastructure overlaps significantly with girocard 4.0 tokenisation and stablecoin rail investments.
+      - Early adopter banks gain influence over the ECB intermediary rulebook design.
+      - |-
+        Digital Euro wallet integration is a customer engagement opportunity that can be bundled with premium banking services.
+    sources:
+      - label: 'ECB: Digital Euro Preparation Phase'
+        url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
+      - label: 'European Parliament: Digital Euro Legislative Proposal'
+        url: |-
+          https://www.europarl.europa.eu/legislative-train/theme-a-europe-fit-for-the-digital-age/file-digital-euro
+      - label: 'BIS: Retail CBDC Design Principles'
+        url: https://www.bis.org/cpmi/publ/d174.htm
+    tags:
+      - payment
+      - infrastructure
+      - regulation
+    stakeholders:
+      - 1
+      - 6
+      - 7
+    actions:
+      - description: |-
+          Monitor ECB preparation phase milestones and publish quarterly internal briefings for senior leadership.
+        status: in-progress
+      - description: |-
+          Model disintermediation scenarios under different holding limit assumptions (€500, €1,000, €3,000) and estimate deposit outflow impact.
+        status: open
+      - description: Engage via banking association working groups to provide input on
+          intermediary model design.
+        status: open
+      - description: |-
+          Prototype a Digital Euro distribution interface aligned with ECB intermediary architecture specifications.
+        status: open
+    impacts:
+      - Deposit base
+      - Payment product strategy
+      - Customer interface
+      - AML obligations
+    driven_by:
+      - ECB investigation phase
+      - EU legislative proposal
+      - Disintermediation risk
+    position: Monitor & Prepare
+    associated_working_groups:
+      - name: ECB Digital Euro Market Advisory Group
+        url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
+      - name: EPC Digital Euro WG
+        url: ''
+  - id: 5
+    title: "eIDAS 2.0"
+    category: Trusted Services
+    score: 9
+    priority: High
+    horizon: 12–24 months
+    description: "The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU \
     \ member states, creating both compliance obligations and a strategic opportunity to act as identity service provides. \n \
     \ eIDAS comprises solutions for signatures, seals, timestamps, identification (eID, video-ident, etc.), further development to fulfill \
     \ clients workflows and process requirements - B2C relevance."
-  management_summary: "eIDAS 2.0 is primarily a compliance topic in the near term but carries a genuine commercial opportunity: qualifying \
+    management_summary: "eIDAS 2.0 is primarily a compliance topic in the near term but carries a genuine commercial opportunity: qualifying \
     \ as a Trust Service Provider positions the bank as a core infrastructure player in the EU digital identity ecosystem. The investment \
     \ required is moderate and largely overlaps with existing eKYC infrastructure. \n \
     \ Huge potential (in theory at least). NCS already posesses (at least in large parts) the necessary infrastructure. Obligation to accept eIDAS \ 
     \ identification creates pressure to implement."
-  extended_description: "eIDAS 2.0 (Regulation 910/2014 revised) harmonises digital identity trust levels across the EU, requiring member states \
+    extended_description: "eIDAS 2.0 (Regulation 910/2014 revised) harmonises digital identity trust levels across the EU, requiring member states \
     \ to recognise each other's notified eID schemes at all assurance levels. For banks, the most relevant changes are: mandatory acceptance of \
     \ eIDAS-compliant digital identities for KYC purposes, new obligations around qualified electronic signatures and seals, and the opportunity \
     \ to register as a qualified Trust Service Provider (QTSP). QTSPs can offer electronic signature, timestamp, and identity verification services \
     \ commercially. The regulation also creates a framework for attribute attestation services — banks could issue certified financial attribute \
     \ attestations (income, account ownership) that third parties can verify without direct data access, a privacy-preserving model with significant \
     \ commercial potential."
-  risks:
-  - |-
-    QTSP certification process is complex and time-consuming; underestimating the timeline risks missing early market positioning.
-  - Cross-border eID recognition may enable EU-wide identity providers to compete
-    in German KYC market.
-  - |-
-    Technical interoperability with diverse national eID systems (e.g. Italian SPID, French FranceConnect) requires significant integration work.
-  - |-
-    Liability framework for eIDAS-certified identity assertions is still being interpreted in the context of AML obligations.
-  chances:
-  - |-
-    Increase in sales by leveraging NCS usp. Usability for GWG and flexibility in combinung NCS solutions
-  - |-
-    QTSP status enables fee-generating identity verification and electronic signature services for corporate and retail clients.
-  - |-
-    Certified financial attribute attestations create a new data product that commands premium pricing from third-party verifiers.
-  - |-
-    Early QTSP positioning creates barriers to entry for non-bank identity competitors in the German financial sector.
-  - |-
-    eIDAS 2.0 compliance overlaps significantly with EUDI Wallet relying party requirements, reducing total integration cost.
-  - |-
-    Growth in customer range. Growth in market potential (e.g. eGov)
-  sources:
-  - label: eIDAS 2.0 — EU Regulation 2024/1183
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1183
-  - label: 'ENISA: eIDAS 2.0 Technical Guidelines'
-    url: https://www.enisa.europa.eu/topics/eid
-  - label: 'BSI: Digital Identity Standards Germany'
-    url: |-
-      https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/standards-und-zertifizierung_node.html
-  tags:
-  - infrastructure
-  stakeholders:
-  - 7
-  - 3
-  - 5
-  actions:
-  - description: Map current digital onboarding and e-signature workflows against
-      eIDAS 2.0 trust level requirements.
-    status: open
-  - description: |-
-      Evaluate qualifying as a Trust Service Provider (TSP) under the updated framework and assess commercial viability.
-    status: open
-  - description: Integrate eIDAS 2.0-compliant identity verification into the customer
-      portal authentication layer.
-    status: open
-  - description: Engage national supervisory body (BSI / BNetzA) on implementation
-      timelines and technical standards.
-    status: open
-  impacts:
-  - Digital onboarding
-  - E-signature workflows
-  - Identity verification
-  - KYC processes
-  driven_by:
-  - eIDAS 2.0 regulation
-  - EUDI Wallet rollout
-  - National eID infrastructure
-  position: Follow actively
-  associated_working_groups:
-  - name: EU eIDAS Expert Group
-    url: ''
-  - name: PG eIDAS 2.0 Umsetzung
-    url: ''
-- id: 6
-  title: "EUDI Wallet"
-  category: Trusted Services
-  score: 9
-  priority: High
-  horizon: 18–36 months
-  description: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity credentials, \
+    risks:
+      - |-
+        QTSP certification process is complex and time-consuming; underestimating the timeline risks missing early market positioning.
+      - Cross-border eID recognition may enable EU-wide identity providers to compete
+        in German KYC market.
+      - |-
+        Technical interoperability with diverse national eID systems (e.g. Italian SPID, French FranceConnect) requires significant integration work.
+      - |-
+        Liability framework for eIDAS-certified identity assertions is still being interpreted in the context of AML obligations.
+    chances:
+      - |-
+        Increase in sales by leveraging NCS usp. Usability for GWG and flexibility in combinung NCS solutions
+      - |-
+        QTSP status enables fee-generating identity verification and electronic signature services for corporate and retail clients.
+      - |-
+        Certified financial attribute attestations create a new data product that commands premium pricing from third-party verifiers.
+      - |-
+        Early QTSP positioning creates barriers to entry for non-bank identity competitors in the German financial sector.
+      - |-
+        eIDAS 2.0 compliance overlaps significantly with EUDI Wallet relying party requirements, reducing total integration cost.
+      - |-
+        Growth in customer range. Growth in market potential (e.g. eGov)
+    sources:
+      - label: eIDAS 2.0 — EU Regulation 2024/1183
+        url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1183
+      - label: 'ENISA: eIDAS 2.0 Technical Guidelines'
+        url: https://www.enisa.europa.eu/topics/eid
+      - label: 'BSI: Digital Identity Standards Germany'
+        url: |-
+          https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/standards-und-zertifizierung_node.html
+    tags:
+      - infrastructure
+    stakeholders:
+      - 7
+      - 3
+      - 5
+    actions:
+      - description: Map current digital onboarding and e-signature workflows against
+          eIDAS 2.0 trust level requirements.
+        status: open
+      - description: |-
+          Evaluate qualifying as a Trust Service Provider (TSP) under the updated framework and assess commercial viability.
+        status: open
+      - description: Integrate eIDAS 2.0-compliant identity verification into the customer
+          portal authentication layer.
+        status: open
+      - description: Engage national supervisory body (BSI / BNetzA) on implementation
+          timelines and technical standards.
+        status: open
+    impacts:
+      - Digital onboarding
+      - E-signature workflows
+      - Identity verification
+      - KYC processes
+    driven_by:
+      - eIDAS 2.0 regulation
+      - EUDI Wallet rollout
+      - National eID infrastructure
+    position: Follow actively
+    associated_working_groups:
+      - name: EU eIDAS Expert Group
+        url: ''
+      - name: PG eIDAS 2.0 Umsetzung
+        url: ''
+  - id: 6
+    title: "EUDI Wallet"
+    category: Trusted Services
+    score: 9
+    priority: High
+    horizon: 18–36 months
+    description: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity credentials, \
     \ payment initiation, and document storage. Member states must offer a wallet by 2026.\ 
     \ Opens door for (new) digital processes - for corporations too (see European business Wallet EUBW). \n \
     \ - Usage for the user will be free. \n -Longterm project with unclear outcome \n - independant ID procedure offering multiple trust levels \
     \ \n - Acceptance is mandatory (at least in certain cases)."
-  management_summary: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity \
+    management_summary: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity \
     \ credentials, payment initiation, and document storage. Member states must offer a wallet by 2026. It is currently moving faster \
     \ than anticipated. The large-scale pilots are producing concrete technical outputs, and the 2026 member state deadline is credible. "
-  extended_description: "The EUDI Wallet Architecture and Reference Framework (ARF) defines a standardised mobile wallet enabling citizens to \
+    extended_description: "The EUDI Wallet Architecture and Reference Framework (ARF) defines a standardised mobile wallet enabling citizens to \
     \ store and present identity attributes, documents, and credentials across borders within the EU. For banks, the primary interaction model is as a relying party: \
     \ accepting EUDI Wallet credentials for KYC, account opening, and strong customer authentication instead of proprietary identity verification \
     \ flows. Banks may also act as attestation providers, issuing certified financial credentials (e.g. proof of bank account ownership, income \
@@ -525,86 +525,86 @@ topics:
     \ - sign documents digitally, with timestamp and seal \n - securely create, save and exchange verified documents with other corporations \
     \ or public sector (even cross border within the EU). \n \
     \ A yearly cost reduction for corporations of 150 bln. EUR is expected."
-  risks:
-  - |-
-    EUDI Wallet adoption speed is uncertain; over-investing in integration ahead of user adoption could result in stranded costs.
-  - |-
-    Competing wallet ecosystems (Apple Wallet, Google Wallet) may limit EUDI Wallet uptake among tech-savvy demographics.
-  - |-
-    Possible loss of USP of AML-reusage for banks
-  - |-
-    Privacy-by-design constraints in the wallet architecture may limit the data available to relying parties for AML screening.
-  - |- 
-    Possible loss of advantage as german trusted services provider
-  chances:
-  - |-
-    High demand expected due to mandatory acceptance
-  - |-
-    Potentially many use cases
-  - |-
-    Wallet-usage as so called verifier
-  - |-
-    Issuing certified financial attributes positions the bank as a trusted anchor in the EU digital identity ecosystem.
-  - |-
-    Open standard for embedding trusted services into the wallet
-  sources:
-  - label: EUDI Wallet Architecture & Reference Framework
-    url: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
-  - label: 'European Commission: EUDI Wallet Large Scale Pilots'
-    url: https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation
-  - label: 'EWC Pilot: Financial Services Use Case'
-    url: https://eudiwalletconsortium.org/
-  tags:
-    - infrastructure
-  stakeholders:
-  - 7
-  - 4
-  - 1
-  actions:
-  - description: |-
-      Monitor ARF (Architecture and Reference Framework) releases and assess impact on bank identity services.
-    status: in-progress
-  - description: |-
-      Evaluate role as EUDI Wallet-compatible relying party for KYC and account access, and define integration scope.
-    status: open
-  - description: |-
-      Participate in large-scale pilot (LSP) consortium relevant to the banking sector (e.g. POTENTIAL or DC4EU).
-    status: open
-  - description: |-
-      Initiate talks with potential partners / banks for participation in SPRIND-Pilot.
-    status: open
-  impacts:
-  - Customer authentication
-  - Digital identity
-  - Onboarding costs
-  - Data privacy
-  driven_by:
-  - eIDAS 2.0 mandate
-  - National large-scale pilots
-  - EBA guidance
-  position: Monitor & Prepare
-  associated_working_groups:
-  - name: EU EUDI Wallet Consortium
-    url: https://eudiwalletconsortium.org
-  - name: EBF Digital Identity Task Force
-    url: ''
-  - name: CC Sicherheit
-    url: ''
-  - name: BdB-Projekt eIDAS 2.0 Umsetzung
-  - url: ''
-- id: 7
-  title: "FIDA - Financial Data Access Regulation"
-  category: Banking Regulatory & Trends
-  score: 2
-  priority: Low-Medium
-  horizon: 12–30 months
-  description: "The Financial Data Access (FIDA) regulation goes significantly beyond PSD2, mandating data sharing across savings, \
+    risks:
+      - |-
+        EUDI Wallet adoption speed is uncertain; over-investing in integration ahead of user adoption could result in stranded costs.
+      - |-
+        Competing wallet ecosystems (Apple Wallet, Google Wallet) may limit EUDI Wallet uptake among tech-savvy demographics.
+      - |-
+        Possible loss of USP of AML-reusage for banks
+      - |-
+        Privacy-by-design constraints in the wallet architecture may limit the data available to relying parties for AML screening.
+      - |-
+        Possible loss of advantage as german trusted services provider
+    chances:
+      - |-
+        High demand expected due to mandatory acceptance
+      - |-
+        Potentially many use cases
+      - |-
+        Wallet-usage as so called verifier
+      - |-
+        Issuing certified financial attributes positions the bank as a trusted anchor in the EU digital identity ecosystem.
+      - |-
+        Open standard for embedding trusted services into the wallet
+    sources:
+      - label: EUDI Wallet Architecture & Reference Framework
+        url: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
+      - label: 'European Commission: EUDI Wallet Large Scale Pilots'
+        url: https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation
+      - label: 'EWC Pilot: Financial Services Use Case'
+        url: https://eudiwalletconsortium.org/
+    tags:
+      - infrastructure
+    stakeholders:
+      - 7
+      - 4
+      - 1
+    actions:
+      - description: |-
+          Monitor ARF (Architecture and Reference Framework) releases and assess impact on bank identity services.
+        status: in-progress
+      - description: |-
+          Evaluate role as EUDI Wallet-compatible relying party for KYC and account access, and define integration scope.
+        status: open
+      - description: |-
+          Participate in large-scale pilot (LSP) consortium relevant to the banking sector (e.g. POTENTIAL or DC4EU).
+        status: open
+      - description: |-
+          Initiate talks with potential partners / banks for participation in SPRIND-Pilot.
+        status: open
+    impacts:
+      - Customer authentication
+      - Digital identity
+      - Onboarding costs
+      - Data privacy
+    driven_by:
+      - eIDAS 2.0 mandate
+      - National large-scale pilots
+      - EBA guidance
+    position: Monitor & Prepare
+    associated_working_groups:
+      - name: EU EUDI Wallet Consortium
+        url: https://eudiwalletconsortium.org
+      - name: EBF Digital Identity Task Force
+        url: ''
+      - name: CC Sicherheit
+        url: ''
+      - name: BdB-Projekt eIDAS 2.0 Umsetzung
+      - url: ''
+  - id: 7
+    title: "FIDA - Financial Data Access Regulation"
+    category: Banking Regulatory & Trends
+    score: 2
+    priority: Low-Medium
+    horizon: 12–30 months
+    description: "The Financial Data Access (FIDA) regulation goes significantly beyond PSD2, mandating data sharing across savings, \
    \ investments, insurance, and pension products. Banks face both defensive obligations and offensive data product opportunities."
-  management_summary: "FIDA represents the largest expansion of open banking obligations since PSD2. The compliance burden is real \
+    management_summary: "FIDA represents the largest expansion of open banking obligations since PSD2. The compliance burden is real \
    \ but manageable if we treat it as an architecture investment rather than a point solution. The commercial upside — acting as a \
    \ data hub for the full customer financial profile — is substantial and should drive the product roadmap.\n \
    \ TBD ."
-  extended_description: "FIDA (Financial Data Access Regulation) was proposed by the European Commission in June 2023 as part of the \
+    extended_description: "FIDA (Financial Data Access Regulation) was proposed by the European Commission in June 2023 as part of the \
    \ retail financial services strategy. It mandates data sharing for savings accounts, investments, insurance, occupational pensions, \
    \ and mortgage data — all currently outside PSD2 scope. Financial data sharing schemes (FDSS) must be established by industry, with \
    \ a fallback regulatory standard if industry fails to agree. The permission framework introduces customer dashboard requirements: \
@@ -612,139 +612,139 @@ topics:
    \ as a data holder (mandatory sharing obligations) and as a data user (ability to access customer data held at other institutions \
    \ for value-added services). The data user opportunity — aggregating a complete customer financial picture for advisory, lending, \ 
    \ and personalisation — is the primary commercial case."
-  risks:
-  - |-
-    FIDA compliance requires significant API and consent management infrastructure investment across all product lines.
-  - |-
-    Competitive risk: FIDA enables fintechs and big tech to access our customer's complete financial profile at negligible marginal cost.
-  - |-
-    Data quality obligations under FIDA require ongoing governance of data accuracy across legacy systems.
-  - |-
-    FDSS governance negotiations may produce unfavourable technical standards that increase our compliance cost.
-  chances:
-  - |-
-    FIDA data user rights enable us to aggregate a complete financial profile for each customer — the foundation for holistic advisory products.
-  - |-
-    FIDA-based lending decisioning (using competitor account and investment data) improves credit accuracy and opens new segments.
-  - |-
-    Early FDSS participation shapes technical standards in our favour and builds relationships with key data ecosystem partners.
-  - |-
-    Consent dashboard requirement, if implemented well, becomes a customer engagement and upsell touchpoint.
-  sources:
-  - label: 'European Commission: FIDA Proposal — Full Text'
-    url: https://finance.ec.europa.eu/publications/financial-data-access-fida_en
-  - label: 'EBA: Open Banking and FIDA Implications'
-    url: https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money
-  - label: 'Deloitte: FIDA Impact Assessment for Banks'
-    url: https://www2.deloitte.com/de/de/pages/financial-services/articles/fida.html
-  tags:
-    - infrastructure
-  stakeholders:
-  - 7
-  - 3
-  - 4
-  actions:
-  - description: |-
-      Conduct a FIDA scope analysis to identify which product categories and data types fall under new sharing obligations.
-    status: open
-  - description: Assess current API infrastructure and consent management platform
-      for FIDA compliance gaps.
-    status: open
-  - description: |-
-      Define a commercial strategy for acting as a Financial Data Access provider for cross-sell and advisory use cases.
-    status: open
-  - description: Submit response to EBA/EC consultation on FIDA technical standards.
-    status: open
-  impacts:
-  - API strategy
-  - Data sharing obligations
-  - Customer consent
-  - Competitive data access
-  driven_by:
-  - FIDA regulation proposal
-  - PSD3/PSR framework
-  - Data economy policy
-  position: Monitor & Prepare
-  associated_working_groups:
-  - name: Berlin Group
-    url: https://www.berlin-group.org
-  - name: EBA Open Finance WG
-    url: ''
-  - name: BdB Arbeitsgruppe Open Banking
-    url: ''
-- id: 8
-  title: "[UPDATE NECESSARY] PSD3/PSDR und Request to Pay (R2P)"
-  category: Banking Regulatory & Trends
-  score: 8
-  priority: High
-  horizon: 6–18 months
-  description: |-
-    The Payment Services Directive Review (PSDR) will update SCA rules and liability frameworks. Simultaneously, SEPA Request-to-Pay is gaining adoption as a structured messaging layer enabling invoice-triggered payment flows.
-  management_summary: |-
-    PSDR is a compliance maintenance task; R2P is the growth opportunity. R2P for SME invoice collection is the most commercially actionable near-term overlay product on our instant payment infrastructure. A focused launch for the top-200 corporate clients is the recommended first move.
-  extended_description: |-
-    PSDR (PSD3 + PSR combined) maintains the SCA architecture but introduces refined exemptions (e.g. transaction risk analysis thresholds adjusted for inflation), updated liability rules for APP fraud (shifting more liability to the sending PSP), and performance benchmarks for TPP access APIs. The parallel development of SEPA Request-to-Pay (EPC SRTP scheme) creates a structured, consent-based alternative to direct debit. R2P messages are sent by a creditor to a debtor via their respective PSPs; the debtor approves or declines payment within a defined window. This model is particularly well-suited to B2B invoice settlement, subscription billing, and regulated collections. German corporate clients are actively requesting R2P capability for accounts receivable automation.
-  risks:
-  - |-
-    PSDR APP fraud liability shift increases our financial exposure for push payment fraud on instant rails.
-  - |-
-    SCA exemption changes (PSDR) may require updates to our transaction risk analysis models and thresholds.
-  - |-
-    R2P adoption depends on both creditor and debtor PSP participation; network effects take time to develop.
-  - |-
-    Competing proprietary A2A payment schemes (PayPal, Klarna) may pre-empt R2P in consumer-facing use cases.
-  chances:
-  - |-
-    R2P enables complete accounts receivable automation for SME and corporate clients — a high-value, sticky treasury product.
-  - |-
-    R2P for e-commerce checkout is a direct debit replacement with better conversion and lower chargeback exposure.
-  - |-
-    PSDR's cleaner SCA exemption framework reduces authentication friction for low-risk transactions, improving conversion.
-  - Early R2P creditor-side implementation positions us as the leading B2B payment
-    bank in the region.
-  sources:
-  - label: 'EPC: SEPA Request-to-Pay Rulebook v2.0'
-    url: |-
-      https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-request-pay-srtp-scheme-rulebook
-  - label: 'European Commission: PSD3/PSR Proposal'
-    url: https://finance.ec.europa.eu/publications/proposal-payment-services-regulation_en
-  - label: 'Deutsche Bundesbank: Zahlungsverkehrsbericht 2024'
-    url: https://www.bundesbank.de/de/aufgaben/unbarer-zahlungsverkehr/zahlungsverkehr-und-abwicklungssysteme
-  tags: []
-  stakeholders:
-  - 6
-  - 7
-  - 3
-  actions:
-  - description: Track PSDR legislative process and update internal SCA and liability
-      policy documentation.
-    status: in-progress
-  - description: |-
-      Build SEPA R2P creditor-side implementation for corporate clients, starting with recurring billing use cases.
-    status: open
-  - description: |-
-      Evaluate R2P for retail use cases (e.g. e-commerce checkout, utility billing) and prepare pilot proposal.
-    status: open
-  - description: Ensure TPP access infrastructure meets updated PSDR performance and
-      availability benchmarks.
-    status: open
-  impacts:
-  - SCA implementation
-  - Liability regime
-  - Payment initiation services
-  - R2P product launch
-  driven_by:
-  - PSR/PSD3 legislative revision
-  - EPC SRTP scheme
-  - EBA regulatory mandates
-  position: Implement & Shape
-  associated_working_groups:
-  - name: EPC SRTP WG
-    url: https://www.europeanpaymentscouncil.eu
-  - name: EBA PSD2 Expert Group
-    url: ''
-  - name: DK Arbeitsgruppe Zahlungsdienste
-    url: ''
+    risks:
+      - |-
+        FIDA compliance requires significant API and consent management infrastructure investment across all product lines.
+      - |-
+        Competitive risk: FIDA enables fintechs and big tech to access our customer's complete financial profile at negligible marginal cost.
+      - |-
+        Data quality obligations under FIDA require ongoing governance of data accuracy across legacy systems.
+      - |-
+        FDSS governance negotiations may produce unfavourable technical standards that increase our compliance cost.
+    chances:
+      - |-
+        FIDA data user rights enable us to aggregate a complete financial profile for each customer — the foundation for holistic advisory products.
+      - |-
+        FIDA-based lending decisioning (using competitor account and investment data) improves credit accuracy and opens new segments.
+      - |-
+        Early FDSS participation shapes technical standards in our favour and builds relationships with key data ecosystem partners.
+      - |-
+        Consent dashboard requirement, if implemented well, becomes a customer engagement and upsell touchpoint.
+    sources:
+      - label: 'European Commission: FIDA Proposal — Full Text'
+        url: https://finance.ec.europa.eu/publications/financial-data-access-fida_en
+      - label: 'EBA: Open Banking and FIDA Implications'
+        url: https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money
+      - label: 'Deloitte: FIDA Impact Assessment for Banks'
+        url: https://www2.deloitte.com/de/de/pages/financial-services/articles/fida.html
+    tags:
+      - infrastructure
+    stakeholders:
+      - 7
+      - 3
+      - 4
+    actions:
+      - description: |-
+          Conduct a FIDA scope analysis to identify which product categories and data types fall under new sharing obligations.
+        status: open
+      - description: Assess current API infrastructure and consent management platform
+          for FIDA compliance gaps.
+        status: open
+      - description: |-
+          Define a commercial strategy for acting as a Financial Data Access provider for cross-sell and advisory use cases.
+        status: open
+      - description: Submit response to EBA/EC consultation on FIDA technical standards.
+        status: open
+    impacts:
+      - API strategy
+      - Data sharing obligations
+      - Customer consent
+      - Competitive data access
+    driven_by:
+      - FIDA regulation proposal
+      - PSD3/PSR framework
+      - Data economy policy
+    position: Monitor & Prepare
+    associated_working_groups:
+      - name: Berlin Group
+        url: https://www.berlin-group.org
+      - name: EBA Open Finance WG
+        url: ''
+      - name: BdB Arbeitsgruppe Open Banking
+        url: ''
+  - id: 8
+    title: "[UPDATE NECESSARY] PSD3/PSDR und Request to Pay (R2P)"
+    category: Banking Regulatory & Trends
+    score: 8
+    priority: High
+    horizon: 6–18 months
+    description: |-
+      The Payment Services Directive Review (PSDR) will update SCA rules and liability frameworks. Simultaneously, SEPA Request-to-Pay is gaining adoption as a structured messaging layer enabling invoice-triggered payment flows.
+    management_summary: |-
+      PSDR is a compliance maintenance task; R2P is the growth opportunity. R2P for SME invoice collection is the most commercially actionable near-term overlay product on our instant payment infrastructure. A focused launch for the top-200 corporate clients is the recommended first move.
+    extended_description: |-
+      PSDR (PSD3 + PSR combined) maintains the SCA architecture but introduces refined exemptions (e.g. transaction risk analysis thresholds adjusted for inflation), updated liability rules for APP fraud (shifting more liability to the sending PSP), and performance benchmarks for TPP access APIs. The parallel development of SEPA Request-to-Pay (EPC SRTP scheme) creates a structured, consent-based alternative to direct debit. R2P messages are sent by a creditor to a debtor via their respective PSPs; the debtor approves or declines payment within a defined window. This model is particularly well-suited to B2B invoice settlement, subscription billing, and regulated collections. German corporate clients are actively requesting R2P capability for accounts receivable automation.
+    risks:
+      - |-
+        PSDR APP fraud liability shift increases our financial exposure for push payment fraud on instant rails.
+      - |-
+        SCA exemption changes (PSDR) may require updates to our transaction risk analysis models and thresholds.
+      - |-
+        R2P adoption depends on both creditor and debtor PSP participation; network effects take time to develop.
+      - |-
+        Competing proprietary A2A payment schemes (PayPal, Klarna) may pre-empt R2P in consumer-facing use cases.
+    chances:
+      - |-
+        R2P enables complete accounts receivable automation for SME and corporate clients — a high-value, sticky treasury product.
+      - |-
+        R2P for e-commerce checkout is a direct debit replacement with better conversion and lower chargeback exposure.
+      - |-
+        PSDR's cleaner SCA exemption framework reduces authentication friction for low-risk transactions, improving conversion.
+      - Early R2P creditor-side implementation positions us as the leading B2B payment
+        bank in the region.
+    sources:
+      - label: 'EPC: SEPA Request-to-Pay Rulebook v2.0'
+        url: |-
+          https://www.europeanpaymentscouncil.eu/document-library/rulebooks/sepa-request-pay-srtp-scheme-rulebook
+      - label: 'European Commission: PSD3/PSR Proposal'
+        url: https://finance.ec.europa.eu/publications/proposal-payment-services-regulation_en
+      - label: 'Deutsche Bundesbank: Zahlungsverkehrsbericht 2024'
+        url: https://www.bundesbank.de/de/aufgaben/unbarer-zahlungsverkehr/zahlungsverkehr-und-abwicklungssysteme
+    tags: []
+    stakeholders:
+      - 6
+      - 7
+      - 3
+    actions:
+      - description: Track PSDR legislative process and update internal SCA and liability
+          policy documentation.
+        status: in-progress
+      - description: |-
+          Build SEPA R2P creditor-side implementation for corporate clients, starting with recurring billing use cases.
+        status: open
+      - description: |-
+          Evaluate R2P for retail use cases (e.g. e-commerce checkout, utility billing) and prepare pilot proposal.
+        status: open
+      - description: Ensure TPP access infrastructure meets updated PSDR performance and
+          availability benchmarks.
+        status: open
+    impacts:
+      - SCA implementation
+      - Liability regime
+      - Payment initiation services
+      - R2P product launch
+    driven_by:
+      - PSR/PSD3 legislative revision
+      - EPC SRTP scheme
+      - EBA regulatory mandates
+    position: Implement & Shape
+    associated_working_groups:
+      - name: EPC SRTP WG
+        url: https://www.europeanpaymentscouncil.eu
+      - name: EBA PSD2 Expert Group
+        url: ''
+      - name: DK Arbeitsgruppe Zahlungsdienste
+        url: ''
   - id: 9
     title: "Wero"
     category: Digital Payments
@@ -777,7 +777,7 @@ topics:
           Action
         status: in-progress
       - description: |-
-           Action
+          Action
         status: open
     impacts:
       - impact 1
