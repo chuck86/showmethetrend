@@ -678,7 +678,10 @@ topics:
     score: 8
     priority: High
     horizon: 6–18 months
-    management_summary: "TBD"
+    management_summary: |
+        Text 
+
+        Text2
     description: "Text \
     \ \
     \ \nText 2"
