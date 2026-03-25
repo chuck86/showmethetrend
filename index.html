@@ -1777,7 +1777,8 @@ function applyLang() {
   if (db) {
     renderIndex();
     const detail = document.getElementById('view-detail');
-    if (detail && detail.style.display !== 'none' && window._currentTopicId) {
+    const detailVisible = detail && getComputedStyle(detail).display !== 'none';
+    if (detailVisible && window._currentTopicId) {
       showDetail(window._currentTopicId);
     }
   }
