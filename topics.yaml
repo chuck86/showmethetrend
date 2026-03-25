@@ -53,44 +53,33 @@ topics:
     priority: Low
     horizon: 36-60 months
     management_summary: |-
-      Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should
-      be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, supporting Banks in their
-      stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely. 
+      Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement potentially reducing correspondent banking costs by 30–60%. 
+      The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. 
+      However, supporting Banks in their stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely. 
       
-      US is driving further development and want to strengthen their position. ECB wants thought through regulation. Banks see the chances and significance of stablecoin technology 
-      and enforce further development (Qivalis).
-    description: |
-      Stablecoins are - in contrast to crypto currencies - pegged to (relatively) stable assets or currencies (EUR, USD). Evaluating the strategic opportunity
-      to integrate stablecoin rails into our payments infrastructure. 
+      US is driving further development and want to strengthen their position. ECB wants thought through regulation. Banks see the chances and significance of stablecoin technology and enforce further development (Qivalis).
+    description: |-
+      Stablecoins are - in contrast to crypto currencies - pegged to (relatively) stable assets or currencies (EUR, USD). Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. 
       
       Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.
-    extended_description: "Euro-denominated stablecoins — particularly those issued\
-    \ under the MiCA e-money token regime — are gaining traction as settlement instruments\
-    \ among tier-1 fintechs and some corporates. The primary use case is cross-border\
-    \ \nB2B payments where SWIFT latency and correspondent banking fees are pain points.\
-    \ Currently approx. 90% of market capitalization are dominated by US-stablecoins - Coins Tether (USDT) \
-    \ and USD Coin (USDC). Their market value doubled within 2 years and is now at approx. 225 blln USD. \
-    \ Paypal is extending the usability of its stablecoin PYUSD to other markets, including Europe. \
-    \ Mastercard recently acquierd a stablecoin expert BVNK. \n \
-    \ The already strong position of the US is expected to become even stronger. The proposed Genius Act \
-    \ legislation demands, that stablecoins are backed by liquid assets (e.g. USD) and shortterm US-government \
-    \ bonds. This creates a steady demand for US-bonds and might make it interesting for companies to move \
-    \ to the US.\n \
-    \ There are also more concerned views on stablecoins. The Financial Action Task Force (FATF) fears an \
-    \ increase in illegal cross-country financial flows/transactions. International payment transactions are \
-    \ only loosely regulated.ECB and BIS see a potential danger that stablecoins might have a destabilizing \
-    \ effect on the economy in emerging markets by driving out local currencies. \n \
-    \ In the EU, a european banking consortium is driving the establishment of Qivalis \
-    \ (a MiCAR-compliant stablecoin issuer supervised by the Dutch central bank). The goal is to issue a regulated \
-    \ euro stablecoin. As of December 2025, the consortium consists of 11 members. DZ Bank, Banca Sella, BNP Paribas, \
-    \ CaixaBank, Danske Bank, DekaBank, ING, xKBC, Raiffeisen Bank International, SEB, and UniCredit. Market entry is \
-    \ targeted for the second half of 2026.\
-    \ Integration for banks would require changes to their treasury management system, a new token\
-    \ custody model, and updated AML/CFT screening procedures for \non-chain transactions.\
-    \ The technology stack is mature (Ethereum L2, Polygon, or private permissioned\
-    \ chains), but the regulatory treatment of stablecoin-settled transactions for\
-    \ capital and liquidity purposes is still being \ninterpreted. Our key differentiator\
-    \ could be a white-label stablecoin settlement corridor offered to corporate clients."
+    extended_description: |-
+      Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border
+      B2B payments where SWIFT latency and correspondent banking fees are pain points.
+      
+      Currently approx. 90% of market capitalization are dominated by US-stablecoins - Coins Tether (USDT) and USD Coin (USDC). Their market value doubled within 2 years and is now at approx. 225 blln USD. Paypal is extending the 
+      usability of its stablecoin PYUSD to other markets, including Europe. Mastercard recently acquierd a stablecoin expert BVNK.
+      
+      The already strong position of the US is expected to become even stronger. The proposed Genius Act legislation demands, that stablecoins are backed by liquid assets (e.g. USD) and shortterm US-government 
+      bonds. This creates a steady demand for US-bonds and might make it interesting for companies to move to the US.
+      
+      There are also more concerned views on stablecoins. The Financial Action Task Force (FATF) fears an increase in illegal cross-country financial flows/transactions. International payment transactions are 
+      only loosely regulated.ECB and BIS see a potential danger that stablecoins might have a destabilizing effect on the economy in emerging markets by driving out local currencies. 
+      
+      In the EU, a european banking consortium is driving the establishment of Qivalis (a MiCAR-compliant stablecoin issuer supervised by the Dutch central bank). The goal is to issue a regulated euro stablecoin. As of December 2025, 
+      the consortium consists of 11 members. DZ Bank, Banca Sella, BNP Paribas, CaixaBank, Danske Bank, DekaBank, ING, xKBC, Raiffeisen Bank International, SEB, and UniCredit. Market entry is targeted for the second half of 2026.
+      Integration for banks would require changes to their treasury management system, a new token custody model, and updated AML/CFT screening procedures for \non-chain transactions. The technology stack is mature (Ethereum L2, Polygon, 
+      or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being \ninterpreted. Our key differentiator could be a white-label stablecoin settlement corridor 
+      offered to corporate clients.
     risks:
       - |-
         Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
