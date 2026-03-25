@@ -68,7 +68,7 @@ topics:
       Stablecoins sind Kryptowährungen, deren Wert an stabile Vermögenswerte wie US-Dollar oder Euro gebunden ist, im Gegensatz zu volatilen Coins wie Bitcoin. Sie werden durch Reserven (Fiat, Staatsanleihen oder andere Assets) abgesichert und dienen als zuverlässig(er)es Zahlungsmittel im Krypto-Ökosystem.
     description_en: |-
       Stablecoins are cryptocurrencies whose value is pegged to stable assets such as the US dollar or euro, unlike volatile coins such as Bitcoin. They are backed by reserves (fiat currency, government bonds, or other assets) and serve as a more reliable means of payment within the crypto ecosystem.
-    extended_description: |-
+    extended_description_en: |-
       Stablecoins are **blockchain-based means of payment** that are **pegged 1:1 to fiat currencies** (US dollar, euro) and/or backed by liquid assets (e.g., government bonds).
   
       Unlike volatile cryptocurrencies such as Bitcoin, they serve as a **stable bridge** within blockchains – ideal for parking capital without fiat conversion or for exploiting **arbitrage opportunities** between exchanges.
@@ -109,30 +109,54 @@ topics:
         
       ## Extended Use Cases
       
-      - **B2B Payments**: Low latency/fees vs. correspondent banks. **24/7 processing**     
+      - **B2B Payments**: Low latency/fees vs. correspondent banks. **24/7 processing**    
       - **DeFi/IoT**: Automated micropayments via smart contracts.     
-      - **Inclusion**: **Bank account replacement** in emerging markets; IoT automation through smart contracts.    
+      - **Inclusion**: **Bank account replacement** in emerging markets; IoT automation through smart contracts.      
       - **Trading/DeFi**: Liquidity in AMMs, yield farming without fiat currency intermediaries.
         
-      Stablecoins are evolving from crypto niches to **regulated global payment instruments** – with traditional financial institutions as new key players.
-    extended_description_en: |-
-      Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border
-      B2B payments where SWIFT latency and correspondent banking fees are pain points.
+        Stablecoins are evolving from crypto niches to **regulated global payment instruments** – with traditional financial institutions as new key players.
+    extended_description: |-
+      Stablecoins sind **Blockchain-basierte Zahlungsmittel**, die **1:1 an Fiat-Währungen** (US-Dollar, Euro) gebunden und/oder durch liquide Vermögenswerte (z.B. Staatsanleihen) abgesichert sind. 
+      Im Gegensatz zu volatilen Kryptowährungen wie Bitcoin dienen sie als **stabile Brücke** innerhalb von Blockchains – ideal zum Parken von Kapital ohne Fiat-Konvertierung oder zum Ausnutzen von **Arbitrage-Chancen** zwischen Börsen.
+    
+      ## Wesentliche Eigenschaften 
       
-      Currently approx. 90% of market capitalization are dominated by US-stablecoins - Coins Tether (USDT) and USD Coin (USDC). Their market value doubled within 2 years and is now at approx. 225 blln USD. Paypal is extending the 
-      usability of its stablecoin PYUSD to other markets, including Europe. Mastercard recently acquierd a stablecoin expert BVNK.
+      - **Wertstabilität**: Fiat-gebundene Stablecoins wie USDT (Tether) oder USDC machen **99% des Marktes** aus, Euro-Varianten (EURC) folgen mit <1%.
+      - **Primäre Nutzung**: Brücke im Kryptohandel (Krypto → Stablecoin → anderes Krypto), ohne Fiat-Konvertierung; Basis für **DeFi**-Protokolle (Lending, DEX).
+      - **Vorteile**: Nahtlose Integration in **Smart Contracts** für automatisierte Zahlungen, z.B. IoT-Geräte; Alternative zu Bankkonten in unterbankten Regionen.
       
-      The already strong position of the US is expected to become even stronger. The proposed Genius Act legislation demands, that stablecoins are backed by liquid assets (e.g. USD) and shortterm US-government 
-      bonds. This creates a steady demand for US-bonds and might make it interesting for companies to move to the US.
+      ## Markt- und Wachstumsdynamik 
       
-      There are also more concerned views on stablecoins. The Financial Action Task Force (FATF) fears an increase in illegal cross-country financial flows/transactions. International payment transactions are 
-      only loosely regulated.ECB and BIS see a potential danger that stablecoins might have a destabilizing effect on the economy in emerging markets by driving out local currencies. 
+      - **Marktdominanz**: **Tether (USDT)** und **USD Coin (USDC)** kontrollieren **~90%** eines Marktes, der sich in zwei Jahren auf **$225 Mrd.** verdoppelt hat (BIZ-Daten).
+      - **Europäischer Markt**: Noch **frühphasig**, MiCA-Regulierung (seit 2024) schafft Rahmen für eMoney-Stablecoins; MiCA-eMoney-Tokens gewinnen an **B2B-Relevanz** bei Fintechs/Unternehmen für **Cross-Border-Zahlungen** (SWIFT-Alternative, **60% Kostensenkung**). Euro-Varianten <1% Marktanteil.
+      - **Wachstumstreiber**: Grenzüberschreitender Zahlungsverkehr (**Kostensenkung bis 60%** vs. traditionelle Banken), **DeFi-Anwendungen** (Lending, DEX) und **Smart-Contract-Zahlungen** für IoT.
       
-      In the EU, a european banking consortium is driving the establishment of Qivalis (a MiCAR-compliant stablecoin issuer supervised by the Dutch central bank). The goal is to issue a regulated euro stablecoin. As of December 2025, 
-      the consortium consists of 11 members. DZ Bank, Banca Sella, BNP Paribas, CaixaBank, Danske Bank, DekaBank, ING, xKBC, Raiffeisen Bank International, SEB, and UniCredit. Market entry is targeted for the second half of 2026.
-      Integration for banks would require changes to their treasury management system, a new token custody model, and updated AML/CFT screening procedures for \non-chain transactions. The technology stack is mature (Ethereum L2, Polygon, 
-      or private permissioned chains), but the regulatory treatment of stablecoin-settled transactions for capital and liquidity purposes is still being \ninterpreted. Our key differentiator could be a white-label stablecoin settlement corridor 
-      offered to corporate clients.
+      ## Finanzdienstleister-Engagement 
+        
+      **Traditionelle Player** drängen nach: **PayPal** expandiert **PYUSD** (seit 2023 USA) auf **70 Märkte** inkl. Europa; **Mastercard** übernimmt **BVNK** als Stablecoin-Spezialisten.
+        
+      Europäisches Konsortium (**Qivalis**, MiCAR-konform unter niederländischer DNB-Aufsicht) mit **11 Banken** (DZ Bank, BNP Paribas, ING, UniCredit u.a.) plant **Euro-Stablecoin**-Launch H2 2026. Insgesamt befindet sich Europa noch in einer **frühen Wachstumsphase** – MiCA-Regulierung (seit 2024) schafft
+      Klarheit für **eMoney Stablecoins** (1:1-Reserven).
+      
+      ## Regulatorische Rahmenbedingungen 
+      - **USA (Genius Act)**: Pflicht zur **liquiden US-Assets** (Dollar, T-Bills) sichert die Nachfrage nach Staatsanleihen und sperrt Emittenten.
+      - **Europa (MiCA)**: Stärke 1:1-Reserven, Lizenzpflicht; **Qivalis** (Konsortium mit **DZ Bank, ING, UniCredit** u.a., DNB-reguliert) plant **Euro-Stablecoin** H2 2026.
+      - **Risiken (FATF/EZB/BIZ)**: Gefahr illegaler Finanzströme durch lückenhafte Regulierung; **Währungsverdrängung** in Schwellenländern destabilisiert lokale Ökonomien.
+      
+      ## Implementierungsanforderungen 
+        
+      Banken brauchen **Treasury-Anpassungen**, **Token-Verwahrung**, **AML/CFT** für Off-Chain-Transaktionen.
+      Tech-Stack: **Ethereum L2** (Polygon) oder lizenzierte Chains; offene Fragen zu **Kapital-/Liquiditätsbehandlung**.
+      **AUS**: White-Label-**Stablecoin-Settlement-Korridor** als **USP** für Firmenkunden.
+      
+      ## Erweiterte Anwendungsfälle 
+    
+      - **B2B-Zahlungen**: Niedrige Latenz/Gebühren vs. Korrespondenzbanken. **24/7-Abwicklung**
+      - **DeFi/IoT**: Automatisierte Mikrozahlungen über Smart Contracts.
+      - **Inklusion**: **Bankkonto-Ersatz** in Schwellenlängern; IoT-Automatisierung durch Smart Contracts.
+      - **Trading/DeFi** : Liquidität in AMMs, Yield Farming ohne Fiat-Umwege.
+      
+      Stablecoins entwickeln sich von Krypto-Nischen zu **reguliertem globalem Zahlungsinstrument** – mit traditionellen Finanzinstituten als neuen Schlüsselakteuren.
     risks:
       - |-
         Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
