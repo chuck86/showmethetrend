@@ -362,7 +362,6 @@ topics:
 
       **Merchants:** A cost-effective debit option with expanded acceptance.
 
-
       **Customers:** Seamless experience across all channels/wallets.
 
       ## Timeline and Migration
@@ -373,6 +372,18 @@ topics:
 
       EURO Kartensysteme coordinates certifications, rollout, and training.
     risks:
+      - Hohe Investitionen in Technologie. Schulungen erforderlich.
+      - |- 
+        Dichte Marktstruktur: Internationale Systeme sind bereits etabliert. Marktkapitalisierung schwieriger zu erreichen. Nur relevant für den deutschen Markt.
+      - |-
+        Verzögerung der Migration birgt das Risiko, von der Integration von Apple Pay und Google Pay ausgeschlossen zu werden und Marktanteile an Visa/Mastercard Debit zu verlieren.
+      - |-
+        Die Komplexität der TSP-Integration wird möglicherweise unterschätzt, insbesondere bei Banken mit veralteten Ausgabesystemen.
+      - |-
+        Die Gebührenstruktur des Systems unter girocard 4.0 ist noch nicht finalisiert; Kostensteigerungen sind möglich.
+      - |-
+        Die Bereitschaft der Händler-Acquirer ist unterschiedlich; unvollständige Terminal-Upgrades könnten das Akzeptanznetzwerk fragmentieren.
+    risks_en:
       - High investmens in technology. Training necessary.
       - |-
         Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
