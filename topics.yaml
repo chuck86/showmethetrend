@@ -234,17 +234,53 @@ topics:
     score: 6
     priority: High
     horizon: 12–24 months
-    description: "The girocard scheme is undergoing a fundamental modernisation to support\
-    \ contactless mobile payments, NFC-based wallets, and online e-commerce use \n\
-    cases. girocard 4.0 introduces a new technical architecture enabling tokenisation\
-    \ and digital wallet integration."
-    management_summary: "girocard 4.0 is the most significant scheme modernisation since\
-    \ the introduction of contactless. Failure to migrate on time risks exclusion\
-    \ from \nApple Pay and Google Pay wallet ecosystems, which are now primary payment\
-    \ interfaces for under-40 demographics. Migration investment is non-negotiable;\
-    \ \nthe commercial opportunity lies in wallet-native product features.\nCurrently\
-    \ some banks are already provide their customers with in-app girocard transactions\
-    \ (android and iOS)"
+    management_summary: |-
+      Girocard 4.0 steht für die Transformation der klassischen deutschen Debitkarte hin zu einer voll digitalen, app- und walletfähigen Bezahllösung mit neuen Funktionen für Handel, Banken und Kund:innen. 
+
+      ## Strategische Einordnung
+
+      Die Weiterentwicklung zur „Girocard 4.0“ folgt einem klar definierten Fahrplan, der auf vier Säulen beruht: flexible Autorisierung von Zahlungen, In‑App‑Zahlungen, Integration in Wallets sowie Zusatzfunktionen für Kund:innenbindung 
+      (z.B. digitale Belege, Loyalty). Damit positioniert sich die girocard als moderne, europäische Alternative zu internationalen Debit‑Schemes und Big‑Tech‑Bezahllösungen und soll ihre führende Rolle im deutschen Kartenzahlungsverkehr 
+      in die mobile und digitale Welt überführen. 
+
+      ## Neue Funktionalitäten und Kunden-Erlebnis
+
+      Erste Institute – insbesondere Volks- und Raiffeisenbanken – ermöglichen inzwischen, die girocard direkt in der Banking‑App zu hinterlegen und sowohl auf Android als auch auf iOS mobil und kontaktlos am POS zu nutzen, ohne zwingend 
+      Apple Pay oder separate Pay‑Apps zu verwenden. Parallel wird die girocard für In‑App‑Zahlungen ausgebaut, sodass Kund:innen Zahlungen direkt innerhalb von Shopping‑Apps anstoßen können, ohne in eine externe Payment‑Umgebung wechseln 
+      zu müssen. Ergänzend sieht der Fahrplan Funktionen wie die Vor‑Autorisierung mit späterer finaler Belastung (z.B. Hotellerie, Autovermietung), digitale Kassenbons und die Anbindung an Bonus‑ und Loyalty‑Programme vor. 
+
+      ## Technologische und regulatorische Treiber
+
+      Technisch profitiert Girocard 4.0 von der breiten Unterstützung der digitalen girocard auf NFC‑fähigen Smartphones und Wearables sowie von neuen regulatorischen Vorgaben, die etwa die Öffnung der NFC‑Schnittstelle auf iOS für Banking‑Apps ermöglichen. 
+      Für Banken entsteht dadurch die Chance, eigene, integrierte Bezahl-Ökosysteme in ihren Apps zu etablieren, während Händler eine nahtlosere Customer Journey am POS und in Mobile‑Kanälen erhalten. Gleichzeitig bleibt die girocard in das etablierte deutsche 
+      Akzeptanznetz mit über einer Million Terminals eingebettet und kann so Innovation auf Basis bestehender Infrastruktur skalieren. 
+
+      ## Implikationen für Institute und Händler
+
+      Für Banken bedeutet Girocard 4.0, dass die eigene Mobile‑Banking‑App zunehmend zur zentralen Payment‑Plattform wird, die Karten-Tokenisierung, Wallet‑Integration und neue Autorisierungslogiken unterstützt und sich im Wettbewerb mit globalen Wallet‑Anbietern 
+      behaupten muss. Händler erhalten mit In‑App‑ und In‑Wallet‑girocard‑Zahlungen eine kosteneffiziente, im deutschen Markt vertraute Zahlart, die sich nahtlos in Omnichannel‑Konzepte (Online, Mobile, POS) integrieren lässt und zusätzliche Mehrwertservices (Belege, Loyalty) 
+      ermöglicht. Insgesamt markiert Girocard 4.0 damit den Übergang von der physischen „EC‑Karte“ hin zu einer wettbewerbsfähigen, digitalen Debit‑Plattform im europäischen Zahlungsverkehr. 
+    management_summary_en: |-
+      girocard 4.0 is the most significant scheme modernisation since the introduction of contactless. Failure to migrate on time risks exclusion from Apple Pay and Google Pay wallet ecosystems, which are now primary payment interfaces for under-40 demographics. 
+      Migration investment is non-negotiable; the commercial opportunity lies in wallet-native product features.
+      
+      Currently some banks are already provide their customers with in-app girocard transactions (android and iOS).
+    description: |-
+      Girocard 4.0 ist die Weiterentwicklung der deutschen Debitkarte zu einer digitalen Plattform mit In‑App‑Zahlungen (Android/iOS) und Wallet‑Integration.
+  
+      Erste Banken wie Volks- und Raiffeisenbanken bieten die girocard direkt in ihren Banking‑Apps für kontaktloses Bezahlen ohne Apple Pay.
+  
+      Neue Features umfassen Vor‑Autorisierungen, digitale Belege und Loyalty‑Funktionen.
+
+      Ziel: Wettbewerbsfähiges Debit‑Ökosystem für POS, Online und Mobile im deutschen Markt
+    description_en: |- 
+      Girocard 4.0 is the evolution of the German debit card into a digital platform with in-app payments (Android/iOS) and wallet integration.
+  
+      Starting banks, such as Volksbanken and Raiffeisenbanken, offer the girocard directly in their banking apps for contactless payments without Apple Pay.
+  
+      New features include pre-authorizations, digital receipts, and loyalty programs.
+
+      Goal: A competitive debit ecosystem for POS, online, and mobile in the German market.
     extended_description: "The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft,\
     \ replaces the proprietary girocard EMV kernel with a new tokenisation-capable\
     \ \narchitecture supporting Apple Pay, Google Pay, and German OEM wallet integrations,\
