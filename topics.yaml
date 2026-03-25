@@ -158,6 +158,19 @@ topics:
       
       Stablecoins entwickeln sich von Krypto-Nischen zu **reguliertem globalem Zahlungsinstrument** – mit traditionellen Finanzinstituten als neuen Schlüsselakteuren.
     risks:
+      - |- 
+        Regulatorische Unsicherheit bezüglich der Implementierungszeitpläne von MiCA und der EZB-Leitlinien zur Verwahrung von Stablecoins durch Banken.
+      - Liquiditäts- und Abwertungsrisiko bei Ausfall des zugrunde liegenden Stablecoin-Reservemanagements.
+      - Komplexität der Geldwäschebekämpfung und Terrorismusfinanzierungsbekämpfung: On-Chain-Transaktionen erfordern neue Screening-Tools und Mitarbeiterschulungen.
+      - Reputationsrisiko bei einem öffentlichen Scheitern einer Partnerbank oder eines Stablecoin-Emittenten während der Pilotphase.
+    chances:
+      - |- 
+        Wettbewerbsvorteil als Vorreiter im grenzüberschreitenden Firmenzahlungsverkehr innerhalb des deutschen Genossenschaftsbankensektors.
+      - Kostenreduzierung von 30–60 % bei internationalen Zahlungskorridoren im Vergleich zum SWIFT/Korrespondenzbankenmodell.
+      - Neue Einnahmequelle: Verkauf von White-Label-Stablecoin-Abwicklungsinfrastruktur an kleinere Regionalbanken.
+      - |- 
+        Positioniert das Institut aufgrund der sich überschneidenden technischen Architektur für eine Intermediärrolle im digitalen Euro.
+    risks_en:
       - |-
         Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
       - Liquidity and de-peg risk if the underlying stablecoin reserve management fails.
@@ -165,7 +178,7 @@ topics:
     training.'
       - Reputational risk if a partner bank or stablecoin issuer experiences a public
         failure during pilot.
-    chances:
+    chances_en:
       - |-
         First-mover advantage in corporate cross-border settlement within the German cooperative banking sector.
       - 30–60% cost reduction on international payment corridors compared to SWIFT/correspondent
