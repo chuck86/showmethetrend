@@ -397,6 +397,17 @@ topics:
         Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
     chances:
       - |-
+        Die Integration der mobilen Geldbörse von Girocard gewinnt Marktanteile im digitalen Zahlungsverkehr von Visa/Mastercard unter deutschen Debitkarteninhabern zurück.
+      - |-
+        Die E-Commerce-Funktionalität eröffnet einen neuen Akzeptanzkanal für girocard, der bisher im Online-Handel nicht vorhanden war.
+      - |-
+        Die Tokenisierungsinfrastruktur ist für die Verteilung des digitalen Euro und die zukünftige Integration von CBDC-Wallets wiederverwendbar.
+      - |-
+        Ein gestärktes inländisches System reduziert das Interbankenrisiko und hält die Zahlungsdaten innerhalb des deutschen Bankensystems.
+      - |-
+        Erweiterung des Geschäftsmodells durch das Angebot neuer Dienstleistungen auf Basis neuer technischer Möglichkeiten
+    chances_en:
+      - |-
         girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders
       - |-
         E-commerce capability opens a new acceptance channel for girocard, previously absent from online retail.
