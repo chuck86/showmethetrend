@@ -52,9 +52,8 @@ topics:
     score: 3
     priority: Low
     horizon: 36-60 months
-    management_summary: |
-      Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement
-      potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should
+    management_summary: |-
+      Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should
       be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, supporting Banks in their
       stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely. 
       
