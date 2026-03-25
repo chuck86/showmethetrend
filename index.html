@@ -113,6 +113,14 @@
   .git-link { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.15); padding: 0.35rem 0.8rem; border-radius: 3px; transition: all 0.18s; white-space: nowrap; }
   .git-link:hover { color: var(--cyan); border-color: rgba(0,212,255,0.4); }
   .git-link svg { width: 12px; height: 12px; }
+  .lang-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.1em; color: rgba(255,255,255,0.7); background: none;
+    border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 0.65rem;
+    border-radius: 3px; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+  }
+  .lang-btn:hover { color: var(--cyan); border-color: rgba(0,212,255,0.4); }
+  .lang-btn.lang-active { color: var(--cyan); border-color: rgba(0,212,255,0.5); }
 
 
 
@@ -530,18 +538,19 @@
 
   <!-- NAV LINKS — update href values and remove nav-badge when pages are ready -->
   <nav>
-    <button class="nav-link active" onclick="showDashboard()">Dashboard</button>
-    <button class="nav-link" onclick="showIndex()">Topics</button>
-    <a class="nav-link" href="#">Stakeholders <span class="nav-badge">soon</span></a>
-    <a class="nav-link" href="#">Reports <span class="nav-badge">soon</span></a>
-    <button class="nav-link" onclick="showEditor()">Editor</button>
+    <button class="nav-link active" onclick="showDashboard()" data-i18n="navDashboard">Dashboard</button>
+    <button class="nav-link" onclick="showIndex()" data-i18n="navTopics">Topics</button>
+    <a class="nav-link" href="#" data-i18n="navStakeholders">Stakeholders <span class="nav-badge" data-i18n="soon">soon</span></a>
+    <a class="nav-link" href="#" data-i18n="navReports">Reports <span class="nav-badge" data-i18n="soon">soon</span></a>
+    <button class="nav-link" onclick="showEditor()" data-i18n="navEditor">Editor</button>
   </nav>
 
   <div class="header-right">
     <span class="header-count" id="header-meta">—</span>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">DE</button>
     <a class="git-link" id="github-link" href="#" target="_blank">
       <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      Edit on GitHub
+      <span data-i18n="editGithub">Edit on GitHub</span>
     </a>
   </div>
 
@@ -551,12 +560,12 @@
 <div id="view-index" style="display:none">
   <div class="index-hero">
     <div class="hero-text">
-      <h1>Strategic Topics<br><span>Under Scrutiny</span></h1>
-      <p class="index-subtitle" id="hero-subtitle">A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.</p>
+      <h1>Strategic Topics<br><span data-i18n="heroSub1">Under Scrutiny</span></h1>
+      <p class="index-subtitle" id="hero-subtitle" data-i18n="heroDesc1">A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.</p>
     </div>
     <div class="search-wrap">
       <svg class="search-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="5"/><path d="M11 11l3 3"/></svg>
-      <input class="search-input" id="search-input" type="text" placeholder="Search topics…" oninput="applyFilters()">
+      <input class="search-input" id="search-input" type="text" placeholder="Search topics…" data-i18n-placeholder="searchPlaceholder" oninput="applyFilters()">
     </div>
   </div>
 
@@ -574,12 +583,12 @@
 <div id="index-wheel-tt"></div>
 
   <div class="cat-filter-section">
-    <div class="filter-label">Filter by category</div>
+    <div class="filter-label" data-i18n="filterCat">Filter by category</div>
     <div class="filter-bar" id="cat-filter-bar"></div>
   </div>
 
   <div class="filter-section">
-    <div class="filter-label">Filter by tag</div>
+    <div class="filter-label" data-i18n="filterTag">Filter by tag</div>
     <div class="filter-bar" id="filter-bar"></div>
   </div>
 
@@ -592,7 +601,7 @@
     <div class="detail-nav">
       <button class="back-btn" onclick="showIndex()">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
-        All Topics
+        <span data-i18n="allTopics">All Topics</span>
       </button>
       <div class="detail-breadcrumb">
         <span>Topics</span>
@@ -612,7 +621,7 @@
   <div class="dashboard-layout">
     <div class="index-hero">
       <div class="hero-text">
-        <h1>Strategic Topics<br><span>Radar Analysis</span></h1>
+        <h1>Strategic Topics<br><span data-i18n="heroSub2">Radar Analysis</span></h1>
         <p class="index-subtitle" style="max-width:unset;">All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.</p>
       </div>
     </div>
@@ -652,16 +661,16 @@
       </div>
       <div class="wheel-aside">
         <div class="aside-card">
-          <h4>Categories</h4>
+          <h4 data-i18n="categories">Categories</h4>
           <div id="wheel-legend-items"></div>
         </div>
         <div class="aside-card">
-          <h4>How to read</h4>
+          <h4 data-i18n="howToRead">How to read</h4>
           <div class="wheel-hint">
-            <span>● Inner ring = score 10</span>
-            <span>● Outer edge = score 1</span>
-            <span>● Topics may appear in multiple slices</span>
-            <span>● Hover for title · click to open</span>
+            <span data-i18n="hintInner">● Inner ring = score 10</span>
+            <span data-i18n="hintOuter">● Outer edge = score 1</span>
+            <span data-i18n="hintMultiple">● Topics may appear in multiple slices</span>
+            <span data-i18n="hintHover">● Hover for title · click to open</span>
           </div>
         </div>
       </div>
@@ -883,8 +892,8 @@
 
     <!-- SAVE BAR -->
     <div class="editor-actions">
-      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()">⬇ Download updated topics.yaml</button>
-      <button class="ed-reset-btn" onclick="edReset()">Clear form</button>
+      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()" data-i18n="downloadYaml">⬇ Download updated topics.yaml</button>
+      <button class="ed-reset-btn" onclick="edReset()" data-i18n="clearForm">Clear form</button>
       <span class="ed-status" id="ed-status"></span>
     </div>
 
@@ -1034,7 +1043,7 @@ function renderIndexWheel() {
   document.querySelectorAll('.iwdot').forEach(dot=>{
     const id=parseInt(dot.dataset.id), t=(db.topics||[]).find(x=>x.id===id);
     if(!t) return;
-    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.display='block'; tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${t('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.display='block'; tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
     dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
@@ -1079,7 +1088,7 @@ function renderIndex() {
 
   const c = document.getElementById('topics-container');
   if (!topics.length) {
-    c.innerHTML = `<div class="topics-grid"><div class="no-results">No topics match your filters.</div></div>`;
+    c.innerHTML = `<div class="topics-grid"><div class="no-results">${t('noTopicsMatch')}</div></div>`;
     return;
   }
   c.innerHTML = `<div class="topics-grid">${topics.map((t,i) => {
@@ -1106,6 +1115,7 @@ function renderIndex() {
 
 // ── Render detail ─────────────────────────────────────────────────────────────
 function showDetail(id) {
+  window._currentTopicId = id;
   const t = db.topics.find(x => x.id === id);
   if (!t) return;
   document.getElementById('view-index').style.display = 'none';
@@ -1135,42 +1145,42 @@ function showDetail(id) {
 
     ${t.management_summary ? `
     <div class="fade-up" style="animation-delay:0.05s">
-      <div class="section-label">Management Summary</div>
+      <div class="section-label">${t('sectionMgmtSummary')}</div>
       <div class="mgmt-summary"><div class="md-prose">${md(t.management_summary)}</div></div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.1s">
-      <div class="section-label">Description</div>
-      <div class="section-body md-prose">${md(t.description||'No description provided.')}</div>
+      <div class="section-label">${t('sectionDescription')}</div>
+      <div class="section-body md-prose">${md(t.description||t('noDescription'))}</div>
     </div>
 
     ${t.extended_description ? `
     <div class="fade-up" style="animation-delay:0.15s">
-      <div class="section-label">Extended Description</div>
+      <div class="section-label">${t('sectionExtended')}</div>
       <div class="section-body md-prose">${md(t.extended_description)}</div>
     </div>` : ''}
 
     ${(t.risks&&t.risks.length)||(t.chances&&t.chances.length) ? `
     <div class="fade-up" style="animation-delay:0.2s">
-      <div class="section-label">Risks &amp; Chances</div>
+      <div class="section-label">${t('sectionRiskChance')}</div>
       <div class="risks-chances-grid">
         <div class="rc-card chances">
-          <div class="rc-header"><span class="rc-dot"></span>Chances</div>
+          <div class="rc-header"><span class="rc-dot"></span>${t('sectionChances')}</div>
           <div class="rc-list">
-            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${t('noneIdentified')}</p>`}
           </div>
         </div>
         <div class="rc-card risks">
-          <div class="rc-header"><span class="rc-dot"></span>Risks</div>
+          <div class="rc-header"><span class="rc-dot"></span>${t('sectionRisks')}</div>
           <div class="rc-list">
-            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${t('noneIdentified')}</p>`}
           </div>
         </div>
       </div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.25s">
-      <div class="section-label">Short-Term Actions</div>
+      <div class="section-label">${t('sectionActions')}</div>
       <div class="actions-list">
         ${t.actions&&t.actions.length
           ? t.actions.map((a,i)=>{
@@ -1187,13 +1197,13 @@ function showDetail(id) {
 
     ${t.position ? `
     <div class="fade-up" style="animation-delay:0.28s">
-      <div class="section-label">Position</div>
+      <div class="section-label">${t('sectionPosition')}</div>
       <div class="md-prose" style="font-size:0.88rem;">${md(t.position)}</div>
     </div>` : ''}
 
     ${(t.associated_working_groups||[]).length ? `
     <div class="fade-up" style="animation-delay:0.29s">
-      <div class="section-label">Associated Working Groups</div>
+      <div class="section-label">${t('sectionWG')}</div>
       <div class="sources-list">
         ${(t.associated_working_groups||[]).map(wg => {
           const name  = typeof wg === 'string' ? wg : (wg.name || wg.label || '');
@@ -1212,7 +1222,7 @@ function showDetail(id) {
 
     ${t.sources&&t.sources.length ? `
     <div class="fade-up" style="animation-delay:0.3s">
-      <div class="section-label">Sources &amp; References</div>
+      <div class="section-label">${t('sectionSources')}</div>
       <div class="sources-list">
         ${t.sources.map(s => {
           const href = s.url && s.url !== '#' ? s.url : null;
@@ -1230,33 +1240,33 @@ function showDetail(id) {
 
   document.getElementById('detail-sidebar').innerHTML = `
     <div class="sidebar-card fade-up" style="animation-delay:0.12s">
-      <h3>Stakeholders</h3>
+      <h3>${t('sideStakeholders')}</h3>
       ${s.length ? s.map(p=>`
         <div class="stakeholder-item">
           <div class="stakeholder-avatar">${initials(p.name)}</div>
           <div><span class="stakeholder-name">${p.name}</span><span class="stakeholder-role">${p.role||''}</span></div>
         </div>`).join('')
-        : '<p style="color:var(--muted);font-size:0.82rem">No stakeholders assigned.</p>'}
+        : `<p style="color:var(--muted);font-size:0.82rem">${t('noStakeholders')}</p>`}
     </div>
     <div class="sidebar-card fade-up" style="animation-delay:0.22s">
-      <h3>Metadata</h3>
-      <div class="meta-row"><span class="meta-key">Category</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
-      <div class="meta-row"><span class="meta-key">Priority</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon||'—'}</span></div>
+      <h3>${t('sideMetadata')}</h3>
+      <div class="meta-row"><span class="meta-key">${t('metaCategory')}</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
+      <div class="meta-row"><span class="meta-key">${t('metaPriority')}</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">${t('metaHorizon')}</span><span class="meta-val">${t.horizon||'—'}</span></div>
       ${(t.impacts||[]).length ? `
       <div class="meta-row-block">
-        <span class="meta-key">Impacts</span>
+        <span class="meta-key">${t('metaImpacts')}</span>
         <div class="meta-pills">${(t.impacts||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
-      </div>` : `<div class="meta-row"><span class="meta-key">Impacts</span><span class="meta-val">—</span></div>`}
+      </div>` : `<div class="meta-row"><span class="meta-key">${t('metaImpacts')}</span><span class="meta-val">—</span></div>`}
       ${(t.driven_by||[]).length ? `
       <div class="meta-row-block">
-        <span class="meta-key">Driven By</span>
+        <span class="meta-key">${t('metaDrivenBy')}</span>
         <div class="meta-pills">${(t.driven_by||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
-      </div>` : `<div class="meta-row"><span class="meta-key">Driven By</span><span class="meta-val">—</span></div>`}
-      <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Actions</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
-      <div class="meta-row"><span class="meta-key">Sources</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
-      <div class="meta-row"><span class="meta-key">Score</span><span class="meta-val">${t.score} / 10</span></div>
+      </div>` : `<div class="meta-row"><span class="meta-key">${t('metaDrivenBy')}</span><span class="meta-val">—</span></div>`}
+      <div class="meta-row"><span class="meta-key">${t('metaUpdated')}</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">${t('metaActions')}</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
+      <div class="meta-row"><span class="meta-key">${t('metaSources')}</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
+      <div class="meta-row"><span class="meta-key">${t('metaScore')}</span><span class="meta-val">${t.score} / 10</span></div>
     </div>`;
 }
 
@@ -1356,7 +1366,7 @@ function renderWheel() {
   document.querySelectorAll('.wdot').forEach(dot=>{
     const id=parseInt(dot.dataset.id),t=(db.topics||[]).find(x=>x.id===id);
     if(!t) return;
-    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${t('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
     dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
     dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
@@ -1605,6 +1615,185 @@ window.addEventListener('popstate', e => {
 function checkHash() {
   const m = window.location.hash.match(/^#topic-(\d+)$/);
   if (m && db) showDetail(parseInt(m[1]));
+}
+
+// ── Internationalisation ──────────────────────────────────────────────────────
+let currentLang = 'en';
+
+const I18N = {
+  en: {
+    // Nav
+    navDashboard: 'Dashboard',
+    navTopics: 'Topics',
+    navStakeholders: 'Stakeholders',
+    navReports: 'Reports',
+    navEditor: 'Editor',
+    soon: 'soon',
+    editGithub: 'Edit on GitHub',
+    // Hero — Topics
+    heroSub1: 'Under Scrutiny',
+    heroDesc1: 'A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.',
+    searchPlaceholder: 'Search topics…',
+    // Hero — Dashboard
+    heroSub2: 'Radar Analysis',
+    heroDesc2: 'All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.',
+    // Filters
+    filterCat: 'Filter by category',
+    filterTag: 'Filter by tag',
+    // Dashboard aside
+    categories: 'Categories',
+    howToRead: 'How to read',
+    hintInner: '● Inner ring = score 10',
+    hintOuter: '● Outer edge = score 1',
+    hintMultiple: '● Topics may appear in multiple slices',
+    hintHover: '● Hover for title · click to open',
+    // Detail
+    allTopics: 'All Topics',
+    sectionMgmtSummary: 'Management Summary',
+    sectionDescription: 'Description',
+    sectionExtended: 'Extended Description',
+    sectionRiskChance: 'Risks & Chances',
+    sectionRisks: 'Risks',
+    sectionChances: 'Chances',
+    sectionActions: 'Short-Term Actions',
+    sectionPosition: 'Position',
+    sectionWG: 'Associated Working Groups',
+    sectionSources: 'Sources & References',
+    sideStakeholders: 'Stakeholders',
+    sideMetadata: 'Metadata',
+    metaCategory: 'Category',
+    metaPriority: 'Priority',
+    metaHorizon: 'Time Horizon',
+    metaImpacts: 'Impacts',
+    metaDrivenBy: 'Driven By',
+    metaUpdated: 'Last Updated',
+    metaActions: 'Actions',
+    metaSources: 'Sources',
+    metaScore: 'Score',
+    noStakeholders: 'No stakeholders assigned.',
+    noDescription: t('noDescription'),
+    noneIdentified: 'None identified.',
+    noTopicsMatch: '${t('noTopicsMatch')}',
+    // Header count
+    topicsOf: 'topics',
+    // Editor
+    clearForm: 'Clear form',
+    downloadYaml: '⬇ Download updated topics.yaml',
+    // To-Do & Newsfeed
+    todoLabel: 'To-Do',
+    newsfeedLabel: 'Newsfeed',
+    // Tooltip
+    ttScore: '/10',
+  },
+  de: {
+    navDashboard: 'Dashboard',
+    navTopics: 'Themen',
+    navStakeholders: 'Stakeholder',
+    navReports: 'Berichte',
+    navEditor: 'Editor',
+    soon: 'bald',
+    editGithub: 'Auf GitHub bearbeiten',
+    heroSub1: 'Im Fokus',
+    heroDesc1: 'Ein aktuelles Register strategischer Themen, gerankt nach geschäftlicher Relevanz, mit Stakeholder-Verantwortlichkeiten und kurzfristigen Maßnahmen.',
+    searchPlaceholder: 'Themen suchen…',
+    heroSub2: 'Radar-Analyse',
+    heroDesc2: 'Alle Themen nach Kategorie und Wichtigkeit. Themen näher am Zentrum haben eine höhere Bewertung. Klick auf einen Punkt zum Öffnen.',
+    filterCat: 'Nach Kategorie filtern',
+    filterTag: 'Nach Tag filtern',
+    categories: 'Kategorien',
+    howToRead: 'Lesehilfe',
+    hintInner: '● Innenring = Bewertung 10',
+    hintOuter: '● Außenrand = Bewertung 1',
+    hintMultiple: '● Themen können in mehreren Segmenten erscheinen',
+    hintHover: '● Hover für Titel · Klick zum Öffnen',
+    allTopics: 'Alle Themen',
+    sectionMgmtSummary: 'Management Summary',
+    sectionDescription: 'Beschreibung',
+    sectionExtended: 'Ausführliche Beschreibung',
+    sectionRiskChance: 'Risiken & Chancen',
+    sectionRisks: 'Risiken',
+    sectionChances: 'Chancen',
+    sectionActions: 'Kurzfristige Maßnahmen',
+    sectionPosition: 'Positionierung',
+    sectionWG: 'Zugehörige Arbeitsgruppen',
+    sectionSources: 'Quellen & Referenzen',
+    sideStakeholders: 'Stakeholder',
+    sideMetadata: 'Metadaten',
+    metaCategory: 'Kategorie',
+    metaPriority: 'Priorität',
+    metaHorizon: 'Zeithorizont',
+    metaImpacts: 'Auswirkungen',
+    metaDrivenBy: 'Treiber',
+    metaUpdated: 'Zuletzt aktualisiert',
+    metaActions: 'Maßnahmen',
+    metaSources: 'Quellen',
+    metaScore: 'Bewertung',
+    noStakeholders: 'Keine Stakeholder zugewiesen.',
+    noDescription: 'Keine Beschreibung vorhanden.',
+    noneIdentified: 'Keine identifiziert.',
+    noTopicsMatch: 'Keine Themen entsprechen den Filtern.',
+    topicsOf: 'Themen',
+    clearForm: 'Formular leeren',
+    downloadYaml: '⬇ Aktualisierte topics.yaml herunterladen',
+    todoLabel: 'Aufgaben',
+    newsfeedLabel: 'Newsfeed',
+    ttScore: '/10',
+  }
+};
+
+function t(key) {
+  return (I18N[currentLang] || I18N.en)[key] || (I18N.en[key] || key);
+}
+
+function applyLang() {
+  const btn = document.getElementById('lang-btn');
+  btn.textContent = currentLang === 'en' ? 'DE' : 'EN';
+  btn.classList.toggle('lang-active', currentLang === 'de');
+
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const val = t(key);
+    // Preserve child elements (e.g. nav-badge inside nav link)
+    if (el.children.length > 0) {
+      // Update only text nodes, not child elements
+      for (const node of el.childNodes) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+          // Find what the text content was from either language to replace
+          const enVal = I18N.en[key] || '';
+          const deVal = I18N.de[key] || '';
+          if (node.textContent.trim() === enVal.trim() || node.textContent.trim() === deVal.trim()) {
+            node.textContent = val;
+          }
+        }
+      }
+    } else {
+      el.textContent = val;
+    }
+  });
+
+  // Placeholder attributes
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+
+  // Dashboard subtitle (special: full <p> with style attr)
+  const dashSub = document.querySelector('#view-dashboard .index-subtitle');
+  if (dashSub) dashSub.textContent = t('heroDesc2');
+
+  // Re-render index and detail if visible
+  if (db) {
+    renderIndex();
+    const detail = document.getElementById('view-detail');
+    if (detail && detail.style.display !== 'none' && window._currentTopicId) {
+      showDetail(window._currentTopicId);
+    }
+  }
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'de' : 'en';
+  applyLang();
 }
 
 loadData().then(checkHash);
