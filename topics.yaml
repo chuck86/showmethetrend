@@ -52,22 +52,19 @@ topics:
     score: 3
     priority: Low
     horizon: 36-60 months
-    description: "Stablecoins are - in contrast to crypto currencies - pegged to (relatively)\
-    \ stable assets or currencies (EUR, USD). Evaluating the strategic opportunity\
-    \ to integrate stablecoin rails into our payments infrastructure. \nRelevant for\
-    \ cross-border settlement speed and cost reduction while navigating regulatory\
-    \ uncertainty in the EU and US."
-    management_summary: "Stablecoins are currently gaining more public interest. Stablecoin\
-    \ payment rails offer a credible medium-term alternative for cross-border settlement,\
-    \ potentially reducing correspondent banking costs by 30–60%. The MiCA \nframework\
-    \ provides a regulatory pathway in Europe but timelines remain uncertain. It should\
-    \ be noted, that there is a potential danger of stablecoins canibalizing other\
-    \ products including the payment sector. However, \nsupporting Banks in their\
-    \ stablecoin integration if we position ourselfes early on. We recommend a contained\
-    \ pilot programme while monitoring ECB policy closely. \n \
-    \ US is driving further development and want to strengthen their position. ECB wants \
-    \ thought through regulation. Banks see the chances and significance of stablecoin technology \
-    \ and enforce further development (Qivalis)."
+    management_summary: |
+      Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement
+      potentially reducing correspondent banking costs by 30–60%. The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should
+      be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. However, supporting Banks in their
+      stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely. 
+      
+      US is driving further development and want to strengthen their position. ECB wants thought through regulation. Banks see the chances and significance of stablecoin technology 
+      and enforce further development (Qivalis).
+    description: |
+      Stablecoins are - in contrast to crypto currencies - pegged to (relatively) stable assets or currencies (EUR, USD). Evaluating the strategic opportunity
+      to integrate stablecoin rails into our payments infrastructure. 
+      
+      Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.
     extended_description: "Euro-denominated stablecoins — particularly those issued\
     \ under the MiCA e-money token regime — are gaining traction as settlement instruments\
     \ among tier-1 fintechs and some corporates. The primary use case is cross-border\
