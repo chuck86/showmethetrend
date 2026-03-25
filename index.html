@@ -975,7 +975,7 @@ async function loadData() {
 function boot() {
   const meta = db.meta || {};
   document.title = meta.title || 'Strategic Intelligence';
-  document.getElementById('site-title').textContent = meta.organisation || 'Company Name';
+  document.getElementById('site-title').textContent = meta.organisation || 'Payment Enablement';
 
   const gh = document.getElementById('github-link');
   if (GITHUB_REPO) { gh.href = GITHUB_REPO; } else { gh.style.display = 'none'; }
@@ -1043,7 +1043,7 @@ function renderIndexWheel() {
   document.querySelectorAll('.iwdot').forEach(dot=>{
     const id=parseInt(dot.dataset.id), t=(db.topics||[]).find(x=>x.id===id);
     if(!t) return;
-    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${t('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.display='block'; tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${i18n('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.display='block'; tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
     dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
@@ -1088,7 +1088,7 @@ function renderIndex() {
 
   const c = document.getElementById('topics-container');
   if (!topics.length) {
-    c.innerHTML = `<div class="topics-grid"><div class="no-results">${t('noTopicsMatch')}</div></div>`;
+    c.innerHTML = `<div class="topics-grid"><div class="no-results">${i18n('noTopicsMatch')}</div></div>`;
     return;
   }
   c.innerHTML = `<div class="topics-grid">${topics.map((t,i) => {
@@ -1145,42 +1145,42 @@ function showDetail(id) {
 
     ${t.management_summary ? `
     <div class="fade-up" style="animation-delay:0.05s">
-      <div class="section-label">${t('sectionMgmtSummary')}</div>
+      <div class="section-label">${i18n('sectionMgmtSummary')}</div>
       <div class="mgmt-summary"><div class="md-prose">${md(t.management_summary)}</div></div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.1s">
-      <div class="section-label">${t('sectionDescription')}</div>
-      <div class="section-body md-prose">${md(t.description||t('noDescription'))}</div>
+      <div class="section-label">${i18n('sectionDescription')}</div>
+      <div class="section-body md-prose">${md(t.description||i18n('noDescription'))}</div>
     </div>
 
     ${t.extended_description ? `
     <div class="fade-up" style="animation-delay:0.15s">
-      <div class="section-label">${t('sectionExtended')}</div>
+      <div class="section-label">${i18n('sectionExtended')}</div>
       <div class="section-body md-prose">${md(t.extended_description)}</div>
     </div>` : ''}
 
     ${(t.risks&&t.risks.length)||(t.chances&&t.chances.length) ? `
     <div class="fade-up" style="animation-delay:0.2s">
-      <div class="section-label">${t('sectionRiskChance')}</div>
+      <div class="section-label">${i18n('sectionRiskChance')}</div>
       <div class="risks-chances-grid">
         <div class="rc-card chances">
-          <div class="rc-header"><span class="rc-dot"></span>${t('sectionChances')}</div>
+          <div class="rc-header"><span class="rc-dot"></span>${i18n('sectionChances')}</div>
           <div class="rc-list">
-            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${t('noneIdentified')}</p>`}
+            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${i18n('noneIdentified')}</p>`}
           </div>
         </div>
         <div class="rc-card risks">
-          <div class="rc-header"><span class="rc-dot"></span>${t('sectionRisks')}</div>
+          <div class="rc-header"><span class="rc-dot"></span>${i18n('sectionRisks')}</div>
           <div class="rc-list">
-            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${t('noneIdentified')}</p>`}
+            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${i18n('noneIdentified')}</p>`}
           </div>
         </div>
       </div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.25s">
-      <div class="section-label">${t('sectionActions')}</div>
+      <div class="section-label">${i18n('sectionActions')}</div>
       <div class="actions-list">
         ${t.actions&&t.actions.length
           ? t.actions.map((a,i)=>{
@@ -1197,13 +1197,13 @@ function showDetail(id) {
 
     ${t.position ? `
     <div class="fade-up" style="animation-delay:0.28s">
-      <div class="section-label">${t('sectionPosition')}</div>
+      <div class="section-label">${i18n('sectionPosition')}</div>
       <div class="md-prose" style="font-size:0.88rem;">${md(t.position)}</div>
     </div>` : ''}
 
     ${(t.associated_working_groups||[]).length ? `
     <div class="fade-up" style="animation-delay:0.29s">
-      <div class="section-label">${t('sectionWG')}</div>
+      <div class="section-label">${i18n('sectionWG')}</div>
       <div class="sources-list">
         ${(t.associated_working_groups||[]).map(wg => {
           const name  = typeof wg === 'string' ? wg : (wg.name || wg.label || '');
@@ -1222,7 +1222,7 @@ function showDetail(id) {
 
     ${t.sources&&t.sources.length ? `
     <div class="fade-up" style="animation-delay:0.3s">
-      <div class="section-label">${t('sectionSources')}</div>
+      <div class="section-label">${i18n('sectionSources')}</div>
       <div class="sources-list">
         ${t.sources.map(s => {
           const href = s.url && s.url !== '#' ? s.url : null;
@@ -1240,33 +1240,33 @@ function showDetail(id) {
 
   document.getElementById('detail-sidebar').innerHTML = `
     <div class="sidebar-card fade-up" style="animation-delay:0.12s">
-      <h3>${t('sideStakeholders')}</h3>
+      <h3>${i18n('sideStakeholders')}</h3>
       ${s.length ? s.map(p=>`
         <div class="stakeholder-item">
           <div class="stakeholder-avatar">${initials(p.name)}</div>
           <div><span class="stakeholder-name">${p.name}</span><span class="stakeholder-role">${p.role||''}</span></div>
         </div>`).join('')
-        : `<p style="color:var(--muted);font-size:0.82rem">${t('noStakeholders')}</p>`}
+        : `<p style="color:var(--muted);font-size:0.82rem">${i18n('noStakeholders')}</p>`}
     </div>
     <div class="sidebar-card fade-up" style="animation-delay:0.22s">
-      <h3>${t('sideMetadata')}</h3>
-      <div class="meta-row"><span class="meta-key">${t('metaCategory')}</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
-      <div class="meta-row"><span class="meta-key">${t('metaPriority')}</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
-      <div class="meta-row"><span class="meta-key">${t('metaHorizon')}</span><span class="meta-val">${t.horizon||'—'}</span></div>
+      <h3>${i18n('sideMetadata')}</h3>
+      <div class="meta-row"><span class="meta-key">${i18n('metaCategory')}</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaPriority')}</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaHorizon')}</span><span class="meta-val">${t.horizon||'—'}</span></div>
       ${(t.impacts||[]).length ? `
       <div class="meta-row-block">
-        <span class="meta-key">${t('metaImpacts')}</span>
+        <span class="meta-key">${i18n('metaImpacts')}</span>
         <div class="meta-pills">${(t.impacts||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
-      </div>` : `<div class="meta-row"><span class="meta-key">${t('metaImpacts')}</span><span class="meta-val">—</span></div>`}
+      </div>` : `<div class="meta-row"><span class="meta-key">${i18n('metaImpacts')}</span><span class="meta-val">—</span></div>`}
       ${(t.driven_by||[]).length ? `
       <div class="meta-row-block">
-        <span class="meta-key">${t('metaDrivenBy')}</span>
+        <span class="meta-key">${i18n('metaDrivenBy')}</span>
         <div class="meta-pills">${(t.driven_by||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
-      </div>` : `<div class="meta-row"><span class="meta-key">${t('metaDrivenBy')}</span><span class="meta-val">—</span></div>`}
-      <div class="meta-row"><span class="meta-key">${t('metaUpdated')}</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
-      <div class="meta-row"><span class="meta-key">${t('metaActions')}</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
-      <div class="meta-row"><span class="meta-key">${t('metaSources')}</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
-      <div class="meta-row"><span class="meta-key">${t('metaScore')}</span><span class="meta-val">${t.score} / 10</span></div>
+      </div>` : `<div class="meta-row"><span class="meta-key">${i18n('metaDrivenBy')}</span><span class="meta-val">—</span></div>`}
+      <div class="meta-row"><span class="meta-key">${i18n('metaUpdated')}</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaActions')}</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaSources')}</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaScore')}</span><span class="meta-val">${t.score} / 10</span></div>
     </div>`;
 }
 
@@ -1366,7 +1366,7 @@ function renderWheel() {
   document.querySelectorAll('.wdot').forEach(dot=>{
     const id=parseInt(dot.dataset.id),t=(db.topics||[]).find(x=>x.id===id);
     if(!t) return;
-    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${t('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${i18n('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
     dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
     dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
@@ -1671,9 +1671,9 @@ const I18N = {
     metaSources: 'Sources',
     metaScore: 'Score',
     noStakeholders: 'No stakeholders assigned.',
-    noDescription: t('noDescription'),
+    noDescription: 'No description provided.',
     noneIdentified: 'None identified.',
-    noTopicsMatch: '${t('noTopicsMatch')}',
+    noTopicsMatch: 'No topics match your filters.',
     // Header count
     topicsOf: 'topics',
     // Editor
@@ -1741,7 +1741,7 @@ const I18N = {
   }
 };
 
-function t(key) {
+function i18n(key) {
   return (I18N[currentLang] || I18N.en)[key] || (I18N.en[key] || key);
 }
 
@@ -1750,38 +1750,30 @@ function applyLang() {
   btn.textContent = currentLang === 'en' ? 'DE' : 'EN';
   btn.classList.toggle('lang-active', currentLang === 'de');
 
-  // Update all data-i18n elements
+  // Update static data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
-    const val = t(key);
-    // Preserve child elements (e.g. nav-badge inside nav link)
-    if (el.children.length > 0) {
-      // Update only text nodes, not child elements
-      for (const node of el.childNodes) {
-        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-          // Find what the text content was from either language to replace
-          const enVal = I18N.en[key] || '';
-          const deVal = I18N.de[key] || '';
-          if (node.textContent.trim() === enVal.trim() || node.textContent.trim() === deVal.trim()) {
-            node.textContent = val;
-          }
-        }
-      }
-    } else {
+    const val = tr(key);
+    if (el.children.length === 0) {
+      // Leaf node — set directly
       el.textContent = val;
+    } else {
+      // Has child elements (e.g. nav link with badge span) — update first text node only
+      const textNode = [...el.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+      if (textNode) textNode.textContent = val + ' ';
     }
   });
 
   // Placeholder attributes
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    el.placeholder = t(el.dataset.i18nPlaceholder);
+    el.placeholder = tr(el.dataset.i18nPlaceholder);
   });
 
-  // Dashboard subtitle (special: full <p> with style attr)
+  // Dashboard subtitle
   const dashSub = document.querySelector('#view-dashboard .index-subtitle');
-  if (dashSub) dashSub.textContent = t('heroDesc2');
+  if (dashSub) dashSub.textContent = i18n('heroDesc2');
 
-  // Re-render index and detail if visible
+  // Re-render dynamic content
   if (db) {
     renderIndex();
     const detail = document.getElementById('view-detail');
