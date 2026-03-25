@@ -53,15 +53,65 @@ topics:
     priority: Low
     horizon: 36-60 months
     management_summary: |-
+      Stablecoins gewinnen aktuell zunehmend an öffentlichem Interesse. Stablecoin-Zahlungssysteme bieten eine glaubwürdige mittelfristige Alternative für grenzüberschreitende Zahlungen und können die Kosten des Korrespondenzbankwesens potenziell um 30–60 % senken.
+      Der MiCA-Rahmen bietet einen regulatorischen Weg in Europa, doch die Zeitpläne sind weiterhin ungewiss. Es besteht die Gefahr, dass Stablecoins andere Produkte, insbesondere im Zahlungsverkehr, verdrängen. Wir können Banken jedoch bei der Integration von Stablecoins 
+      unterstützen, wenn wir uns frühzeitig positionieren. Wir empfehlen ein begrenztes Pilotprogramm unter genauer Beobachtung der EZB-Politik.
+  
+      Die USA treiben die Entwicklung voran und wollen ihre Position stärken. Die EZB wünscht sich eine durchdachte Regulierung. Banken erkennen die Chancen und die Bedeutung der Stablecoin-Technologie und fördern deren Weiterentwicklung (Qivalis).
+    management_summary_en: |-
       Stablecoins are currently gaining more public interest. Stablecoin payment rails offer a credible medium-term alternative for cross-border settlement potentially reducing correspondent banking costs by 30–60%. 
       The MiCA framework provides a regulatory pathway in Europe but timelines remain uncertain. It should be noted, that there is a potential danger of stablecoins canibalizing other products including the payment sector. 
       However, supporting Banks in their stablecoin integration if we position ourselfes early on. We recommend a contained pilot programme while monitoring ECB policy closely. 
       
       US is driving further development and want to strengthen their position. ECB wants thought through regulation. Banks see the chances and significance of stablecoin technology and enforce further development (Qivalis).
     description: |-
-      Stablecoins are - in contrast to crypto currencies - pegged to (relatively) stable assets or currencies (EUR, USD). Evaluating the strategic opportunity to integrate stablecoin rails into our payments infrastructure. 
+      ## Stablecoins Übersicht
+
+      Stablecoins sind Kryptowährungen, deren Wert an stabile Vermögenswerte wie US-Dollar oder Euro gebunden ist, im Gegensatz zu volatilen Coins wie Bitcoin. Sie werden durch Reserven (Fiat, Staatsanleihen oder andere Assets) abgesichert und dienen als zuverlässig(er)es Zahlungsmittel im Krypto-Ökosystem.
+
+      ## Wesentliche Eigenschaften
+
+      - **Wertstabilität**: Fiat-gebundene Stablecoins wie USDT (Tether) oder USDC machen **99% des Marktes** aus, Euro-Varianten (EURC) folgen mit <1%.
+      - **Primäre Nutzung**: Brücke im Kryptohandel (Krypto → Stablecoin → anderes Krypto), ohne Fiat-Konvertierung; Basis für **DeFi**-Protokolle (Lending, DEX).
+      - **Vorteile**: Nahtlose Integration in **Smart Contracts** für automatisierte Zahlungen, z.B. IoT-Geräte; Alternative zu Bankkonten in unterbankten Regionen.
+
+      ## Markt-Adoption
+
+      Finanzdienstleister wie **PayPal** (PYUSD), **Mastercard** (Crypto Card mit Stablecoin-Settlement) und **Qivalis** (société de gestion mit Stablecoin-Produkten) sind aktiv.
+
+      Europa befindet sich in der **frühen Wachstumsphase** – MiCA-Regulierung (seit 2024) schafft Klarheit für **eMoney Stablecoins** (1:1-Reserven).
+
+      Globaler Stablecoin-Markt: >**$200 Mrd.** (Stand 2026), getrieben durch Cross-Border-Zahlungen und **RWA-Tokenisierung** (Real World Assets).
+
+      ## Use Cases
+
+      - **DeFi & Trading**: Liquidität in AMMs (Uniswap), Yield Farming ohne Fiat-Umwege.
+      - **Zahlungen**: Sofortüberweisungen (24/7), niedrige Fees vs. traditionelle Rails.
+      - **Unternehmen**: Treasury-Management, IoT-Mikrozahlungen via Smart Contracts.
+      - **Entwicklung**: Als **Bankkonto-Ersatz** in Schwellenländern; wachsender B2B-Einsatz für Supply-Chain-Finanzierung.
+    description_en: |-
+      ## Stablecoins Overview
+  
+      Stablecoins are cryptocurrencies whose value is pegged to stable assets such as the US dollar or euro, unlike volatile coins such as Bitcoin. They are backed by reserves (fiat currency, government bonds, or other assets) and serve as a more reliable means of payment within the crypto ecosystem.
+      ## Key Characteristics
       
-      Relevant for cross-border settlement speed and cost reduction while navigating regulatory uncertainty in the EU and US.
+      - **Value Stability**: Fiat-pegged stablecoins like USDT (Tether) or USDC make up **99% of the market**, with euro-linked versions (EURC) following at <1%.
+      - **Primary Use**: Bridge in crypto trading (crypto → stablecoin → other crypto), without fiat conversion; basis for **DeFi** protocols (lending, DEX).
+      - **Advantages**: Seamless integration into **smart contracts** for automated payments, e.g., IoT devices; alternative to bank accounts in underbanked regions.
+
+      ## Market Adoption
+      
+      Financial service providers such as **PayPal** (PYUSD), **Mastercard** (crypto card with stablecoin settlement), and **Qivalis** (management company with stablecoin products) are active.
+      
+      Europe is in the **early growth phase** – MiCA regulation (since 2024) provides clarity for **eMoney stablecoins** (1:1 reserves).
+      
+      Global stablecoin market: >**$200 billion** (as of 2026), driven by cross-border payments and **RWA tokenization** (real-world assets).
+      
+      ## Use Cases
+      - **DeFi & Trading**: Liquidity in AMMs (Uniswap), yield farming without fiat intermediaries.
+      - **Payments**: Instant transfers (24/7), low fees vs. traditional rails.
+      - **Companies**: Treasury management, IoT micropayments via smart contracts.
+      - **Developments**: As a **bank account replacement** in emerging markets; growing B2B use for supply chain financing.
     extended_description: |-
       Euro-denominated stablecoins — particularly those issued under the MiCA e-money token regime — are gaining traction as settlement instruments among tier-1 fintechs and some corporates. The primary use case is cross-border
       B2B payments where SWIFT latency and correspondent banking fees are pain points.
