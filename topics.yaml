@@ -281,23 +281,97 @@ topics:
       New features include pre-authorizations, digital receipts, and loyalty programs.
 
       Goal: A competitive debit ecosystem for POS, online, and mobile in the German market.
-    extended_description: "The girocard 4.0 initiative, driven by Deutsche Kreditwirtschaft,\
-    \ replaces the proprietary girocard EMV kernel with a new tokenisation-capable\
-    \ \narchitecture supporting Apple Pay, Google Pay, and German OEM wallet integrations,\
-    \ theirby (as a side-effect) also strengthening the national \npayment infrastructure\
-    \ (while reducing dependency from major international schemes) The scheme also\
-    \ introduces an e-commerce capability, addressing \nthe longstanding gap where\
-    \ girocard could not be used for online purchases without a co-badged scheme (Maestro,\
-    \ now being phased out). Token \nService Provider (TSP) integration is required\
-    \ at the issuer level; banks using Atruvia processing benefit from a shared migration\
-    \ path, but \nindependent processors must implement TSP connectivity separately.\
-    \ \nEURO Kartensysteme GmbH is acting as scheme manager, providing a roadmap.\n \
-    \ Girocard 2.0: e-commerce and in-app-transactions; \n girocard 3.0: e- and app-payments;\n \
-    \ girocard 4.0: convenience and added value.\nThe scheme timeline envisions full\
-    \ migration by end of 2026 with a transition period through 2027. \nThis planed\
-    \ extension closes a functional gap that is offered by (for instance) credit card\
-    \ schemes (rental car reservation, hotel booking, integration \nin third party\
-    \ wallets, in-app payments)."
+    extended_description: |-
+      Girocard 4.0 markiert die umfassende Digitalisierung der deutschen Debitkarte, initiiert von der Deutschen Kreditwirtschaft, um sie mit internationalen Standards (Wallets, E‑Commerce) gleichzuziehen.
+
+      ## Technische Grundlagen
+      
+      Der proprietäre EMV‑Kernel wird durch eine tokenisierungsfähige Architektur ersetzt, die Apple Pay, Google Pay und deutsche OEM‑Wallets (Samsung, Huawei) nativ integriert.
+
+      EURO Kartensysteme GmbH als Systemmanager definiert den Fahrplan:
+
+      **Girocard 2.0:** E‑Commerce und In‑App‑Transaktionen
+
+      **Girocard 3.0:** Erweiterte E‑/App‑Zahlungen
+
+      **Girocard 4.0:** Komfort & Mehrwert (digitale Belege, Loyalty)
+
+      TSP‑Anbindung (Token Service Provider) obligatorisch auf Emittentenebene; Atruvia-Kunden erhalten standardisierten Migrationspfad, unabhängige PSPs implementieren separat.
+
+      ## Neue Funktionalitäten
+      
+      E‑Commerce schließt die Lücke zu Kreditkarten (Maestro auslaufend): Online‑Käufe, Vor‑Autorisierungen (Hotels, Mietwagenreservierungen), In‑App‑Zahlungen direkt aus Banking‑Apps.
+
+      Erste Institute (Volks-/Raiffeisenbanken) bieten girocard in‑App für Android/iOS – kontaktlos am POS ohne Big‑Tech‑Wallets.
+
+      **Mehrwertservices:** Digitale Kassenbons, Loyalty‑Programme, flexible Belastungslogik.
+
+      ## Strategische Bedeutung
+      
+      **Nationale Souveränität:** Weniger Abhängigkeit von internationalen Schemes, Stärkung der deutschen Zahlungsinfrastruktur.
+
+      **Banken:** Eigene Apps werden Payment‑Hubs mit Omnichannel‑Integration (POS/Online/App).
+      
+      **Händler:** Kostengünstige Debit‑Option mit erweiterter Akzeptanz.
+      
+      **Kunden:** Nahtloses Erlebnis über alle Kanäle/Wallets.
+
+      ## Zeitplan und Migration
+      
+      Vollständige Migration bis Ende 2026, Übergangsphase bis 2027 mit parallelem Betrieb alter/neuer Kernel.
+
+      Atruvia-Kunden profitieren von einheitlichem Pfad; frühzeitige TSP‑Integration und Testumgebungen empfohlen.
+
+      EURO Kartensysteme koordiniert Zertifizierungen, Rollout und Schulungen.
+    extended_description_en: |-
+      Girocard 4.0 marks the comprehensive digitization of the German debit card, initiated by the German banking industry to bring it in line with international standards (wallets, e-commerce).
+
+      ## Technical Foundations
+
+      The proprietary EMV kernel is replaced by a tokenization-enabled architecture that natively integrates Apple Pay, Google Pay, and German OEM wallets (Samsung, Huawei).
+
+      EURO Kartensysteme GmbH, as system manager, defines the roadmap:
+
+      **Girocard 2.0:** E-commerce and in-app transactions
+
+      **Girocard 3.0:** Enhanced e-/app payments
+
+      **Girocard 4.0:** Convenience & added value (digital receipts, loyalty)
+
+      TSP (Token Service Provider) integration is mandatory at the issuer level; Atruvia customers receive a standardized migration path, independent PSPs implement separately.
+
+      **Girocard 2.0:** E-commerce and in-app transactions
+
+      **Girocard 3.0:** Enhanced e-/app payments
+
+      **Girocard 4.0:** Convenience & added value (digital receipts, loyalty)
+
+      **TOP Service Provider (TSP) integration is mandatory at the issuer level; Atruvia customers receive a standardized migration path, independent PSPs implement separately. ## New Functionalities
+
+      E-commerce closes the gap with credit cards (Maestro is being phased out): online purchases, pre-authorizations (hotels, rental car reservations), and in-app payments directly from banking apps.
+
+      The first institutions (cooperative banks/Raiffeisenbanks) offer girocard in-app payments for Android/iOS – contactless at the POS without Big Tech wallets.
+
+      **Value-added services:** Digital receipts, loyalty programs, and flexible debit logic.
+
+      ## Strategic Importance
+
+      **National sovereignty:** Reduced dependence on international schemes and strengthening of the German payment infrastructure.
+
+      **Banks:** Dedicated apps become payment hubs with omnichannel integration (POS/online/app).
+
+      **Merchants:** A cost-effective debit option with expanded acceptance.
+
+
+      **Customers:** Seamless experience across all channels/wallets.
+
+      ## Timeline and Migration
+
+      Full migration by the end of 2026, transition phase until 2027 with parallel operation of the old/new kernel.
+
+      Atruvia customers benefit from a unified path; early TSP integration and test environments are recommended.
+
+      EURO Kartensysteme coordinates certifications, rollout, and training.
     risks:
       - High investmens in technology. Training necessary.
       - |-
