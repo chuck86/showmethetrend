@@ -1137,7 +1137,7 @@ function showDetail(id) {
   document.getElementById('view-detail').style.display = 'block';
   document.getElementById('breadcrumb-title').textContent = t.title;
   window.scrollTo(0,0);
-  history.pushState({ topicId: id }, '', `#topic-${id}`);
+  try { history.pushState({ topicId: id }, '', `#topic-${id}`); } catch(e) {}
 
   const s = getStakeholders(t);
 
@@ -1302,7 +1302,7 @@ function showIndex() {
     document.getElementById(id).style.display = 'none');
   document.getElementById('view-index').style.display = 'block';
   document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===1));
-  history.pushState({}, '', window.location.pathname);
+  try { history.pushState({}, '', window.location.pathname); } catch(e) {}
   window.scrollTo(0,0);
 }
 
@@ -1484,6 +1484,8 @@ function edAddLinkedTopic(select) {
   container.appendChild(pill);
   select.value = '';
 }
+
+function edCheckDuplicate() {
   if (!db) return false;
   const val = document.getElementById('ed-title').value.trim().toLowerCase();
   const dup = val && (db.topics||[]).some(t => t.title.trim().toLowerCase() === val);
