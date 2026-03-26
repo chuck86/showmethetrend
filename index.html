@@ -1008,17 +1008,9 @@ function boot() {
   renderIndex();
   renderIndexWheel();
   renderWheel();
-  // Linked topics dropdown
-  const lt = document.getElementById('ed-linked-select');
-  if (lt && !lt.dataset.built) {
-    (db.topics||[]).forEach(tp => {
-      const o = document.createElement('option');
-      o.value = tp.id; o.textContent = `#${tp.id} ${tp.title}`;
-      lt.appendChild(o);
-    });
-    lt.dataset.built = '1';
-  }
-} (embedded on main page) ──────────────────────────────────────
+}
+
+// ── Index wheel (embedded on main page) ──────────────────────────────────────
 function renderIndexWheel() {
   if (!db) return;
   const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
@@ -1439,6 +1431,16 @@ function edPopulateStatic() {
       ss.appendChild(o);
     });
     ss.dataset.built = '1';
+  }
+  // Linked topics dropdown
+  const lt = document.getElementById('ed-linked-select');
+  if (lt && !lt.dataset.built) {
+    (db.topics||[]).forEach(tp => {
+      const o = document.createElement('option');
+      o.value = tp.id; o.textContent = `#${tp.id} ${tp.title}`;
+      lt.appendChild(o);
+    });
+    lt.dataset.built = '1';
   }
 }
 
