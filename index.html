@@ -280,6 +280,8 @@
   .meta-row-block:last-child { border-bottom: none; padding-bottom: 0; }
   .meta-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .meta-pill { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 2px; background: rgba(4,0,102,0.06); border: 1px solid rgba(4,0,102,0.15); color: var(--navy); font-weight: 500; }
+  .linked-chip { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.65rem; border-radius: 2px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3); color: #004f66; font-weight: 500; cursor: pointer; transition: background 0.15s, border-color 0.15s; white-space: nowrap; }
+  .linked-chip:hover { background: rgba(0,212,255,0.18); border-color: rgba(0,212,255,0.6); }
 
   .priority-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; }
   .priority-critical    { background: rgba(255,166,180,0.35); color: #7a1525; }
@@ -862,6 +864,19 @@
       <button class="ed-add-btn" onclick="edAddRow('wg')">+ Add Working Group</button>
     </div>
 
+    <!-- LINKED TOPICS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Linked Topics</div>
+      <div class="ed-multi-wrap">
+        <div class="ed-multi-row">
+          <select class="ed-select" id="ed-linked-select" onchange="edAddLinkedTopic(this)">
+            <option value="">— select a topic —</option>
+          </select>
+        </div>
+        <div class="ed-pills" id="ed-linked-pills"></div>
+      </div>
+    </div>
+
     <!-- RISKS -->
     <div class="ed-section">
       <div class="ed-section-title">Risks</div>
@@ -993,9 +1008,17 @@ function boot() {
   renderIndex();
   renderIndexWheel();
   renderWheel();
-}
-
-// ── Index wheel (embedded on main page) ──────────────────────────────────────
+  // Linked topics dropdown
+  const lt = document.getElementById('ed-linked-select');
+  if (lt && !lt.dataset.built) {
+    (db.topics||[]).forEach(tp => {
+      const o = document.createElement('option');
+      o.value = tp.id; o.textContent = `#${tp.id} ${tp.title}`;
+      lt.appendChild(o);
+    });
+    lt.dataset.built = '1';
+  }
+} (embedded on main page) ──────────────────────────────────────
 function renderIndexWheel() {
   if (!db) return;
   const cx=350,cy=350,oR=228,iR=50,GAP_PX=5;
@@ -1266,6 +1289,18 @@ function showDetail(id) {
       <div class="meta-row"><span class="meta-key">${i18n('metaUpdated')}</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
       <div class="meta-row"><span class="meta-key">${i18n('metaActions')}</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
       <div class="meta-row"><span class="meta-key">${i18n('metaSources')}</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
+      ${(t.linked_to||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">${i18n('metaLinkedTo')}</span>
+        <div class="meta-pills" style="gap:0.35rem;">
+          ${(t.linked_to||[]).map(lid => {
+            const linked = (db.topics||[]).find(x => x.id === lid);
+            return linked
+              ? `<span class="linked-chip" onclick="showDetail(${linked.id})" title="${linked.title}">#${linked.id} ${linked.title}</span>`
+              : '';
+          }).filter(Boolean).join('')}
+        </div>
+      </div>` : `<div class="meta-row"><span class="meta-key">${i18n('metaLinkedTo')}</span><span class="meta-val">—</span></div>`}
       <div class="meta-row"><span class="meta-key">${i18n('metaScore')}</span><span class="meta-val">${t.score} / 10</span></div>
     </div>`;
 }
@@ -1433,7 +1468,20 @@ function edAddPill(type, select) {
   select.value = '';
 }
 
-function edCheckDuplicate() {
+function edAddLinkedTopic(select) {
+  const val = parseInt(select.value);
+  if (!val) return;
+  const container = document.getElementById('ed-linked-pills');
+  if (container.querySelector(`[data-val="${val}"]`)) { select.value = ''; return; }
+  const tp = (db.topics||[]).find(x => x.id === val);
+  if (!tp) { select.value = ''; return; }
+  const pill = document.createElement('span');
+  pill.className = 'ed-pill';
+  pill.dataset.val = val;
+  pill.innerHTML = `#${tp.id} ${tp.title}<button class="pill-x" onclick="this.parentElement.remove()" title="Remove">×</button>`;
+  container.appendChild(pill);
+  select.value = '';
+}
   if (!db) return false;
   const val = document.getElementById('ed-title').value.trim().toLowerCase();
   const dup = val && (db.topics||[]).some(t => t.title.trim().toLowerCase() === val);
@@ -1502,8 +1550,9 @@ function edCollect() {
   const desc    = document.getElementById('ed-desc').value.trim();
   const extdesc = document.getElementById('ed-extdesc').value.trim();
 
-  const tags  = [...document.querySelectorAll('#ed-tags-pills .ed-pill')].map(p => p.dataset.val);
-  const shIds = [...document.querySelectorAll('#ed-sh-pills .ed-pill')].map(p => parseInt(p.dataset.val));
+  const tags     = [...document.querySelectorAll('#ed-tags-pills .ed-pill')].map(p => p.dataset.val);
+  const shIds    = [...document.querySelectorAll('#ed-sh-pills .ed-pill')].map(p => parseInt(p.dataset.val));
+  const linkedTo = [...document.querySelectorAll('#ed-linked-pills .ed-pill')].map(p => parseInt(p.dataset.val));
 
   const actions = [...document.querySelectorAll('#ed-actions-list .ed-dyn-row')].map(row => {
     const inputs = row.querySelectorAll('input,select');
@@ -1518,7 +1567,7 @@ function edCollect() {
     return { label: ins[0].value.trim(), url: ins[1].value.trim() };
   }).filter(s => s.label || s.url);
 
-  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
+  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmt, desc, extdesc, tags, shIds, linkedTo, actions, risks, chances, sources };
 }
 
 function edValidate(f) {
@@ -1551,6 +1600,7 @@ function edSave() {
     ...(f.extdesc && { extended_description: f.extdesc }),
     ...(f.risks.length   && { risks: f.risks }),
     ...(f.chances.length && { chances: f.chances }),
+    linked_to: f.linkedTo,
     ...(f.position       && { position: f.position }),
     ...(f.impacts.length && { impacts: f.impacts }),
     ...(f.drivenBy.length&& { driven_by: f.drivenBy }),
@@ -1588,8 +1638,10 @@ function edReset() {
   document.getElementById('ed-extdesc').value = '';
   document.getElementById('ed-tags-pills').innerHTML = '';
   document.getElementById('ed-sh-pills').innerHTML = '';
+  document.getElementById('ed-linked-pills').innerHTML = '';
   document.getElementById('ed-tags-select').value = '';
   document.getElementById('ed-sh-select').value = '';
+  document.getElementById('ed-linked-select').value = '';
   ['risks','chances','actions','sources','impacts','drivenby','wg'].forEach(t => document.getElementById(`ed-${t}-list`).innerHTML = '');
   document.getElementById('ed-position').value = '';
   document.getElementById('ed-dup-warning').style.display = 'none';
@@ -1670,6 +1722,7 @@ const I18N = {
     metaActions: 'Actions',
     metaSources: 'Sources',
     metaScore: 'Score',
+    metaLinkedTo: 'Linked To',
     noStakeholders: 'No stakeholders assigned.',
     noDescription: 'No description provided.',
     noneIdentified: 'None identified.',
@@ -1728,6 +1781,7 @@ const I18N = {
     metaActions: 'Maßnahmen',
     metaSources: 'Quellen',
     metaScore: 'Bewertung',
+    metaLinkedTo: 'Verknüpft mit',
     noStakeholders: 'Keine Stakeholder zugewiesen.',
     noDescription: 'Keine Beschreibung vorhanden.',
     noneIdentified: 'Keine identifiziert.',
