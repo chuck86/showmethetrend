@@ -468,7 +468,7 @@ topics:
       - name: Euro Retail Payments Board (ERPB)
         url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
   - id: 3
-    title: "[UPDATE NECESSARY] Open Banking"
+    title: "Open Banking"
     category: Banking Regulatory and Trends
     score: 5
     priority: Medium
@@ -495,7 +495,7 @@ topics:
       
       TBD
     management_summary_en: |-
-      
+
     description: |-
       Open Banking ist ein Konzept, das Banken dazu verpflichtet bzw. ermutigt, ihre Konto- und Transaktionsdaten über offene, standardisierte Programmierschnittstellen (APIs) für autorisierte 
       Drittanbieter zugänglich zu machen. Die Kontrolle verbleibt dabei stets beim Kunden: Nur mit seiner ausdrücklichen Zustimmung (Consent) dürfen Drittanbieter auf seine Daten zugreifen oder 
