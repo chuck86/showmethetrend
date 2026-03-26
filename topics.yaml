@@ -643,6 +643,10 @@ topics:
         url: https://www.berlin-group.org
       - name: EBA Open Finance WG
         url: ''
+    linked_to:
+      - 1
+      - 5
+      - 6
   - id: 4
     title: Digitaler Euro
     category: Digital Payments
