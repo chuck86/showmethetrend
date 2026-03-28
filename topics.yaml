@@ -506,6 +506,7 @@ topics:
       
       Kernprinzipien: Kundenzentriert (Consent-basiert) · Regulatorisch gesichert (PSD2/PSD3) · Technisch standardisiert (APIs) · Wettbewerbsfördernd
     description_en: |-
+      TBD
     extended_description: |-
       Open Banking beschreibt das Öffnen von Bankinfrastrukturen durch standardisierte APIs, die Drittanbietern (TPPs) mit Kundenzustimmung Zugriff auf Kontodaten und Zahlungsdienste ermöglichen. Es basiert primär auf der 
       EU-Verordnung PSD2, die erste Open APIs vorschreibt, und entwickelt sich zu Open Finance weiter. [coredo](https://coredo.eu/open-banking-in-2026-changes-in-licensing/)
@@ -589,6 +590,15 @@ topics:
       TBD
     risks:
       - |-
+        Verzögerungen in der Umsetzung oder Anpassungen des Scipes können sich auf Business-Cases auswirken
+      - |-
+        Datenqualität sowie deren Inhomogenität über unterschiedliche Systeme/Quellen hinweg können sich negativ auf die Entwicklung datenbasierter Produkte auswirken
+      - |-
+        DSGVO und Forderung zur Datenminimierung schänkt mögliche Use-Cases monetarisierbarer Finanzdaten ein.
+      - |-
+        Big-Tech mit Vorteil aufgrund Marktstellung und existierender Distributionskanäle/Dateninfrastruktur
+    risks_en:
+      - |-
         FIDA implementation delays or scope changes could undermine the business case for premium data products.
       - |-
         Data quality and standardisation issues across legacy systems may reduce the value of aggregated data products.
@@ -598,13 +608,18 @@ topics:
         Large tech platforms (Google, Apple) entering financial data aggregation with superior distribution channels.
     chances:
       - |-
+        FIDA schafft gesetzliche Grundlage zur Monetarisierung des Datenzugangs.
+      - |-
+        Erweiterung bestehender Open Banking Infrastruktur zu Open Finance 
+      - |-
+        Positionierung als etablierter, vertraulicher Dienstleister. Nutzung des etablierten Rufs als Abgrenzung zu Fin-Techs / Big Tech Unternehmen
+    chances_en:
+      - |-
         FIDA creates a legal framework for charging for data access, converting a cost centre into a revenue line.
       - |-
         Corporate treasury clients will pay a premium for enriched, real-time cash flow data and payment initiation APIs.
       - |-
         Positioning as a trusted data intermediary differentiates from pure-play fintechs who lack the institutional trust.
-      - |-
-        Developer ecosystem around our API portal can accelerate fintech partnership pipeline at low acquisition cost.
     sources:
       - label: 'European Commission: FIDA Proposal'
         url: https://finance.ec.europa.eu/publications/financial-data-access-fida_en
@@ -653,12 +668,22 @@ topics:
     score: 7
     priority: Medium-High
     horizon: 24–48 months
-    description: |-
-      The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks in payment flows, customer relationships, and deposit funding.
     management_summary: |-
-      The Digital Euro is a structural, long-cycle threat and opportunity that requires early engagement rather than a wait-and-see approach. The holding limit design will determine the disintermediation impact. Banks that participate actively in the intermediary model stand to gain a distribution role; those that disengage risk being bypassed entirely.
+      TBD
+    management_summary_en: |-
+      The Digital Euro is a structural, long-cycle threat and opportunity that requires early engagement rather than a wait-and-see approach. The holding limit design will determine the disintermediation impact. Banks that participate actively in the 
+      intermediary model stand to gain a distribution role; those that disengage risk being bypassed entirely.
+    description: |-
+      TBD
+    description_en: |-
+      The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks in payment flows, customer relationships, and deposit funding.
     extended_description: |-
-      The ECB's Digital Euro preparation phase (launched November 2023) focuses on rulebook development, technical architecture finalisation, and legislative progress. The ECB has proposed a holding limit of €3,000 per citizen to mitigate bank run risk during stress scenarios, though this is subject to legislative negotiation. Commercial banks would act as distributors (onboarding, KYC, wallet provision) under a supervised intermediary model — preserving the customer relationship but introducing a new settlement liability. The primary disintermediation risk is in transactional deposits: if the Digital Euro offers equivalent convenience to a bank account with ECB credit quality, switching costs for consumers decrease significantly. Banks face a structural question: do we proactively shape the distribution model, or minimise investment and react?
+      TBD
+    extended_description_en: |-
+      The ECB's Digital Euro preparation phase (launched November 2023) focuses on rulebook development, technical architecture finalisation, and legislative progress. The ECB has proposed a holding limit of €3,000 per citizen to mitigate bank run risk during stress scenarios, though this is subject to legislative negotiation. Commercial banks would 
+      act as distributors (onboarding, KYC, wallet provision) under a supervised intermediary model — preserving the customer relationship but introducing a new settlement liability. The primary disintermediation risk is in transactional deposits: 
+      if the Digital Euro offers equivalent convenience to a bank account with ECB credit quality, switching costs for consumers decrease significantly. Banks face a structural question: do we proactively shape the distribution model, or minimise 
+      investment and react?
     risks:
       - |-
         High holding limits (€3,000+) could trigger significant retail deposit outflows in stress scenarios, threatening funding stability.
