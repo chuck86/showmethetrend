@@ -1198,9 +1198,55 @@ topics:
     score: 10
     priority: Medium
     horizon: 6–24 months
-    management_summary: " MGMT Summary"
-    description: "description"
-    extended_description: "Extended description"
+    management_summary: |-
+      ## Aktueller Stand
+      
+      wero wurde am 2. Juli 2024 von der European Payments Initiative gestartet und ist derzeit in Deutschland, Frankreich und Belgien aktiv. Wikipedia Im Februar 2026 überschritt 
+      die Nutzerzahl die Marke von 50 Millionen. Wikipedia Seit November 2025 sind erste E-Commerce-Akzeptanzstellen in Deutschland, Frankreich und Belgien aktiv; für 2026 ist die 
+      Erweiterung auf den stationären Handel (POS) geplant. Banking
+      
+      ## Strategische Bedeutung
+      
+      wero ist die erste ernstzunehmende europäische Alternative zu PayPal, Visa und Mastercard im Retailzahlungsverkehr, die auf SEPA-Instant-Payment-Infrastruktur basiert – ohne 
+      Abhängigkeit von US-Intermediären. Für Banken und Händler bieten A2A-Zahlungen Kostenvorteile gegenüber kartenbasierten Systemen, regulatorische Anschlussfähigkeit im Sinne 
+      europäischer Zahlungssouveränität und technologische Flexibilität durch offene Integrationsarchitektur. Banking Mittelfristig sollen BNPL, Treueprogramme und digitale 
+      Identitätsfunktionen integriert werden.
+      
+      ## Handlungsempfehlungen
+      
+      - Aktive Positionierung als Issuing- und/oder Acquiring-Bank im wero-Ökosystem
+      - Zeitnahe Integration der wero-Zahlungsoption für Privat- und Firmenkunden sowie im E-Commerce
+      - Strategische Vorbereitung auf den POS-Rollout 2026 (NFC/QR) und BNPL-Erweiterungen
+      - Monitoring der Anbindung weiterer Länder (Niederlande/iDEAL-Migration, Österreich, Luxemburg)
+    description: |-
+      wero ist die von der European Payments Initiative (EPI) entwickelte europäische Mobile-Payment-Lösung, die seit Juli 2024 in Deutschland, Frankreich und Belgien aktiv ist. 
+      Technisch basiert wero auf der SEPA-Echtzeitüberweisung (Instant Payment) über bestehende Girokonten: Jede Transaktion wird direkt vom eigenen Bankkonto abgebucht und in 
+      Echtzeit gutgeschrieben – ohne separates Wallet-Guthaben oder Drittanbieter-App. Online Marktplatz Nutzer senden Geld per Handynummer oder E-Mail-Adresse; seit Herbst 2025 
+      sind erste E-Commerce-Funktionen verfügbar, für 2026 ist der stationäre Handel (POS per NFC und QR-Code) geplant. Ziel der EPI ist es, eine europäisch souveräne Alternative 
+      zu bestehenden US-dominierten Zahlungssystemen zu etablieren und dabei alle alltäglichen Zahlungsarten auf einer einzigen Plattform abzubilden.
+    extended_description: |-
+      Hintergrund & Struktur
+      hinter wero steht die European Payments Initiative (EPI) – ein Konsortium aus 16 europäischen Banken und Zahlungsdienstleistern mit Sitz in Brüssel, das EPI Company SE – eine in Belgien lizenzierte Zahlungsgesellschaft – gegründet hat. Online Marktplatz Medienberichten zufolge investieren die beteiligten Banken mehr als 4 Milliarden Euro in das gemeinsame Projekt; EPI wird von der Europäischen Zentralbank und der Europäischen Kommission unterstützt. Kartensicherheit wero gilt als zweiter Anlauf der europäischen Kreditwirtschaft nach dem gescheiterten Giropay/Paydirekt-Versuch.
+      Rollout-Chronologie
+      
+      Juli 2024: Launch in Deutschland (P2P-Zahlungen, zunächst zwei Banken)
+      September/November 2024: Launch in Frankreich und Belgien; 14 Mio. Nutzer bis November 2024
+      Mai 2025: wero-PRO (Kleingewerbe) bei Volks- und Raiffeisenbanken gestartet
+      November 2025: Start E-Commerce in Deutschland; erste Händler (u.a. Eventim) angebunden
+      Januar 2026: Beginn der iDEAL-zu-wero-Migration in den Niederlanden; PSA kündigt Anbindung Österreichs an
+      Februar 2026: 50 Mio. registrierte Nutzer; EuroPA-MoU für grenzüberschreitende P2P-Zahlungen unterzeichnet
+      Ab Mitte 2026: N26 integriert wero (Phase 1: P2P, Phase 2: Online-Zahlungen) für Kunden in Deutschland, Frankreich und den Niederlanden Neuebanken
+      
+      Händlerakzeptanz & Acquirer-Ökosystem
+      In Deutschland unterstützen unter anderem Buckaroo, Deutsche Bank, Nexi, Nuvei, Payabl, Payone, VR Payment, Stripe und Worldline den Rollout. IT Finanzmagazin Kritisch anzumerken bleibt, dass einzelne EPI-Gründungsmitglieder (Deutsche Bank Privatkunden, BNP Paribas/Consorsbank) noch kein vollständiges wero-Angebot für Endkunden bereitstellen. 2026 wird wero in Belgien, Frankreich, Luxemburg und den Niederlanden verfügbar sein; in den Niederlanden ist die schrittweise Migration des etablierten iDEAL-Systems auf wero geplant. IT Finanzmagazin
+      Zukünftige Entwicklungen
+      Für 2026 sind weitere Funktionen geplant: BNPL-Finanzierungen, Integration von Händlertreuekarten, Kostenteilung sowie NFC-gestützte Zahlung an der Ladenkasse. Wero Für 2027 ist grenzüberschreitende Interoperabilität mit den europäischen Partnern Bizum (Spanien), Bancomat (Italien), SIBS (Portugal) und Vipps MobilePay (Nordics) im E-Commerce und POS-Bereich geplant.
+      Regulatorischer Kontext
+      wero steht in direktem Einklang mit der EU-Politik zur digitalen Zahlungssouveränität. Die Instant Payment Regulation (IPR) und PSD3/PSR schaffen regulatorischen Rückenwind für A2A-Zahlungslösungen; wero positioniert sich zudem als potenzielle ergänzende Infrastruktur zum Digitalen Euro.
+      Technische Aspekte
+      wero basiert auf SCT-Inst (SEPA Instant Credit Transfer); Transaktionen werden in unter 10 Sekunden zwischen Girokonten abgewickelt. Die Integration für Endnutzer erfolgt direkt über die Banken-App (kein separates Wallet erforderlich). Die Authentifizierung erfolgt per Zwei-Faktor-Verfahren (PIN oder Biometrie). POS-Zahlungen werden 2026 via NFC und QR-Code umgesetzt, analog zu bestehenden Wallet-Lösungen.
+      Strategische Bedeutung
+      Für Banken als zentrale Dienstleister bietet wero die Möglichkeit, Zahlungsverkehrsmargen aus US-dominierten Systemen zurückzugewinnen und Kundenbindung durch banking-native Lösungen zu stärken. Die vollständige Abdeckung aller Banken ist für eine kritische Nutzermasse essenziell – fehlende Institute stellen das größte Risiko für den Netzwerkeffekt dar.
     risks:
       - |-
         Risk 1
