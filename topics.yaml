@@ -495,7 +495,7 @@ topics:
       
       TBD
     management_summary_en: |-
-
+      TBD
     description: |-
       Open Banking ist ein Konzept, das Banken dazu verpflichtet bzw. ermutigt, ihre Konto- und Transaktionsdaten über offene, standardisierte Programmierschnittstellen (APIs) für autorisierte 
       Drittanbieter zugänglich zu machen. Die Kontrolle verbleibt dabei stets beim Kunden: Nur mit seiner ausdrücklichen Zustimmung (Consent) dürfen Drittanbieter auf seine Daten zugreifen oder 
@@ -745,33 +745,44 @@ topics:
         url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
       - name: EPC Digital Euro WG
         url: ''
+    linked_to:
+      - 1
   - id: 5
     title: "eIDAS 2.0"
     category: Trusted Services
     score: 9
     priority: High
     horizon: 12–24 months
-    description: "The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU \
-    \ member states, creating both compliance obligations and a strategic opportunity to act as identity service provides. \n \
-    \ eIDAS comprises solutions for signatures, seals, timestamps, identification (eID, video-ident, etc.), further development to fulfill \
-    \ clients workflows and process requirements - B2C relevance."
-    management_summary: "eIDAS 2.0 is primarily a compliance topic in the near term but carries a genuine commercial opportunity: qualifying \
-    \ as a Trust Service Provider positions the bank as a core infrastructure player in the EU digital identity ecosystem. The investment \
-    \ required is moderate and largely overlaps with existing eKYC infrastructure. \n \
-    \ Huge potential (in theory at least). NCS already posesses (at least in large parts) the necessary infrastructure. Obligation to accept eIDAS \ 
-    \ identification creates pressure to implement."
-    extended_description: "eIDAS 2.0 (Regulation 910/2014 revised) harmonises digital identity trust levels across the EU, requiring member states \
-    \ to recognise each other's notified eID schemes at all assurance levels. For banks, the most relevant changes are: mandatory acceptance of \
-    \ eIDAS-compliant digital identities for KYC purposes, new obligations around qualified electronic signatures and seals, and the opportunity \
-    \ to register as a qualified Trust Service Provider (QTSP). QTSPs can offer electronic signature, timestamp, and identity verification services \
-    \ commercially. The regulation also creates a framework for attribute attestation services — banks could issue certified financial attribute \
-    \ attestations (income, account ownership) that third parties can verify without direct data access, a privacy-preserving model with significant \
-    \ commercial potential."
+    management_summary: |-
+      TBD
+    management_summary_en: |-
+      eIDAS 2.0 is primarily a compliance topic in the near term but carries a genuine commercial opportunity: qualifying 
+      as a Trust Service Provider positions the bank as a core infrastructure player in the EU digital identity ecosystem. The investment 
+      required is moderate and largely overlaps with existing eKYC infrastructure. 
+      Huge potential (in theory at least). NCS already posesses (at least in large parts) the necessary infrastructure. Obligation to accept eIDAS 
+      identification creates pressure to implement.
+    description: |-
+      TBD
+    description_en: |-
+      The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU 
+      member states, creating both compliance obligations and a strategic opportunity to act as identity service provides. 
+      eIDAS comprises solutions for signatures, seals, timestamps, identification (eID, video-ident, etc.), further development to fulfill 
+      clients workflows and process requirements - B2C relevance.
+    extended_description: |-
+      TBD
+    extended_description_en: |-
+      eIDAS 2.0 (Regulation 910/2014 revised) harmonises digital identity trust levels across the EU, requiring member states 
+      to recognise each other's notified eID schemes at all assurance levels. For banks, the most relevant changes are: mandatory acceptance of 
+      eIDAS-compliant digital identities for KYC purposes, new obligations around qualified electronic signatures and seals, and the opportunity 
+      to register as a qualified Trust Service Provider (QTSP). QTSPs can offer electronic signature, timestamp, and identity verification services 
+      commercially. The regulation also creates a framework for attribute attestation services — banks could issue certified financial attribute 
+      attestations (income, account ownership) that third parties can verify without direct data access, a privacy-preserving model with significant 
+      commercial potential.
     risks:
       - |-
         QTSP certification process is complex and time-consuming; underestimating the timeline risks missing early market positioning.
-      - Cross-border eID recognition may enable EU-wide identity providers to compete
-        in German KYC market.
+      - |- 
+        Cross-border eID recognition may enable EU-wide identity providers to compete in German KYC market.
       - |-
         Technical interoperability with diverse national eID systems (e.g. Italian SPID, French FranceConnect) requires significant integration work.
       - |-
