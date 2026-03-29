@@ -754,7 +754,27 @@ topics:
     priority: High
     horizon: 12–24 months
     management_summary: |-
-      TBD
+      ## Aktueller Stand
+      
+      Die überarbeitete Verordnung (EU) 2024/1183 wurde am 30. April 2024 im EU-Amtsblatt veröffentlicht und trat am 20. Mai 2024 in Kraft. Die Implementierung 
+      erfolgt phasenweise. Erste Wallet-Funktionalitäten wurden ab September 2024 in den Mitgliedstaaten integriert, die Kernvertrauensdienste sollten bis Ende 2025 vollständig 
+      betriebsbereit sein. Cclab Bis September 2026 sind alle EU-Mitgliedstaaten verpflichtet, die EUDI Wallet für ihre Bürger bereitzustellen. UTIMACO Deutschland plant die 
+      Bereitstellung einer Beta-Version Ende 2026 oder Anfang 2027.
+      
+      ## Strategische Bedeutung
+      
+      eIDAS 2.0 definiert eine neue Baseline für digitale Vertrauensdienste in Europa. Für Banken, Versicherungen und Fintechs verbindet sich das Zusammenspiel aus AMLR, eIDAS 2.0 
+      und der operativen Einführung der EUDI Wallet zu einer neuen Grundlage für Vertrauen, Sicherheit und Nutzererfahrung im digitalen Finanzökosystem. The Paypers KYC-Prozesse, 
+      Strong Customer Authentication (SCA) und digitales Onboarding müssen auf die neuen Standards ausgerichtet werden. Für Unternehmen in regulierten Sektoren – darunter Banken und 
+      Finanzdienstleister – entstehen konkrete Compliance-Pflichten: Sie müssen digitale Nachweise via EUDI Wallet akzeptieren, EU-definierte Sicherheitsniveaus erfüllen und ihre 
+      Systeme mit den aktuellen Implementing Acts in Einklang bringen. 
+      
+      ## Handlungsempfehlungen
+
+      - Gap-Analyse bestehender Identifizierungs-, Onboarding- und Signaturprozesse
+      - Frühzeitige Positionierung/Ausnutzen der bestehenden Positionieren als Trust Service Provider im EUDI-Wallet-Ökosystem
+      - Teilnahme an Pilotprogrammen und Sandbox-Umgebungen zur Risiko- und Chancenbewertung vor dem operativen Druck 2026/2027
+      - Laufendes Monitoring der Implementing Acts der EU-Kommission
     management_summary_en: |-
       eIDAS 2.0 is primarily a compliance topic in the near term but carries a genuine commercial opportunity: qualifying 
       as a Trust Service Provider positions the bank as a core infrastructure player in the EU digital identity ecosystem. The investment 
@@ -762,14 +782,49 @@ topics:
       Huge potential (in theory at least). NCS already posesses (at least in large parts) the necessary infrastructure. Obligation to accept eIDAS 
       identification creates pressure to implement.
     description: |-
-      TBD
+      eIDAS 2.0 ist die überarbeitete EU-Verordnung für elektronische Identifikation und Vertrauensdienste, die am 20. Mai 2024 in Kraft trat und die Verordnung von 2014 erheblich 
+      erweitert. Anders als die ursprüngliche eIDAS-Verordnung, bei der nationale eID-Systeme freiwillig waren, verpflichtet eIDAS 2.0 alle 27 EU-Mitgliedstaaten, Bürgern und Unternehmen 
+      auf Verlangen eine digitale Identitäts-Wallet bereitzustellen. 
+      Qualified-electronic-signature Das Rahmenwerk standardisiert digitale Identitäten, qualifizierte elektronische Signaturen und Vertrauensdienste auf EU-Ebene und schafft so eine 
+      grenzüberschreitend interoperable Infrastruktur. Für Banken sind insbesondere die Auswirkungen auf KYC-Prozesse, SCA und das digitale Onboarding zentral, da eIDAS 2.0 in direkter 
+      Wechselwirkung mit der Anti-Money-Laundering Regulation (AMLR) steht.
     description_en: |-
       The revised eIDAS regulation establishes a mandatory framework for cross-border digital identity recognition across all EU 
       member states, creating both compliance obligations and a strategic opportunity to act as identity service provides. 
       eIDAS comprises solutions for signatures, seals, timestamps, identification (eID, video-ident, etc.), further development to fulfill 
       clients workflows and process requirements - B2C relevance.
     extended_description: |-
-      TBD
+      ## Regulatorik & Zeitplan
+      
+      Die Verordnung (EU) 2024/1183 ist seit dem 20. Mai 2024 in Kraft; ihre Bestimmungen werden schrittweise bis 2026 anwendbar. Neue Anforderungen für die Fernidentifizierung nach Art. 
+      24 und dem Standard ETSI TS 119 461 werden ab Mai 2026 verpflichtend Namirial – betroffen sind insbesondere Qualified Trust Service Provider (QTSPs), die qualifizierte Zertifikate 
+      remote ausstellen. Das Ziel der EU ist eine aktive Adoptionsrate von 80 % bis 2030. UTIMACO
+      
+      ## Inhaltliche Schwerpunkte
+      
+      eIDAS 2.0 führt die EUDI Wallet als zentrales Instrument ein (siehe separates Kapitel). Darüber hinaus modernisiert die Verordnung das gesamte Vertrauensdienstökosystem: Qualifizierte 
+      Elektronische Signaturen (QES), qualifizierte Siegel, Zeitstempel und Archivierungsdienste werden auf neue Sicherheitsstandards gehoben. Für Banken sind die Überschneidungen mit AMLR 
+      und der EUDI Wallet besonders relevant: Compliance-Teams müssen ihre Verpflichtungen über beide Rahmenwerke hinweg abbilden, prüfen, wo Prozesse sich überschneiden, und erkunden, wo n
+      eue Vertrauensdienste Mehrwert schaffen können, statt lediglich Kosten zu verursachen. 
+      
+      ## Deutschland im EU-Kontext
+      
+      Auf dem European Summit on Digital Sovereignty haben mehr als 75 Unternehmen – darunter Vertreter aus Banken, Handel, Mobilität, Cybersicherheit und Telekommunikation – ein Memorandum 
+      of Understanding zur erfolgreichen Einführung der EUDI Wallet unterzeichnet. The Paypers Die Bundesagentur SPRIND demonstrierte bereits eine Beta-Version der deutschen EUDI Wallet; die 
+      finale Version ist für Ende 2026 oder Anfang 2027 geplant. Die Deutsche Kreditwirtschaft treibt Use Cases wie die Kontoeröffnung per Wallet und die Kombination von Altersverifikation 
+      mit Zahlungsinitiation aktiv voran.
+      
+      ## Technische Aspekte
+      
+      Für Technologieanbieter und Organisationen sollte die Auswahl von Plattformen und Vendoren auf die Alignment mit dem EU Architecture and Reference Framework (ARF) für EUDI Wallets und 
+      den eIDAS-2.0-Technologiestandards ausgerichtet sein. EveryCRED Relevante Standards umfassen W3C Verifiable Credentials, OpenID4VCI/OpenID4VP, SD-JWT sowie die EUCC-Zertifizierung. Für 
+      Banken als Relying Parties sind konforme Authentifizierungsflows, die Unterstützung selektiver Offenlegung und die Integration in nationale Wallet-Frameworks erforderlich.
+      
+      ## Strategische Bedeutung & Handlungsempfehlungen
+      
+      Für zentrale IT-Dienstleister im Bankensektor eröffnet eIDAS 2.0 die Möglichkeit, Vertrauensdienste, Identifizierungsinfrastruktur und QES-Lösungen als mandantenfähige Plattformdienste 
+      anzubieten und damit einen signifikanten Wettbewerbsvorteil aufzubauen. Wer jetzt gezielt Erfahrungen sammelt, kann Compliance-Risiken besser einschätzen und gleichzeitig Marktpotenziale 
+      erschließen – denn die Deadlines für 2026 und 2027 lassen wenig Zeit.
     extended_description_en: |-
       eIDAS 2.0 (Regulation 910/2014 revised) harmonises digital identity trust levels across the EU, requiring member states 
       to recognise each other's notified eID schemes at all assurance levels. For banks, the most relevant changes are: mandatory acceptance of 
@@ -842,6 +897,8 @@ topics:
         url: ''
       - name: PG eIDAS 2.0 Umsetzung
         url: ''
+    linked_to:
+      - 6
   - id: 6
     title: "EUDI Wallet"
     category: Trusted Services
