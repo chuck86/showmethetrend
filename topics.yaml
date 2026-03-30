@@ -1288,9 +1288,76 @@ topics:
     score: 6
     priority: Medium
     horizon: 6–24 months
-    management_summary: " MGMT Summary"
-    description: "description"
-    extended_description: "Extended description"
+    management_summary: |-
+      ## Aktueller Stand
+      Die Verbände der Deutschen Kreditwirtschaft (BVR, DSGV, VÖB und Bankenverband) haben am 1. Januar 2025 das giroAPI Scheme gestartet – europaweit das erste 
+      einheitliche API-Scheme für Zahlungen und Kontoinformationen. Voeb Im ersten Beitrittsfenster (Februar 2025) schlossen sich mehrere hundert Institute als 
+      Asset Holder an; der erste Asset Broker wurde im Mai 2025 aktiv, weitere folgten im August. The Paypers Das Sub-Scheme Request-to-Pay ist für 2026 in Planung.
+      Strategische Bedeutung
+      giroAPI ist die marktgetriebene deutsche Antwort auf einen standardisierten Open-Banking-Rahmen, der substanziell über die PSD2-Mindestanforderungen 
+      hinausgeht. Mit der möglichen Einführung von FIDA (Financial Data Access Regulation) könnte giroAPI zu einem wichtigen Baustein für die zukünftige 
+      Implementierung europäischer Open-Banking-Initiativen werden. The Paypers Für zentrale IT-Dienstleister bietet das Scheme eine Plattform zur Vermarktung 
+      standardisierter API-Konnektivität als Managed Service.
+      
+      ## Handlungsempfehlungen
+      
+      - Prüfung und Entwicklung giroAPI-basierter Mehrwertdienste (insb. Payment with Disposition, Micropayments, Financial Information)
+      - Frühzeitige Vorbereitung auf das Request-to-Pay Sub-Scheme 2026
+      - Strategische Kompatibilitätsprüfung mit dem SPAA Scheme der Berlin Group
+    management_summary_en: |-
+      TBD
+    description: |-
+      giroAPI ist das seit dem 1. Januar 2025 aktive API-Scheme der Deutschen Kreditwirtschaft für standardisierten Kontozugriff in Deutschland. Es basiert auf 
+      dem europaweiten openFinance API Framework der Berlin Group und ermöglicht aufsichtlich lizenzierten Drittanbietern, Zahlungen unter Einbeziehung ihrer 
+      Kunden kundenfreundlicher zu gestalten sowie Kontoinformationen gezielter abzurufen. Voeb Das Scheme hat eine modulare Struktur aus verschiedenen Sub-Schemes 
+      für Zahlungen, Kontoinformationen und künftig Request-to-Pay sowie Open Finance. giroAPI bietet Asset Holders einen zuverlässigen vertraglichen Rahmen für 
+      die Bereitstellung von API-Geschäftsvorfällen im Bereich Zahlungen und zukünftig auch in den Bereichen Open Finance und Request-to-Pay.
+    description_en: |-
+      TBD
+    extended_description: |-
+      ## Hintergrund & Regulatorik
+      
+      giroAPI wurde als Initiative der Deutschen Kreditwirtschaft ins Leben gerufen, um auf Basis des Berlin-Group-Standards ein marktgetriebenes, qualitativ 
+      hochwertiges API-Ökosystem zu etablieren. Es geht bewusst über die PSD2-Pflichtschnittstelle hinaus und bietet Premium-Dienste mit definierten 
+      Qualitätsstandards, vertraglichen Rahmenbedingungen und erweiterten Funktionalitäten. Der GBIC sieht eine stärkere technische und funktionale Konvergenz 
+      zwischen giroAPI und dem SPAA Scheme (SEPA Payment Account Access) als signifikante Möglichkeit, bestehende Investitionen zu sichern und die europäische 
+      Interoperabilität im Open-Banking-Umfeld voranzutreiben. 
+      
+      ## Struktur & Funktionalitäten
+      
+      Das Scheme ist modular aufgebaut:
+      
+      **Sub-Scheme Payments:** Enthält u.a. Payment with Disposition (der Asset Broker darf eine vorab autorisierte Zahlung auslösen – der Empfänger kann sicher 
+      sein, den angeforderten Betrag zu erhalten) und Micropayments (Kleinstzahlungen ohne SCA-Eingabe)
+      
+      **Sub-Scheme Financial Information:** Erweiterter Kontozugriff – erstmals können auch Spar-, Kredit- und Kartenkonten abgefragt werden, was eine verbesserte 
+      Kontoverwaltung und nahtlose Zahlungen ermöglicht 
+      
+      **Geplant 2026:** Sub-Scheme Request-to-Pay
+      
+      **Perspektivisch:** Open Finance mit Zugriff auf weitere Finanzdaten, insb. im Kontext FIDA
+      
+      ## Rollout-Stand
+      
+      Die Einführung von giroAPI schreitet stetig voran: Im Februar 2025 traten die ersten Banken bei, im Mai der erste Asset Broker, mit weiteren Asset Brokern 
+      im August. Die Erweiterung des Payments Sub-Schemes um „Multiple Recurring Payments" war für den Jahreswechsel 2025/2026 geplant. Die Einführung eines 
+      weiteren Sub-Schemes mit der Request-to-Pay-Funktion ist für 2026 vorgesehen, ohne dass ein konkretes Datum genannt werden kann, da giroAPI als 
+      fortlaufender Entwicklungsprozess verstanden wird. The Paypers
+      
+      ## Technische Aspekte
+      
+      giroAPI basiert auf REST-APIs nach dem openFinance API Framework der Berlin Group, ergänzt um klare technische Appendices. Die Authentifizierung erfolgt 
+      nach OAuth2/OIDC-Standards mit PSD2-konformer SCA (außer bei Micropayments). Das Scheme steht sowohl europäischen Banken als auch Asset Brokern offen – der 
+      Beitritt ist direkt oder über einen Verband möglich. Die-dk
+      
+      ## Strategische Bedeutung & Handlungsempfehlungen
+      
+      giroAPI eröffnet Möglichkeiten, die weit über die bloße Erfüllung gesetzlicher PSD2-Anforderungen hinausgehen: Der Fokus liegt auf der Schaffung von 
+      Mehrwertdiensten, die sowohl für Drittanbieter als auch für Kunden greifbare Vorteile bieten. The Paypers Für zentrale IT-Dienstleister im Bankensektor 
+      bedeutet dies eine Plattformchance: Standardisierte API-Konnektivität als Managed Service für angeschlossene Institute anzubieten und damit frühzeitig 
+      ein zentrales Element der deutschen und europäischen Open-Finance-Infrastruktur zu besetzen.
+    extended_description_en: |-
+      TBD
     risks:
       - |-
         Risk 1
