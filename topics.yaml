@@ -1270,7 +1270,7 @@ topics:
       festzustellen, um die Implementierung spätestens Anfang 2027 zu beginnen. Banking Gleichzeitig bietet das Paket strategische Chancen: verbesserte 
       Open-Banking-Infrastruktur, neue Erlösmodelle durch standardisierte APIs und die Möglichkeit, sich als vertrauenswürdiger, zukunftssicherer 
       Zahlungsdienstleister zu positionieren.
-    extended_description: |
+    extended_description_en: |-
       PSD3 definiert einheitliche **Zulassungsstandards** und Governance-Anforderungen für alle Payment Institutions.
       
       PSR regelt Zahlungsrechte, Ausführungsfristen, Haftung, SCA und **dedizierte APIs** für Drittanbieter.
@@ -1291,7 +1291,7 @@ topics:
       ## Zeitplan 
       
       - PSR gilt direkt nach Veröffentlichung +18 Monate, PSD3-Transposition in 18 Monaten.
-      - Bestehende Lizenzen gültig während **24-monatiger Übergangsfrist**, dann Re-Lizenzierung erforderlich.
+      - Bestehende Lizenzen gültig während **24-monatiger Übergangsfrist**, dann Re-Lizenzierung erforderlich.      
     risks:
       - |-
         PSDR APP fraud liability shift increases our financial exposure for push payment fraud on instant rails.
