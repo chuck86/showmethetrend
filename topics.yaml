@@ -1163,12 +1163,34 @@ topics:
       - name: BdB Arbeitsgruppe Open Banking
         url: ''
   - id: 8
-    title: "[UPDATE NECESSARY] PSD3/PSDR und Request to Pay (R2P)"
+    title: "PSD3/PSDR und Request to Pay (R2P)"
     category: Banking Regulatory and Trends
     score: 8
     priority: High
     horizon: 6–18 months
-    management_summary: |
+    management_summary: |-
+      ## Aktueller Stand
+      
+      In den frühen Morgenstunden des 27. November 2025 einigten sich Vertreter der EU-Kommission, des EU-Parlaments, des EU-Rates und der dänischen 
+      Ratspräsidentschaft in Straßburg auf einen politischen Trilog-Kompromiss zu PSD3 und PSR. OneSpan Die Veröffentlichung im EU-Amtsblatt wird für 
+      Mitte/Sommer 2026 als realistisch eingeschätzt. Banking Die PSR tritt als Verordnung 20 Tage nach Veröffentlichung direkt in Kraft; vollständige 
+      Anwendbarkeit nach 18-monatiger Übergangsfrist (ca. Anfang 2028). PSD3 muss von den Mitgliedstaaten innerhalb von 18 Monaten umgesetzt werden 
+      (Anwendbarkeit ca. Q2/Q3 2028).
+      
+      ## Strategische Bedeutung
+      
+      PSD3/PSR sind kein inkrementelles Update, sondern eine grundlegende Neuausrichtung des EU-Zahlungsverkehrsrechts. Das Paket priorisiert eine stärkere 
+      Harmonisierung der Zahlungsregeln, um Fragmentierung und nationale Interpretationsspielräume zu reduzieren, während gleichzeitig Sicherheit und 
+      Betrugsprävention verschärft werden. Worldline Für Banken entstehen erhebliche Anpassungsbedarfe bei Systemen, Prozessen und Compliance-Infrastruktur – 
+      insbesondere bei Haftungsregeln, Open-Banking-APIs und SCA.
+      
+      ## Handlungsempfehlungen
+      
+      - Sofortiger Start der Impact-Analyse gegenüber dem PSD2-Status-quo (8 Kernbereiche)
+      - Vorbereitung auf erweiterte Haftungsregeln, insbesondere bei Betrug durch Impersonation und APP Fraud
+      - 2026 zur Detailanalyse und Anforderungserhebung nutzen; Implementierung ab Anfang 2027 starten
+      - EBA-Fahrplan (erwartet Q2 2026) für Detailspezifikationen eng verfolgen
+    management_summary_en: |-
       PSD3 (Payment Services Directive 3) und PSR (Payment Services Regulation) ersetzen PSD2 und die E-Money-Richtlinie durch einen einheitlichen EU-Rahmen für Zahlungs- und E-Geld-Dienste.
 
       PSD3 regelt Zulassung und Aufsicht als Richtlinie, PSR operative Pflichten als direkt geltende Verordnung.
@@ -1176,7 +1198,9 @@ topics:
       Schwerpunkte sind Betrugsprävention, **stärkere SCA**, Open Banking und **Gebührentransparenz**.
 
       Anwendung PSR ab 2027, PSD3-Transposition in 18 Monaten.
-    description: |
+    description: |-
+      PSD3 und PSR sind das neue europäische Regulierungspaket für Zahlungsdienste, das PSD2 ablöst und in zwei komplementären Rechtsakten weiterentwickelt. PSD3 als Richtlinie fokussiert auf Zulassungs- und Aufsichtsregeln für Zahlungsinstitute und E-Geld-Institute; PSR als Verordnung enthält direkt anwendbare Verhaltensregeln für alle Zahlungsdienstleister in der EU. DLA Piper Die Schwerpunkte liegen auf verbesserter Betrugsprävention, erweiterten PSP-Haftungsregeln, standardisierten Open-Banking-APIs sowie gestärkten Verbraucher- und Transparenzrechten. Für Banken und Zahlungsdienstleister markiert der Trilog-Kompromiss den Beginn einer Phase, in der erstmals verlässliche Annahmen für die operative Vorbereitung getroffen werden können.
+    description_en: |-
       PSD3 modernisiert den Lizenzrahmen für Zahlungsinstitute und E-Geld-Institute und integriert die bisherige EMD2.
 
       PSR harmonisiert Verhaltensregeln EU-weit und verhindert nationale Unterschiede aus PSD2-Zeit.
@@ -1185,6 +1209,67 @@ topics:
       - Höherer Verbraucherschutz, effektive Betrugsbekämpfung, **Open Finance** statt Open Banking.
       - Betrugsdaten müssen zwischen PSPs geteilt werden, Plattformen haften bei ausbleibender Reaktion.
       - SCA wird **risikobasiert** und barrierefrei, Kunden erhalten Echtzeit-Kontrollfunktionen über Limits.
+    extended_description: |-
+      ## Regulatorik & Zeitplan
+      
+      Es wird allgemein erwartet, dass PSD3 und PSR nach Abschluss der technischen Arbeit gegen Ende des zweiten Quartals 2026 im Amtsblatt der 
+      EU veröffentlicht werden. Norton Rose Fulbright Die PSR tritt 20 Tage nach Veröffentlichung direkt in Kraft und ist nach einer Übergangsfrist 
+      von 18 Monaten vollständig anwendbar – voraussichtlich Anfang 2028. PSD3 erfordert nationale Umsetzung innerhalb von 18 Monaten nach Inkrafttreten 
+      (Zielanwendbarkeit ca. Q2/Q3 2028). Die EBA wird ab Q2 2026 ihren Implementierungsfahrplan für das Zahlungspaket veröffentlichen und rund 40 Mandate 
+      unter PSR und PSD3 bearbeiten. Passle
+      
+      ## Betrugsprävention & Haftung
+      
+      Dies ist der Bereich mit den größten finanziellen Auswirkungen für Banken:
+      
+      PSPs können bei bestimmten Betrugsszenarien haftbar gemacht werden, insbesondere wenn sie nach Meldung bekannte Betrugs-Inhalte auf Online-Plattformen 
+      nicht entfernt haben. Bei APP-Fraud (Authorized Push Payment Fraud) durch Impersonation müssen PSPs Kunden entschädigen, wenn der 
+      Verifizierungsmechanismus versagt hat. Collaborative Fraud Data Sharing zwischen PSPs über eine dedizierte Plattform wird eingeführt, mit 
+      datenschutzrechtlichen Folgenabschätzungen und zeitlich begrenzter Datenspeicherung von bis zu fünf Jahren nach einem Vorfall. Worldline
+      PSPs müssen Ausgabenlimits und Sperrmechanismen für Zahlungsinstrumente anbieten; Instant Payments können bei Verdacht verzögert oder blockiert werden.
+      
+      ## Open Banking & API-Standards
+      
+      PSD3/PSR standardisieren Open-Banking-Schnittstellen als zentralen Zugangspunkt für Datenaustausch, mit stärkerer Governance über APIs und 
+      Datenzugriffsrechte. Kunden erhalten Dashboard-Sicht auf Datenweitergaben und können Berechtigungen einfach widerrufen; Diskriminierungsverbote 
+      gegenüber Open-Banking-Anbietern werden gestärkt. Worldline Dies steht in direkter Wechselwirkung mit dem giroAPI Scheme und der perspektivischen 
+      IDA-Verordnung.
+      
+      ## SCA & Authentifizierung
+      
+      PSD3 präzisiert und modernisiert die SCA-Regeln: Klarere Regeln und flexiblere risikobasierte Ausnahmen sollen die Balance zwischen Sicherheit 
+      und Nutzererfahrung verbessern. Barrierefreie SCA-Lösungen werden explizit gefordert; Echtzeit-Monitoring zur schnelleren Betrugserkennung wird 
+      verpflichtend.
+      
+      ## Payee Verification (VoP)
+      
+      Die Verification of Payee – durch die Instant Payment Regulation für Euro-Überweisungen bereits eingeführt – wird durch PSD3/PSR auf alle Überweisungen 
+      in EU-Währungen ausgeweitet. PSPs haften, wenn der Verifizierungsmechanismus versagt und ein Schaden entsteht. 
+      
+      ## Transparenz & Verbraucherschutz
+      
+      PSPs müssen Währungsumrechnungsgebühren, ATM-Abhebungsgebühren und Servicekosten vorab transparent ausweisen; sie sind verpflichtet, in alternative 
+      Streitbeilegungsverfahren eingebunden zu sein und menschlichen Kundensupport zu garantieren.
+      
+      ## Strukturelle Änderung: PSR als Verordnung
+      
+      Ein zentrales Novum ist der Charakter der PSR als direkt anwendbare EU-Verordnung (analog zur DSGVO). Dies verhindert die fragmentierte nationale Umsetzung, 
+      die bei PSD2 zu erheblichen Inkonsistenzen zwischen den Mitgliedstaaten geführt hatte, und schafft einen einheitlichen Rechtsrahmen für alle PSPs im EWR.
+      
+      ## Deutschland & Non-EU
+      
+      Deutsche Banken und Zahlungsdienstleister sind vollumfänglich betroffen. Die bereits seit Oktober 2025 geltende VoP-Pflicht für SEPA-Überweisungen ist ein 
+      konkreter Vorbote der kommenden Anforderungen. Großbritannien ist an PSD3/PSR nicht gebunden; britische Behörden richten ihre eigenen Reformen jedoch 
+      inhaltlich daran aus, um Wettbewerbsfähigkeit und Interoperabilität zu erhalten. Embat Schweizer Banken sind nur insoweit betroffen, als sie EU-lizenzierte 
+      Operationen betreiben.
+      
+      ## Strategische Bedeutung & Handlungsempfehlungen
+      
+      Obwohl PSR keine Revolution darstellt, erfordert sie in einigen Bereichen der System- und Prozesslandschaft von Banken komplexe Anpassungen. Das Jahr 
+      2026 sollte genutzt werden, um regulatorische Anforderungen detailliert zu analysieren, Handlungsbedarfe zu identifizieren und Anpassungsnotwendigkeiten 
+      festzustellen, um die Implementierung spätestens Anfang 2027 zu beginnen. Banking Gleichzeitig bietet das Paket strategische Chancen: verbesserte 
+      Open-Banking-Infrastruktur, neue Erlösmodelle durch standardisierte APIs und die Möglichkeit, sich als vertrauenswürdiger, zukunftssicherer 
+      Zahlungsdienstleister zu positionieren.
     extended_description: |
       PSD3 definiert einheitliche **Zulassungsstandards** und Governance-Anforderungen für alle Payment Institutions.
       
