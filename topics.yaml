@@ -905,36 +905,116 @@ topics:
     score: 9
     priority: High
     horizon: 18–36 months
-    description: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity credentials, \
-    \ payment initiation, and document storage. Member states must offer a wallet by 2026.\ 
-    \ Opens door for (new) digital processes - for corporations too (see European business Wallet EUBW). \n \
-    \ - Usage for the user will be free. \n -Longterm project with unclear outcome \n - independant ID procedure offering multiple trust levels \
-    \ \n - Acceptance is mandatory (at least in certain cases)."
-    management_summary: "The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity \
-    \ credentials, payment initiation, and document storage. Member states must offer a wallet by 2026. It is currently moving faster \
-    \ than anticipated. The large-scale pilots are producing concrete technical outputs, and the 2026 member state deadline is credible. "
-    extended_description: "The EUDI Wallet Architecture and Reference Framework (ARF) defines a standardised mobile wallet enabling citizens to \
-    \ store and present identity attributes, documents, and credentials across borders within the EU. For banks, the primary interaction model is as a relying party: \
-    \ accepting EUDI Wallet credentials for KYC, account opening, and strong customer authentication instead of proprietary identity verification \
-    \ flows. Banks may also act as attestation providers, issuing certified financial credentials (e.g. proof of bank account ownership, income \
-    \ certification) into citizen wallets. The four large-scale pilots (POTENTIAL, EWC, DC4EU, NOBID) are producing reference implementations \ 
-    \ across healthcare, travel, education, and finance. The financial pilot (EWC) is most directly relevant and is testing bank-issued PID attributes \
-    \ in payment and onboarding scenarios. \n \
-    \ It is one of the most important initiatives of the EU on its way to digital sovereignty of its citizens. \n \
-    \ - storage of official documents such as national id, drivers licence, certificats,... \n \
-    \ - offers comfortable way for identification, login to services or digital signatures \n \
-    \ - high security standard compared to physical documents \n \
-    \ - user has complete control regarding usage of his/her data. Only necessary information is exchanged (privacy by design) \n \
-    \ - all eu member states must offer a wallet by end of 2026. Rollout in Germany planed for start of 2027. \n \
-    \ - based on eIDAS 2.0. \n \
-    \ Banks (and other corporations) must offer the usage of EUDI Wallet for \n \
-    \ - Online banking account opening \n - Online banking log-in \n - Online banking transactions \n \
-    \ if the customer agrees by december 2027. \n \
-    \ The European Business Wallet (EUBW) was proposed by the EU Commission in november 2025. Enabling corporations to digitize their \
-    \ processes and interactions. Corporations can \n \
-    \ - sign documents digitally, with timestamp and seal \n - securely create, save and exchange verified documents with other corporations \
-    \ or public sector (even cross border within the EU). \n \
-    \ A yearly cost reduction for corporations of 150 bln. EUR is expected."
+    management_summary: |-
+      ## Aktueller Stand
+      
+      Die EUDI Wallet ist das Kernelement von eIDAS 2.0: Jeder EU-Bürger und jedes Unternehmen erhält Zugang zu einer anerkannten und interoperablen digitalen Identität, die in allen Mitgliedstaaten einsetzbar ist. Signaturit Großangelegte Pilotprogramme (Large Scale Pilots) laufen seit 2023. Bis September 2026 sind alle EU-Mitgliedstaaten zur Bereitstellung verpflichtet. UTIMACO In Deutschland ist die Beta-Version für Ende 2026/Anfang 2027 geplant.
+      
+      ## Strategische Bedeutung
+      
+      Die EUDI Wallet wird das digitale Identifikationsparadigma in Europa grundlegend verändern. Die Wallet schafft einfachere grenzüberschreitende Geschäfte, schnellere Onboarding-Prozesse, optimierte KYC/AML-Compliance und eine verbesserte Vertrauens- und Kundenerfahrung. Signaturit Für Banken entstehen gleichzeitig neue Rollen: als Relying Party (Akzeptanz von Wallet-Nachweisen), als Attribute Provider (Ausgabe bankrelevanter Nachweise) und potenziell als qualifizierter Vertrauensdiensteanbieter.
+      
+      ## Handlungsempfehlungen
+      
+      Vorbereitung der Systeme auf die Wallet-Akzeptanz als Relying Party (Onboarding, KYC, SCA)
+      Exploration der Attribute-Provider-Rolle (z.B. IBAN-Zertifikat, Legal Person Identifier)
+      Laufendes Monitoring der nationalen Umsetzungszeitpläne und der Implementing Acts der EU-Kommission
+      Pilotteilnahme als strategische Investition nutzen, bevor operativer Compliance-Druck entsteht
+    management_summary: |-
+      The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity 
+      credentials, payment initiation, and document storage. Member states must offer a wallet by 2026. It is currently moving faster 
+      than anticipated. The large-scale pilots are producing concrete technical outputs, and the 2026 member state deadline is credible. 
+    description: |-
+      Die EUDI Wallet (European Digital Identity Wallet) ist eine staatlich bereitgestellte Anwendung, die EU-Bürgern ermöglicht, digitale Identitätsnachweise und Attribute sicher zu speichern und datenschutzkonform – durch selektive Offenlegung – an Dritte weiterzugeben. Sie ermöglicht es, Identität zu beweisen, ohne unnötige Daten preiszugeben – etwa das Alter nachzuweisen, ohne Geburtsdatum oder vollständigen Namen offenzulegen. Qualified-electronic-signature Als Kernelement der eIDAS-2.0-Verordnung müssen alle EU-Mitgliedstaaten bis September 2026 mindestens eine konforme Wallet bereitstellen. Für Banken ist die Wallet sowohl als Relying Party (Nutzung von Wallet-Nachweisen für KYC und Onboarding) als auch als potenzielle Attribute-Quelle strategisch relevant.
+    description_en: |- 
+      The European Digital Identity Wallet will provide EU citizens with a standardised digital wallet for identity credentials, payment initiation, and document storage. Member states must offer a wallet by 2026. Opens door for (new) digital processes - for corporations too (see European business Wallet EUBW). 
+      - Usage for the user will be free. 
+      - Longterm project with unclear outcome 
+      - independant ID procedure offering multiple trust levels 
+      - Acceptance is mandatory (at least in certain cases).
+    extended_description: |-
+      ## Regulatorik & Zeitplan
+      
+      Rechtsgrundlage ist Regulation (EU) 2024/1183 (eIDAS 2.0), Art. 5a. Die EU-Kommission hat seit November 2024 schrittweise technische Spezifikationen und 
+      Implementing Acts veröffentlicht; im Juni 2025 wurde ein weiteres Paket von Implementing Acts zur öffentlichen Konsultation vorgelegt, das technische 
+      Spezifikationen für Trusted Lists, Akkreditierungsregeln und Risikomanagementverfahren definiert. Mit dem Ziel einer aktiven Adoptionsrate von 80 % bis 
+      2030 hat die EUDI Wallet das Potenzial, digitale Interaktionen auf dem gesamten Kontinent neu zu definieren. 
+      
+      ## Funktionalitäten
+      
+      Die EUDI Wallet stellt folgende Kernfunktionen bereit:
+      
+      **Speicherung digitaler Nachweise:** Personalausweis, Führerschein, Bildungsabschlüsse, Versicherungskarten, berufliche Qualifikationen u.v.m.
+      
+      **Selective Disclosure:** Nur die für eine spezifische Transaktion notwendigen Attribute werden weitergegeben
+      
+      **Qualifizierte Elektronische Signatur (QES):** Rechtsgültige Fernsignatur direkt aus der Wallet
+      
+      **Grenzüberschreitende Anerkennung:** Interoperable Nutzung in allen 27 EU-Mitgliedstaaten
+      
+      ## Technische Aspekte
+      
+      Die Wallet-Architektur basiert auf dem Architecture Reference Framework (ARF) der EU-Kommission. Relevante Standards umfassen ISO 18013-5 (mDL), W3C 
+      Verifiable Credentials, SD-JWT (Selective Disclosure JWT) sowie OpenID4VCI und OpenID4VP für Ausstellung und Präsentation digitaler Nachweise. Die 
+      EUCC-Zertifizierung (European Cybersecurity Certification Scheme) bietet dabei ein strukturiertes, harmonisiertes Validierungsframework, das 
+      grenzüberschreitendes Vertrauen und Interoperabilität fördert. 
+      
+      ## Bedeutung für den Finanzsektor
+      
+      Für Banken entstehen mehrere strategische Rollen:
+      
+      **Relying Party:** Akzeptanz von Wallet-Nachweisen für Onboarding, KYC und SCA
+      
+      **Attribute Provider:** Ausgabe bankrelevanter Nachweise (IBAN-Zertifikat, Legal Person Identifier)
+      
+      **Trust Service Provider:** Bereitstellung qualifizierter Zertifikate für QES via Wallet
+      
+      Die Sparkassen-Finanzgruppe etwa präsentiert Szenarien, bei denen Altersverifikation und Zahlungsinitiation in der EUDI Wallet kombiniert werden; parallel 
+      dazu wurde die Kontoeröffnung per Wallet-Beta in Deutschland bereits demonstriert. The Paypers Das Zusammenspiel mit der AMLR (Anti-Money-Laundering 
+      Regulation, anwendbar ab 2027) ist besonders kritisch: Die EUDI Wallet kann als anerkanntes Identifikationsmittel für AMLR-konforme KYC-Prozesse eingesetzt 
+      werden.
+      
+      ## Non-EU-Perspektive
+      
+      Erste Gespräche über Kompatibilität mit vergleichbaren Initiativen außerhalb der EU (UK Digital Identity and Attributes Trust Framework, US NIST-Standards) 
+      finden statt. Eine gegenseitige Anerkennung ist kurzfristig nicht zu erwarten, bietet jedoch mittelfristig Exportpotenzial für europäische 
+      Technologieanbieter.
+      
+      ## Strategische Empfehlungen
+      
+      Wer jetzt gezielte Erfahrungen sammelt, kann Compliance-Risiken besser einschätzen und gleichzeitig Marktpotenziale identifizieren – bevor der operative 
+      Druck durch die 2026/2027-Deadlines zunimmt. The Paypers Für zentrale IT-Dienstleister bietet sich die Chance, mandantenfähige Lösungen für 
+      Wallet-Integration, Relying-Party-Infrastruktur und Attribute-Ausstellung als Plattformdienst anzubieten.
+    extended_description_en: |- 
+      The EUDI Wallet Architecture and Reference Framework (ARF) defines a standardised mobile wallet enabling citizens to  store and present identity attributes,
+      documents, and credentials across borders within the EU. For banks, the primary interaction model is as a relying party: 
+      accepting EUDI Wallet credentials for KYC, account opening, and strong customer authentication instead of proprietary identity verification 
+      flows. Banks may also act as attestation providers, issuing certified financial credentials (e.g. proof of bank account ownership, income 
+      certification) into citizen wallets. The four large-scale pilots (POTENTIAL, EWC, DC4EU, NOBID) are producing reference implementations 
+      across healthcare, travel, education, and finance. The financial pilot (EWC) is most directly relevant and is testing bank-issued PID attributes 
+      in payment and onboarding scenarios. 
+      
+      It is one of the most important initiatives of the EU on its way to digital sovereignty of its citizens. 
+      
+      - storage of official documents such as national id, drivers licence, certificats,... 
+      - offers comfortable way for identification, login to services or digital signatures 
+      - high security standard compared to physical documents 
+      - user has complete control regarding usage of his/her data. Only necessary information is exchanged (privacy by design) 
+      - all eu member states must offer a wallet by end of 2026. Rollout in Germany planed for start of 2027. 
+      - based on eIDAS 2.0. 
+      
+      Banks (and other corporations) must offer the usage of EUDI Wallet for 
+      
+      - Online banking account opening \n - Online banking log-in 
+      - Online banking transactions if the customer agrees by december 2027.
+      
+      The European Business Wallet (EUBW) was proposed by the EU Commission in november 2025. Enabling corporations to digitize their 
+      processes and interactions. Corporations can 
+      
+      - sign documents digitally, with timestamp and seal 
+      - securely create, save and exchange verified documents with other corporations or public sector (even cross border within the EU). 
+      
+      A yearly cost reduction for corporations of 150 bln. EUR is expected.
     risks:
       - |-
         EUDI Wallet adoption speed is uncertain; over-investing in integration ahead of user adoption could result in stranded costs.
@@ -1288,7 +1368,7 @@ topics:
     score: 6
     priority: Medium
     horizon: 6–24 months
-    management_summary: |
+    management_summary: |-
       ## Aktueller Stand
       
       Die Verbände der Deutschen Kreditwirtschaft (BVR, DSGV, VÖB und Bankenverband) haben am 1. Januar 2025 das giroAPI Scheme gestartet – europaweit das erste 
