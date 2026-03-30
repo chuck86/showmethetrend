@@ -764,7 +764,7 @@ topics:
       ## Strategische Bedeutung
       
       eIDAS 2.0 definiert eine neue Baseline für digitale Vertrauensdienste in Europa. Für Banken, Versicherungen und Fintechs verbindet sich das Zusammenspiel aus AMLR, eIDAS 2.0 
-      und der operativen Einführung der EUDI Wallet zu einer neuen Grundlage für Vertrauen, Sicherheit und Nutzererfahrung im digitalen Finanzökosystem. The Paypers KYC-Prozesse, 
+      und der operativen Einführung der EUDI Wallet zu einer neuen Grundlage für Vertrauen, Sicherheit und Nutzererfahrung im digitalen Finanzökosystem. KYC-Prozesse, 
       Strong Customer Authentication (SCA) und digitales Onboarding müssen auf die neuen Standards ausgerichtet werden. Für Unternehmen in regulierten Sektoren – darunter Banken und 
       Finanzdienstleister – entstehen konkrete Compliance-Pflichten: Sie müssen digitale Nachweise via EUDI Wallet akzeptieren, EU-definierte Sicherheitsniveaus erfüllen und ihre 
       Systeme mit den aktuellen Implementing Acts in Einklang bringen. 
@@ -1290,13 +1290,16 @@ topics:
     horizon: 6–24 months
     management_summary: |-
       ## Aktueller Stand
+      
       Die Verbände der Deutschen Kreditwirtschaft (BVR, DSGV, VÖB und Bankenverband) haben am 1. Januar 2025 das giroAPI Scheme gestartet – europaweit das erste 
-      einheitliche API-Scheme für Zahlungen und Kontoinformationen. Voeb Im ersten Beitrittsfenster (Februar 2025) schlossen sich mehrere hundert Institute als 
-      Asset Holder an; der erste Asset Broker wurde im Mai 2025 aktiv, weitere folgten im August. The Paypers Das Sub-Scheme Request-to-Pay ist für 2026 in Planung.
-      Strategische Bedeutung
+      einheitliche API-Scheme für Zahlungen und Kontoinformationen. Im ersten Beitrittsfenster (Februar 2025) schlossen sich mehrere hundert Institute als 
+      Asset Holder an; der erste Asset Broker wurde im Mai 2025 aktiv, weitere folgten im August. Das Sub-Scheme Request-to-Pay ist für 2026 in Planung.
+      
+      ## Strategische Bedeutung
+      
       giroAPI ist die marktgetriebene deutsche Antwort auf einen standardisierten Open-Banking-Rahmen, der substanziell über die PSD2-Mindestanforderungen 
       hinausgeht. Mit der möglichen Einführung von FIDA (Financial Data Access Regulation) könnte giroAPI zu einem wichtigen Baustein für die zukünftige 
-      Implementierung europäischer Open-Banking-Initiativen werden. The Paypers Für zentrale IT-Dienstleister bietet das Scheme eine Plattform zur Vermarktung 
+      Implementierung europäischer Open-Banking-Initiativen werden. Für zentrale IT-Dienstleister bietet das Scheme eine Plattform zur Vermarktung 
       standardisierter API-Konnektivität als Managed Service.
       
       ## Handlungsempfehlungen
