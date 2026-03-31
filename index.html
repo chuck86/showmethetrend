@@ -679,38 +679,13 @@
     </div>
 
     <!-- ── NEWSFEED ───────────────────────────────────────────────────────── -->
-    <div style="
+    <div id="newsfeed-container" style="
       margin-top: 2.5rem;
       background: var(--white);
       border: 1.5px solid var(--border-strong);
       border-radius: 4px;
       padding: 1.5rem 2rem;
-    ">
-      <div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Newsfeed</div>
-      <div style="display:flex;flex-direction:column;gap:0;">
-        <div style="padding:0.9rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start;">
-          <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">Mar 2026</span>
-          <div>
-            <div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">Placeholder news item one</div>
-            <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Replace this with a relevant news headline or regulatory update. Link to the source if available.</div>
-          </div>
-        </div>
-        <div style="padding:0.9rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start;">
-          <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">Feb 2026</span>
-          <div>
-            <div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">Placeholder news item two</div>
-            <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Replace this with a relevant news headline or regulatory update. Link to the source if available.</div>
-          </div>
-        </div>
-        <div style="padding:0.9rem 0;display:flex;gap:1.25rem;align-items:flex-start;">
-          <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">Jan 2026</span>
-          <div>
-            <div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">Placeholder news item three</div>
-            <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Replace this with a relevant news headline or regulatory update. Link to the source if available.</div>
-          </div>
-        </div>
-      </div>
-    </div><!-- end newsfeed -->
+    "></div><!-- end newsfeed -->
 
     </div><!-- end padded body wrapper -->
 
@@ -905,6 +880,35 @@
       <button class="ed-add-btn" onclick="edAddRow('sources')">+ Add Source</button>
     </div>
 
+    <!-- NEWS ENTRY -->
+    <div class="ed-section" style="border-top:2px solid var(--border);padding-top:2rem;margin-top:1rem;">
+      <div class="ed-section-title">Add News Entry</div>
+      <div class="ed-row triple">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-news-date">Date</label>
+          <input class="ed-input" id="ed-news-date" type="text" placeholder="e.g. Apr 2026">
+        </div>
+        <div class="ed-field" style="grid-column:span 2;">
+          <label class="ed-label" for="ed-news-title">Title <span class="req">*</span></label>
+          <input class="ed-input" id="ed-news-title" type="text" placeholder="News headline or regulatory update…">
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-news-body">Summary</label>
+          <textarea class="ed-textarea" id="ed-news-body" placeholder="Brief description of the news item…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-news-url">Link / URL</label>
+          <input class="ed-input" id="ed-news-url" type="url" placeholder="https://… (optional)">
+        </div>
+      </div>
+      <button class="ed-add-btn" onclick="edAddNewsEntry()" style="margin-top:0.5rem;">+ Add to Newsfeed &amp; Download</button>
+      <div id="ed-news-status" class="ed-status" style="margin-top:0.75rem;"></div>
+    </div>
+
     <!-- SAVE BAR -->
     <div class="editor-actions">
       <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()" data-i18n="downloadYaml">⬇ Download updated topics.yaml</button>
@@ -917,8 +921,9 @@
 
 <script>
 // ── Config ──────────────────────────────────────────────────────────────────
-const DATA_URL    = './topics.yaml';
-const GITHUB_REPO = ''; // e.g. 'https://github.com/yourorg/your-repo'
+const DATA_URL      = './topics.yaml';
+const NEWSFEED_URL  = './newsfeed.yaml';
+const GITHUB_REPO   = ''; // e.g. 'https://github.com/yourorg/your-repo'
 
 // ── Markdown renderer ────────────────────────────────────────────────────────
 function md(text) {
@@ -928,7 +933,7 @@ function md(text) {
 }
 
 // ── State ───────────────────────────────────────────────────────────────────
-let db = null, activeTag = null, activeCat = null, searchQuery = '';
+let db = null, newsDb = null, activeTag = null, activeCat = null, searchQuery = '';
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 function catClass(c) {
@@ -971,10 +976,18 @@ async function loadData() {
   document.getElementById('topics-container').innerHTML =
     `<div class="state-msg"><div class="spinner"></div><span>Loading topics…</span></div>`;
   try {
-    const res = await fetch(DATA_URL);
-    if (!res.ok) throw new Error(`Could not load topics.yaml (${res.status})`);
-    const text = await res.text();
-    db = jsyaml.load(text);
+    const [topicsRes, newsRes] = await Promise.all([
+      fetch(DATA_URL),
+      fetch(NEWSFEED_URL).catch(() => null),
+    ]);
+    if (!topicsRes.ok) throw new Error(`Could not load topics.yaml (${topicsRes.status})`);
+    db = jsyaml.load(await topicsRes.text());
+    if (newsRes && newsRes.ok) {
+      const parsed = jsyaml.load(await newsRes.text());
+      newsDb = parsed && parsed.entries ? parsed.entries : [];
+    } else {
+      newsDb = [];
+    }
     boot();
   } catch(e) {
     document.getElementById('topics-container').innerHTML = `
@@ -1008,6 +1021,35 @@ function boot() {
   renderIndex();
   renderIndexWheel();
   renderWheel();
+  renderNewsfeed();
+}
+
+// ── Newsfeed ──────────────────────────────────────────────────────────────────
+function renderNewsfeed() {
+  const el = document.getElementById('newsfeed-container');
+  if (!el) return;
+  const items = newsDb || [];
+  let h = `<div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">${i18n('newsfeedLabel')}</div>`;
+  if (!items.length) {
+    h += `<p style="font-size:0.84rem;color:var(--muted);">No news entries yet.</p>`;
+  } else {
+    h += `<div style="display:flex;flex-direction:column;gap:0;">`;
+    items.forEach((item, idx) => {
+      const isLast = idx === items.length - 1;
+      const border = isLast ? '' : 'border-bottom:1px solid var(--border);';
+      const titleHtml = item.url
+        ? `<a href="${item.url}" target="_blank" rel="noopener" style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;display:block;text-decoration:none;border-bottom:1px solid rgba(4,0,102,0.2);">${item.title}</a>`
+        : `<div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">${item.title}</div>`;
+      h += `<div style="padding:0.9rem 0;${border}display:flex;gap:1.25rem;align-items:flex-start;">
+        <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">${item.date||''}</span>
+        <div style="flex:1;">${titleHtml}
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">${item.body||''}</div>
+        </div>
+      </div>`;
+    });
+    h += `</div>`;
+  }
+  el.innerHTML = h;
 }
 
 // ── Index wheel (embedded on main page) ──────────────────────────────────────
@@ -1652,6 +1694,37 @@ function edReset() {
   document.getElementById('ed-save-btn').disabled = false;
   document.querySelectorAll('.ed-input.error, .ed-select.error, .ed-textarea.error').forEach(el => el.classList.remove('error'));
   edStatus('', false);
+}
+
+function edAddNewsEntry() {
+  const title = document.getElementById('ed-news-title').value.trim();
+  if (!title) {
+    document.getElementById('ed-news-status').textContent = 'Please enter a title.';
+    document.getElementById('ed-news-status').className = 'ed-status fail';
+    return;
+  }
+  const entry = {
+    date:  document.getElementById('ed-news-date').value.trim() || '',
+    title: title,
+    body:  document.getElementById('ed-news-body').value.trim() || '',
+    url:   document.getElementById('ed-news-url').value.trim()  || '',
+  };
+  const updated = { ...db, news: [entry, ...(db.news || [])] };
+  const blob = new Blob([jsyaml.dump(updated, { indent: 2, lineWidth: -1, noRefs: true })], { type: 'text/yaml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'topics.yaml';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  // Update live db
+  db = updated;
+  renderNewsfeed();
+  // Clear fields
+  ['ed-news-date','ed-news-title','ed-news-body','ed-news-url'].forEach(id =>
+    document.getElementById(id).value = '');
+  const ns = document.getElementById('ed-news-status');
+  ns.textContent = `✓ "${entry.title}" added to newsfeed. Replace topics.yaml in your repo.`;
+  ns.className = 'ed-status ok';
 }
 
 function edStatus(msg, ok) {
