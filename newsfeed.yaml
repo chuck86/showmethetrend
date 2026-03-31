@@ -1,0 +1,23 @@
+# Newsfeed entries for the CPO Strategic Intelligence dashboard.
+# Add new entries at the TOP of the list (most recent first).
+# Fields:
+#   date:  Display string, e.g. "Apr 2026"
+#   title: Headline text
+#   url:   Optional link (omit or leave empty for no link)
+#   body:  Short description (supports plain text)
+
+entries:
+- date: Mar 2026
+  title: Placeholder news item one
+  url: ''
+  body: Replace this with a relevant news headline or regulatory update.
+
+- date: Feb 2026
+  title: Placeholder news item two
+  url: ''
+  body: Replace this with a relevant news headline or regulatory update.
+
+- date: Jan 2026
+  title: Placeholder news item three
+  url: ''
+  body: Replace this with a relevant news headline or regulatory update.
