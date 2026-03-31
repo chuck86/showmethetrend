@@ -1709,21 +1709,21 @@ function edAddNewsEntry() {
     body:  document.getElementById('ed-news-body').value.trim() || '',
     url:   document.getElementById('ed-news-url').value.trim()  || '',
   };
-  const updated = { ...db, news: [entry, ...(db.news || [])] };
+  const updated = { entries: [entry, ...(newsDb || [])] };
   const blob = new Blob([jsyaml.dump(updated, { indent: 2, lineWidth: -1, noRefs: true })], { type: 'text/yaml' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'topics.yaml';
+  a.download = 'newsfeed.yaml';
   a.click();
   URL.revokeObjectURL(a.href);
-  // Update live db
-  db = updated;
+  // Update live newsDb
+  newsDb = updated.entries;
   renderNewsfeed();
   // Clear fields
   ['ed-news-date','ed-news-title','ed-news-body','ed-news-url'].forEach(id =>
     document.getElementById(id).value = '');
   const ns = document.getElementById('ed-news-status');
-  ns.textContent = `✓ "${entry.title}" added to newsfeed. Replace topics.yaml in your repo.`;
+  ns.textContent = `✓ "${entry.title}" added to newsfeed. Replace newsfeed.yaml in your repo.`;
   ns.className = 'ed-status ok';
 }
 
