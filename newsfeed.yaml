@@ -7,9 +7,9 @@
 #   body:  Short description (supports plain text)
 
 entries:
-- date: Mar 2026
-  title: Placeholder news item one
-  url: ''
+- date: 29.03.2026
+  title: Visa moves deeper into blockchain infrastructure with Canton Network role
+  url: 'https://paymentsindustryintelligence.com/visa-joins-canton-network-as-super-validator/'
   body: Replace this with a relevant news headline or regulatory update.
 
 - date: Feb 2026
