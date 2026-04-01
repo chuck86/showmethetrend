@@ -665,7 +665,7 @@ topics:
   - id: 4
     title: Digitaler Euro
     category: Digital Payments
-    score: 7
+    score: 10
     priority: Medium-High
     horizon: 24–48 months
     management_summary: |-
