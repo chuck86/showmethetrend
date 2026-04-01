@@ -229,7 +229,7 @@ topics:
   - id: 2
     title: girocard 4.0
     category: Digital Payments
-    score: 6
+    score: 9
     priority: High
     horizon: 12–24 months
     management_summary: |-
@@ -1411,7 +1411,7 @@ topics:
   - id: 9
     title: "Wero"
     category: Digital Payments
-    score: 10
+    score: 9
     priority: Medium
     horizon: 6–24 months
     management_summary: |-
