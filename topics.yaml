@@ -669,16 +669,67 @@ topics:
     priority: Medium-High
     horizon: 24–48 months
     management_summary: |-
-      TBD
+      ## Aktueller Stand
+      
+      Der EZB-Rat European Central Bank hat den Abschluss der Vorbereitungsphase (November 2023 bis Oktober 2025) beschlossen und ist zur nächsten Projektphase übergegangen, die sich auf technische Bereitschaft, Markteinbindung und Unterstützung des Gesetzgebungsverfahrens konzentriert. Das Europäische Parlament wird voraussichtlich im Juni 2026 über den Digitalen Euro abstimmen, nachdem der Europäische Rat im Dezember 2025 eine entsprechende Verhandlungsposition gebilligt hat. Wikipedia Wenn die EU-Gesetzgeber die Verordnung im Laufe des Jahres 2026 annehmen, könnte der Digitale Euro 2029 ausgegeben werden. European Central Bank Am 24. März 2026 bestätigte EZB-Direktoriumsmitglied Piero Cipollone, dass die Auswahl der Zahlungsdienstleister für das zwölfmonatige Pilotprojekt im Juni 2026 abgeschlossen wird. European Central Bank
+      
+      ## Strategische Bedeutung
+      
+      Der Digitale Euro ist Zentralbankgeld (CBDC) für den Retail-Bereich – kein Wettbewerber zu Giralgeld, sondern dessen digitales Pendant zu Bargeld. Für Banken als Intermediäre ergeben sich jedoch erhebliche Implikationen: Wer die Wallet kontrolliert, kontrolliert die Kundenschnittstelle – und entscheidet damit langfristig über die Kundenbindung. Banken, die bei der Einführung des Digitalen Euro keine überzeugende Lösung anbieten, riskieren, zu einer austauschbaren Backend-Infrastruktur zu werden. Banking Gleichzeitig entstehen neue Erlöschancen durch Mehrwertdienste rund um die Wallet.
+      
+      ## Handlungsempfehlungen
+      
+      - Frühzeitige Teilnahme am Interessensbekundungsverfahren der EZB als Zahlungsdienstleister im Pilotprojekt (ab Juni 2026)
+      - Strategische Rollenentscheidung: Minimale Compliance vs. aktive Gestaltung des Kundenerlebnisses
+      - Integration des Digitalen Euro in bestehende Banking-Apps als primäre Nutzungsschicht sichern
+      - Laufendes Monitoring des Gesetzgebungsverfahrens (EU-Verordnung, voraussichtlich H2 2026) und des EZB-Rulebooks
+      - Positionierung zu Haltelimit-Debatte und Wasserfallprinzip als Grundlage für Liquiditätssteuerung
     management_summary_en: |-
       The Digital Euro is a structural, long-cycle threat and opportunity that requires early engagement rather than a wait-and-see approach. The holding limit design will determine the disintermediation impact. Banks that participate actively in the 
       intermediary model stand to gain a distribution role; those that disengage risk being bypassed entirely.
     description: |-
-      TBD
+      Der Digitale Euro ist eine digitale Form des Euro, die direkt von der Europäischen Zentralbank ausgegeben wird – als ergänzendes Zahlungsmittel zu Bargeld, nicht als Ersatz dafür. Er wäre ein elektronisches Zahlungsmittel, das allen kostenlos zur Verfügung stünde, überall im Euroraum nutzbar wäre und ein Höchstmaß an Datenschutz bieten würde; die EZB und das Eurosystem könnten anhand der vorliegenden Zahlungsdaten keine Rückschlüsse auf die Identität oder das Einkaufsverhalten einzelner Personen ziehen. European Central Bank Banken und Zahlungsdienstleister fungieren dabei als Intermediäre – sie stellen die Wallet-Schnittstelle bereit und erbringen Mehrwertdienste, während die Infrastruktur vom Eurosystem betrieben wird. Die gesetzliche Grundlage soll 2026 durch die EU-Gesetzgeber geschaffen werden; eine erste mögliche Ausgabe wird für 2029 angestrebt.
     description_en: |-
       The ECB is advancing its Digital Euro project into the preparation phase, targeting a potential launch in the late 2020s. A retail CBDC would fundamentally alter the role of commercial banks in payment flows, customer relationships, and deposit funding.
     extended_description: |-
-      TBD
+      ## Projektphasen & Zeitplan
+      
+      Das Projekt durchlief seit 2020 mehrere Phasen: Untersuchungsphase (Oktober 2021–Oktober 2023), Vorbereitungsphase (November 2023–Oktober 2025). Seit November 2025 läuft die neue Phase bis Ende 2027 mit Fokus auf Systemkonfiguration, Pilotprojektvorbereitung, Markteinbindung (Zahlungsdienstleister, Händler, Konsumenten), Weiterentwicklung des Regelwerks und Unterstützung des Gesetzgebungsverfahrens. Oesterreichische Nationalbank
+      
+      **Der Zeitplan im Überblick:**
+      
+      - 2026: EU-Gesetzgeber sollen die Verordnung verabschieden (Europäisches Parlament: voraussichtlich Juni 2026)
+      - Ab Mitte 2027: Pilotprojekt mit ausgewählten Zahlungsdienstleistern, Händlern und Endnutzern
+      - 2029: Angestrebte technische Bereitschaft für mögliche Erstausgabe des Digitalen Euro
+      
+      Im dritten Quartal 2026 soll zudem „Pontes" als Settlement-Lösung für DLT-basierte Transaktionen starten, ergänzt durch die „Appia"-Initiative für einen integrierten europäischen digitalen Asset-Markt. European Central Bank
+      
+      ## Regulatorik & Rechtsrahmen
+     
+      Rechtsgrundlage ist die geplante EU-Verordnung zum Digitalen Euro (Teil des „Single Currency Package" der EU-Kommission vom Juni 2023), die parallel zur Bargeldverordnung verhandelt wird. Der endgültige Beschluss des EZB-Rats, ob und wann ein Digitaler Euro ausgegeben wird, wird erst nach Annahme der Rechtsvorschriften getroffen. European Central Bank Ein Rulebook mit derzeit 93 definierten Geschäftsvorfällen wurde in einer Rulebook Development Group (RDG) unter Beteiligung von Marktteilnehmern erarbeitet; ein überarbeiteter Entwurf wurde im Juni 2025 zur Marktkonsultation vorgelegt.
+      
+      ## Geopolitischer Kontext
+      
+      Der Digitale Euro ist explizit auch eine strategische Antwort auf die wachsende Marktmacht von US-Stablecoins und nicht-europäischen Zahlungssystemen. Eine Gruppe von 70 Ökonomen und akademischen Experten, darunter Thomas Piketty und Paul de Grauwe, veröffentlichte einen offenen Brief an das Europäische Parlament, in dem sie einen robusten öffentlichen Digitalen Euro als einzige Verteidigung gegen die Expansion US-amerikanischer digitaler Währungen bezeichneten. Wikipedia EZB-Präsidentin Christine Lagarde drängt die Gesetzgeber ausdrücklich zur Beschleunigung, auch als Reaktion auf das US-Stablecoin-Gesetz (GENIUS Act, Juli 2025).
+      
+      ## Technisches Design & Architektur
+      
+      Der Digitale Euro wird kein programmierbares Geld sein – eine bewusste Designentscheidung zum Schutz der Zahlungsfreiheit. Das Guthaben in der Wallet wäre wie Bargeld unverzinst; die EZB würde Einzelpersonen nicht anhand ihrer Zahlungen identifizieren können. European Central Bank Für Offline-Zahlungen ist bargeldähnliche Privatsphäre vorgesehen: Transaktionsdaten bleiben lokal zwischen Zahler und Empfänger. Das Vertriebsmodell folgt dem Intermediärprinzip: Banken und PSPs stellen die Endnutzerschnittstelle bereit (eigene App oder Integration in bestehende Banking-App), die EZB-Infrastruktur bildet das technische Fundament.
+      
+      ## Haltelimit & Wasserfallprinzip
+      
+      Ein zentrales Diskussionsthema ist das Haltelimit, das übermäßige Einlagenabflüsse von Geschäftsbanken verhindern soll. Die EZB stellt häufig einen Betrag von 3.000 Euro in den Raum; Bankenverbände plädieren für deutlich niedrigere Summen. IHK München Das Haltelimit ist dabei kein Zahlungslimit: Über das sogenannte Wasserfallsystem fließt bei größeren Zahlungen automatisch der fehlende Betrag vom verknüpften Bankkonto nach – analog zum Funktionsprinzip von PayPal. Deutsche Bundesbank EZB-Analysen bestätigen, dass selbst in einem extremen Krisenszenario der Digitale Euro bei Haltelimits von bis zu 3.000 Euro je Person keine Risiken für die Finanzstabilität mit sich bringen würde. European Central Bank
+      
+      ## Auswirkungen auf Banken & IT-Dienstleister
+      
+      Der Digitale Euro wird die Erlösmodelle von Banken verändern. Obwohl Basisfunktionen für Endnutzer kostenlos bleiben, können durch Mehrwertdienste neue Einnahmen entstehen. Banking Für Banken, die den Digitalen Euro lediglich als Compliance-Pflicht betrachten, besteht das Risiko, die Kundenschnittstelle an andere PSPs zu verlieren. Bankenverbände (u.a. VÖB) fordern, dass die Vergütung der Finanzintermediäre dem Markt überlassen wird, und sprechen sich gegen eine Pflicht aus, zusätzlich die EZB-eigene Eurosystem-App anbieten zu müssen. Voeb
+      Für zentrale IT-Dienstleister im Bankensektor entstehen konkrete Handlungsfelder: Bereitstellung mandantenfähiger Wallet-Lösungen und Integrations-APIs, Compliance-Infrastruktur für das EZB-Rulebook, technische Anbindung an die Eurosystem-Plattform sowie Beratungs- und Implementierungsleistungen rund um Datenschutzarchitektur und Wasserfallmechanismus.
+      Datenschutz & gesellschaftliche Akzeptanz
+      Rund 60 % der deutschen Antworten in der öffentlichen EZB-Befragung drehten sich um Datenschutz und Privatsphäre – ein im europäischen Vergleich besonders stark ausgeprägtes Thema in Deutschland. Deutsche Bundesbank Die Bundesbank setzt sich innerhalb des Eurosystems aktiv dafür ein, diese Perspektive in der technischen Ausgestaltung zu verankern. Das hohe Datenschutzniveau des Digitalen Euro – insbesondere die Offline-Funktionalität mit bargeldähnlicher Anonymität – ist daher auch ein strategisches Argument für die gesellschaftliche Akzeptanz und Adoption in Deutschland.
+      
+      ## Non-EU-Perspektive
+      
+      Parallel zu europäischen Entwicklungen arbeiten weltweit mehr als 130 Länder an CBDC-Projekten in verschiedenen Stadien. Während China mit dem digitalen Yuan (e-CNY) bereits in der Rollout-Phase ist, hat die USA unter der Trump-Regierung die Arbeit an einem Retail-CBDC explizit gestoppt und setzt stattdessen auf regulierte Stablecoins (GENIUS Act). Dies verstärkt den geopolitischen Druck auf Europa, den Digitalen Euro zügig voranzutreiben, um die monetäre Souveränität im digitalen Raum zu sichern.
     extended_description_en: |-
       The ECB's Digital Euro preparation phase (launched November 2023) focuses on rulebook development, technical architecture finalisation, and legislative progress. The ECB has proposed a holding limit of €3,000 per citizen to mitigate bank run risk during stress scenarios, though this is subject to legislative negotiation. Commercial banks would 
       act as distributors (onboarding, KYC, wallet provision) under a supervised intermediary model — preserving the customer relationship but introducing a new settlement liability. The primary disintermediation risk is in transactional deposits: 
