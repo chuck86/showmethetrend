@@ -1729,26 +1729,18 @@ topics:
       TBD
     risks:
       - |-
-        EUDI Wallet adoption speed is uncertain; over-investing in integration ahead of user adoption could result in stranded costs.
+        hoher finanzieller Aufwand
       - |-
-        Competing wallet ecosystems (Apple Wallet, Google Wallet) may limit EUDI Wallet uptake among tech-savvy demographics.
+        aktuelle Sicherheitsverfahren / Verschlüsselung können mit Quantencomputern problemlos "geknackt" werden
       - |-
-        Possible loss of USP of AML-reusage for banks
-      - |-
-        Privacy-by-design constraints in the wallet architecture may limit the data available to relying parties for AML screening.
-      - |-
-        Possible loss of advantage as german trusted services provider
+        Konkurrenz durch sehr große Mitspieler (Google, Amazon, IBM...)
     chances:
       - |-
-        High demand expected due to mandatory acceptance
+        Einführung "Quanten-sicherer" Verfahren. "Umrüstung" bestehender Verfahren
       - |-
-        Potentially many use cases
+        neue Produkte
       - |-
-        Wallet-usage as so called verifier
-      - |-
-        Issuing certified financial attributes positions the bank as a trusted anchor in the EU digital identity ecosystem.
-      - |-
-        Open standard for embedding trusted services into the wallet
+        Hosting für Finanzindustrie
     sources:
       - label: EUDI Wallet Architecture & Reference Framework
         url: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
@@ -1758,32 +1750,27 @@ topics:
         url: https://eudiwalletconsortium.org/
     tags:
       - infrastructure
+      - research
     stakeholders:
       - 7
       - 4
       - 1
     actions:
       - description: |-
-          Monitor ARF (Architecture and Reference Framework) releases and assess impact on bank identity services.
+          Thema weiter beobachten
         status: in-progress
       - description: |-
-          Evaluate role as EUDI Wallet-compatible relying party for KYC and account access, and define integration scope.
-        status: open
-      - description: |-
-          Participate in large-scale pilot (LSP) consortium relevant to the banking sector (e.g. POTENTIAL or DC4EU).
-        status: open
-      - description: |-
-          Initiate talks with potential partners / banks for participation in SPRIND-Pilot.
+          strukturiertes Quantum-Readiness-Programm, inklusive Inventarisierung kryptografischer Abhängigkeiten, Migrationsroadmap und gezielter Pilotierungen in ausgewählten Fachbereichen
         status: open
     impacts:
-      - Customer authentication
-      - Digital identity
+      - 
     driven_by:
-      - eIDAS 2.0 mandate
-      - National large-scale pilots
+      - market
+      - science
     position: Monitor & Prepare
     associated_working_groups:
-      - name: EU EUDI Wallet Consortium
-        url: https://eudiwalletconsortium.org
-      - name: EBF Digital Identity Task Force
+      - name: BdB CSS
         url: ''
+      - name: Bitkom High Performancev Computing & Quantum Computing (Arbeitskreis)
+        url: ''
+
