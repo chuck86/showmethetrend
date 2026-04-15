@@ -1615,7 +1615,7 @@ topics:
   - id: 11
     title: "KI"
     category: Regulatory
-    score: 3
+    score: 5
     priority: Medium
     horizon: 6–24 months
     management_summary: " MGMT Summary"
@@ -1665,11 +1665,12 @@ topics:
     management_summary: |-
       ## Aktueller Stand
 
-      Quantumcomputing ist für den Finanzsektor strategisch relevant, weil die Technologie mittelfristig neue Möglichkeiten bei Optimierung, Risikoanalysen und Betrugserkennung eröffnet, **kurzfristig aber vor allem ein erhebliches Kryptografie- und Resilienzrisiko** darstellt. Für Banken und zentrale IT-Dienstleister ist der aktuelle Schwerpunkt daher weniger die breite Produktivnutzung, sondern die Vorbereitung auf Post-Quantum-Kryptografie, die Risikoanalyse kritischer Systeme und der Aufbau von Know-how.
+      Quantumcomputing ist für den Finanzsektor strategisch relevant, weil die Technologie mittelfristig neue Möglichkeiten bei Optimierung, Risikoanalysen und Betrugserkennung eröffnet, **kurzfristig aber vor allem ein erhebliches Kryptografie- und Resilienzrisiko** darstellt. Für Banken und zentrale IT-Dienstleister ist der aktuelle Schwerpunkt daher weniger die breite Produktivnutzung, sondern die Vorbereitung auf Post-Quantum-Kryptografie, die Risikoanalyse kritischer Systeme und der Aufbau von Know-how, auch wenn die Marktreife der Technologie erst in 10-20 Jahren erwartet wird.
       
       ## Strategische Bedeutung
 
-      TBD
+      - Quantencomputing kann eine Bedrohung für bestehende "Verfahrensweisen" sein.
+      - Für Finanzindustrie u.a. die Bedrohung bestehender Verschlüsselungsverfahren wichtig (Gefahr des "Q-Day"). Post-Quanten-Kryptografie, aber auch neue Möglichkeiten durch Beschleunigung komplexer Berechnungen bei Risikomodellierung, Portfoliooptimierung oder Betrugserkennung. Thema in der Wirtschaft bekannt, wird aber (noch) nicht entschieden adressiert
       
       ## Handlungsempfehlungen
       
