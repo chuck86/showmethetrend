@@ -1692,7 +1692,7 @@ topics:
       1. Zunahme des Interesses an praktischen Quantum-Anwendungen im Finanzsektor zu, etwa in Portfolio-Optimierung, Risikomanagement und Betrugsprävention
       2. Absicherung bestehender Systeme gegen Quantenrisiken rückt in den Vordergrund. Gerade für Banken ist das relevant, weil **Zahlungsverkehr, Kernbanksysteme und sicherheitskritische Infrastrukturen auf langlebige kryptografische Verfahren angewiesen sind**, die künftig durch leistungsfähige Quantencomputer gefährdet sein könnten
 
-      Die europäische und deutsche Diskussion fokussiert daher stark auf die Migration zu Post-Quantum-Kryptografie sowie auf Governance, Kompetenzen und Pilotprojekte
+      Die europäische und deutsche Diskussion fokussiert daher stark auf die Migration zu Post-Quantum-Kryptografie sowie auf Governance, Kompetenzen und Pilotprojekte. Für die Bundesregierung sind Quantentechnologien priorisierte Technologien der Hightech Agenda Deutschland - u.A. mit Schwerpunkt Quantencomputer (bis 20230 sollen mindestens zwei fehlerkorrigierte Quantencomputer auf europäischem Spitzenniveau realisiert werden). Die EU hat für 2026 den Quantum Act angekündigt.
       ## Regulatorik & Zeitplan
       
       Regulatorisch ist das Thema eng mit europäischer Cyber- und Resilienzregulierung verknüpft. Die EU arbeitet an einer Quantum-Strategie und einem geplanten Quantum Act, der voraussichtlich 2026 weiter konkretisiert wird; parallel gibt es eine koordinierte Roadmap für die Umstellung auf Post-Quantum-Kryptografie. Für den Finanzsektor ist außerdem relevant, dass der G7 Cyber Expert Group Anfang 2026 eine koordinierte Umsetzungslogik für den Übergang zur Post-Quantum-Kryptografie unterstützt hat, mit Beginn der Risikoanalyse und Planung bereits 2026. In Deutschland wird das Thema auch von Bundesbank, BaFin und Branchenverbänden aktiv adressiert, unter anderem im Kontext von BaFinTech und Positionspapieren der Bankenverbände. 
@@ -1767,6 +1767,7 @@ topics:
     driven_by:
       - market
       - science
+      - politics
     position: Monitor & Prepare
     associated_working_groups:
       - name: BdB CSS
