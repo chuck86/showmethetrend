@@ -1775,4 +1775,102 @@ topics:
         url: ''
       - name: Bitkom High Performancev Computing & Quantum Computing (Arbeitskreis)
         url: ''
+  - id: 13
+    title: "Request to Pay"
+    category: Digital Payment
+    score: 6
+    priority: Medium
+    horizon: 3-12 months
+    management_summary: |-
+      ## Aktueller Stand
 
+      Request to Pay (RTP) ist seit 2021 als SEPA-Nachrichtenformat des European Payments Council (EPC) standardisiert; das aktuelle SRTP Rulebook v4.0 ist seit Oktober 2025 in Kraft. Im giroAPI-Ökosystem ist das RTP Sub-Scheme für 2026 geplant – ein konkretes Fertigstellungsdatum kann derzeit nicht genannt werden, da das giroAPI Scheme als fortlaufender Entwicklungsprozess verstanden wird. In Deutschland pilotieren Ende 2025 die Bayerische Landesbank, die DZ Bank mit der genossenschaftlichen Gruppe, die Deutsche Bank sowie die Postbank den Einsatz der RTP-Plattform PAYCY als Dienstleistung für E-Rechnungen ihrer Firmenkunden. Der entscheidende regulatorische Treiber ist die deutsche E-Rechnungspflicht: Seit dem 1. Januar 2025 müssen alle Unternehmen in Deutschland in der Lage sein, E-Rechnungen zu empfangen; die Ausstellungspflicht wird bis 2028 stufenweise ausgeweitet. 
+      
+      ## Strategische Bedeutung
+      Request to Pay schlägt die Brücke zwischen Rechnungsstellung und Zahlung – und löst damit einen der letzten verbleibenden Medienbrüche im digitalen Zahlungsverkehr. Banken haben jetzt noch die Möglichkeit, sich als Postbox für elektronische Rechnungen zu positionieren und diesen Markt zu besetzen – mit konkretem Erlöspotenzial auf der Unternehmensseite. Die Kombination aus E-Rechnungspflicht, Instant Payment Regulation und dem giroAPI RTP Sub-Scheme 2026 schafft ein günstiges Fenster für eine marktgetriebene Adoption, das Banken als IT-Dienstleister aktiv gestalten können. 
+  
+      ## Handlungsempfehlungen
+      - Frühzeitige Vorbereitung auf den Beitritt zum giroAPI RTP Sub-Scheme 2026
+      - Positionierung der Bank als digitale Rechnungspostbox für Firmenkunden – Verknüpfung mit bestehenden E-Banking- und EBICS-Infrastrukturen
+      - Evaluierung einer Plattformlösung (z.B. RTP-as-a-Service) zur effizienten Markteinführung ohne vollständig eigenständigen Infrastrukturaufbau
+      - Aktive Begleitung der Firmenkunden bei der E-Rechnungspflicht als strategischer Einstiegspunkt für RTP-Adoption
+    management_summary_en: |-
+        TBD
+    description: |-
+        Request to Pay ist ein standardisiertes elektronisches Nachrichtenformat, das es Rechnungsstellern ermöglicht, eine digitale Zahlungsaufforderung direkt an das Bankkonto des Zahlungspflichtigen zu übermitteln. RTP ist das fehlende Puzzleteil zwischen Rechnung und Zahlungsauslösung: Es schließt den Medienbruch, der bei herkömmlichen Prozessen zwischen dem Empfang einer Rechnung und der manuellen Zahlungsauslösung entsteht. Im Rahmen des giroAPI Schemes der Deutschen Kreditwirtschaft ist RTP als eigenes Sub-Scheme geplant und soll 2026 eingeführt werden. Typischer Einsatzbereich sind Firmenkunden, die Rechnungen elektronisch versenden; RTP kann dabei die Rechnung selbst als Metadaten mitliefern und macht das Bankkonto zur zentralen Referenz für den gesamten Zahlungsvorgang
+    description_en: |- 
+      TBD
+    extended_description: |-
+      ## Grundprinzip & Funktionsweise
+      Request to Pay basiert auf einem 4-Corner-Modell: Rechnungssteller (Payee) → RTP-Dienstleister des Payees → RTP-Dienstleister des Zahlers (Payer) → Zahler. Der technische Ablauf folgt dem ISO-20022-Nachrichtenformat pain.013: Eine Zahlungsaufforderung wird vom System des Händlers oder Rechnungsstellers über seinen Dienstleister an die Bank des Kunden gesendet. Der Empfänger erhält die Zahlungsaufforderung in seiner Banking-App oder im Firmenportal und kann sie mit wenigen Klicks bestätigen, ablehnen oder einen Gegenvorschlag senden – die eigentliche Zahlungsauslösung erfolgt dann als SEPA-Echtzeitüberweisung (SCT-Inst) direkt vom Konto. 
+      Im Detail unterstützt das SEPA RTP Rulebook v4.0 folgende Transaktionstypen:
+
+      - Einzelzahlungsaufforderungen (Standard-RTP)
+      - Ratenzahlungsaufforderungen
+      - Gutschriften (Credit Notes) per RTP-Nachricht
+      - Stornierungen und Statusabfragen entlang des gesamten Zahlungslebenszyklus
+      
+      Im Webshop wählt der Kunde die Option „Bezahlen mit Bank"; am POS scannt er einen dynamischen QR-Code mit seiner Banking-App. In beiden Fällen wird eine vorausgefüllte, autorisierungspflichtige Überweisung im gewohnten Banking-Umfeld angezeigt.
+      
+      ## Regulatorik & Zeitplan
+      
+      Das europäische SRTP Rulebook wurde erstmals im Juni 2021 vom EPC eingeführt; Version 4.0 trat am 5. Oktober 2025 in Kraft und brachte Verbesserungen in Klarheit, Sicherheit und Benutzerfreundlichkeit. Parallel veröffentlichte das EPC im Juli 2025 Inter-SRTP-SP-API-Spezifikationen, die ebenfalls am 5. Oktober 2025 in Kraft traten und die technische Grundlage für die Kommunikation zwischen RTP-Dienstleistern normieren. 
+      
+      Im deutschen Kontext ist die E-Rechnungspflicht der entscheidende regulatorische Treiber: Seit dem 1. Januar 2025 müssen alle Unternehmen in Deutschland in der Lage sein, elektronische Rechnungen zu empfangen. Die Ausstellungspflicht wird stufenweise verpflichtend – zunächst für große Unternehmen, ab dem 1. Januar 2028 für alle (mit Ausnahme von Kleinunternehmen gemäß § 19 UStG). Diese Pflicht ist der stärkste Markttreiber für die RTP-Adoption im B2B-Bereich, da RTP den idealen Mechanismus für die zugehörige Zahlungsauslösung liefert. 
+      
+      Das giroAPI RTP Sub-Scheme ist für 2026 geplant, ohne konkretes Quartalsdatum. Es baut auf dem SEPA SRTP Rulebook und dem openFinance API Framework der Berlin Group auf und schafft damit einen standardisierten, vertraglich abgesicherten Rahmen für alle deutschen Banken.
+      
+      ## Anwendungsfälle
+      
+      Request to Pay eignet sich für ein breites Spektrum an Anwendungsszenarien:
+      
+      B2B (primärer Fokus Deutschland 2025/2026): Rechnungsstellung mit integrierter Zahlungsaufforderung, E-Invoicing mit automatisierter ERP-Anbindung, Supply-Chain-Financing, Ratenzahlungsvereinbarungen sowie Factoring- und Discounting-Lösungen. Für die Rechnungssteller fallen manuelle Prozesse und Portokosten weg, da neben der Rechnung auch andere Anhänge direkt in das digitale Postfach des Rechnungsempfängers geliefert werden können und der gesamte Bezahlprozess digital und damit automatisierbar abläuft.
+      
+      B2C: Rechnungsstellung von Versicherungen, Energieversorgern, Telekommunikationsanbietern und öffentlichen Institutionen; Abonnementzahlungen; E-Commerce-Checkout als Alternative zu Kreditkarte oder PayPal; POS-Zahlung per QR-Code. Erste Studien zeigen, dass RTP auch der E-Commerce-Branche durch höhere Conversion Rates nutzt, weil Kunden den Kauf seltener abbrechen: Einerseits haben Kunden die Kontrolle über das, wofür sie bezahlen; andererseits erfolgt der Ablauf über die eigene Bank – den Kanal mit dem höchsten Verbrauchervertrauen in Deutschland. 
+      
+      ## Technische Aspekte
+      
+      RTP basiert auf ISO-20022-Nachrichtenformaten (pain.013 ff.) und setzt auf SCT-Inst als Zahlungsauslösungsinfrastruktur auf. Die Kommunikation zwischen den Dienstleistern erfolgt über die Inter-SRTP-SP-API-Spezifikationen des EPC. Da RTP auf dem 4-Corner-Modell beruht und jede Bank theoretisch jede andere erreichen können muss, ist ein RTP-Broker eine praktisch notwendige Infrastrukturkomponente: PAYCY übernimmt die Rolle des zentralen RTP-Brokers: Als „digitaler Postbote" prüft die Plattform vor dem Versand, ob ein Empfänger ein Konto bei einer angeschlossenen Bank hat, und löst damit das klassische 1:n-Problem – ohne eine solche Vermittlungsfunktion müsste jede Bank jede andere einzeln adressieren, was den Aufbau eines flächendeckenden Netzes erheblich erschwert. 
+      
+      Banken können sich über API oder EBICS an Plattformlösungen anbinden, was insbesondere für den Firmenkunden-Kanal relevant ist. Die Integration in bestehende Online-Banking-Oberflächen und Firmenkundenportale ist für die Nutzererfahrung essenziell.
+      
+      ## Strategische Bedeutung & Erlöspotenzial
+      
+      Es lohnt sich für Banken, jetzt in RTP zu investieren: Wer die Entwicklung von EU-Gesetzen verfolgt, erkennt, dass nach der Umsetzung der B2B-Pflicht für elektronische Rechnungen der Schritt zur B2C-Pflicht folgen wird. Konkretes Geld können Banken auf der Unternehmensseite verdienen, für die das Versenden und Empfangen von Rechnungen, deren Prüfung, die Buchführung und Archivierung künftig deutlich günstiger ausfallen wird. Für einen zentralen IT-Dienstleister im Bankensektor ergibt sich daraus eine Plattformchance: RTP-as-a-Service als mandantenfähige Lösung für angeschlossene Institute anzubieten senkt die Einstiegshürde für einzelne Banken erheblich und schafft gleichzeitig Skaleneffekte auf der Infrastrukturebene. 
+      
+      ## Non-EU-Perspektive
+      
+      International gibt es vergleichbare Systeme: In Indien ist UPI Collect bereits flächendeckend im Einsatz, in den USA existiert das Federal-Reserve-System „Request for Payment", und PayPal bietet eine funktional ähnliche „Request Money"-Funktion an. Diese Systeme zeigen, dass RTP-ähnliche Verfahren bei ausreichender Netzwerkabdeckung und einfacher Nutzerführung hohe Adoptionsraten erreichen können – und unterstreichen den Handlungsdruck für den europäischen Bankensektor, eine eigene, souveräne Lösung zu etablieren, bevor nicht-europäische Anbieter die Lücke besetzen.
+    extended_description_en: |- 
+      TBD
+    risks:
+      - |-
+        Langsame Marktadoption gefährdet den Business Case
+      - |-
+        Kannibalisierungsgefahr im bestehenden Portfolio
+    chances:
+      - |-
+        E-Rechnungspflicht als Adoptionstreiber
+      - |-
+        RTP-as-a-Service senkt die Einstiegshürde insb. für kleinere Banken
+    sources:
+      - label: 'TBD'
+        url: 
+    tags:
+      - 
+    stakeholders:
+      - 7
+      - 4
+      - 1
+    actions:
+      - description: |-
+          Thema weiter beobachten
+        status: in-progress
+    impacts:
+      - 
+    driven_by:
+      - market
+    position: Monitor & Prepare
+    associated_working_groups:
+      - name: 
+        url: ''
