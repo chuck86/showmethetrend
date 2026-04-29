@@ -1612,7 +1612,7 @@ topics:
     associated_working_groups:
       - name: Name
         url: ''
-     linked_to:
+    linked_to:
       - 13
   - id: 11
     title: "KI"
