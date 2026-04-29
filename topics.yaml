@@ -1777,7 +1777,7 @@ topics:
         url: ''
   - id: 13
     title: "Request to Pay"
-    category: Digital Payment
+    category: Digital Payments
     score: 6
     priority: Medium
     horizon: 3-12 months
