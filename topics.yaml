@@ -1612,6 +1612,8 @@ topics:
     associated_working_groups:
       - name: Name
         url: ''
+     linked_to:
+      - 13
   - id: 11
     title: "KI"
     category: Regulatory
@@ -1874,3 +1876,5 @@ topics:
     associated_working_groups:
       - name: 
         url: ''
+     linked_to:
+      - 10
