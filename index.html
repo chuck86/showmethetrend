@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
   /* ── DESIGN TOKENS ─────────────────────────────────────────────────────── */
   :root {
@@ -206,12 +207,23 @@
   /* ── DETAIL ──────────────────────────────────────────────────────────────── */
   .detail-topbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 50; }
   .detail-nav { max-width: 1280px; margin: 0 auto; padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .detail-nav-left { display: flex; align-items: center; gap: 1.5rem; }
   .back-btn { font-family: 'Noto Sans Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; font-weight: 500; }
   .back-btn:hover { color: var(--navy); }
   .back-btn svg { width: 14px; height: 14px; }
   .detail-breadcrumb { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem; }
   .breadcrumb-sep { opacity: 0.4; }
   .breadcrumb-current { color: var(--navy); font-weight: 600; }
+  .export-pptx-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.07em;
+    text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 3px;
+    border: 1.5px solid var(--border-strong); background: var(--white);
+    color: var(--navy); cursor: pointer; display: flex; align-items: center;
+    gap: 0.5rem; transition: all 0.18s; font-weight: 600; white-space: nowrap;
+  }
+  .export-pptx-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .export-pptx-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .export-pptx-btn.loading { opacity: 0.6; pointer-events: none; }
 
   .detail-layout { max-width: 1280px; margin: 0 auto; padding: 3rem; display: grid; grid-template-columns: 1fr 300px; gap: 4rem; }
 
@@ -601,15 +613,26 @@
 <div id="view-detail">
   <div class="detail-topbar">
     <div class="detail-nav">
-      <button class="back-btn" onclick="showIndex()">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
-        <span data-i18n="allTopics">All Topics</span>
-      </button>
-      <div class="detail-breadcrumb">
-        <span>Topics</span>
-        <span class="breadcrumb-sep">›</span>
-        <span class="breadcrumb-current" id="breadcrumb-title">—</span>
+      <div class="detail-nav-left">
+        <button class="back-btn" onclick="showIndex()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
+          <span data-i18n="allTopics">All Topics</span>
+        </button>
+        <div class="detail-breadcrumb">
+          <span>Topics</span>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current" id="breadcrumb-title">—</span>
+        </div>
       </div>
+      <button class="export-pptx-btn" id="export-pptx-btn" onclick="exportTopicToPptx()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="2" y="2" width="9" height="12" rx="1"/>
+          <path d="M5 5h4M5 7.5h4M5 10h2" stroke-linecap="round"/>
+          <path d="M9 11l3 1-3 1" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 12H9" stroke-linecap="round"/>
+        </svg>
+        Export PPTX
+      </button>
     </div>
   </div>
   <div class="detail-layout">
@@ -1078,11 +1101,31 @@ function renderIndexWheel() {
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
     const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
     const N=topics.length;
-    topics.forEach((tp,j)=>{
+    // Step 1: compute base angular + radial positions
+    const dots=topics.map((tp,j)=>{
       const r=iR+(10-tp.score)/9*(oR-iR);
       const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
       const lo=a1+minOff, hi=a2-minOff;
       const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      return {tp,r,tA};
+    });
+    // Step 2: resolve overlaps by staggering radius
+    for(let i=0;i<dots.length;i++){
+      for(let k=i+1;k<dots.length;k++){
+        const a=dots[i],b=dots[k];
+        const aRad=(a.tA-90)*Math.PI/180, bRad=(b.tA-90)*Math.PI/180;
+        const dx=cx+a.r*Math.cos(aRad)-(cx+b.r*Math.cos(bRad));
+        const dy=cy+a.r*Math.sin(aRad)-(cy+b.r*Math.sin(bRad));
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<DOT_R*2+2){
+          const nudge=(DOT_R*2+2-dist)/2+DOT_R*0.5;
+          a.r=Math.max(iR+DOT_R, a.r-nudge);
+          b.r=Math.min(oR-DOT_R, b.r+nudge);
+        }
+      }
+    }
+    // Step 3: render
+    dots.forEach(({tp,r,tA})=>{
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="iwdot" data-id="${tp.id}" style="cursor:pointer"/>`;
       h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.id}</text>`;
@@ -1413,11 +1456,31 @@ function renderWheel() {
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
     const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
     const N=topics.length;
-    topics.forEach((tp,j)=>{
+    // Step 1: compute base angular + radial positions
+    const dots=topics.map((tp,j)=>{
       const r=iR+(10-tp.score)/9*(oR-iR);
       const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
       const lo=a1+minOff, hi=a2-minOff;
       const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      return {tp,r,tA};
+    });
+    // Step 2: resolve overlaps by staggering radius
+    for(let i=0;i<dots.length;i++){
+      for(let k=i+1;k<dots.length;k++){
+        const a=dots[i],b=dots[k];
+        const aRad=(a.tA-90)*Math.PI/180, bRad=(b.tA-90)*Math.PI/180;
+        const dx=cx+a.r*Math.cos(aRad)-(cx+b.r*Math.cos(bRad));
+        const dy=cy+a.r*Math.sin(aRad)-(cy+b.r*Math.sin(bRad));
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<DOT_R*2+2){
+          const nudge=(DOT_R*2+2-dist)/2+DOT_R*0.5;
+          a.r=Math.max(iR+DOT_R, a.r-nudge);
+          b.r=Math.min(oR-DOT_R, b.r+nudge);
+        }
+      }
+    }
+    // Step 3: render
+    dots.forEach(({tp,r,tA})=>{
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="wdot" data-id="${tp.id}" style="cursor:pointer"/>`;
       h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.id}</text>`;
@@ -1916,6 +1979,137 @@ function applyLang() {
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'de' : 'en';
   applyLang();
+}
+
+// ── PPTX Export ──────────────────────────────────────────────────────────────
+const TEMPLATE_URL = './template.pptx';
+
+function xmlEscape(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function normalizePptxPlaceholders(xml) {
+  // Some placeholders are split across 3 runs: <a:t>{{</a:t> <a:t>field</a:t> <a:t>}}</a:t>
+  // Merge them into a single run's text node: <a:t>{{field}}</a:t>
+  // Strategy: work paragraph by paragraph; if all runs concatenated = {{field}}, collapse to first run
+  return xml.replace(/<a:p\b[^>]*>[\s\S]*?<\/a:p>/g, para => {
+    // Collect all <a:r> runs in this paragraph
+    const runMatches = [...para.matchAll(/<a:r>([\s\S]*?)<\/a:r>/g)];
+    if (runMatches.length < 2) return para;
+
+    // Concatenate all text from all runs in this paragraph
+    const texts = runMatches.map(rm => {
+      const t = rm[1].match(/<a:t[^>]*>([\s\S]*?)<\/a:t>/);
+      return t ? t[1] : '';
+    });
+    const combined = texts.join('');
+
+    // Check if the combined text is exactly a placeholder
+    const ph = combined.match(/^\s*\{\{([a-z_]+)\}\}\s*$/);
+    if (!ph) return para;
+
+    // It is a split placeholder — collapse: keep first run, update its <a:t>, remove the rest
+    const firstRunFull = runMatches[0][0]; // full <a:r>...</a:r> string
+    const placeholder = `{{${ph[1]}}}`;
+    const newRun = firstRunFull.replace(/<a:t[^>]*>[\s\S]*?<\/a:t>/, `<a:t>${placeholder}</a:t>`);
+
+    // Rebuild paragraph: replace all runs with just the merged first run
+    let result = para;
+    for (const rm of runMatches) {
+      result = result.replace(rm[0], '');
+    }
+    // Insert the merged run before </a:p>
+    result = result.replace(/<\/a:p>/, newRun + '</a:p>');
+    return result;
+  });
+}
+
+async function exportTopicToPptx() {
+  const btn = document.getElementById('export-pptx-btn');
+  if (!window._currentTopicId || !db) return;
+  const topic = db.topics.find(t => t.id === window._currentTopicId);
+  if (!topic) return;
+
+  btn.classList.add('loading');
+  btn.textContent = 'Generating…';
+
+  try {
+    // 1. Fetch template
+    const resp = await fetch(TEMPLATE_URL);
+    if (!resp.ok) throw new Error(`Could not fetch template.pptx (${resp.status})`);
+    const buf = await resp.arrayBuffer();
+
+    // 2. Open with JSZip
+    const zip = await JSZip.loadAsync(buf);
+
+    // 3. Get slide XML
+    const slideFile = zip.file('ppt/slides/slide1.xml');
+    if (!slideFile) throw new Error('slide1.xml not found in template');
+    let xml = await slideFile.async('string');
+
+    // 4. Normalize split placeholders
+    xml = normalizePptxPlaceholders(xml);
+
+    // 5. Build replacement data
+    const linkedTopics = (topic.linked_to || []).map(lid => {
+      const lt = db.topics.find(x => x.id === lid);
+      return lt ? `#${lt.id} ${lt.title}` : `#${lid}`;
+    });
+
+    const formatList = (arr) => {
+      if (!arr || !arr.length) return '—';
+      return arr.map(item => `• ${item}`).join('&#13;');
+    };
+
+    const data = {
+      title:              xmlEscape(topic.title || ''),
+      score:              xmlEscape(String(topic.score || '')),
+      management_summary: xmlEscape(topic.management_summary || topic.description || '—'),
+      category:           xmlEscape(topic.category || '—'),
+      priority:           xmlEscape(topic.priority || '—'),
+      time_horizon:       xmlEscape(topic.horizon || '—'),
+      linked_to:          xmlEscape(linkedTopics.length ? linkedTopics.join(', ') : '—'),
+      risks:              formatList(topic.risks),
+      chances:            formatList(topic.chances),
+    };
+
+    // 6. Replace all {{field}} placeholders
+    Object.entries(data).forEach(([key, val]) => {
+      xml = xml.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), val);
+    });
+
+    // 7. Update zip and download
+    zip.file('ppt/slides/slide1.xml', xml);
+    const blob = await zip.generateAsync({
+      type: 'blob',
+      mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      compression: 'DEFLATE',
+    });
+
+    const filename = topic.title.replace(/[^a-zA-Z0-9\s\-_]/g, '').trim().replace(/\s+/g, '_') + '.pptx';
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+
+  } catch (err) {
+    console.error('PPTX export error:', err);
+    alert(`Export failed: ${err.message}`);
+  } finally {
+    btn.classList.remove('loading');
+    btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="2" y="2" width="9" height="12" rx="1"/>
+      <path d="M5 5h4M5 7.5h4M5 10h2" stroke-linecap="round"/>
+      <path d="M9 11l3 1-3 1" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 12H9" stroke-linecap="round"/>
+    </svg> Export PPTX`;
+  }
 }
 
 loadData().then(checkHash);
