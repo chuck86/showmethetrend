@@ -53,21 +53,15 @@ topics:
   priority: Low
   horizon: 36-60 months
   management_summary:
-    summary: "Stablecoins gewinnen aktuell zunehmend an öffentlichem Interesse. Stablecoin-Zahlungssysteme\
-      \ bieten eine glaubwürdige mittelfristige Alternative für grenzüberschreitende\
-      \ Zahlungen und können die Kosten des Korrespondenzbankwesens potenziell um\
-      \ 30–60 % senken.\nDer MiCA-Rahmen bietet einen regulatorischen Weg in Europa,\
-      \ doch die Zeitpläne sind weiterhin ungewiss. Es besteht die Gefahr, dass Stablecoins\
-      \ andere Produkte, insbesondere im Zahlungsverkehr, verdrängen. Wir können Banken\
-      \ jedoch bei der Integration von Stablecoins \nunterstützen, wenn wir uns frühzeitig\
-      \ positionieren. Wir empfehlen ein begrenztes Pilotprogramm unter genauer Beobachtung\
-      \ der EZB-Politik.\n\nDie USA treiben die Entwicklung voran und wollen ihre\
-      \ Position stärken. Die EZB wünscht sich eine durchdachte Regulierung. Banken\
-      \ erkennen die Chancen und die Bedeutung der Stablecoin-Technologie und fördern\
-      \ deren Weiterentwicklung (Qivalis)."
-    strategic_importance: ''
-    course_of_action: ''
-  management_summary_en: "Stablecoins are currently gaining more public interest.\
+    summary: |-
+      Stablecoins are cryptocurrencies whose value is pegged to stable assets such as the US dollar or euro, unlike volatile coins such as Bitcoin. They are backed by reserves (fiat currency, government bonds, or other assets) and serve as a more reliable means of payment within the crypto ecosystem. 
+    strategic_importance: |-
+      - Potential danger of canibalizing other (payment) products
+      - highly reduced costs in cross-country payments
+    course_of_action: |-
+      - Position ourselfes early on as partner for stablecoin integration for banks
+      - Establish pilot-programm while monitoring ECB-policy
+  management_summary_en: Stablecoins are currently gaining more public interest.\
     \ Stablecoin payment rails offer a credible medium-term alternative for cross-border\
     \ settlement potentially reducing correspondent banking costs by 30–60%. \nThe\
     \ MiCA framework provides a regulatory pathway in Europe but timelines remain\
@@ -79,7 +73,8 @@ topics:
     \ wants thought through regulation. Banks see the chances and significance of\
     \ stablecoin technology and enforce further development (Qivalis)."
   description: |-
-    Stablecoins sind Kryptowährungen, deren Wert an stabile Vermögenswerte wie US-Dollar oder Euro gebunden ist, im Gegensatz zu volatilen Coins wie Bitcoin. Sie werden durch Reserven (Fiat, Staatsanleihen oder andere Assets) abgesichert und dienen als zuverlässig(er)es Zahlungsmittel im Krypto-Ökosystem.
+    Stablecoins are cryptocurrencies whose value is pegged to stable assets such as the US dollar or euro, unlike volatile coins such as Bitcoin. They are backed by reserves (fiat currency, government bonds, or other assets) and serve as a more reliable means of payment within the crypto ecosystem.
+    Currently, they are gaining traction rapidly, most of in the US
   description_en: |-
     Stablecoins are cryptocurrencies whose value is pegged to stable assets such as the US dollar or euro, unlike volatile coins such as Bitcoin. They are backed by reserves (fiat currency, government bonds, or other assets) and serve as a more reliable means of payment within the crypto ecosystem.
   extended_description_en: "Stablecoins are **blockchain-based means of payment**\
