@@ -45,9 +45,9 @@ stakeholders:
     - id: 9
       name: Jana Becker
       role: Project Lead B
- topics:
+topics:
     - id: 1
-      title: "Stablecoins"
+      title: Stablecoins
       category: Regulatory
       score: 3
       priority: Low
