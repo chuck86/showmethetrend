@@ -1,0 +1,160 @@
+meta:
+    title: Strategic Topic Intelligence
+    organisation: Payment Enablement
+    updated: March 2026
+categories:
+    - Trusted Services
+    - Digital Payments
+    - Regulatory
+    - Banking Regulatory and Trends
+    - IT Security
+    - Miscellaneous
+tags:
+    - payment
+    - research
+    - credit card
+    - blockchain
+    - infrastructure
+    - market
+    - regulation
+stakeholders:
+    - id: 1
+      name: Sarah Chen
+      role: Chief Product Officer
+    - id: 2
+      name: Marcus Webb
+      role: Product Owner A
+    - id: 3
+      name: Priya Nair
+      role: Product Owner B
+    - id: 4
+      name: Thomas Kraft
+      role: Head of A
+    - id: 5
+      name: Lena Fischer
+      role: Head of B
+    - id: 6
+      name: Klaus Berger
+      role: Director A
+    - id: 7
+      name: Anna Hoffmann
+      role: Director B
+    - id: 8
+      name: Stefan Müller
+      role: Project Lead A
+    - id: 9
+      name: Jana Becker
+      role: Project Lead B
+ topics:
+    - id: 1
+      title: "Stablecoins"
+      category: Regulatory
+      score: 3
+      priority: Low
+      horizon: 36-60 months
+      management_summary:
+        summary: |-
+        strategic_importance: |-
+        course_of_actions: |-
+      description: |-
+      extended_description: |-
+      risks: 
+        - |-        
+          Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
+        - Liquidity and de-peg risk if the underlying stablecoin reserve management fails.
+        - 'AML/CFT complexity: on-chain transactions require new screening tooling and staff
+      chances:
+        - |-
+          First-mover advantage in corporate cross-border settlement within the German cooperative banking sector.
+        - 30–60% cost reduction on international payment corridors compared to SWIFT/correspondent model.
+        - New revenue stream: white-label stablecoin settlement infrastructure sold to smaller regional banks.
+        - |-
+            Positions the institution for a Digital Euro intermediary role given overlapping technical architecture.
+      source:
+      tags:
+        - payment
+        - blockchain
+        - research
+      stakeholders:
+        - 1
+        - 2
+      actions:
+        - description:
+          status: open
+      impacts:
+        - a
+        - b
+        - c
+      driven_by:
+        - MiCA regulation
+        - ECB digital currency strategy
+      position: monitor & prepare
+      associated_working_groups:
+        - name: EBA Digital Finance Working Group
+          url: ''
+        - name: BdB Arbeitsgruppe Digitale Währungen
+          url: ''
+    - id: 2
+      title: girocard 4.0
+      category: Digital Payment
+      score: 9
+      priority: High
+      horizon: 12-24 months
+      management_summary:
+        summary: |-
+        strategic_importance: |-
+        course_of_actions: |-
+      description: |-
+      extended_description: |-
+      risks: 
+        - High investmens in technology. Training necessary.
+        - |-
+          Dense market: international schemes are already established. Market capitalization more difficult. Only relevant for german market.
+        - |-
+          Migration delay risks exclusion from Apple Pay and Google Pay wallet integrations, ceding market share to Visa/Mastercard debit.
+        - |-
+          TSP integration complexity may be underestimated, particularly for banks with legacy issuing systems.
+        - Scheme fee structure under girocard 4.0 is not yet finalised; cost increase is
+          possible.
+        - |-
+          Merchant acquirer readiness varies; incomplete terminal estate upgrades could fragment the acceptance network.
+      chances:
+        - |-
+          girocard mobile wallet integration recaptures digital payment share from Visa/Mastercard among German debit cardholders
+        - |-
+           E-commerce capability opens a new acceptance channel for girocard, previously absent from online retail.
+        - |-
+          Tokenisation infrastructure is reusable for Digital Euro distribution and future CBDC wallet integration.
+        - |-
+          Strengthened domestic scheme reduces interchange exposure and keeps payment data within the German banking ecosystem.
+        - Business modell expansion by offering new services based on new technical possibilities
+      source:
+        - label: 'Deutsche Kreditwirtschaft: girocard 4.0 Programme'
+          url: https://die-dk.de/zahlungsverkehr/girocard/
+        - label: 'Bundesbank: Retail Payments Strategy Germany'
+          url: https://www.bundesbank.de/en/tasks/payment-systems/retail-payments
+        - label: 'Atruvia: girocard Migration Documentation (internal)'
+          url: '#'
+      tags:
+        - infrastructure
+        - market
+      stakeholders:
+        - 6
+        - 4
+      actions:
+        - description:
+          status: open
+      impacts:
+        - a
+        - b
+        - c
+      driven_by:
+        - DK scheme evolution
+        - Contactless & online use case expansion
+        - Girocard decline risk
+      position: monitor & prepare
+      associated_working_groups:
+        - name: DK Arbeitsgruppe girocard
+          url: ''
+        - name: Euro Retail Payments Board (ERPB)
+          url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
