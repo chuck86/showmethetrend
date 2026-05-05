@@ -157,4 +157,4 @@ topics:
         - name: DK Arbeitsgruppe girocard
           url: ''
         - name: Euro Retail Payments Board (ERPB)
-          url: https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html
+          url: 'https://www.ecb.europa.eu/paym/groups/erpb/html/index.en.html'
