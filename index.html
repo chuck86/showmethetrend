@@ -812,8 +812,20 @@
       <div class="ed-section-title">Descriptions</div>
       <div class="ed-row full">
         <div class="ed-field">
-          <label class="ed-label" for="ed-mgmt">Management Summary</label>
-          <textarea class="ed-textarea" id="ed-mgmt" placeholder="2–4 sentence executive summary for leadership…"></textarea>
+          <label class="ed-label" for="ed-mgmt-summary">Summary</label>
+          <textarea class="ed-textarea" id="ed-mgmt-summary" placeholder="Core summary — 2–4 sentences for leadership…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-mgmt-strategic">Strategic Importance</label>
+          <textarea class="ed-textarea" id="ed-mgmt-strategic" placeholder="Why this topic matters strategically…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-mgmt-action">Recommended Course of Action</label>
+          <textarea class="ed-textarea" id="ed-mgmt-action" placeholder="What we should do and by when…"></textarea>
         </div>
       </div>
       <div class="ed-row full">
@@ -953,6 +965,19 @@ function md(text) {
   if (!text) return '';
   if (typeof marked === 'undefined') return `<p>${text}</p>`;
   return marked.parse(text, { breaks: true, gfm: true });
+}
+
+// Assembles the management summary from its sub-entries (dict or legacy string)
+function buildMgmtSummary(ms) {
+  if (!ms) return '';
+  // Legacy: plain string
+  if (typeof ms === 'string') return md(ms);
+  // New: dict with sub-entries
+  const parts = [];
+  if (ms.summary)               parts.push(md(ms.summary));
+  if (ms.strategic_importance)  parts.push(`<h3>Strategic Importance</h3>${md(ms.strategic_importance)}`);
+  if (ms.course_of_action)      parts.push(`<h3>Recommended Course of Action</h3>${md(ms.course_of_action)}`);
+  return parts.join('\n') || '';
 }
 
 // ── State ───────────────────────────────────────────────────────────────────
@@ -1233,7 +1258,7 @@ function showDetail(id) {
     <div class="fade-up">
       <div class="detail-category">Strategic Topic</div>
       <h1 class="detail-title">${t.title}</h1>
-      <div class="detail-tags">${t.tags.map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
+      <div class="detail-tags">${(t.tags||[]).filter(Boolean).map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
       <div class="score-band">
         <div class="score-band-num">${t.score}</div>
         <div class="score-band-right">
@@ -1246,7 +1271,7 @@ function showDetail(id) {
     ${t.management_summary ? `
     <div class="fade-up" style="animation-delay:0.05s">
       <div class="section-label">${i18n('sectionMgmtSummary')}</div>
-      <div class="mgmt-summary"><div class="md-prose">${md(t.management_summary)}</div></div>
+      <div class="mgmt-summary"><div class="md-prose">${buildMgmtSummary(t.management_summary)}</div></div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.1s">
@@ -1655,7 +1680,9 @@ function edCollect() {
     const ins = row.querySelectorAll('input');
     return { name: ins[0].value.trim(), url: ins[1].value.trim() };
   }).filter(w => w.name);
-  const mgmt    = document.getElementById('ed-mgmt').value.trim();
+  const mgmtSummary    = document.getElementById('ed-mgmt-summary').value.trim();
+  const mgmtStrategic  = document.getElementById('ed-mgmt-strategic').value.trim();
+  const mgmtAction     = document.getElementById('ed-mgmt-action').value.trim();
   const desc    = document.getElementById('ed-desc').value.trim();
   const extdesc = document.getElementById('ed-extdesc').value.trim();
 
@@ -1676,7 +1703,7 @@ function edCollect() {
     return { label: ins[0].value.trim(), url: ins[1].value.trim() };
   }).filter(s => s.label || s.url);
 
-  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmt, desc, extdesc, tags, shIds, linkedTo, actions, risks, chances, sources };
+  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmtSummary, mgmtStrategic, mgmtAction, desc, extdesc, tags, shIds, linkedTo, actions, risks, chances, sources };
 }
 
 function edValidate(f) {
@@ -1705,7 +1732,13 @@ function edSave() {
     category: f.category || undefined,
     horizon: f.horizon || undefined,
     description: f.desc,
-    ...(f.mgmt    && { management_summary: f.mgmt }),
+    ...(f.mgmtSummary || f.mgmtStrategic || f.mgmtAction ? {
+      management_summary: {
+        summary:               f.mgmtSummary   || '',
+        strategic_importance:  f.mgmtStrategic || '',
+        course_of_action:      f.mgmtAction    || '',
+      }
+    } : {}),
     ...(f.extdesc && { extended_description: f.extdesc }),
     ...(f.risks.length   && { risks: f.risks }),
     ...(f.chances.length && { chances: f.chances }),
@@ -1742,7 +1775,9 @@ function edReset() {
   document.getElementById('ed-priority').value = '';
   document.getElementById('ed-horizon').value = '';
   document.getElementById('ed-category').value = '';
-  document.getElementById('ed-mgmt').value = '';
+  document.getElementById('ed-mgmt-summary').value = '';
+  document.getElementById('ed-mgmt-strategic').value = '';
+  document.getElementById('ed-mgmt-action').value = '';
   document.getElementById('ed-desc').value = '';
   document.getElementById('ed-extdesc').value = '';
   document.getElementById('ed-tags-pills').innerHTML = '';
@@ -2066,10 +2101,23 @@ async function exportTopicToPptx() {
       return arr.map(item => `• ${item}`).join('&#13;');
     };
 
+    // Flatten management_summary for PPTX
+    const ms = topic.management_summary;
+    let mgmtText = '';
+    if (typeof ms === 'string') {
+      mgmtText = ms;
+    } else if (ms && typeof ms === 'object') {
+      const parts = [];
+      if (ms.summary)              parts.push(ms.summary);
+      if (ms.strategic_importance) parts.push(`Strategic Importance: ${ms.strategic_importance}`);
+      if (ms.course_of_action)     parts.push(`Recommended Course of Action: ${ms.course_of_action}`);
+      mgmtText = parts.join('\n\n');
+    }
+
     const data = {
       title:              xmlEscape(topic.title || ''),
       score:              xmlEscape(String(topic.score || '')),
-      management_summary: xmlEscape(topic.management_summary || topic.description || '—'),
+      management_summary: xmlEscape(mgmtText || topic.description || '—'),
       category:           xmlEscape(topic.category || '—'),
       priority:           xmlEscape(topic.priority || '—'),
       time_horizon:       xmlEscape(topic.horizon || '—'),
