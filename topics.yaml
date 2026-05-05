@@ -130,11 +130,11 @@ topics:
         - Business modell expansion by offering new services based on new technical possibilities
       source:
         - label: Deutsche Kreditwirtschaft: girocard 4.0 Programme
-          url: 'https://die-dk.de/zahlungsverkehr/girocard/'
+          url: https://die-dk.de/zahlungsverkehr/girocard/
         - label: Bundesbank: Retail Payments Strategy Germany
-          url: 'https://www.bundesbank.de/en/tasks/payment-systems/retail-payments'
+          url: https://www.bundesbank.de/en/tasks/payment-systems/retail-payments
         - label: Atruvia: girocard Migration Documentation (internal)
-          url: '#'
+          url: 
       tags:
         - infrastructure
         - market
