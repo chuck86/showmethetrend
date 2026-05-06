@@ -109,17 +109,18 @@ topics:
     - **Risks (FATF/ECB/BIS)**: The risk of illicit financial flows due to incomplete regulation; **currency displacement** in emerging markets destabilizes local economies.
     
     ## Implementation Requirements
-    Banks need **treasury adjustments**, **token custody**, and **AML/CFT** for
-    off-chain transactions.\n\nTech Stack: **Ethereum L2** (polygon) or licensed
-    chains; open questions regarding **capital/liquidity treatment**.\n\n**AUS**:\
-    A white-label **stablecoin settlement corridor** as a **USP** for corporate\
-    clients.\n   \n## Extended Use Cases\n\n- **B2B Payments**: Low latency/fees\
-    vs. correspondent banks. **24/7 processing**    \n- **DeFi/IoT**: Automated\
-    micropayments via smart contracts.     \n- **Inclusion**: **Bank account replacement**\
-    \ in emerging markets; IoT automation through smart contracts.      \n- **Trading/DeFi**:\
-    \ Liquidity in AMMs, yield farming without fiat currency intermediaries.\n  \n\
-     Stablecoins are evolving from crypto niches to **regulated global payment instruments**\
-    – with traditional financial institutions as new key players."
+    Banks need **treasury adjustments**, **token custody**, and **AML/CFT** for off-chain transactions.
+    
+    Tech Stack: **Ethereum L2** (polygon) or licensed chains; open questions regarding **capital/liquidity treatment**.
+    
+    **AUS**: A white-label **stablecoin settlement corridor** as a **USP** for corporate clients.
+    
+    ## Extended Use Cases
+    **B2B Payments**: Low latency/fees vs. correspondent banks. **24/7 processing** 
+    - **DeFi/IoT**: Automated micropayments via smart contracts.   
+    - **Inclusion**: **Bank account replacement** in emerging markets; IoT automation through smart contracts.      
+    - **Trading/DeFi**: Liquidity in AMMs, yield farming without fiat currency intermediaries. Stablecoins are evolving from crypto niches to **regulated global payment instruments**
+    – with traditional financial institutions as new key players.
   extended_description_de: "Stablecoins sind **Blockchain-basierte Zahlungsmittel**,\
     \ die **1:1 an Fiat-Währungen** (US-Dollar, Euro) gebunden und/oder durch liquide\
     \ Vermögenswerte (z.B. Staatsanleihen) abgesichert sind. \nIm Gegensatz zu volatilen\
@@ -165,7 +166,7 @@ topics:
     \ : Liquidität in AMMs, Yield Farming ohne Fiat-Umwege.\n\nStablecoins entwickeln\
     \ sich von Krypto-Nischen zu **reguliertem globalem Zahlungsinstrument** – mit\
     \ traditionellen Finanzinstituten als neuen Schlüsselakteuren."
-  risks:
+  risks_de:
   - |-
     Regulatorische Unsicherheit bezüglich der Implementierungszeitpläne von MiCA und der EZB-Leitlinien zur Verwahrung von Stablecoins durch Banken.
   - Liquiditäts- und Abwertungsrisiko bei Ausfall des zugrunde liegenden Stablecoin-Reservemanagements.
@@ -173,7 +174,7 @@ topics:
       erfordern neue Screening-Tools und Mitarbeiterschulungen.
   - |-
     Reputationsrisiko bei einem öffentlichen Scheitern einer Partnerbank oder eines Stablecoin-Emittenten während der Pilotphase.
-  chances:
+  chances_de:
   - |-
     Wettbewerbsvorteil als Vorreiter im grenzüberschreitenden Firmenzahlungsverkehr innerhalb des deutschen Genossenschaftsbankensektors.
   - |-
@@ -182,7 +183,7 @@ topics:
       an kleinere Regionalbanken.
   - |-
     Positioniert das Institut aufgrund der sich überschneidenden technischen Architektur für eine Intermediärrolle im digitalen Euro.
-  risks_en:
+  risks:
   - |-
     Regulatory uncertainty around MiCA implementation timelines and ECB guidance on bank stablecoin custody.
   - Liquidity and de-peg risk if the underlying stablecoin reserve management fails.
@@ -190,7 +191,7 @@ topics:
     training.'
   - Reputational risk if a partner bank or stablecoin issuer experiences a public
     failure during pilot.
-  chances_en:
+  chances:
   - |-
     First-mover advantage in corporate cross-border settlement within the German cooperative banking sector.
   - 30–60% cost reduction on international payment corridors compared to SWIFT/correspondent
