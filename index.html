@@ -2045,7 +2045,7 @@ function normalizePptxPlaceholders(xml) {
     const combined = texts.join('');
 
     // Check if the combined text is exactly a placeholder
-    const ph = combined.match(/^\s*\{\{([a-z_]+)\}\}\s*$/);
+    const ph = combined.match(/^\s*\{\{([a-z_:]+)\}\}\s*$/);
     if (!ph) return para;
 
     // It is a split placeholder — collapse: keep first run, update its <a:t>, remove the rest
@@ -2091,44 +2091,31 @@ async function exportTopicToPptx() {
     xml = normalizePptxPlaceholders(xml);
 
     // 5. Build replacement data
-    const linkedTopics = (topic.linked_to || []).map(lid => {
-      const lt = db.topics.find(x => x.id === lid);
-      return lt ? `#${lt.id} ${lt.title}` : `#${lid}`;
-    });
-
     const formatList = (arr) => {
       if (!arr || !arr.length) return '—';
       return arr.map(item => `• ${item}`).join('&#13;');
     };
 
-    // Flatten management_summary for PPTX
     const ms = topic.management_summary;
-    let mgmtText = '';
-    if (typeof ms === 'string') {
-      mgmtText = ms;
-    } else if (ms && typeof ms === 'object') {
-      const parts = [];
-      if (ms.summary)              parts.push(ms.summary);
-      if (ms.strategic_importance) parts.push(`Strategic Importance: ${ms.strategic_importance}`);
-      if (ms.course_of_action)     parts.push(`Recommended Course of Action: ${ms.course_of_action}`);
-      mgmtText = parts.join('\n\n');
-    }
+    const summaryText    = (ms && typeof ms === 'object') ? (ms.summary || '')          : (typeof ms === 'string' ? ms : '');
+    const courseOfAction = (ms && typeof ms === 'object') ? (ms.course_of_action || '') : '';
 
     const data = {
-      title:              xmlEscape(topic.title || ''),
-      score:              xmlEscape(String(topic.score || '')),
-      management_summary: xmlEscape(mgmtText || topic.description || '—'),
-      category:           xmlEscape(topic.category || '—'),
-      priority:           xmlEscape(topic.priority || '—'),
-      time_horizon:       xmlEscape(topic.horizon || '—'),
-      linked_to:          xmlEscape(linkedTopics.length ? linkedTopics.join(', ') : '—'),
-      risks:              formatList(topic.risks),
-      chances:            formatList(topic.chances),
+      title:                        xmlEscape(topic.title || ''),
+      score:                        xmlEscape(String(topic.score || '')),
+      'management_summary:summary': xmlEscape(summaryText || '—'),
+      course_of_action:             xmlEscape(courseOfAction || '—'),
+      category:                     xmlEscape(topic.category || '—'),
+      priority:                     xmlEscape(topic.priority || '—'),
+      time_horizon:                 xmlEscape(topic.horizon || '—'),
+      risks:                        formatList(topic.risks),
+      chances:                      formatList(topic.chances),
     };
 
     // 6. Replace all {{field}} placeholders
     Object.entries(data).forEach(([key, val]) => {
-      xml = xml.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), val);
+      const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      xml = xml.replace(new RegExp(`\\{\\{${escaped}\\}\\}`, 'g'), val);
     });
 
     // 7. Update zip and download
