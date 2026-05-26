@@ -254,46 +254,20 @@ topics:
   priority: High
   horizon: 12–24 months
   management_summary:
-    summary: "Girocard 4.0 steht für die Transformation der klassischen deutschen\
-      \ Debitkarte hin zu einer voll digitalen, app- und walletfähigen Bezahllösung\
-      \ mit neuen Funktionen für Handel, Banken und Kund:innen. \n\n## Strategische\
-      \ Einordnung\n\nDie Weiterentwicklung zur „Girocard 4.0“ folgt einem klar definierten\
-      \ Fahrplan, der auf vier Säulen beruht: flexible Autorisierung von Zahlungen,\
-      \ In‑App‑Zahlungen, Integration in Wallets sowie Zusatzfunktionen für Kund:innenbindung\
-      \ \n(z.B. digitale Belege, Loyalty). Damit positioniert sich die girocard als\
-      \ moderne, europäische Alternative zu internationalen Debit‑Schemes und Big‑Tech‑Bezahllösungen\
-      \ und soll ihre führende Rolle im deutschen Kartenzahlungsverkehr \nin die mobile\
-      \ und digitale Welt überführen. \n\n## Neue Funktionalitäten und Kunden-Erlebnis\n\
-      \nErste Institute – insbesondere Volks- und Raiffeisenbanken – ermöglichen inzwischen,\
-      \ die girocard direkt in der Banking‑App zu hinterlegen und sowohl auf Android\
-      \ als auch auf iOS mobil und kontaktlos am POS zu nutzen, ohne zwingend \nApple\
-      \ Pay oder separate Pay‑Apps zu verwenden. Parallel wird die girocard für In‑App‑Zahlungen\
-      \ ausgebaut, sodass Kund:innen Zahlungen direkt innerhalb von Shopping‑Apps\
-      \ anstoßen können, ohne in eine externe Payment‑Umgebung wechseln \nzu müssen.\
-      \ Ergänzend sieht der Fahrplan Funktionen wie die Vor‑Autorisierung mit späterer\
-      \ finaler Belastung (z.B. Hotellerie, Autovermietung), digitale Kassenbons und\
-      \ die Anbindung an Bonus‑ und Loyalty‑Programme vor. \n\n## Technologische und\
-      \ regulatorische Treiber\n\nTechnisch profitiert Girocard 4.0 von der breiten\
-      \ Unterstützung der digitalen girocard auf NFC‑fähigen Smartphones und Wearables\
-      \ sowie von neuen regulatorischen Vorgaben, die etwa die Öffnung der NFC‑Schnittstelle\
-      \ auf iOS für Banking‑Apps ermöglichen. \nFür Banken entsteht dadurch die Chance,\
-      \ eigene, integrierte Bezahl-Ökosysteme in ihren Apps zu etablieren, während\
-      \ Händler eine nahtlosere Customer Journey am POS und in Mobile‑Kanälen erhalten.\
-      \ Gleichzeitig bleibt die girocard in das etablierte deutsche \nAkzeptanznetz\
-      \ mit über einer Million Terminals eingebettet und kann so Innovation auf Basis\
-      \ bestehender Infrastruktur skalieren. \n\n## Implikationen für Institute und\
-      \ Händler\n\nFür Banken bedeutet Girocard 4.0, dass die eigene Mobile‑Banking‑App\
-      \ zunehmend zur zentralen Payment‑Plattform wird, die Karten-Tokenisierung,\
-      \ Wallet‑Integration und neue Autorisierungslogiken unterstützt und sich im\
-      \ Wettbewerb mit globalen Wallet‑Anbietern \nbehaupten muss. Händler erhalten\
-      \ mit In‑App‑ und In‑Wallet‑girocard‑Zahlungen eine kosteneffiziente, im deutschen\
-      \ Markt vertraute Zahlart, die sich nahtlos in Omnichannel‑Konzepte (Online,\
-      \ Mobile, POS) integrieren lässt und zusätzliche Mehrwertservices (Belege, Loyalty)\
-      \ \nermöglicht. Insgesamt markiert Girocard 4.0 damit den Übergang von der physischen\
-      \ „EC‑Karte“ hin zu einer wettbewerbsfähigen, digitalen Debit‑Plattform im europäischen\
-      \ Zahlungsverkehr."
-    strategic_importance: ''
-    course_of_action: ''
+    summary: |-
+      Girocard 4.0 bezeichnet die strategische Transformation der klassischen deutschen Debitkarte zur voll digitalen, app- und walletfähigen Bezahllösung. Erste Institute – insbesondere Volks- und Raiffeisenbanken – ermöglichen bereits 
+      die direkte Hinterlegung der girocard in der Banking-App für kontaktloses Bezahlen an NFC-Terminals auf Android und iOS, ohne den Umweg über Apple Pay oder separate Pay-Apps. Der Rollout weiterer Funktionalitäten (In-App-Zahlungen, 
+      Vor-Autorisierung, digitale Belege, Loyalty-Anbindung) folgt einem klar definierten Fahrplan auf vier Säulen: flexible Autorisierung, In-App-Zahlungen, Wallet-Integration sowie Zusatzfunktionen für Kundenbindung.
+    strategic_importance: |-
+      Girocard 4.0 ist die Antwort der Deutschen Kreditwirtschaft auf die strukturelle Bedrohung durch Big-Tech-Wallets und internationale Debit-Schemes: Die Banking-App der Hausbank wird zur zentralen Payment-Plattform, die Tokenisierung, 
+      neue Autorisierungslogiken und Mehrwertdienste vereint. Gelingt dieser Übergang, verteidigt die Girocard ihre Marktführerschaft in der mobilen und digitalen Welt – scheitert er, verliert sie die Kundenschnittstelle dauerhaft an externe 
+      Wallet-Anbieter. 
+      Für zentrale IT-Dienstleister ist Girocard 4.0 sowohl ein unmittelbarer Implementierungsauftrag als auch eine strategische Plattformchance. Ziel ist es in 2027 eine Übergangsphase mit parallelem Betrien von "alter" und "neuer" Girocard.
+    course_of_action: |-
+      - Aufbau mandantenfähiger Tokenisierungs- und Wallet-Provisioning-Infrastruktur für angeschlossene Institute
+      - Technische Umsetzung der neuen Autorisierungslogiken (Vor-Autorisierung, In-App-Zahlungen) als standardisierte Plattformleistung
+      - Frühzeitige Anbindung an digitale Belegsysteme und Loyalty-Plattformen als Mehrwertdienst-Layer
+      - Aktive Beratung der Banken zur App-Strategie: Positionierung der Banking-App als primäre Payment-Schnittstelle vor Verlust der Kundenschnittstelle an Big-Tech-Wallets
   management_summary_en: "girocard 4.0 is the most significant scheme modernisation\
     \ since the introduction of contactless. Failure to migrate on time risks exclusion\
     \ from Apple Pay and Google Pay wallet ecosystems, which are now primary payment\
