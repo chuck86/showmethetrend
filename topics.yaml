@@ -1183,11 +1183,46 @@ topics:
     The Financial Data Access (FIDA) regulation goes significantly beyond PSD2, mandating data sharing across savings,  investments, insurance, and pension products. Banks face both defensive obligations and offensive data product opportunities.
   management_summary:
     summary: |-
-      FIDA represents the largest expansion of open banking obligations since PSD2. The compliance burden is real  but manageable if we treat it as an architecture investment rather than a point solution. The commercial upside — acting as a  data hub for the full customer financial profile — is substantial and should drive the product roadmap.
-        TBD .
-    strategic_importance: ''
-    course_of_action: ''
+      Die letzte Trilog-Runde zwischen EU-Kommission, Parlament und Rat fand im Juni 2025 statt; weitere Runden haben seitdem nicht stattgefunden, obwohl eine Finalisierung bis Ende 2025 für möglich gehalten wurde. FiDA ist im Arbeitsprogramm der Kommission für 2026 als anhängiger Vorschlag geführt – der Prozess wird 2026 fortgesetzt. Zuständige EU-Kommissarin Maria Luis Albuquerque bekräftigte im Februar 2026 öffentlich ihre politische Unterstützung für FiDA; der führende Parlamentsberichterstatter soll der Verordnung jedoch zunehmend skeptisch gegenüberstehen. Kein Fokus der zypriotischen Ratspräsidentschaft. Zwischen den einzelnen Verbänden (innerhalb D aber auch zwischen den Ländern) gibt es weiter Diskussionen um Scope und ob es überhaupt voran getrieben werden soll. Nach Erkenntnissen des BdB wird FIDA durch die zypriotische Ratspräsidentschaft nicht weiterverfolgt, da eine Sperrminorität im Rat (inkl. D vorliegt). Dass der Vorschlag durch eine zukünftige Ratspräsidentschaft erneut aufgegriffen wird ist aktuell sehr unwahrscheinlich.
+    strategic_importance: |-
+      FIDA ist die konsequente Weiterentwicklung von Open Banking zu Open Finance: Während PSD2 auf Zahlungskonten beschränkt war, umfasst FiDA ein breites Spektrum an Finanzdaten – von Hypotheken, Darlehen und Ersparnissen bis hin zu Investments, Versicherungen, Renten und Krypto-Assets. Für Banken als Dateninhaber entsteht erheblicher Compliance-Aufwand; gleichzeitig eröffnen sich als Datennutzer substanzielle neue Geschäftsmöglichkeiten. Die strategische Rollenentscheidung – reiner Datenanbieter oder aktiver Gestalter datengetriebener Geschäftsmodelle – ist die drängendste Frage, die Institute jetzt beantworten müssen. Neben der Verpflichtung zur Öffnung der Schnittstellen müssen Banken auch ein "Permission Dashboard" für ihre Kund:innen bereitstellen.
+    course_of_action: |-
+      - Laufendes Monitoring der Trilog-Ergebnisse zu Anwendungsbereich und FDSS-Governance; enge Abstimmung mit giroAPI als möglichem Vorläufer-Scheme
+      - Aufbau oder Evaluierung eines Permission-Dashboard-Konzepts als regulatorische Mindestanforderung
+      - Strategische Rollenentscheidung für NCS (Data-Holder, Data-User)
   extended_description: |-
+    ## Regulatorik & Zeitplan ##
+    Der FIDA-Vorschlag wurde im Juni 2023 von der EU-Kommission veröffentlicht (COM/2023/360). Die Trilog-Verhandlungen begannen im April 2025; eine Verabschiedung wird für die erste Jahreshälfte 2026 erwartet. Der Entwurf sieht gestaffelte Übergangsfristen für die Umsetzung der 
+    FIDA-Bestimmungen vor. Nach Verabschiedung haben Finanzinstitute 30–32 Monate zur Compliance; die Einführung erfolgt phasenweise, mit einem initialen Fokus auf Bankdaten und einer späteren Ausweitung auf komplexere Kategorien wie Renten. Vollständige Anwendbarkeit ist damit frühestens Ende 
+    2028 bis Anfang 2029 zu erwarten. 
+
+    ## Politische Dynamik ##
+    Noch im Frühjahr 2025 stand zeitweise im Raum, FIDA aus dem Arbeitsprogramm der Kommission zu streichen – insbesondere aufgrund der Komplexität und der erwarteten Kosten für Dateninhaber. Dieser Schritt wurde nicht vollzogen; FIDA bleibt aktiver Gesetzgebungsvorschlag. Dennoch verdeutlicht 
+    dieser Moment die politische Fragilität: Die überwiegend kritische Haltung datenführender Finanzinstitute hat die Verhandlungen merklich verlangsamt. Eine Verzögerung ändert jedoch nichts am Ziel: Datengetriebene Finanzdienstleistungen sind auf dem Weg und werden den Sektor grundlegend verändern. 
+    
+    ## Datenkategorien & Anwendungsbereich ##
+    FIDA bezieht sich auf ein umfassendes Spektrum an Kundendaten: Hypothekarkreditverträge, Darlehen und Konten, Ersparnisse, Investments in Finanzinstrumente, Versicherungsanlageprodukte (z.B. Rentenversicherungen), Krypto-Assets, Immobilien und verwandte Vermögenswerte, Sach- und Unfallversicherungen 
+    sowie Kreditwürdigkeitsdaten. Ausgenommen sind nach dem aktuellen Entwurf Daten im Zusammenhang mit Kranken- und Lebensversicherungen. Zahlungskonten werden bewusst ausgenommen – sie bleiben im Geltungsbereich von PSD3/PSR. 
+    
+    ## Rollen & Pflichten ##
+    FIDA definiert drei zentrale Rollen:
+    
+    ** Data Holder (Dateninhaber) **: Müssen auf Kundenantrag Daten sicher, maschinenlesbar und standardisiert bereitstellen sowie ein Berechtigungs-Dashboard anbieten (Art. 8). Mitgliedschaft in einem FDSS ist binnen 18–24 Monaten nach Inkrafttreten verpflichtend. Bei Nichterfüllung drohen Sanktionen von bis zu 2 % des Gesamtumsatzes, öffentliche Bekanntmachung sowie eine Aussetzung der Zulassung als Finanzdienstleister. 
+    ** Data User (Datennutzer): Lizenzierte Drittparteien – darunter Fintechs, aber auch Banken selbst – die mit ausdrücklicher Kundeneinwilligung Zugriff auf Finanzdaten erhalten, um innovative Produkte und Services zu entwickeln.
+    ** Financial Information Service Provider (FISP): Neue Lizenzklasse unter FIDA, ähnlich den AISPs unter PSD2, jedoch mit erheblich breiterem Datenzugang.
+    
+    ## Financial Data Sharing Schemes (FDSS) ##
+    FDSS bilden den vertraglichen Rahmen für Technik- und Datenstandards, Authentifizierung, Autorisierung, Gebührenstruktur, Abrechnung, Governance und Haftung. Anders als bei PSD2, wo kein vergleichbarer Governance-Rahmen existierte, ist die FDSS-Mitgliedschaft für alle Dateninhaber verpflichtend. Das giroAPI Scheme der Deutschen Kreditwirtschaft ist als potenzieller Vorläufer eines FDSS im deutschen Markt positioniert und könnte – bei entsprechender Erweiterung – als anerkanntes FDSS unter FIDA fungieren. 
+    
+    ## Technische Anforderungen ## 
+    Die technische Integration in ein FDSS erfordert umfangreiche Anpassungen der IT-Infrastruktur: API-Fähigkeit für alle relevanten Datenkategorien, robuste Datenmanagementstrategien zur Gewährleistung der Compliance mit FIDA, DSGVO und FDSS-Regeln, standardisierte Schnittstellen sowie die prozessuale Abbildung des Datenfreigabe-Berechtigungsprozesses mit audit-fähiger Dokumentation der Kundenentscheidungen. Insbesondere Institute mit Legacy-IT stehen vor erheblichem Modernisierungsbedarf.
+    
+    ## Zusammenspiel mit anderen Regulierungen ##
+    FIDA steht in direkter Wechselwirkung mit mehreren parallelen Regulierungen: PSD3/PSR (Zahlungskonten bleiben dort; FIDA ergänzt auf alle übrigen Finanzdaten), DSGVO (Einwilligungsmanagement, Datenschutz-by-Design), DORA (Anforderungen an API-Betrieb und Drittanbieter-Risikomanagement) sowie dem EU Data Act (allgemeiner Datenrahmen, seit September 2025 anwendbar). Finanzinstitute müssen ein Permission-Dashboard bereitstellen, das Kunden die Kontrolle über ihre Datenweitergabe ermöglicht und Echtzeit-Datenabruf unterstützt. 
+    
+    ## Non-EU-Perspektive ##
+    Es läuft eine politische Debatte in der EU darüber, ob große Big-Tech-Plattformen wie Amazon, Apple, Google und Meta vom FIDA-Ökosystem ausgeschlossen werden sollten – mit dem Ziel, europäische Wettbewerbsfähigkeit und digitale Souveränität zu schützen. Das UK entwickelt mit dem Smart Data-Programm einen inhaltlich ähnlichen Ansatz für Open Finance; eine gegenseitige Anerkennung ist kurzfristig nicht zu erwarten. Australiens Consumer Data Right (CDR) gilt international als führendes Beispiel einer umgesetzten Open-Finance-Regulierung und liefert relevante Erfahrungswerte für Umsetzungskosten und Adoptionshürden
+  extended_description_en: |-
     FIDA (Financial Data Access Regulation) was proposed by the European Commission in June 2023 as part of the  retail financial services strategy. It mandates data sharing for savings accounts, investments, insurance, occupational pensions,  and mortgage data — all currently outside PSD2 scope. Financial data sharing schemes (FDSS) must be established by industry, with  a fallback regulatory standard if industry fails to agree. The permission framework introduces customer dashboard requirements:  customers must have a single interface to manage all data sharing consents across institutions. For banks, FIDA creates a dual role:  as a data holder (mandatory sharing obligations) and as a data user (ability to access customer data held at other institutions  for value-added services). The data user opportunity — aggregating a complete customer financial picture for advisory, lending,    and personalisation — is the primary commercial case.
   risks:
   - |-
