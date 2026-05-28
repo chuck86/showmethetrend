@@ -1207,9 +1207,9 @@ topics:
     ## Rollen & Pflichten ##
     FIDA definiert drei zentrale Rollen:
     
-    ** Data Holder (Dateninhaber) **: Müssen auf Kundenantrag Daten sicher, maschinenlesbar und standardisiert bereitstellen sowie ein Berechtigungs-Dashboard anbieten (Art. 8). Mitgliedschaft in einem FDSS ist binnen 18–24 Monaten nach Inkrafttreten verpflichtend. Bei Nichterfüllung drohen Sanktionen von bis zu 2 % des Gesamtumsatzes, öffentliche Bekanntmachung sowie eine Aussetzung der Zulassung als Finanzdienstleister. 
-    ** Data User (Datennutzer): Lizenzierte Drittparteien – darunter Fintechs, aber auch Banken selbst – die mit ausdrücklicher Kundeneinwilligung Zugriff auf Finanzdaten erhalten, um innovative Produkte und Services zu entwickeln.
-    ** Financial Information Service Provider (FISP): Neue Lizenzklasse unter FIDA, ähnlich den AISPs unter PSD2, jedoch mit erheblich breiterem Datenzugang.
+    **Data Holder (Dateninhaber)**: Müssen auf Kundenantrag Daten sicher, maschinenlesbar und standardisiert bereitstellen sowie ein Berechtigungs-Dashboard anbieten (Art. 8). Mitgliedschaft in einem FDSS ist binnen 18–24 Monaten nach Inkrafttreten verpflichtend. Bei Nichterfüllung drohen Sanktionen von bis zu 2 % des Gesamtumsatzes, öffentliche Bekanntmachung sowie eine Aussetzung der Zulassung als Finanzdienstleister. 
+    **Data User (Datennutzer)**: Lizenzierte Drittparteien – darunter Fintechs, aber auch Banken selbst – die mit ausdrücklicher Kundeneinwilligung Zugriff auf Finanzdaten erhalten, um innovative Produkte und Services zu entwickeln.
+    **Financial Information Service Provider (FISP)**: Neue Lizenzklasse unter FIDA, ähnlich den AISPs unter PSD2, jedoch mit erheblich breiterem Datenzugang.
     
     ## Financial Data Sharing Schemes (FDSS) ##
     FDSS bilden den vertraglichen Rahmen für Technik- und Datenstandards, Authentifizierung, Autorisierung, Gebührenstruktur, Abrechnung, Governance und Haftung. Anders als bei PSD2, wo kein vergleichbarer Governance-Rahmen existierte, ist die FDSS-Mitgliedschaft für alle Dateninhaber verpflichtend. Das giroAPI Scheme der Deutschen Kreditwirtschaft ist als potenzieller Vorläufer eines FDSS im deutschen Markt positioniert und könnte – bei entsprechender Erweiterung – als anerkanntes FDSS unter FIDA fungieren. 
