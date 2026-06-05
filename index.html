@@ -279,15 +279,11 @@
 
   .sidebar-card { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.25rem; background: var(--surface); border-radius: 2px; }
   .sidebar-card h3 { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
-  .stakeholder-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; }
+  .stakeholder-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
   .stakeholder-item:last-child { margin-bottom: 0; }
-  .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; margin-top: 1px; }
+  .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; }
   .stakeholder-name { font-size: 0.85rem; font-weight: 600; display: block; color: var(--text); }
-  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); display: block; margin-bottom: 0.4rem; }
-  .stakeholder-topics { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.35rem; }
-  .stakeholder-topic-chip { font-family: 'Noto Sans Mono', monospace; font-size: 0.55rem; padding: 0.15rem 0.5rem; border-radius: 2px; background: rgba(4,0,102,0.05); border: 1px solid rgba(4,0,102,0.12); color: var(--muted); cursor: pointer; transition: all 0.14s; white-space: nowrap; }
-  .stakeholder-topic-chip:hover { background: rgba(4,0,102,0.1); border-color: rgba(4,0,102,0.25); color: var(--navy); }
-  .stakeholder-topic-chip.current { background: rgba(4,0,102,0.08); border-color: rgba(4,0,102,0.2); color: var(--navy); font-weight: 600; cursor: default; }
+  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
   .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
   .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
   .meta-key { color: var(--muted); font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
@@ -375,7 +371,40 @@
   #wheel-tt strong, #index-wheel-tt strong { display: block; font-size: 0.83rem; line-height: 1.3; margin-bottom: 0.3rem; }
   #wheel-tt span, #index-wheel-tt span { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--cyan); letter-spacing: 0.04em; }
 
-  /* ── EDITOR ──────────────────────────────────────────────────────────────── */
+  /* ── STAKEHOLDER PAGE ───────────────────────────────────────────────────── */
+  #view-stakeholders { display: none; }
+  .sh-page-layout { max-width: 1280px; margin: 0 auto; padding: 0; }
+  .sh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; padding: 0 3rem 3rem; }
+  .sh-card {
+    background: var(--white); border: 1.5px solid var(--border-strong);
+    border-radius: 4px; padding: 1.5rem; transition: border-color .18s, box-shadow .18s;
+  }
+  .sh-card:hover { border-color: rgba(4,0,102,.25); box-shadow: 0 4px 18px rgba(4,0,102,.07); }
+  .sh-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.1rem; }
+  .sh-card-avatar {
+    width: 46px; height: 46px; border-radius: 50%; background: var(--navy);
+    color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.75rem;
+    font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .sh-card-name { font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .sh-card-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: .04em; }
+  .sh-card-count {
+    margin-left: auto; font-family: 'Noto Sans Mono', monospace; font-size: .6rem;
+    font-weight: 700; padding: .2rem .6rem; border-radius: 2px; background: rgba(4,0,102,.06);
+    border: 1px solid rgba(4,0,102,.12); color: var(--navy); white-space: nowrap; flex-shrink: 0;
+  }
+  .sh-topics-label { font-family: 'Noto Sans Mono', monospace; font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .6rem; }
+  .sh-topic-chips { display: flex; flex-direction: column; gap: .35rem; }
+  .sh-topic-chip {
+    display: flex; align-items: center; gap: .6rem; padding: .45rem .7rem;
+    border-radius: 3px; border: 1px solid var(--border); background: var(--surface);
+    cursor: pointer; transition: all .15s; text-decoration: none;
+  }
+  .sh-topic-chip:hover { border-color: rgba(4,0,102,.2); background: rgba(4,0,102,.03); }
+  .sh-chip-id { font-family: 'Noto Sans Mono', monospace; font-size: .58rem; color: var(--muted); flex-shrink: 0; }
+  .sh-chip-title { font-size: .82rem; color: var(--text); font-weight: 500; flex: 1; line-height: 1.3; }
+  .sh-chip-cat { font-family: 'Noto Sans Mono', monospace; font-size: .55rem; padding: .15rem .5rem; border-radius: 2px; margin-left: auto; flex-shrink: 0; }
+  .sh-no-topics { font-size: .82rem; color: var(--muted); font-style: italic; }
   #view-editor { display: none; }
   .editor-layout { max-width: 860px; margin: 0 auto; padding: 3rem; }
   .editor-header { margin-bottom: 2.5rem; }
@@ -558,7 +587,7 @@
   <nav>
     <button class="nav-link active" onclick="showDashboard()" data-i18n="navDashboard">Dashboard</button>
     <button class="nav-link" onclick="showIndex()" data-i18n="navTopics">Topics</button>
-    <a class="nav-link" href="#" data-i18n="navStakeholders">Stakeholders <span class="nav-badge" data-i18n="soon">soon</span></a>
+    <button class="nav-link" onclick="showStakeholders()" data-i18n="navStakeholders">Stakeholders</button>
     <a class="nav-link" href="#" data-i18n="navReports">Reports <span class="nav-badge" data-i18n="soon">soon</span></a>
     <button class="nav-link" onclick="showEditor()" data-i18n="navEditor">Editor</button>
   </nav>
@@ -719,6 +748,19 @@
   </div><!-- end dashboard-layout -->
 </div><!-- end view-dashboard -->
 <div id="wheel-tt"></div>
+
+<!-- ══ STAKEHOLDER VIEW ════════════════════════════════════════════════════ -->
+<div id="view-stakeholders">
+  <div class="sh-page-layout">
+    <div class="index-hero">
+      <div class="hero-text">
+        <h1>Strategic Topics<br><span data-i18n="heroSubSH">Stakeholders</span></h1>
+        <p class="index-subtitle" style="max-width:unset;" data-i18n="heroDescSH">All stakeholders and their associated topics.</p>
+      </div>
+    </div>
+    <div class="sh-grid" id="sh-grid"></div>
+  </div>
+</div>
 
 <!-- ══ EDITOR VIEW ═════════════════════════════════════════════════════════ -->
 <div id="view-editor" style="display:none">
@@ -1370,27 +1412,11 @@ function showDetail(id) {
   document.getElementById('detail-sidebar').innerHTML = `
     <div class="sidebar-card fade-up" style="animation-delay:0.12s">
       <h3>${i18n('sideStakeholders')}</h3>
-      ${s.length ? s.map(p => {
-          // Find all topics this stakeholder appears in
-          const assocTopics = (db.topics||[]).filter(tp =>
-            (tp.stakeholders||[]).some(ref => (typeof ref === 'object' ? ref.id : ref) === p.id)
-          );
-          const chips = assocTopics.map(tp => {
-            const isCurrent = tp.id === t.id;
-            return `<span class="stakeholder-topic-chip${isCurrent?' current':''}"
-              ${isCurrent ? '' : `onclick="showDetail(${tp.id})"`}
-              title="${tp.title}">#${tp.id} ${tp.title}</span>`;
-          }).join('');
-          return `
-          <div class="stakeholder-item">
-            <div class="stakeholder-avatar">${initials(p.name)}</div>
-            <div>
-              <span class="stakeholder-name">${p.name}</span>
-              <span class="stakeholder-role">${p.role||''}</span>
-              ${chips ? `<div class="stakeholder-topics">${chips}</div>` : ''}
-            </div>
-          </div>`;
-        }).join('')
+      ${s.length ? s.map(p=>`
+        <div class="stakeholder-item">
+          <div class="stakeholder-avatar">${initials(p.name)}</div>
+          <div><span class="stakeholder-name">${p.name}</span><span class="stakeholder-role">${p.role||''}</span></div>
+        </div>`).join('')
         : `<p style="color:var(--muted);font-size:0.82rem">${i18n('noStakeholders')}</p>`}
     </div>
     <div class="sidebar-card fade-up" style="animation-delay:0.22s">
@@ -1428,7 +1454,7 @@ function showDetail(id) {
 }
 
 function showIndex() {
-  ['view-detail','view-dashboard','view-editor'].forEach(id =>
+  ['view-detail','view-dashboard','view-editor','view-stakeholders'].forEach(id =>
     document.getElementById(id).style.display = 'none');
   document.getElementById('view-index').style.display = 'block';
   document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===1));
@@ -1468,7 +1494,7 @@ function parallelSector(cx, cy, iR, oR, b1deg, b2deg, gap) {
 }
 
 function showDashboard() {
-  ['view-index','view-detail','view-editor'].forEach(id =>
+  ['view-index','view-detail','view-editor','view-stakeholders'].forEach(id =>
     document.getElementById(id).style.display = 'none');
   document.getElementById('view-dashboard').style.display = 'block';
   document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===0));
@@ -1550,9 +1576,53 @@ function renderWheel() {
   });
 }
 
-// ── Editor ────────────────────────────────────────────────────────────────────
+// ── Stakeholders page ────────────────────────────────────────────────────────
+function showStakeholders() {
+  ['view-index','view-detail','view-dashboard','view-editor'].forEach(id =>
+    document.getElementById(id).style.display = 'none');
+  document.getElementById('view-stakeholders').style.display = 'block';
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===2));
+  renderStakeholders();
+  window.scrollTo(0,0);
+}
+
+function renderStakeholders() {
+  if (!db) return;
+  const grid = document.getElementById('sh-grid');
+  if (!grid) return;
+
+  grid.innerHTML = (db.stakeholders||[]).map(sh => {
+    const shTopics = (db.topics||[]).filter(t =>
+      (t.stakeholders||[]).some(ref => (typeof ref === 'object' ? ref.id : ref) === sh.id)
+    );
+    const count = shTopics.length;
+
+    const chips = shTopics.length
+      ? shTopics.map(tp => `
+          <div class="sh-topic-chip" onclick="showDetail(${tp.id})">
+            <span class="sh-chip-id">#${tp.id}</span>
+            <span class="sh-chip-title">${tp.title}</span>
+            ${tp.category ? `<span class="sh-chip-cat cat-badge ${catClass(tp.category)}">${tp.category}</span>` : ''}
+          </div>`).join('')
+      : `<span class="sh-no-topics">${i18n('noTopicsAssigned')}</span>`;
+
+    return `
+      <div class="sh-card fade-up">
+        <div class="sh-card-header">
+          <div class="sh-card-avatar">${initials(sh.name)}</div>
+          <div>
+            <div class="sh-card-name">${sh.name}</div>
+            <div class="sh-card-role">${sh.role||''}</div>
+          </div>
+          <span class="sh-card-count">${count} ${count === 1 ? i18n('topicSingular') : i18n('topicPlural')}</span>
+        </div>
+        <div class="sh-topics-label">${i18n('associatedTopics')}</div>
+        <div class="sh-topic-chips">${chips}</div>
+      </div>`;
+  }).join('');
+}
 function showEditor() {
-  ['view-index','view-detail','view-dashboard'].forEach(id =>
+  ['view-index','view-detail','view-dashboard','view-stakeholders'].forEach(id =>
     document.getElementById(id).style.display = 'none');
   document.getElementById('view-editor').style.display = 'block';
   document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===4));
@@ -1873,6 +1943,12 @@ const I18N = {
     navDashboard: 'Dashboard',
     navTopics: 'Topics',
     navStakeholders: 'Stakeholders',
+    heroSubSH: 'Stakeholders',
+    heroDescSH: 'All stakeholders and their associated topics.',
+    associatedTopics: 'Associated Topics',
+    noTopicsAssigned: 'No topics assigned.',
+    topicSingular: 'topic',
+    topicPlural: 'topics',
     navReports: 'Reports',
     navEditor: 'Editor',
     soon: 'soon',
@@ -1937,6 +2013,12 @@ const I18N = {
     navDashboard: 'Dashboard',
     navTopics: 'Themen',
     navStakeholders: 'Stakeholder',
+    heroSubSH: 'Stakeholder',
+    heroDescSH: 'Alle Stakeholder und ihre zugeordneten Themen.',
+    associatedTopics: 'Zugeordnete Themen',
+    noTopicsAssigned: 'Keine Themen zugeordnet.',
+    topicSingular: 'Thema',
+    topicPlural: 'Themen',
     navReports: 'Berichte',
     navEditor: 'Editor',
     soon: 'bald',
@@ -2027,6 +2109,10 @@ function applyLang() {
     const detailVisible = detail && getComputedStyle(detail).display !== 'none';
     if (detailVisible && window._currentTopicId) {
       showDetail(window._currentTopicId);
+    }
+    const shView = document.getElementById('view-stakeholders');
+    if (shView && getComputedStyle(shView).display !== 'none') {
+      renderStakeholders();
     }
   }
 }
