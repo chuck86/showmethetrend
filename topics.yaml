@@ -21,30 +21,39 @@ stakeholders:
 - id: 1
   name: Sarah Chen
   role: Head of Digital Assets
+  email: s.chen@payment-enablement.com
 - id: 2
   name: Marcus Webb
   role: Risk Officer
+  email: m.webb@payment-enablement.com
 - id: 3
   name: Priya Nair
   role: Compliance Director
+  email: p.nair@payment-enablement.com
 - id: 4
   name: Thomas Kraft
   role: Product Lead
+  email: t.kraft@payment-enablement.com
 - id: 5
   name: Lena Fischer
   role: Engineering Director
+  email: l.fischer@payment-enablement.com
 - id: 6
   name: Klaus Berger
   role: Head of Payments
+  email: k.berger@payment-enablement.com
 - id: 7
   name: Anna Hoffmann
   role: Regulatory Affairs Lead
+  email: a.hoffmann@payment-enablement.com
 - id: 8
   name: Stefan Müller
   role: Chief Information Security Officer
+  email: s.mueller@payment-enablement.com
 - id: 9
   name: Jana Becker
   role: Head of Strategy & Market Intelligence
+  email: j.becker@payment-enablement.com
 topics:
 - id: 1
   title: Stablecoins
