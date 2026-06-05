@@ -279,11 +279,11 @@
 
   .sidebar-card { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.25rem; background: var(--surface); border-radius: 2px; }
   .sidebar-card h3 { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
-  .stakeholder-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+  .stakeholder-name { font-size: 0.85rem; font-weight: 600; display: block; color: var(--text); }
+  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); display: block; }
+  .stakeholder-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.85rem; }
   .stakeholder-item:last-child { margin-bottom: 0; }
   .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; }
-  .stakeholder-name { font-size: 0.85rem; font-weight: 600; display: block; color: var(--text); }
-  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
   .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
   .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
   .meta-key { color: var(--muted); font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
@@ -388,6 +388,13 @@
   }
   .sh-card-name { font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.2; }
   .sh-card-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: .04em; }
+  .sh-card-email {
+    display: inline-flex; align-items: center; gap: .35rem; margin-top: .4rem;
+    font-family: 'Noto Sans Mono', monospace; font-size: .6rem; color: var(--cyan);
+    text-decoration: none; opacity: .85; transition: opacity .15s;
+  }
+  .sh-card-email:hover { opacity: 1; text-decoration: underline; text-underline-offset: 2px; }
+  .sh-card-email svg { width: 10px; height: 10px; flex-shrink: 0; }
   .sh-card-count {
     margin-left: auto; font-family: 'Noto Sans Mono', monospace; font-size: .6rem;
     font-weight: 700; padding: .2rem .6rem; border-radius: 2px; background: rgba(4,0,102,.06);
@@ -1415,7 +1422,15 @@ function showDetail(id) {
       ${s.length ? s.map(p=>`
         <div class="stakeholder-item">
           <div class="stakeholder-avatar">${initials(p.name)}</div>
-          <div><span class="stakeholder-name">${p.name}</span><span class="stakeholder-role">${p.role||''}</span></div>
+          <div>
+            <span class="stakeholder-name">${p.name}</span>
+            <span class="stakeholder-role">${p.role||''}</span>
+            ${p.email ? `<a class="sh-card-email" href="mailto:${p.email}" style="font-size:.58rem;">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="1" y="3" width="14" height="10" rx="1.5"/>
+                <path d="M1 4.5l7 5 7-5" stroke-linecap="round"/>
+              </svg>${p.email}</a>` : ''}
+          </div>
         </div>`).join('')
         : `<p style="color:var(--muted);font-size:0.82rem">${i18n('noStakeholders')}</p>`}
     </div>
@@ -1613,6 +1628,11 @@ function renderStakeholders() {
           <div>
             <div class="sh-card-name">${sh.name}</div>
             <div class="sh-card-role">${sh.role||''}</div>
+            ${sh.email ? `<a class="sh-card-email" href="mailto:${sh.email}">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="1" y="3" width="14" height="10" rx="1.5"/>
+                <path d="M1 4.5l7 5 7-5" stroke-linecap="round"/>
+              </svg>${sh.email}</a>` : ''}
           </div>
           <span class="sh-card-count">${count} ${count === 1 ? i18n('topicSingular') : i18n('topicPlural')}</span>
         </div>
