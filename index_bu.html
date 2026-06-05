@@ -6,6 +6,9 @@
 <title>Strategic Topic Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
   /* ── DESIGN TOKENS ─────────────────────────────────────────────────────── */
   :root {
@@ -111,6 +114,14 @@
   .git-link { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.15); padding: 0.35rem 0.8rem; border-radius: 3px; transition: all 0.18s; white-space: nowrap; }
   .git-link:hover { color: var(--cyan); border-color: rgba(0,212,255,0.4); }
   .git-link svg { width: 12px; height: 12px; }
+  .lang-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.1em; color: rgba(255,255,255,0.7); background: none;
+    border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 0.65rem;
+    border-radius: 3px; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+  }
+  .lang-btn:hover { color: var(--cyan); border-color: rgba(0,212,255,0.4); }
+  .lang-btn.lang-active { color: var(--cyan); border-color: rgba(0,212,255,0.5); }
 
 
 
@@ -168,14 +179,8 @@
   .tag-payment    { background: transparent; color: #005f7a; border-color: rgba(0,212,255,0.6); }
   .tag-research   { background: transparent; color: #4a2d7a; border-color: rgba(211,190,236,0.9); }
   .tag-creditcard { background: transparent; color: #7a1525; border-color: rgba(255,166,180,0.8); }
-  .tag-regulation { background: transparent; color: #7a3500; border-color: rgba(255,195,144,0.9); }
   .tag-blockchain { background: transparent; color: #1a5219; border-color: rgba(196,235,195,1.0); }
   .tag-infra      { background: transparent; color: #665500; border-color: rgba(200,180,60,0.7); }
-  .tag-digipay    { background: transparent; color: #004f66; border-color: rgba(0,212,255,0.55); }
-  .tag-trusted    { background: transparent; color: #3d2070; border-color: rgba(211,190,236,0.9); }
-  .tag-bankreg    { background: transparent; color: #6a2e00; border-color: rgba(255,195,144,0.9); }
-  .tag-trends     { background: transparent; color: #5a4a00; border-color: rgba(200,180,60,0.65); }
-  .tag-itsec      { background: transparent; color: #6a1020; border-color: rgba(255,166,180,0.75); }
   .tag-market     { background: transparent; color: #174a16; border-color: rgba(196,235,195,1.0); }
   .tag-default    { background: transparent; color: var(--navy); border-color: rgba(4,0,102,0.3); }
 
@@ -187,6 +192,7 @@
   .cat-banking-regulatory-and-trends{ background: rgba(196,235,195,0.4);   color: #174a16; border-color: rgba(196,235,195,0.85); }
   .cat-it-security       { background: rgba(255,166,180,0.28);  color: #6a1020; border-color: rgba(255,166,180,0.65); }
   .cat-miscellaneous     { background: rgba(4,0,102,0.06);      color: var(--navy); border-color: rgba(4,0,102,0.18); }
+  .tag-regulation { background: transparent; color: #7a3500; border-color: rgba(255,195,144,0.9); }
 
   /* Category filter row */
   .cat-filter-section { max-width: 1280px; margin: 0 auto; padding: 0.75rem 3rem 0; }
@@ -201,12 +207,23 @@
   /* ── DETAIL ──────────────────────────────────────────────────────────────── */
   .detail-topbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 50; }
   .detail-nav { max-width: 1280px; margin: 0 auto; padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .detail-nav-left { display: flex; align-items: center; gap: 1.5rem; }
   .back-btn { font-family: 'Noto Sans Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; font-weight: 500; }
   .back-btn:hover { color: var(--navy); }
   .back-btn svg { width: 14px; height: 14px; }
   .detail-breadcrumb { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem; }
   .breadcrumb-sep { opacity: 0.4; }
   .breadcrumb-current { color: var(--navy); font-weight: 600; }
+  .export-pptx-btn {
+    font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; letter-spacing: 0.07em;
+    text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 3px;
+    border: 1.5px solid var(--border-strong); background: var(--white);
+    color: var(--navy); cursor: pointer; display: flex; align-items: center;
+    gap: 0.5rem; transition: all 0.18s; font-weight: 600; white-space: nowrap;
+  }
+  .export-pptx-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .export-pptx-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .export-pptx-btn.loading { opacity: 0.6; pointer-events: none; }
 
   .detail-layout { max-width: 1280px; margin: 0 auto; padding: 3rem; display: grid; grid-template-columns: 1fr 300px; gap: 4rem; }
 
@@ -226,6 +243,30 @@
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .section-body { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); margin-bottom: 2.5rem; font-weight: 400; }
 
+  /* ── MARKDOWN PROSE ──────────────────────────────────────────────────────── */
+  .md-prose { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); font-weight: 400; }
+  .md-prose p { margin: 0 0 0.9em; }
+  .md-prose p:last-child { margin-bottom: 0; }
+  .md-prose h1, .md-prose h2, .md-prose h3, .md-prose h4 {
+    font-family: 'Noto Sans', sans-serif; font-weight: 700; color: var(--navy);
+    letter-spacing: -0.01em; margin: 1.4em 0 0.4em;
+  }
+  .md-prose h1 { font-size: 1.2rem; }
+  .md-prose h2 { font-size: 1.05rem; }
+  .md-prose h3 { font-size: 0.95rem; }
+  .md-prose h4 { font-size: 0.88rem; }
+  .md-prose ul, .md-prose ol { padding-left: 1.4em; margin: 0.4em 0 0.9em; display: flex; flex-direction: column; gap: 0.3em; }
+  .md-prose li { line-height: 1.6; }
+  .md-prose ul li { list-style: disc; }
+  .md-prose ol li { list-style: decimal; }
+  .md-prose strong { font-weight: 700; color: var(--text); }
+  .md-prose em { font-style: italic; }
+  .md-prose code { font-family: 'Noto Sans Mono', monospace; font-size: 0.82em; background: rgba(4,0,102,0.06); padding: 0.1em 0.4em; border-radius: 2px; }
+  .md-prose blockquote { border-left: 3px solid var(--border-strong); margin: 0.8em 0; padding: 0.5em 1em; color: var(--muted); font-style: italic; }
+  .md-prose hr { border: none; border-top: 1px solid var(--border); margin: 1.2em 0; }
+  .md-prose a { color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
+  .mgmt-summary .md-prose p { font-size: 0.92rem; line-height: 1.72; color: var(--text-mid); }
+
   .actions-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.5rem; }
   .action-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; border: 1px solid var(--border); background: var(--surface); transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s; border-radius: 2px; }
   .action-item:hover { border-color: var(--cyan); transform: translateX(4px); box-shadow: -3px 0 0 var(--cyan); }
@@ -238,11 +279,15 @@
 
   .sidebar-card { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.25rem; background: var(--surface); border-radius: 2px; }
   .sidebar-card h3 { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
-  .stakeholder-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+  .stakeholder-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; }
   .stakeholder-item:last-child { margin-bottom: 0; }
-  .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; }
+  .stakeholder-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; margin-top: 1px; }
   .stakeholder-name { font-size: 0.85rem; font-weight: 600; display: block; color: var(--text); }
-  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .stakeholder-role { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--muted); display: block; margin-bottom: 0.4rem; }
+  .stakeholder-topics { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.35rem; }
+  .stakeholder-topic-chip { font-family: 'Noto Sans Mono', monospace; font-size: 0.55rem; padding: 0.15rem 0.5rem; border-radius: 2px; background: rgba(4,0,102,0.05); border: 1px solid rgba(4,0,102,0.12); color: var(--muted); cursor: pointer; transition: all 0.14s; white-space: nowrap; }
+  .stakeholder-topic-chip:hover { background: rgba(4,0,102,0.1); border-color: rgba(4,0,102,0.25); color: var(--navy); }
+  .stakeholder-topic-chip.current { background: rgba(4,0,102,0.08); border-color: rgba(4,0,102,0.2); color: var(--navy); font-weight: 600; cursor: default; }
   .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
   .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
   .meta-key { color: var(--muted); font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; }
@@ -251,6 +296,8 @@
   .meta-row-block:last-child { border-bottom: none; padding-bottom: 0; }
   .meta-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .meta-pill { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 2px; background: rgba(4,0,102,0.06); border: 1px solid rgba(4,0,102,0.15); color: var(--navy); font-weight: 500; }
+  .linked-chip { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.65rem; border-radius: 2px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3); color: #004f66; font-weight: 500; cursor: pointer; transition: background 0.15s, border-color 0.15s; white-space: nowrap; }
+  .linked-chip:hover { background: rgba(0,212,255,0.18); border-color: rgba(0,212,255,0.6); }
 
   .priority-badge { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; }
   .priority-critical    { background: rgba(255,166,180,0.35); color: #7a1525; }
@@ -308,7 +355,7 @@
   .source-arrow svg { width: 12px; height: 12px; }
 
   /* ── DASHBOARD / WHEEL ───────────────────────────────────────────────────── */
-  .dashboard-layout { max-width: 1100px; margin: 0 auto; padding: 3rem; }
+  .dashboard-layout { max-width: 1280px; margin: 0 auto; padding: 0; }
   .dashboard-hero { margin-bottom: 2.5rem; }
   .dashboard-hero h2 { font-size: 2rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.35rem; }
   .dashboard-hero p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
@@ -324,9 +371,9 @@
   .legend-count { font-family: 'Noto Sans Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-left: auto; }
   .wheel-hint { font-family: 'Noto Sans Mono', monospace; font-size: 0.62rem; color: var(--muted); line-height: 1.8; }
   .wheel-hint span { display: flex; gap: 0.5rem; }
-  #wheel-tt { position: fixed; z-index: 9999; display: none; pointer-events: none; background: var(--navy); color: var(--white); padding: 0.6rem 1rem; border-radius: 3px; max-width: 230px; box-shadow: 0 6px 24px rgba(4,0,102,0.35); }
-  #wheel-tt strong { display: block; font-size: 0.83rem; line-height: 1.3; margin-bottom: 0.3rem; }
-  #wheel-tt span { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--cyan); letter-spacing: 0.04em; }
+  #wheel-tt, #index-wheel-tt { position: fixed; z-index: 9999; display: none; pointer-events: none; background: var(--navy); color: var(--white); padding: 0.6rem 1rem; border-radius: 3px; max-width: 230px; box-shadow: 0 6px 24px rgba(4,0,102,0.35); }
+  #wheel-tt strong, #index-wheel-tt strong { display: block; font-size: 0.83rem; line-height: 1.3; margin-bottom: 0.3rem; }
+  #wheel-tt span, #index-wheel-tt span { font-family: 'Noto Sans Mono', monospace; font-size: 0.6rem; color: var(--cyan); letter-spacing: 0.04em; }
 
   /* ── EDITOR ──────────────────────────────────────────────────────────────── */
   #view-editor { display: none; }
@@ -502,80 +549,41 @@
   <a class="header-logo" href="#" onclick="showIndex(); return false;">
     <img src="G+D Netcetera Logo White_sRGB_72.png" alt="G+D Netcetera" style="width:303px;height:33px;object-fit:contain;border-radius:4px;">
     <div class="logo-text">
-      <span class="logo-name" id="site-title">Company Name</span>
+      <span class="logo-name" id="site-title">Payment Enablement</span>
       <span class="logo-tagline">CPO Strategic Intelligence</span>
     </div>
   </a>
 
   <!-- NAV LINKS — update href values and remove nav-badge when pages are ready -->
   <nav>
-    <button class="nav-link active" onclick="showDashboard()">Dashboard</button>
-    <button class="nav-link" onclick="showIndex()">Topics</button>
-    <a class="nav-link" href="#">Stakeholders <span class="nav-badge">soon</span></a>
-    <a class="nav-link" href="#">Reports <span class="nav-badge">soon</span></a>
-    <button class="nav-link" onclick="showEditor()">Editor</button>
+    <button class="nav-link active" onclick="showDashboard()" data-i18n="navDashboard">Dashboard</button>
+    <button class="nav-link" onclick="showIndex()" data-i18n="navTopics">Topics</button>
+    <a class="nav-link" href="#" data-i18n="navStakeholders">Stakeholders <span class="nav-badge" data-i18n="soon">soon</span></a>
+    <a class="nav-link" href="#" data-i18n="navReports">Reports <span class="nav-badge" data-i18n="soon">soon</span></a>
+    <button class="nav-link" onclick="showEditor()" data-i18n="navEditor">Editor</button>
   </nav>
 
   <div class="header-right">
     <span class="header-count" id="header-meta">—</span>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">DE</button>
     <a class="git-link" id="github-link" href="#" target="_blank">
       <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      Edit on GitHub
+      <span data-i18n="editGithub">Edit on GitHub</span>
     </a>
   </div>
 
 </header>
 
 <!-- ══ INDEX VIEW ══════════════════════════════════════════════════════════ -->
-<div id="view-index">
+<div id="view-index" style="display:none">
   <div class="index-hero">
     <div class="hero-text">
-      <h1>Strategic Topics<br><span>Under Scrutiny</span></h1>
-      <p class="index-subtitle" id="hero-subtitle">A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.</p>
+      <h1>Strategic Topics<br><span data-i18n="heroSub1">Under Scrutiny</span></h1>
+      <p class="index-subtitle" id="hero-subtitle" data-i18n="heroDesc1">A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.</p>
     </div>
     <div class="search-wrap">
       <svg class="search-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="5"/><path d="M11 11l3 3"/></svg>
-      <input class="search-input" id="search-input" type="text" placeholder="Search topics…" oninput="applyFilters()">
-    </div>
-  </div>
-
-  <!-- ── TO-DO BOX ──────────────────────────────────────────────────────── -->
-  <div style="max-width: 1280px; margin: 1.5rem auto 0; padding: 0 3rem;">
-    <div style="
-      background: var(--white);
-      border: 1.5px solid var(--border-strong);
-      border-left: 4px solid #040066;
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-    ">
-      <div style="
-        font-family: 'Noto Sans Mono', monospace;
-        font-size: 0.6rem; letter-spacing: 0.12em;
-        text-transform: uppercase; color: var(--muted);
-        margin-bottom: 0.9rem;
-      ">To-Do</div>
-      <ul id="todo-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
-          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
-          Dashboard as 1. page. Features Todos (temporary), dashboard and newsfeed with current news and developments
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
-          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
-          2. page is then what is currently on first 
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
-          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
-          Replace placeholder box with dashboard chart
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
-          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
-          Review and update topic scores for Q2
-        </li>
-        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
-          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
-          Assign missing stakeholders to open topics
-        </li>
-      </ul>
+      <input class="search-input" id="search-input" type="text" placeholder="Search topics…" data-i18n-placeholder="searchPlaceholder" oninput="applyFilters()">
     </div>
   </div>
 
@@ -590,15 +598,15 @@
       <svg id="index-wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;height:auto;display:block;margin:0 auto;"></svg>
     </div>
   </div>
-<div id="index-wheel-tt" style="position:fixed;z-index:9999;display:none;pointer-events:none;background:#040066;color:#fff;padding:.55rem .95rem;border-radius:3px;max-width:220px;box-shadow:0 6px 22px rgba(4,0,102,.35);font-size:.82rem;"></div>
+<div id="index-wheel-tt"></div>
 
   <div class="cat-filter-section">
-    <div class="filter-label">Filter by category</div>
+    <div class="filter-label" data-i18n="filterCat">Filter by category</div>
     <div class="filter-bar" id="cat-filter-bar"></div>
   </div>
 
   <div class="filter-section">
-    <div class="filter-label">Filter by tag</div>
+    <div class="filter-label" data-i18n="filterTag">Filter by tag</div>
     <div class="filter-bar" id="filter-bar"></div>
   </div>
 
@@ -609,15 +617,26 @@
 <div id="view-detail">
   <div class="detail-topbar">
     <div class="detail-nav">
-      <button class="back-btn" onclick="showIndex()">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
-        All Topics
-      </button>
-      <div class="detail-breadcrumb">
-        <span>Topics</span>
-        <span class="breadcrumb-sep">›</span>
-        <span class="breadcrumb-current" id="breadcrumb-title">—</span>
+      <div class="detail-nav-left">
+        <button class="back-btn" onclick="showIndex()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
+          <span data-i18n="allTopics">All Topics</span>
+        </button>
+        <div class="detail-breadcrumb">
+          <span>Topics</span>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current" id="breadcrumb-title">—</span>
+        </div>
       </div>
+      <button class="export-pptx-btn" id="export-pptx-btn" onclick="exportTopicToPptx()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="2" y="2" width="9" height="12" rx="1"/>
+          <path d="M5 5h4M5 7.5h4M5 10h2" stroke-linecap="round"/>
+          <path d="M9 11l3 1-3 1" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 12H9" stroke-linecap="round"/>
+        </svg>
+        Export PPTX
+      </button>
     </div>
   </div>
   <div class="detail-layout">
@@ -627,34 +646,78 @@
 </div>
 
 <!-- ══ DASHBOARD VIEW ══════════════════════════════════════════════════════ -->
-<div id="view-dashboard" style="display:none">
+<div id="view-dashboard">
   <div class="dashboard-layout">
-    <div class="dashboard-hero fade-up">
-      <h2>Topic Landscape</h2>
-      <p>All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.</p>
+    <div class="index-hero">
+      <div class="hero-text">
+        <h1>Strategic Topics<br><span data-i18n="heroSub2">Radar Analysis</span></h1>
+        <p class="index-subtitle" style="max-width:unset;">All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.</p>
+      </div>
     </div>
+
+    <div style="padding: 0 3rem 3rem;">
+
+    <!-- ── TO-DO BOX ─────────────────────────────────────────────────────── -->
+    <div style="
+      background: var(--white);
+      border: 1.5px solid var(--border-strong);
+      border-left: 4px solid #040066;
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    ">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;">To-Do</div>
+      <ul id="todo-list" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Review and update topic scores for Q2
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Assign missing stakeholders to open topics
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:0.65rem;font-size:0.84rem;color:var(--text);">
+          <span style="margin-top:2px;color:#040066;flex-shrink:0;">☐</span>
+          Add working group links for IT Security topics
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── WHEEL CHART ────────────────────────────────────────────────────── -->
     <div class="wheel-wrap">
       <div class="wheel-svg-container">
         <svg id="wheel-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
       <div class="wheel-aside">
         <div class="aside-card">
-          <h4>Categories</h4>
+          <h4 data-i18n="categories">Categories</h4>
           <div id="wheel-legend-items"></div>
         </div>
         <div class="aside-card">
-          <h4>How to read</h4>
+          <h4 data-i18n="howToRead">How to read</h4>
           <div class="wheel-hint">
-            <span>● Inner ring = score 10</span>
-            <span>● Outer edge = score 1</span>
-            <span>● Topics may appear in multiple slices</span>
-            <span>● Hover for title · click to open</span>
+            <span data-i18n="hintInner">● Inner ring = score 10</span>
+            <span data-i18n="hintOuter">● Outer edge = score 1</span>
+            <span data-i18n="hintMultiple">● Topics may appear in multiple slices</span>
+            <span data-i18n="hintHover">● Hover for title · click to open</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <!-- ── NEWSFEED ───────────────────────────────────────────────────────── -->
+    <div id="newsfeed-container" style="
+      margin-top: 2.5rem;
+      background: var(--white);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+    "></div><!-- end newsfeed -->
+
+    </div><!-- end padded body wrapper -->
+
+  </div><!-- end dashboard-layout -->
+</div><!-- end view-dashboard -->
 <div id="wheel-tt"></div>
 
 <!-- ══ EDITOR VIEW ═════════════════════════════════════════════════════════ -->
@@ -663,11 +726,11 @@
 
     <div class="editor-header fade-up">
       <h2>Topic Editor</h2>
-      <p>Add a new topic to the database. Fill in all required fields marked <span style="color:var(--cyan)">*</span>, then download the updated <code>topics.json</code> and replace the file in your repository.</p>
+      <p>Add a new topic to the database. Fill in all required fields marked <span style="color:var(--cyan)">*</span>, then download the updated <code>topics.yaml</code> and replace the file in your repository.</p>
     </div>
 
     <div class="ed-dup-warning" id="ed-dup-warning">
-      <strong>Duplicate detected:</strong> A topic with this title already exists. Please choose a different name or edit the existing topic in <code>topics.json</code>.
+      <strong>Duplicate detected:</strong> A topic with this title already exists. Please choose a different name or edit the existing topic in <code>topics.yaml</code>.
     </div>
 
     <!-- IDENTITY -->
@@ -753,8 +816,20 @@
       <div class="ed-section-title">Descriptions</div>
       <div class="ed-row full">
         <div class="ed-field">
-          <label class="ed-label" for="ed-mgmt">Management Summary</label>
-          <textarea class="ed-textarea" id="ed-mgmt" placeholder="2–4 sentence executive summary for leadership…"></textarea>
+          <label class="ed-label" for="ed-mgmt-summary">Summary</label>
+          <textarea class="ed-textarea" id="ed-mgmt-summary" placeholder="Core summary — 2–4 sentences for leadership…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-mgmt-strategic">Strategic Importance</label>
+          <textarea class="ed-textarea" id="ed-mgmt-strategic" placeholder="Why this topic matters strategically…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-mgmt-action">Recommended Course of Action</label>
+          <textarea class="ed-textarea" id="ed-mgmt-action" placeholder="What we should do and by when…"></textarea>
         </div>
       </div>
       <div class="ed-row full">
@@ -803,6 +878,19 @@
       <button class="ed-add-btn" onclick="edAddRow('wg')">+ Add Working Group</button>
     </div>
 
+    <!-- LINKED TOPICS -->
+    <div class="ed-section">
+      <div class="ed-section-title">Linked Topics</div>
+      <div class="ed-multi-wrap">
+        <div class="ed-multi-row">
+          <select class="ed-select" id="ed-linked-select" onchange="edAddLinkedTopic(this)">
+            <option value="">— select a topic —</option>
+          </select>
+        </div>
+        <div class="ed-pills" id="ed-linked-pills"></div>
+      </div>
+    </div>
+
     <!-- RISKS -->
     <div class="ed-section">
       <div class="ed-section-title">Risks</div>
@@ -831,10 +919,39 @@
       <button class="ed-add-btn" onclick="edAddRow('sources')">+ Add Source</button>
     </div>
 
+    <!-- NEWS ENTRY -->
+    <div class="ed-section" style="border-top:2px solid var(--border);padding-top:2rem;margin-top:1rem;">
+      <div class="ed-section-title">Add News Entry</div>
+      <div class="ed-row triple">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-news-date">Date</label>
+          <input class="ed-input" id="ed-news-date" type="text" placeholder="e.g. Apr 2026">
+        </div>
+        <div class="ed-field" style="grid-column:span 2;">
+          <label class="ed-label" for="ed-news-title">Title <span class="req">*</span></label>
+          <input class="ed-input" id="ed-news-title" type="text" placeholder="News headline or regulatory update…">
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-news-body">Summary</label>
+          <textarea class="ed-textarea" id="ed-news-body" placeholder="Brief description of the news item…"></textarea>
+        </div>
+      </div>
+      <div class="ed-row full">
+        <div class="ed-field">
+          <label class="ed-label" for="ed-news-url">Link / URL</label>
+          <input class="ed-input" id="ed-news-url" type="url" placeholder="https://… (optional)">
+        </div>
+      </div>
+      <button class="ed-add-btn" onclick="edAddNewsEntry()" style="margin-top:0.5rem;">+ Add to Newsfeed &amp; Download</button>
+      <div id="ed-news-status" class="ed-status" style="margin-top:0.75rem;"></div>
+    </div>
+
     <!-- SAVE BAR -->
     <div class="editor-actions">
-      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()">⬇ Download updated topics.json</button>
-      <button class="ed-reset-btn" onclick="edReset()">Clear form</button>
+      <button class="ed-save-btn" id="ed-save-btn" onclick="edSave()" data-i18n="downloadYaml">⬇ Download updated topics.yaml</button>
+      <button class="ed-reset-btn" onclick="edReset()" data-i18n="clearForm">Clear form</button>
       <span class="ed-status" id="ed-status"></span>
     </div>
 
@@ -843,11 +960,32 @@
 
 <script>
 // ── Config ──────────────────────────────────────────────────────────────────
-const DATA_URL    = './topics.json';
-const GITHUB_REPO = ''; // e.g. 'https://github.com/yourorg/your-repo'
+const DATA_URL      = './topics.yaml';
+const NEWSFEED_URL  = './newsfeed.yaml';
+const GITHUB_REPO   = ''; // e.g. 'https://github.com/yourorg/your-repo'
+
+// ── Markdown renderer ────────────────────────────────────────────────────────
+function md(text) {
+  if (!text) return '';
+  if (typeof marked === 'undefined') return `<p>${text}</p>`;
+  return marked.parse(text, { breaks: true, gfm: true });
+}
+
+// Assembles the management summary from its sub-entries (dict or legacy string)
+function buildMgmtSummary(ms) {
+  if (!ms) return '';
+  // Legacy: plain string
+  if (typeof ms === 'string') return md(ms);
+  // New: dict with sub-entries
+  const parts = [];
+  if (ms.summary)               parts.push(md(ms.summary));
+  if (ms.strategic_importance)  parts.push(`<h3>Strategic Importance</h3>${md(ms.strategic_importance)}`);
+  if (ms.course_of_action)      parts.push(`<h3>Recommended Course of Action</h3>${md(ms.course_of_action)}`);
+  return parts.join('\n') || '';
+}
 
 // ── State ───────────────────────────────────────────────────────────────────
-let db = null, activeTag = null, activeCat = null, searchQuery = '';
+let db = null, newsDb = null, activeTag = null, activeCat = null, searchQuery = '';
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 function catClass(c) {
@@ -859,15 +997,10 @@ function tagClass(t) {
     'payment':          'tag-payment',
     'research':         'tag-research',
     'credit card':      'tag-creditcard',
-    'regulation':       'tag-regulation',
     'blockchain':       'tag-blockchain',
     'infrastructure':   'tag-infra',
-    'digital payments': 'tag-digipay',
-    'trusted services': 'tag-trusted',
-    'banking regulatory': 'tag-bankreg',
-    'trends':           'tag-trends',
-    'IT security':      'tag-itsec',
     'market':           'tag-market',
+    'regulation':       'tag-regulation',
   };
   return map[t] || 'tag-default';
 }
@@ -895,16 +1028,25 @@ async function loadData() {
   document.getElementById('topics-container').innerHTML =
     `<div class="state-msg"><div class="spinner"></div><span>Loading topics…</span></div>`;
   try {
-    const res = await fetch(DATA_URL);
-    if (!res.ok) throw new Error(`Could not load topics.json (${res.status})`);
-    db = await res.json();
+    const [topicsRes, newsRes] = await Promise.all([
+      fetch(DATA_URL),
+      fetch(NEWSFEED_URL).catch(() => null),
+    ]);
+    if (!topicsRes.ok) throw new Error(`Could not load topics.yaml (${topicsRes.status})`);
+    db = jsyaml.load(await topicsRes.text());
+    if (newsRes && newsRes.ok) {
+      const parsed = jsyaml.load(await newsRes.text());
+      newsDb = parsed && parsed.entries ? parsed.entries : [];
+    } else {
+      newsDb = [];
+    }
     boot();
   } catch(e) {
     document.getElementById('topics-container').innerHTML = `
       <div class="state-msg"><div style="border:1px solid rgba(255,166,180,0.5);background:rgba(255,166,180,0.1);
         color:#7a1525;padding:1.5rem 2rem;font-family:'Noto Sans Mono', monospace;font-size:0.75rem;
         max-width:480px;line-height:1.7;">
-        <strong>Failed to load topics.json</strong><br><br>${e.message}<br><br>
+        <strong>Failed to load topics.yaml</strong><br><br>${e.message}<br><br>
         Serve locally with: <code>python -m http.server 3000</code>
       </div></div>`;
   }
@@ -913,7 +1055,7 @@ async function loadData() {
 function boot() {
   const meta = db.meta || {};
   document.title = meta.title || 'Strategic Intelligence';
-  document.getElementById('site-title').textContent = meta.organisation || 'Company Name';
+  document.getElementById('site-title').textContent = meta.organisation || 'Payment Enablement';
 
   const gh = document.getElementById('github-link');
   if (GITHUB_REPO) { gh.href = GITHUB_REPO; } else { gh.style.display = 'none'; }
@@ -930,6 +1072,36 @@ function boot() {
 
   renderIndex();
   renderIndexWheel();
+  renderWheel();
+  renderNewsfeed();
+}
+
+// ── Newsfeed ──────────────────────────────────────────────────────────────────
+function renderNewsfeed() {
+  const el = document.getElementById('newsfeed-container');
+  if (!el) return;
+  const items = newsDb || [];
+  let h = `<div style="font-family:'Noto Sans Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">${i18n('newsfeedLabel')}</div>`;
+  if (!items.length) {
+    h += `<p style="font-size:0.84rem;color:var(--muted);">No news entries yet.</p>`;
+  } else {
+    h += `<div style="display:flex;flex-direction:column;gap:0;">`;
+    items.forEach((item, idx) => {
+      const isLast = idx === items.length - 1;
+      const border = isLast ? '' : 'border-bottom:1px solid var(--border);';
+      const titleHtml = item.url
+        ? `<a href="${item.url}" target="_blank" rel="noopener" style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;display:block;text-decoration:none;border-bottom:1px solid rgba(4,0,102,0.2);">${item.title}</a>`
+        : `<div style="font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;">${item.title}</div>`;
+      h += `<div style="padding:0.9rem 0;${border}display:flex;gap:1.25rem;align-items:flex-start;">
+        <span style="font-family:'Noto Sans Mono',monospace;font-size:0.62rem;color:var(--muted);white-space:nowrap;padding-top:0.1rem;">${item.date||''}</span>
+        <div style="flex:1;">${titleHtml}
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">${item.body||''}</div>
+        </div>
+      </div>`;
+    });
+    h += `</div>`;
+  }
+  el.innerHTML = h;
 }
 
 // ── Index wheel (embedded on main page) ──────────────────────────────────────
@@ -958,14 +1130,34 @@ function renderIndexWheel() {
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
     const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
     const N=topics.length;
-    topics.forEach((tp,j)=>{
+    // Step 1: compute base angular + radial positions
+    const dots=topics.map((tp,j)=>{
       const r=iR+(10-tp.score)/9*(oR-iR);
       const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
       const lo=a1+minOff, hi=a2-minOff;
       const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      return {tp,r,tA};
+    });
+    // Step 2: resolve overlaps by staggering radius
+    for(let i=0;i<dots.length;i++){
+      for(let k=i+1;k<dots.length;k++){
+        const a=dots[i],b=dots[k];
+        const aRad=(a.tA-90)*Math.PI/180, bRad=(b.tA-90)*Math.PI/180;
+        const dx=cx+a.r*Math.cos(aRad)-(cx+b.r*Math.cos(bRad));
+        const dy=cy+a.r*Math.sin(aRad)-(cy+b.r*Math.sin(bRad));
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<DOT_R*2+2){
+          const nudge=(DOT_R*2+2-dist)/2+DOT_R*0.5;
+          a.r=Math.max(iR+DOT_R, a.r-nudge);
+          b.r=Math.min(oR-DOT_R, b.r+nudge);
+        }
+      }
+    }
+    // Step 3: render
+    dots.forEach(({tp,r,tA})=>{
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="iwdot" data-id="${tp.id}" style="cursor:pointer"/>`;
-      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
+      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.id}</text>`;
     });
   });
   h+=`<circle cx="${cx}" cy="${cy}" r="${iR}" fill="rgba(4,0,102,.05)" stroke="rgba(4,0,102,.18)" stroke-width="1"/>`;
@@ -980,7 +1172,7 @@ function renderIndexWheel() {
   document.querySelectorAll('.iwdot').forEach(dot=>{
     const id=parseInt(dot.dataset.id), t=(db.topics||[]).find(x=>x.id===id);
     if(!t) return;
-    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong style="display:block;margin-bottom:.2rem;">${t.title}</strong><span style="font-family:'Noto Sans Mono',monospace;font-size:.6rem;color:#00d4ff;">${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${i18n('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.display='block'; tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
     dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
@@ -1025,7 +1217,7 @@ function renderIndex() {
 
   const c = document.getElementById('topics-container');
   if (!topics.length) {
-    c.innerHTML = `<div class="topics-grid"><div class="no-results">No topics match your filters.</div></div>`;
+    c.innerHTML = `<div class="topics-grid"><div class="no-results">${i18n('noTopicsMatch')}</div></div>`;
     return;
   }
   c.innerHTML = `<div class="topics-grid">${topics.map((t,i) => {
@@ -1052,13 +1244,14 @@ function renderIndex() {
 
 // ── Render detail ─────────────────────────────────────────────────────────────
 function showDetail(id) {
+  window._currentTopicId = id;
   const t = db.topics.find(x => x.id === id);
   if (!t) return;
   document.getElementById('view-index').style.display = 'none';
   document.getElementById('view-detail').style.display = 'block';
   document.getElementById('breadcrumb-title').textContent = t.title;
   window.scrollTo(0,0);
-  history.pushState({ topicId: id }, '', `#topic-${id}`);
+  try { history.pushState({ topicId: id }, '', `#topic-${id}`); } catch(e) {}
 
   const s = getStakeholders(t);
 
@@ -1069,7 +1262,7 @@ function showDetail(id) {
     <div class="fade-up">
       <div class="detail-category">Strategic Topic</div>
       <h1 class="detail-title">${t.title}</h1>
-      <div class="detail-tags">${t.tags.map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
+      <div class="detail-tags">${(t.tags||[]).filter(Boolean).map(tag=>`<span class="tag ${tagClass(tag)}">${tag}</span>`).join('')}</div>
       <div class="score-band">
         <div class="score-band-num">${t.score}</div>
         <div class="score-band-right">
@@ -1081,42 +1274,42 @@ function showDetail(id) {
 
     ${t.management_summary ? `
     <div class="fade-up" style="animation-delay:0.05s">
-      <div class="section-label">Management Summary</div>
-      <div class="mgmt-summary"><p>${t.management_summary}</p></div>
+      <div class="section-label">${i18n('sectionMgmtSummary')}</div>
+      <div class="mgmt-summary"><div class="md-prose">${buildMgmtSummary(t.management_summary)}</div></div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.1s">
-      <div class="section-label">Description</div>
-      <p class="section-body">${t.description||'No description provided.'}</p>
+      <div class="section-label">${i18n('sectionDescription')}</div>
+      <div class="section-body md-prose">${md(t.description||i18n('noDescription'))}</div>
     </div>
 
     ${t.extended_description ? `
     <div class="fade-up" style="animation-delay:0.15s">
-      <div class="section-label">Extended Description</div>
-      <p class="section-body">${t.extended_description}</p>
+      <div class="section-label">${i18n('sectionExtended')}</div>
+      <div class="section-body md-prose">${md(t.extended_description)}</div>
     </div>` : ''}
 
     ${(t.risks&&t.risks.length)||(t.chances&&t.chances.length) ? `
     <div class="fade-up" style="animation-delay:0.2s">
-      <div class="section-label">Risks &amp; Chances</div>
+      <div class="section-label">${i18n('sectionRiskChance')}</div>
       <div class="risks-chances-grid">
         <div class="rc-card chances">
-          <div class="rc-header"><span class="rc-dot"></span>Chances</div>
+          <div class="rc-header"><span class="rc-dot"></span>${i18n('sectionChances')}</div>
           <div class="rc-list">
-            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+            ${(t.chances||[]).map(c=>`<div class="rc-item">${c}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${i18n('noneIdentified')}</p>`}
           </div>
         </div>
         <div class="rc-card risks">
-          <div class="rc-header"><span class="rc-dot"></span>Risks</div>
+          <div class="rc-header"><span class="rc-dot"></span>${i18n('sectionRisks')}</div>
           <div class="rc-list">
-            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || '<p style="color:var(--muted);font-size:0.82rem">None identified.</p>'}
+            ${(t.risks||[]).map(r=>`<div class="rc-item">${r}</div>`).join('') || `<p style="color:var(--muted);font-size:0.82rem">${i18n('noneIdentified')}</p>`}
           </div>
         </div>
       </div>
     </div>` : ''}
 
     <div class="fade-up" style="animation-delay:0.25s">
-      <div class="section-label">Short-Term Actions</div>
+      <div class="section-label">${i18n('sectionActions')}</div>
       <div class="actions-list">
         ${t.actions&&t.actions.length
           ? t.actions.map((a,i)=>{
@@ -1124,7 +1317,7 @@ function showDetail(id) {
               const num = String(i+1).padStart(2,'0');
               return `<div class="action-item">
                 <span class="action-num">${num}</span>
-                <span class="action-text">${text}</span>
+                <span class="action-text">${md(text)}</span>
                 <span class="action-status status-${status.replace(' ','-')}">${status}</span>
               </div>`;}).join('')
           : '<p style="color:var(--muted);font-size:0.85rem">No actions recorded.</p>'}
@@ -1133,13 +1326,13 @@ function showDetail(id) {
 
     ${t.position ? `
     <div class="fade-up" style="animation-delay:0.28s">
-      <div class="section-label">Position</div>
-      <p style="font-size:0.88rem;line-height:1.7;color:var(--text);margin:0;">${t.position}</p>
+      <div class="section-label">${i18n('sectionPosition')}</div>
+      <div class="md-prose" style="font-size:0.88rem;">${md(t.position)}</div>
     </div>` : ''}
 
     ${(t.associated_working_groups||[]).length ? `
     <div class="fade-up" style="animation-delay:0.29s">
-      <div class="section-label">Associated Working Groups</div>
+      <div class="section-label">${i18n('sectionWG')}</div>
       <div class="sources-list">
         ${(t.associated_working_groups||[]).map(wg => {
           const name  = typeof wg === 'string' ? wg : (wg.name || wg.label || '');
@@ -1158,7 +1351,7 @@ function showDetail(id) {
 
     ${t.sources&&t.sources.length ? `
     <div class="fade-up" style="animation-delay:0.3s">
-      <div class="section-label">Sources &amp; References</div>
+      <div class="section-label">${i18n('sectionSources')}</div>
       <div class="sources-list">
         ${t.sources.map(s => {
           const href = s.url && s.url !== '#' ? s.url : null;
@@ -1176,33 +1369,61 @@ function showDetail(id) {
 
   document.getElementById('detail-sidebar').innerHTML = `
     <div class="sidebar-card fade-up" style="animation-delay:0.12s">
-      <h3>Stakeholders</h3>
-      ${s.length ? s.map(p=>`
-        <div class="stakeholder-item">
-          <div class="stakeholder-avatar">${initials(p.name)}</div>
-          <div><span class="stakeholder-name">${p.name}</span><span class="stakeholder-role">${p.role||''}</span></div>
-        </div>`).join('')
-        : '<p style="color:var(--muted);font-size:0.82rem">No stakeholders assigned.</p>'}
+      <h3>${i18n('sideStakeholders')}</h3>
+      ${s.length ? s.map(p => {
+          // Find all topics this stakeholder appears in
+          const assocTopics = (db.topics||[]).filter(tp =>
+            (tp.stakeholders||[]).some(ref => (typeof ref === 'object' ? ref.id : ref) === p.id)
+          );
+          const chips = assocTopics.map(tp => {
+            const isCurrent = tp.id === t.id;
+            return `<span class="stakeholder-topic-chip${isCurrent?' current':''}"
+              ${isCurrent ? '' : `onclick="showDetail(${tp.id})"`}
+              title="${tp.title}">#${tp.id} ${tp.title}</span>`;
+          }).join('');
+          return `
+          <div class="stakeholder-item">
+            <div class="stakeholder-avatar">${initials(p.name)}</div>
+            <div>
+              <span class="stakeholder-name">${p.name}</span>
+              <span class="stakeholder-role">${p.role||''}</span>
+              ${chips ? `<div class="stakeholder-topics">${chips}</div>` : ''}
+            </div>
+          </div>`;
+        }).join('')
+        : `<p style="color:var(--muted);font-size:0.82rem">${i18n('noStakeholders')}</p>`}
     </div>
     <div class="sidebar-card fade-up" style="animation-delay:0.22s">
-      <h3>Metadata</h3>
-      <div class="meta-row"><span class="meta-key">Category</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
-      <div class="meta-row"><span class="meta-key">Priority</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Time Horizon</span><span class="meta-val">${t.horizon||'—'}</span></div>
+      <h3>${i18n('sideMetadata')}</h3>
+      <div class="meta-row"><span class="meta-key">${i18n('metaCategory')}</span>${t.category ? `<span class="cat-badge ${catClass(t.category)}">${t.category}</span>` : '<span class="meta-val">—</span>'}</div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaPriority')}</span><span class="priority-badge ${priorityClass(t.priority)}">${t.priority||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaHorizon')}</span><span class="meta-val">${t.horizon||'—'}</span></div>
       ${(t.impacts||[]).length ? `
       <div class="meta-row-block">
-        <span class="meta-key">Impacts</span>
+        <span class="meta-key">${i18n('metaImpacts')}</span>
         <div class="meta-pills">${(t.impacts||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
-      </div>` : `<div class="meta-row"><span class="meta-key">Impacts</span><span class="meta-val">—</span></div>`}
+      </div>` : `<div class="meta-row"><span class="meta-key">${i18n('metaImpacts')}</span><span class="meta-val">—</span></div>`}
       ${(t.driven_by||[]).length ? `
       <div class="meta-row-block">
-        <span class="meta-key">Driven By</span>
+        <span class="meta-key">${i18n('metaDrivenBy')}</span>
         <div class="meta-pills">${(t.driven_by||[]).map(v=>`<span class="meta-pill">${v}</span>`).join('')}</div>
-      </div>` : `<div class="meta-row"><span class="meta-key">Driven By</span><span class="meta-val">—</span></div>`}
-      <div class="meta-row"><span class="meta-key">Last Updated</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
-      <div class="meta-row"><span class="meta-key">Actions</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
-      <div class="meta-row"><span class="meta-key">Sources</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
-      <div class="meta-row"><span class="meta-key">Score</span><span class="meta-val">${t.score} / 10</span></div>
+      </div>` : `<div class="meta-row"><span class="meta-key">${i18n('metaDrivenBy')}</span><span class="meta-val">—</span></div>`}
+      <div class="meta-row"><span class="meta-key">${i18n('metaUpdated')}</span><span class="meta-val">${t.updated_at||db.meta?.updated||'—'}</span></div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaActions')}</span><span class="meta-val">${(t.actions||[]).length} items</span></div>
+      <div class="meta-row"><span class="meta-key">${i18n('metaSources')}</span><span class="meta-val">${(t.sources||[]).length} links</span></div>
+      ${(t.linked_to||[]).length ? `
+      <div class="meta-row-block">
+        <span class="meta-key">${i18n('metaLinkedTo')}</span>
+        <div class="meta-pills" style="gap:0.35rem;">
+          ${(t.linked_to||[]).map(lid => {
+            const linked = (db.topics||[]).find(x => x.id === lid);
+            return linked
+              ? `<span class="linked-chip" onclick="showDetail(${linked.id})" title="${linked.title}">#${linked.id} ${linked.title}</span>`
+              : '';
+          }).filter(Boolean).join('')}
+        </div>
+      </div>` : `<div class="meta-row"><span class="meta-key">${i18n('metaLinkedTo')}</span><span class="meta-val">—</span></div>`}
+      <div class="meta-row"><span class="meta-key">${i18n('metaScore')}</span><span class="meta-val">${t.score} / 10</span></div>
     </div>`;
 }
 
@@ -1210,18 +1431,18 @@ function showIndex() {
   ['view-detail','view-dashboard','view-editor'].forEach(id =>
     document.getElementById(id).style.display = 'none');
   document.getElementById('view-index').style.display = 'block';
-  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===0));
-  history.pushState({}, '', window.location.pathname);
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===1));
+  try { history.pushState({}, '', window.location.pathname); } catch(e) {}
   window.scrollTo(0,0);
 }
 
 // ── Dashboard / Wheel ─────────────────────────────────────────────────────────
 const WHEEL_SLICES = [
   { label:['TRUSTED','SERVICES'],   cat:'Trusted Services',   bg:'#d3beec', fg:'#4a2d7a' },
-  { label:['DIGITAL', 'PAYMENTS'],     cat:'Digital Payments',   bg:'#00d4ff', fg:'#004f66' },
-  { label:['REGULATORY'],           cat:'Regulatory',         bg:'#ffc390', fg:'#7a3500' },
-  { label:['IT','SECURITY'],        cat:'IT Security',        bg:'#ffa6b4', fg:'#7a1525' },
-  { label:['BANKING','REGULATORY','AND','TRENDS'], cat:'Banking Regulatory and Trends',  bg:'#c4ebc3', fg:'#1a5219' },
+  { label:['DIGITAL','PAYMENTS'],   cat:'Digital Payments',   bg:'#00d4ff', fg:'#004f66' },
+  { label:['REGULATORY'],           cat:'Regulatory',          bg:'#ffc390', fg:'#7a3500' },
+  { label:['IT','SECURITY'],        cat:'IT Security',         bg:'#ffa6b4', fg:'#7a1525' },
+  { label:['BANKING REG.','& TRENDS'], cat:'Banking Regulatory and Trends',  bg:'#c4ebc3', fg:'#1a5219' },
   { label:['MISCELLANEOUS'],        cat:'Miscellaneous',       bg:'#ffeda3', fg:'#5a4a00' },
 ];
 
@@ -1250,7 +1471,7 @@ function showDashboard() {
   ['view-index','view-detail','view-editor'].forEach(id =>
     document.getElementById(id).style.display = 'none');
   document.getElementById('view-dashboard').style.display = 'block';
-  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===1));
+  document.querySelectorAll('.nav-link').forEach((l,i) => l.classList.toggle('active', i===0));
   renderWheel();
   window.scrollTo(0,0);
 }
@@ -1280,14 +1501,34 @@ function renderWheel() {
     const topics=(db.topics||[]).filter(t=>t.category===sl.cat);
     const DOT_R=9, MIN_DIST=GAP_PX+DOT_R+2;
     const N=topics.length;
-    topics.forEach((tp,j)=>{
+    // Step 1: compute base angular + radial positions
+    const dots=topics.map((tp,j)=>{
       const r=iR+(10-tp.score)/9*(oR-iR);
       const minOff=Math.asin(Math.min(MIN_DIST/r,0.9999))*180/Math.PI;
       const lo=a1+minOff, hi=a2-minOff;
       const tA=N===1?mid:(lo+(j/Math.max(N-1,1))*(hi-lo));
+      return {tp,r,tA};
+    });
+    // Step 2: resolve overlaps by staggering radius
+    for(let i=0;i<dots.length;i++){
+      for(let k=i+1;k<dots.length;k++){
+        const a=dots[i],b=dots[k];
+        const aRad=(a.tA-90)*Math.PI/180, bRad=(b.tA-90)*Math.PI/180;
+        const dx=cx+a.r*Math.cos(aRad)-(cx+b.r*Math.cos(bRad));
+        const dy=cy+a.r*Math.sin(aRad)-(cy+b.r*Math.sin(bRad));
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<DOT_R*2+2){
+          const nudge=(DOT_R*2+2-dist)/2+DOT_R*0.5;
+          a.r=Math.max(iR+DOT_R, a.r-nudge);
+          b.r=Math.min(oR-DOT_R, b.r+nudge);
+        }
+      }
+    }
+    // Step 3: render
+    dots.forEach(({tp,r,tA})=>{
       const pos=pToC(cx,cy,r,tA);
       h+=`<circle cx="${f(pos.x)}" cy="${f(pos.y)}" r="9" fill="${sl.bg}" fill-opacity=".96" stroke="${sl.fg}" stroke-width="1.8" class="wdot" data-id="${tp.id}" style="cursor:pointer"/>`;
-      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.score}</text>`;
+      h+=`<text x="${f(pos.x)}" y="${f(pos.y)}" text-anchor="middle" dominant-baseline="middle" font-size="7" font-weight="700" fill="${sl.fg}" font-family="Noto Sans Mono" style="pointer-events:none">${tp.id}</text>`;
     });
   });
   h+=`<circle cx="${cx}" cy="${cy}" r="${iR}" fill="rgba(4,0,102,.05)" stroke="rgba(4,0,102,.18)" stroke-width="1"/>`;
@@ -1302,7 +1543,7 @@ function renderWheel() {
   document.querySelectorAll('.wdot').forEach(dot=>{
     const id=parseInt(dot.dataset.id),t=(db.topics||[]).find(x=>x.id===id);
     if(!t) return;
-    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}/10 · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
+    dot.addEventListener('mouseenter',e=>{ dot.setAttribute('r','12'); tt.innerHTML=`<strong>${t.title}</strong><span>${t.score}${i18n('ttScore')} · ${(t.tags||[]).join(', ')}</span>`; tt.style.cssText=`display:block;left:${e.clientX+14}px;top:${e.clientY-10}px`; });
     dot.addEventListener('mousemove',e=>{ tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY-10)+'px'; });
     dot.addEventListener('mouseleave',()=>{ dot.setAttribute('r','9'); tt.style.display='none'; });
     dot.addEventListener('click',()=>{ tt.style.display='none'; showDetail(id); });
@@ -1341,6 +1582,16 @@ function edPopulateStatic() {
     });
     ss.dataset.built = '1';
   }
+  // Linked topics dropdown
+  const lt = document.getElementById('ed-linked-select');
+  if (lt && !lt.dataset.built) {
+    (db.topics||[]).forEach(tp => {
+      const o = document.createElement('option');
+      o.value = tp.id; o.textContent = `#${tp.id} ${tp.title}`;
+      lt.appendChild(o);
+    });
+    lt.dataset.built = '1';
+  }
 }
 
 function edAddPill(type, select) {
@@ -1365,6 +1616,21 @@ function edAddPill(type, select) {
     pill.dataset.val = val;
     pill.innerHTML = `<span class="pill-av">${av}</span>${sh.name}<button class="pill-x" onclick="this.parentElement.remove()" title="Remove">×</button>`;
   }
+  container.appendChild(pill);
+  select.value = '';
+}
+
+function edAddLinkedTopic(select) {
+  const val = parseInt(select.value);
+  if (!val) return;
+  const container = document.getElementById('ed-linked-pills');
+  if (container.querySelector(`[data-val="${val}"]`)) { select.value = ''; return; }
+  const tp = (db.topics||[]).find(x => x.id === val);
+  if (!tp) { select.value = ''; return; }
+  const pill = document.createElement('span');
+  pill.className = 'ed-pill';
+  pill.dataset.val = val;
+  pill.innerHTML = `#${tp.id} ${tp.title}<button class="pill-x" onclick="this.parentElement.remove()" title="Remove">×</button>`;
   container.appendChild(pill);
   select.value = '';
 }
@@ -1434,12 +1700,15 @@ function edCollect() {
     const ins = row.querySelectorAll('input');
     return { name: ins[0].value.trim(), url: ins[1].value.trim() };
   }).filter(w => w.name);
-  const mgmt    = document.getElementById('ed-mgmt').value.trim();
+  const mgmtSummary    = document.getElementById('ed-mgmt-summary').value.trim();
+  const mgmtStrategic  = document.getElementById('ed-mgmt-strategic').value.trim();
+  const mgmtAction     = document.getElementById('ed-mgmt-action').value.trim();
   const desc    = document.getElementById('ed-desc').value.trim();
   const extdesc = document.getElementById('ed-extdesc').value.trim();
 
-  const tags  = [...document.querySelectorAll('#ed-tags-pills .ed-pill')].map(p => p.dataset.val);
-  const shIds = [...document.querySelectorAll('#ed-sh-pills .ed-pill')].map(p => parseInt(p.dataset.val));
+  const tags     = [...document.querySelectorAll('#ed-tags-pills .ed-pill')].map(p => p.dataset.val);
+  const shIds    = [...document.querySelectorAll('#ed-sh-pills .ed-pill')].map(p => parseInt(p.dataset.val));
+  const linkedTo = [...document.querySelectorAll('#ed-linked-pills .ed-pill')].map(p => parseInt(p.dataset.val));
 
   const actions = [...document.querySelectorAll('#ed-actions-list .ed-dyn-row')].map(row => {
     const inputs = row.querySelectorAll('input,select');
@@ -1454,7 +1723,7 @@ function edCollect() {
     return { label: ins[0].value.trim(), url: ins[1].value.trim() };
   }).filter(s => s.label || s.url);
 
-  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmt, desc, extdesc, tags, shIds, actions, risks, chances, sources };
+  return { title, score, priority, horizon, category, position, impacts, drivenBy, wgs, mgmtSummary, mgmtStrategic, mgmtAction, desc, extdesc, tags, shIds, linkedTo, actions, risks, chances, sources };
 }
 
 function edValidate(f) {
@@ -1483,10 +1752,17 @@ function edSave() {
     category: f.category || undefined,
     horizon: f.horizon || undefined,
     description: f.desc,
-    ...(f.mgmt    && { management_summary: f.mgmt }),
+    ...(f.mgmtSummary || f.mgmtStrategic || f.mgmtAction ? {
+      management_summary: {
+        summary:               f.mgmtSummary   || '',
+        strategic_importance:  f.mgmtStrategic || '',
+        course_of_action:      f.mgmtAction    || '',
+      }
+    } : {}),
     ...(f.extdesc && { extended_description: f.extdesc }),
     ...(f.risks.length   && { risks: f.risks }),
     ...(f.chances.length && { chances: f.chances }),
+    linked_to: f.linkedTo,
     ...(f.position       && { position: f.position }),
     ...(f.impacts.length && { impacts: f.impacts }),
     ...(f.drivenBy.length&& { driven_by: f.drivenBy }),
@@ -1498,10 +1774,10 @@ function edSave() {
   };
 
   const updated = { ...db, topics: [...(db.topics||[]), newTopic] };
-  const blob = new Blob([JSON.stringify(updated, null, 2)], { type: 'application/json' });
+  const blob = new Blob([jsyaml.dump(updated, { indent: 2, lineWidth: -1, noRefs: true })], { type: 'text/yaml' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'topics.json';
+  a.download = 'topics.yaml';
   a.click();
   URL.revokeObjectURL(a.href);
 
@@ -1509,7 +1785,7 @@ function edSave() {
   db = updated;
   boot();
 
-  edStatus(`✓ topics.json downloaded with "${f.title}" added (ID ${newId}). Replace the file in your repo.`, true);
+  edStatus(`✓ topics.yaml downloaded with "${f.title}" added (ID ${newId}). Replace the file in your repo.`, true);
 }
 
 function edReset() {
@@ -1519,19 +1795,54 @@ function edReset() {
   document.getElementById('ed-priority').value = '';
   document.getElementById('ed-horizon').value = '';
   document.getElementById('ed-category').value = '';
-  document.getElementById('ed-mgmt').value = '';
+  document.getElementById('ed-mgmt-summary').value = '';
+  document.getElementById('ed-mgmt-strategic').value = '';
+  document.getElementById('ed-mgmt-action').value = '';
   document.getElementById('ed-desc').value = '';
   document.getElementById('ed-extdesc').value = '';
   document.getElementById('ed-tags-pills').innerHTML = '';
   document.getElementById('ed-sh-pills').innerHTML = '';
+  document.getElementById('ed-linked-pills').innerHTML = '';
   document.getElementById('ed-tags-select').value = '';
   document.getElementById('ed-sh-select').value = '';
+  document.getElementById('ed-linked-select').value = '';
   ['risks','chances','actions','sources','impacts','drivenby','wg'].forEach(t => document.getElementById(`ed-${t}-list`).innerHTML = '');
   document.getElementById('ed-position').value = '';
   document.getElementById('ed-dup-warning').style.display = 'none';
   document.getElementById('ed-save-btn').disabled = false;
   document.querySelectorAll('.ed-input.error, .ed-select.error, .ed-textarea.error').forEach(el => el.classList.remove('error'));
   edStatus('', false);
+}
+
+function edAddNewsEntry() {
+  const title = document.getElementById('ed-news-title').value.trim();
+  if (!title) {
+    document.getElementById('ed-news-status').textContent = 'Please enter a title.';
+    document.getElementById('ed-news-status').className = 'ed-status fail';
+    return;
+  }
+  const entry = {
+    date:  document.getElementById('ed-news-date').value.trim() || '',
+    title: title,
+    body:  document.getElementById('ed-news-body').value.trim() || '',
+    url:   document.getElementById('ed-news-url').value.trim()  || '',
+  };
+  const updated = { entries: [entry, ...(newsDb || [])] };
+  const blob = new Blob([jsyaml.dump(updated, { indent: 2, lineWidth: -1, noRefs: true })], { type: 'text/yaml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'newsfeed.yaml';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  // Update live newsDb
+  newsDb = updated.entries;
+  renderNewsfeed();
+  // Clear fields
+  ['ed-news-date','ed-news-title','ed-news-body','ed-news-url'].forEach(id =>
+    document.getElementById(id).value = '');
+  const ns = document.getElementById('ed-news-status');
+  ns.textContent = `✓ "${entry.title}" added to newsfeed. Replace newsfeed.yaml in your repo.`;
+  ns.className = 'ed-status ok';
 }
 
 function edStatus(msg, ok) {
@@ -1551,6 +1862,309 @@ window.addEventListener('popstate', e => {
 function checkHash() {
   const m = window.location.hash.match(/^#topic-(\d+)$/);
   if (m && db) showDetail(parseInt(m[1]));
+}
+
+// ── Internationalisation ──────────────────────────────────────────────────────
+let currentLang = 'en';
+
+const I18N = {
+  en: {
+    // Nav
+    navDashboard: 'Dashboard',
+    navTopics: 'Topics',
+    navStakeholders: 'Stakeholders',
+    navReports: 'Reports',
+    navEditor: 'Editor',
+    soon: 'soon',
+    editGithub: 'Edit on GitHub',
+    // Hero — Topics
+    heroSub1: 'Under Scrutiny',
+    heroDesc1: 'A living registry of strategic topics ranked by business importance, with stakeholder ownership and short-term action plans.',
+    searchPlaceholder: 'Search topics…',
+    // Hero — Dashboard
+    heroSub2: 'Radar Analysis',
+    heroDesc2: 'All topics mapped by category and importance score. Topics closer to the centre have a higher score. Click any dot to open the topic.',
+    // Filters
+    filterCat: 'Filter by category',
+    filterTag: 'Filter by tag',
+    // Dashboard aside
+    categories: 'Categories',
+    howToRead: 'How to read',
+    hintInner: '● Inner ring = score 10',
+    hintOuter: '● Outer edge = score 1',
+    hintMultiple: '● Topics may appear in multiple slices',
+    hintHover: '● Hover for title · click to open',
+    // Detail
+    allTopics: 'All Topics',
+    sectionMgmtSummary: 'Management Summary',
+    sectionDescription: 'Description',
+    sectionExtended: 'Extended Description',
+    sectionRiskChance: 'Risks & Chances',
+    sectionRisks: 'Risks',
+    sectionChances: 'Chances',
+    sectionActions: 'Short-Term Actions',
+    sectionPosition: 'Position',
+    sectionWG: 'Associated Working Groups',
+    sectionSources: 'Sources & References',
+    sideStakeholders: 'Stakeholders',
+    sideMetadata: 'Metadata',
+    metaCategory: 'Category',
+    metaPriority: 'Priority',
+    metaHorizon: 'Time Horizon',
+    metaImpacts: 'Impacts',
+    metaDrivenBy: 'Driven By',
+    metaUpdated: 'Last Updated',
+    metaActions: 'Actions',
+    metaSources: 'Sources',
+    metaScore: 'Score',
+    metaLinkedTo: 'Linked To',
+    noStakeholders: 'No stakeholders assigned.',
+    noDescription: 'No description provided.',
+    noneIdentified: 'None identified.',
+    noTopicsMatch: 'No topics match your filters.',
+    // Header count
+    topicsOf: 'topics',
+    // Editor
+    clearForm: 'Clear form',
+    downloadYaml: '⬇ Download updated topics.yaml',
+    // To-Do & Newsfeed
+    todoLabel: 'To-Do',
+    newsfeedLabel: 'Newsfeed',
+    // Tooltip
+    ttScore: '/10',
+  },
+  de: {
+    navDashboard: 'Dashboard',
+    navTopics: 'Themen',
+    navStakeholders: 'Stakeholder',
+    navReports: 'Berichte',
+    navEditor: 'Editor',
+    soon: 'bald',
+    editGithub: 'Auf GitHub bearbeiten',
+    heroSub1: 'Im Fokus',
+    heroDesc1: 'Ein aktuelles Register strategischer Themen, gerankt nach geschäftlicher Relevanz, mit Stakeholder-Verantwortlichkeiten und kurzfristigen Maßnahmen.',
+    searchPlaceholder: 'Themen suchen…',
+    heroSub2: 'Radar-Analyse',
+    heroDesc2: 'Alle Themen nach Kategorie und Wichtigkeit. Themen näher am Zentrum haben eine höhere Bewertung. Klick auf einen Punkt zum Öffnen.',
+    filterCat: 'Nach Kategorie filtern',
+    filterTag: 'Nach Tag filtern',
+    categories: 'Kategorien',
+    howToRead: 'Lesehilfe',
+    hintInner: '● Innenring = Bewertung 10',
+    hintOuter: '● Außenrand = Bewertung 1',
+    hintMultiple: '● Themen können in mehreren Segmenten erscheinen',
+    hintHover: '● Hover für Titel · Klick zum Öffnen',
+    allTopics: 'Alle Themen',
+    sectionMgmtSummary: 'Management Summary',
+    sectionDescription: 'Beschreibung',
+    sectionExtended: 'Ausführliche Beschreibung',
+    sectionRiskChance: 'Risiken & Chancen',
+    sectionRisks: 'Risiken',
+    sectionChances: 'Chancen',
+    sectionActions: 'Kurzfristige Maßnahmen',
+    sectionPosition: 'Positionierung',
+    sectionWG: 'Zugehörige Arbeitsgruppen',
+    sectionSources: 'Quellen & Referenzen',
+    sideStakeholders: 'Stakeholder',
+    sideMetadata: 'Metadaten',
+    metaCategory: 'Kategorie',
+    metaPriority: 'Priorität',
+    metaHorizon: 'Zeithorizont',
+    metaImpacts: 'Auswirkungen',
+    metaDrivenBy: 'Treiber',
+    metaUpdated: 'Zuletzt aktualisiert',
+    metaActions: 'Maßnahmen',
+    metaSources: 'Quellen',
+    metaScore: 'Bewertung',
+    metaLinkedTo: 'Verknüpft mit',
+    noStakeholders: 'Keine Stakeholder zugewiesen.',
+    noDescription: 'Keine Beschreibung vorhanden.',
+    noneIdentified: 'Keine identifiziert.',
+    noTopicsMatch: 'Keine Themen entsprechen den Filtern.',
+    topicsOf: 'Themen',
+    clearForm: 'Formular leeren',
+    downloadYaml: '⬇ Aktualisierte topics.yaml herunterladen',
+    todoLabel: 'Aufgaben',
+    newsfeedLabel: 'Newsfeed',
+    ttScore: '/10',
+  }
+};
+
+function i18n(key) {
+  return (I18N[currentLang] || I18N.en)[key] || (I18N.en[key] || key);
+}
+
+function applyLang() {
+  const btn = document.getElementById('lang-btn');
+  btn.textContent = currentLang === 'en' ? 'DE' : 'EN';
+  btn.classList.toggle('lang-active', currentLang === 'de');
+
+  // Update static data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const val = i18n(key);
+    if (el.children.length === 0) {
+      el.textContent = val;
+    } else {
+      const textNode = [...el.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+      if (textNode) textNode.textContent = val + ' ';
+    }
+  });
+
+  // Placeholder attributes
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = i18n(el.dataset.i18nPlaceholder);
+  });
+
+  // Dashboard subtitle
+  const dashSub = document.querySelector('#view-dashboard .index-subtitle');
+  if (dashSub) dashSub.textContent = i18n('heroDesc2');
+
+  // Re-render dynamic content
+  if (db) {
+    renderIndex();
+    const detail = document.getElementById('view-detail');
+    const detailVisible = detail && getComputedStyle(detail).display !== 'none';
+    if (detailVisible && window._currentTopicId) {
+      showDetail(window._currentTopicId);
+    }
+  }
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'de' : 'en';
+  applyLang();
+}
+
+// ── PPTX Export ──────────────────────────────────────────────────────────────
+const TEMPLATE_URL = './template.pptx';
+
+function xmlEscape(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function normalizePptxPlaceholders(xml) {
+  // Some placeholders are split across 3 runs: <a:t>{{</a:t> <a:t>field</a:t> <a:t>}}</a:t>
+  // Merge them into a single run's text node: <a:t>{{field}}</a:t>
+  // Strategy: work paragraph by paragraph; if all runs concatenated = {{field}}, collapse to first run
+  return xml.replace(/<a:p\b[^>]*>[\s\S]*?<\/a:p>/g, para => {
+    // Collect all <a:r> runs in this paragraph
+    const runMatches = [...para.matchAll(/<a:r>([\s\S]*?)<\/a:r>/g)];
+    if (runMatches.length < 2) return para;
+
+    // Concatenate all text from all runs in this paragraph
+    const texts = runMatches.map(rm => {
+      const t = rm[1].match(/<a:t[^>]*>([\s\S]*?)<\/a:t>/);
+      return t ? t[1] : '';
+    });
+    const combined = texts.join('');
+
+    // Check if the combined text is exactly a placeholder
+    const ph = combined.match(/^\s*\{\{([a-z_:]+)\}\}\s*$/);
+    if (!ph) return para;
+
+    // It is a split placeholder — collapse: keep first run, update its <a:t>, remove the rest
+    const firstRunFull = runMatches[0][0]; // full <a:r>...</a:r> string
+    const placeholder = `{{${ph[1]}}}`;
+    const newRun = firstRunFull.replace(/<a:t[^>]*>[\s\S]*?<\/a:t>/, `<a:t>${placeholder}</a:t>`);
+
+    // Rebuild paragraph: replace all runs with just the merged first run
+    let result = para;
+    for (const rm of runMatches) {
+      result = result.replace(rm[0], '');
+    }
+    // Insert the merged run before </a:p>
+    result = result.replace(/<\/a:p>/, newRun + '</a:p>');
+    return result;
+  });
+}
+
+async function exportTopicToPptx() {
+  const btn = document.getElementById('export-pptx-btn');
+  if (!window._currentTopicId || !db) return;
+  const topic = db.topics.find(t => t.id === window._currentTopicId);
+  if (!topic) return;
+
+  btn.classList.add('loading');
+  btn.textContent = 'Generating…';
+
+  try {
+    // 1. Fetch template
+    const resp = await fetch(TEMPLATE_URL);
+    if (!resp.ok) throw new Error(`Could not fetch template.pptx (${resp.status})`);
+    const buf = await resp.arrayBuffer();
+
+    // 2. Open with JSZip
+    const zip = await JSZip.loadAsync(buf);
+
+    // 3. Get slide XML
+    const slideFile = zip.file('ppt/slides/slide1.xml');
+    if (!slideFile) throw new Error('slide1.xml not found in template');
+    let xml = await slideFile.async('string');
+
+    // 4. Normalize split placeholders
+    xml = normalizePptxPlaceholders(xml);
+
+    // 5. Build replacement data
+    const formatList = (arr) => {
+      if (!arr || !arr.length) return '—';
+      return arr.map(item => `• ${item}`).join('&#13;');
+    };
+
+    const ms = topic.management_summary;
+    const summaryText    = (ms && typeof ms === 'object') ? (ms.summary || '')          : (typeof ms === 'string' ? ms : '');
+    const courseOfAction = (ms && typeof ms === 'object') ? (ms.course_of_action || '') : '';
+
+    const data = {
+      title:                        xmlEscape(topic.title || ''),
+      score:                        xmlEscape(String(topic.score || '')),
+      'management_summary:summary': xmlEscape(summaryText || '—'),
+      course_of_action:             xmlEscape(courseOfAction || '—'),
+      category:                     xmlEscape(topic.category || '—'),
+      priority:                     xmlEscape(topic.priority || '—'),
+      time_horizon:                 xmlEscape(topic.horizon || '—'),
+      risks:                        formatList(topic.risks),
+      chances:                      formatList(topic.chances),
+    };
+
+    // 6. Replace all {{field}} placeholders
+    Object.entries(data).forEach(([key, val]) => {
+      const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      xml = xml.replace(new RegExp(`\\{\\{${escaped}\\}\\}`, 'g'), val);
+    });
+
+    // 7. Update zip and download
+    zip.file('ppt/slides/slide1.xml', xml);
+    const blob = await zip.generateAsync({
+      type: 'blob',
+      mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      compression: 'DEFLATE',
+    });
+
+    const filename = topic.title.replace(/[^a-zA-Z0-9\s\-_]/g, '').trim().replace(/\s+/g, '_') + '.pptx';
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+
+  } catch (err) {
+    console.error('PPTX export error:', err);
+    alert(`Export failed: ${err.message}`);
+  } finally {
+    btn.classList.remove('loading');
+    btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="2" y="2" width="9" height="12" rx="1"/>
+      <path d="M5 5h4M5 7.5h4M5 10h2" stroke-linecap="round"/>
+      <path d="M9 11l3 1-3 1" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 12H9" stroke-linecap="round"/>
+    </svg> Export PPTX`;
+  }
 }
 
 loadData().then(checkHash);
